@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1072266284510",
+    "firebase_url": "https://i-bus-4323e.firebaseio.com",
+    "project_id": "i-bus-4323e",
+    "storage_bucket": "i-bus-4323e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072266284510:android:9c679b136a9ccda7d7a14f",
+        "android_client_info": {
+          "package_name": "co.enfono.bus_locator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072266284510-c2ef9strtr3r2nn2e3tnapvpdgod9m8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeMYpM6X-DSWzPQMzxWaiCYE7HuOaxg2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072266284510-c2ef9strtr3r2nn2e3tnapvpdgod9m8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
