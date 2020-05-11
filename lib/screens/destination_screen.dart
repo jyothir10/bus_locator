@@ -42,10 +42,12 @@ class _DestinationState extends State<Destination> {
       appBar: AppBar(
         backgroundColor: Color(0xFF1B1B3B),
         leading: IconButton(
-          icon: Icon(
-            Icons.keyboard_backspace,
-            color: Colors.white,
-            size: 30,
+          icon: Container(
+            child: Icon(
+              Icons.keyboard_backspace,
+              color: Colors.white,
+              size: 30,
+            ),
           ),
           onPressed: null,
         ),
