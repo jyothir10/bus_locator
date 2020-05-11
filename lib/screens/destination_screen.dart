@@ -88,6 +88,9 @@ class BusCard extends StatelessWidget {
           Expanded(
             flex: 3,
             child: ReusableCard(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8.0),
+                  bottomLeft: Radius.circular(8.0)),
               cardChild: Padding(
                 padding: const EdgeInsets.all(19.0),
                 child: Row(
