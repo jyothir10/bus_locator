@@ -6,8 +6,9 @@ class BusCard extends StatelessWidget {
   final String distance;
   final double fare;
   final String busType;
+  final Color color;
 
-  BusCard({this.busName, this.distance, this.busType, this.fare});
+  BusCard({this.busName, this.distance, this.busType, this.fare,this.color});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,10 +28,11 @@ class BusCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CircleAvatar(
-                        backgroundColor: Colors.redAccent,
+                        backgroundColor: color,
                         radius: 30.0,
                         child: Icon(
                           Icons.directions_bus,
+                          color: Colors.white,
                         ),
                       ),
                     ),

@@ -18,24 +18,28 @@ class _DestinationState extends State<Destination> {
         fare: 9.81,
         busType: 'Non AC/Hino AKJ1',
         distance: '15min Away',
+        color: Colors.redAccent,
       ),
       BusCard(
         busName: 'Bus A01',
         fare: 9.81,
         busType: 'Non AC/Hino AKJ1',
         distance: '15min Away',
+        color: Colors.blueAccent,
       ),
       BusCard(
         busName: 'Bus A01',
         fare: 9.81,
         busType: 'Non AC/Hino AKJ1',
         distance: '15min Away',
+        color: Colors.orange,
       ),
       BusCard(
         busName: 'Bus A01',
         fare: 9.81,
         busType: 'Non AC/Hino AKJ1',
         distance: '15min Away',
+        color: Colors.green,
       ),
     ];
 
