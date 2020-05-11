@@ -8,7 +8,7 @@ class BusCard extends StatelessWidget {
   final String busType;
   final Color color;
 
-  BusCard({this.busName, this.distance, this.busType, this.fare,this.color});
+  BusCard({this.busName, this.distance, this.busType, this.fare, this.color});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -78,7 +78,7 @@ class BusCard extends StatelessWidget {
               cardChild: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  height: 65.0,
+                  height: 74,
                   child: Center(
                     child: Text(
                       fare.toString(),

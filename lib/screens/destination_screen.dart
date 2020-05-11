@@ -1,3 +1,4 @@
+import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +46,7 @@ class _DestinationState extends State<Destination> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1B1B3B),
+        backgroundColor: kAppBarColor,
         leading: IconButton(
           icon: Container(
             child: Icon(
@@ -65,7 +66,7 @@ class _DestinationState extends State<Destination> {
         ),
       ),
       body: Container(
-        color: Color(0xFF1B1B3B),
+        color: kPageBackgroundColor,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
