@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bus_locator/Authentication/style/theme.dart' as Theme;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bus_locator/Authentication/models/facebook_login.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -35,6 +36,8 @@ class _LoginPageState extends State<LoginPage>
     print(userPhoto);
     return user;
   }
+
+  final FacebookLoginHandler _fbLogin = new FacebookLoginHandler(HomePage.id);
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -426,7 +429,10 @@ class _LoginPageState extends State<LoginPage>
                 padding: EdgeInsets.only(top: 10.0, right: 40.0),
                 child: GestureDetector(
                   // change to sign in function
-                  onTap: () => showInSnackBar("Facebook button pressed"),
+                  onTap: () {
+                    showInSnackBar("Facebook button pressed");
+                    _fbLogin.login(["email"], context);
+                  },
                   child: Container(
                     padding: const EdgeInsets.all(15.0),
                     decoration: new BoxDecoration(
