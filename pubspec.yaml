@@ -33,6 +33,7 @@ dependencies:
   font_awesome_flutter: ^8.4.0
   flutter_shake_plugin: ^0.0.2
   url_launcher:
+  flutter_facebook_login:
 
 
 dev_dependencies:
