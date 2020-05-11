@@ -13,7 +13,6 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-   
       selectedFontSize: kBottomBarFontSize,
       unselectedFontSize: kBottomBarFontSize,
       selectedItemColor: kBottomBarActiveIconColor,
@@ -38,7 +37,7 @@ class _BottomBarState extends State<BottomBar> {
           backgroundColor: kBottomBarColor,
         ),
         BottomNavigationBarItem(
-          icon: Icon(FontAwesomeIcons.shoppingCart, size: 22),
+          icon: Icon(Icons.add_shopping_cart, size: 27),
           title: Text('cart'),
           backgroundColor: kBottomBarColor,
         ),
