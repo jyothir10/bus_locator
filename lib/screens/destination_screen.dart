@@ -94,6 +94,9 @@ class BusCard extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Icon(Icons.directions_bus),
                     ),
+                    SizedBox(
+                      width: 15,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
