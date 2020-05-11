@@ -30,25 +30,28 @@ class _DestinationState extends State<Destination> {
           ),
         ),
       ),
-      body: ListView(
-        children: <Widget>[
-          ReusableCard(
-            busname: 'Bus A01',
-            fare: 9.81,
-          ),
-          ReusableCard(
-            busname: 'Bus A01',
-            fare: 9.81,
-          ),
-          ReusableCard(
-            busname: 'Bus A01',
-            fare: 9.81,
-          ),
-          ReusableCard(
-            busname: 'Bus A01',
-            fare: 9.81,
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: <Widget>[
+            ReusableCard(
+              busname: 'Bus A01',
+              fare: 9.81,
+            ),
+            ReusableCard(
+              busname: 'Bus A01',
+              fare: 9.81,
+            ),
+            ReusableCard(
+              busname: 'Bus A01',
+              fare: 9.81,
+            ),
+            ReusableCard(
+              busname: 'Bus A01',
+              fare: 9.81,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -65,21 +68,26 @@ class ReusableCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        reusableCard(
-          cardChild: Text(
-            busname,
-            style: TextStyle(color: Colors.white),
+        Expanded(
+          flex: 4,
+          child: reusableCard(
+            cardChild: Text(
+              busname,
+              style: TextStyle(color: Colors.white),
+            ),
+            colour: Color(0xFF28284D),
+            onPress: (){},
           ),
-          colour: Color(0xFF28284D),
-          onPress: (){},
         ),
-        reusableCard(
-          cardChild: Text(
-            fare.toString(),
-            style: TextStyle(color: Colors.white),
+        Expanded(
+          child: reusableCard(
+            cardChild: Text(
+              fare.toString(),
+              style: TextStyle(color: Colors.white),
+            ),
+            colour: Color(0xFF242448),
+            onPress: (){},
           ),
-          colour: Color(0xFF242448),
-          onPress: (){},
         ),
       ],
     );

@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class reusableCard extends StatelessWidget {
-  reusableCard({ this.colour, this.cardChild, this.onPress});
+  reusableCard({this.colour, this.cardChild, this.onPress});
 
   final Color colour;
   final Widget cardChild;
@@ -12,11 +13,13 @@ class reusableCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Container(
-        child: cardChild,
-        margin: EdgeInsets.all(15.0),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 5,top: 5,bottom: 5,right: 0),
+          child: Center(child: cardChild),
+        ),
+        margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
           color: colour,
-          borderRadius: BorderRadius.circular(10.0),
         ),
       ),
     );
