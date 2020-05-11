@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BusLocator</string>
+    <string name="facebook_app_id">572693740046540</string>
+    <string name="fb_login_protocol_scheme">fb572693740046540</string>
+</resources>
