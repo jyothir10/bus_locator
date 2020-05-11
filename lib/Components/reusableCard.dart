@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class reusableCard extends StatelessWidget {
-  reusableCard({this.colour, this.cardChild, this.onPress});
+class ReusableCard extends StatelessWidget {
+  ReusableCard({this.colour, this.cardChild, this.onPress});
 
   final Color colour;
   final Widget cardChild;

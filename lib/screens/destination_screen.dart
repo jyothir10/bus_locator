@@ -34,19 +34,19 @@ class _DestinationState extends State<Destination> {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: <Widget>[
-            ReusableCard(
+            BusCard(
               busName: 'Bus A01',
               fare: 9.81,
             ),
-            ReusableCard(
+            BusCard(
               busName: 'Bus A01',
               fare: 9.81,
             ),
-            ReusableCard(
+            BusCard(
               busName: 'Bus A01',
               fare: 9.81,
             ),
-            ReusableCard(
+            BusCard(
               busName: 'Bus A01',
               fare: 9.81,
             ),
@@ -57,20 +57,20 @@ class _DestinationState extends State<Destination> {
   }
 }
 
-class ReusableCard extends StatelessWidget {
+class BusCard extends StatelessWidget {
   final String busName;
   final String distance;
   final double fare;
   final String busType;
 
-  ReusableCard({this.busName, this.distance, this.busType, this.fare});
+  BusCard({this.busName, this.distance, this.busType, this.fare});
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
         Expanded(
           flex: 4,
-          child: reusableCard(
+          child: ReusableCard(
             cardChild: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Text(
@@ -84,7 +84,7 @@ class ReusableCard extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: reusableCard(
+          child: ReusableCard(
             cardChild: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Text(
