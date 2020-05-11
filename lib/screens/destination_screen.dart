@@ -49,10 +49,12 @@ class _DestinationState extends State<Destination> {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(
-          children: buses,
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(
+            children: buses,
+          ),
         ),
       ),
     );
