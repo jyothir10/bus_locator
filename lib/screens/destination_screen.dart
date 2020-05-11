@@ -152,6 +152,10 @@ class BusCard extends StatelessWidget {
                   ),
                 ),
               ),
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(8.0),
+                bottomRight: Radius.circular(8.0),
+              ),
               colour: Color(0xFF242448),
               onPress: () {},
             ),
