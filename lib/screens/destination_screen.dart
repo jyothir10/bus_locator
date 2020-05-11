@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:bus_locator/Components/reusableCard.dart';
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -28,27 +30,25 @@ class _DestinationState extends State<Destination> {
           ),
         ),
       ),
-      body: Container(
-        child: ListView(
-          children: <Widget>[
-            ReusableCard(
-              busname: 'Bus A01',
-              fare: 9.81,
-            ),
-            ReusableCard(
-              busname: 'Bus A01',
-              fare: 9.81,
-            ),
-            ReusableCard(
-              busname: 'Bus A01',
-              fare: 9.81,
-            ),
-            ReusableCard(
-              busname: 'Bus A01',
-              fare: 9.81,
-            ),
-          ],
-        ),
+      body: ListView(
+        children: <Widget>[
+          ReusableCard(
+            busname: 'Bus A01',
+            fare: 9.81,
+          ),
+          ReusableCard(
+            busname: 'Bus A01',
+            fare: 9.81,
+          ),
+          ReusableCard(
+            busname: 'Bus A01',
+            fare: 9.81,
+          ),
+          ReusableCard(
+            busname: 'Bus A01',
+            fare: 9.81,
+          ),
+        ],
       ),
     );
   }
@@ -63,33 +63,27 @@ class ReusableCard extends StatelessWidget {
   ReusableCard({this.busname, this.distance, this.bustype, this.fare});
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Card(
-                child: Text(
-                  busname,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                color: Color(0xFF28284D),
-              ),
-              Card(
-                child: Text(
-                  fare.toString(),
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                color: Color(0xFF242448),
-              ),
-            ],
+    return Row(
+      children: <Widget>[
+        reusableCard(
+          cardChild: Text(
+            busname,
+            style: TextStyle(color: Colors.white),
           ),
-        ],
-      ),
+          colour: Color(0xFF28284D),
+          onPress: (){},
+        ),
+        reusableCard(
+          cardChild: Text(
+            fare.toString(),
+            style: TextStyle(color: Colors.white),
+          ),
+          colour: Color(0xFF242448),
+          onPress: (){},
+        ),
+      ],
     );
   }
 }
+
+
