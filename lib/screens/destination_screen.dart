@@ -84,7 +84,7 @@ class BusCard extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(
-            flex: 4,
+            flex: 3,
             child: ReusableCard(
               cardChild: Padding(
                 padding: const EdgeInsets.all(19.0),
@@ -92,7 +92,9 @@ class BusCard extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.directions_bus),
+                      child: Icon(
+                        Icons.directions_bus,
+                      ),
                     ),
                     SizedBox(
                       width: 15,
@@ -140,7 +142,10 @@ class BusCard extends StatelessWidget {
                   child: Center(
                     child: Text(
                       fare.toString(),
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0),
                     ),
                   ),
                 ),
