@@ -1,5 +1,5 @@
 import 'package:bus_locator/screens/destination_screen.dart';
-import 'package:bus_locator/screens/homePage.dart';
+import 'package:bus_locator/homePage.dart';
 import 'package:flutter/material.dart';
 import 'Authentication/ui/login_page.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: Destination(),
     );
   }
 }
