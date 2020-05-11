@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
 
+
 class HomePage extends StatelessWidget {
   final GoogleSignIn googleSignIn = new GoogleSignIn();
   void _signOut() async {
     await googleSignIn.signOut();
   }
+  
+
+  
 
   static String id = 'Home_Screen';
   @override
