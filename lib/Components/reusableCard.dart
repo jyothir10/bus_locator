@@ -20,6 +20,7 @@ class ReusableCard extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
           color: colour,
+
         ),
       ),
     );

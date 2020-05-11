@@ -15,18 +15,26 @@ class _DestinationState extends State<Destination> {
       BusCard(
         busName: 'Bus A01',
         fare: 9.81,
+        busType: 'Non AC/Hino AKJ1',
+        distance: '15min Away',
       ),
       BusCard(
         busName: 'Bus A01',
         fare: 9.81,
+        busType: 'Non AC/Hino AKJ1',
+        distance: '15min Away',
       ),
       BusCard(
         busName: 'Bus A01',
         fare: 9.81,
+        busType: 'Non AC/Hino AKJ1',
+        distance: '15min Away',
       ),
       BusCard(
         busName: 'Bus A01',
         fare: 9.81,
+        busType: 'Non AC/Hino AKJ1',
+        distance: '15min Away',
       ),
     ];
 
@@ -50,6 +58,7 @@ class _DestinationState extends State<Destination> {
         ),
       ),
       body: Container(
+        color: Color(0xFF1B1B3B),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
@@ -78,11 +87,37 @@ class BusCard extends StatelessWidget {
             flex: 4,
             child: ReusableCard(
               cardChild: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  busName,
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.directions_bus),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          busName,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          busType,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          distance,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
               colour: Color(0xFF28284D),
@@ -92,7 +127,7 @@ class BusCard extends StatelessWidget {
           Expanded(
             child: ReusableCard(
               cardChild: Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Text(
                   fare.toString(),
                   style: TextStyle(color: Colors.white),
