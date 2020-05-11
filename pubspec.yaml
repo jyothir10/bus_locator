@@ -34,6 +34,7 @@ dependencies:
   flutter_shake_plugin: ^0.0.2
   url_launcher:
   flutter_facebook_login:
+  rflutter_alert: ^1.0.3
 
 
 dev_dependencies:

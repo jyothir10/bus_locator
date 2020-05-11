@@ -1,5 +1,5 @@
 import 'package:bus_locator/Authentication/utils/bubble_indication_painter.dart';
-import 'package:bus_locator/homePage.dart';
+import 'package:bus_locator/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,7 +7,6 @@ import 'package:bus_locator/Authentication/style/theme.dart' as Theme;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bus_locator/Authentication/models/facebook_login.dart';
-
 
 class LoginPage extends StatefulWidget {
   static String id = 'Login_Screen';
