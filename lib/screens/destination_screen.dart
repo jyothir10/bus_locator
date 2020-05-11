@@ -35,19 +35,19 @@ class _DestinationState extends State<Destination> {
         child: ListView(
           children: <Widget>[
             ReusableCard(
-              busname: 'Bus A01',
+              busName: 'Bus A01',
               fare: 9.81,
             ),
             ReusableCard(
-              busname: 'Bus A01',
+              busName: 'Bus A01',
               fare: 9.81,
             ),
             ReusableCard(
-              busname: 'Bus A01',
+              busName: 'Bus A01',
               fare: 9.81,
             ),
             ReusableCard(
-              busname: 'Bus A01',
+              busName: 'Bus A01',
               fare: 9.81,
             ),
           ],
@@ -58,12 +58,12 @@ class _DestinationState extends State<Destination> {
 }
 
 class ReusableCard extends StatelessWidget {
-  String busname;
-  String distance;
-  double fare;
-  String bustype;
+  final String busName;
+  final String distance;
+  final double fare;
+  final String busType;
 
-  ReusableCard({this.busname, this.distance, this.bustype, this.fare});
+  ReusableCard({this.busName, this.distance, this.busType, this.fare});
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -71,27 +71,32 @@ class ReusableCard extends StatelessWidget {
         Expanded(
           flex: 4,
           child: reusableCard(
-            cardChild: Text(
-              busname,
-              style: TextStyle(color: Colors.white),
+            cardChild: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                busName,
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
             ),
             colour: Color(0xFF28284D),
-            onPress: (){},
+            onPress: () {},
           ),
         ),
         Expanded(
           child: reusableCard(
-            cardChild: Text(
-              fare.toString(),
-              style: TextStyle(color: Colors.white),
+            cardChild: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                fare.toString(),
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             colour: Color(0xFF242448),
-            onPress: (){},
+            onPress: () {},
           ),
         ),
       ],
     );
   }
 }
-
-

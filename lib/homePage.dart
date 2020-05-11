@@ -36,39 +36,37 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Future alertBox({String title, String description, String buttonText}) {
-  var alertStyle = AlertStyle(
-    overlayColor: kBottomBarInactiveIconColor,
-    animationType: AnimationType.fromTop,
-    isCloseButton: false,
-    isOverlayTapDismiss: false,
-    descStyle: TextStyle(fontWeight: FontWeight.bold),
-    animationDuration: Duration(milliseconds: 400),
-    alertBorder: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10.0),
-      side: BorderSide(
-        color: Colors.grey,
-      ),
-    ),
-    titleStyle: TextStyle(
-      color: Colors.red,
-    ),
-  );
+//  var alertStyle = AlertStyle(
+//    overlayColor: kBottomBarInactiveIconColor,
+//    animationType: AnimationType.fromTop,
+//    isCloseButton: false,
+//    isOverlayTapDismiss: false,
+//    descStyle: TextStyle(fontWeight: FontWeight.bold),
+//    animationDuration: Duration(milliseconds: 400),
+//    alertBorder: RoundedRectangleBorder(
+//      borderRadius: BorderRadius.circular(10.0),
+//      side: BorderSide(
+//        color: Colors.grey,
+//      ),
+//    ),
+//    titleStyle: TextStyle(
+//      color: Colors.red,
+//    ),
+//  );
 
-  return Alert(
-    style: alertStyle,
-    type: AlertType.error,
-    title: title,
-    desc: description,
-    buttons: [
-      DialogButton(
-        color: kBottomBarColor,
-        child: Text(
-          buttonText,
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        width: 120,
-      )
-    ],
-  ).show();
-}
+//   Alert(
+//    style: alertStyle,
+//    type: AlertType.error,
+//    title: title,
+//    desc: description,
+//    buttons: [
+//      DialogButton(
+//        color: kBottomBarColor,
+//        child: Text(
+//          buttonText,
+//          style: TextStyle(color: Colors.white, fontSize: 20),
+//        ),
+//        width: 120,
+//      )
+//    ],
+//  ).show();

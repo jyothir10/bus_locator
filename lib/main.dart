@@ -1,5 +1,5 @@
 import 'package:bus_locator/screens/destination_screen.dart';
-import 'package:bus_locator/homePage.dart';
+import 'homePage.dart';
 import 'package:flutter/material.dart';
 import 'Authentication/ui/login_page.dart';
 

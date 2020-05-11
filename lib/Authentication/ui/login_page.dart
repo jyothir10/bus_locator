@@ -1,5 +1,5 @@
 import 'package:bus_locator/Authentication/utils/bubble_indication_painter.dart';
-import 'package:bus_locator/screens/homePage.dart';
+import 'package:bus_locator/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
