@@ -18,7 +18,16 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
+  //TODO:sign in with email setup.
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  String email;
+  bool showSpinner = false;
+  String password;
+  String password1;
+  String password2;
+  String name;
+
+  // TODO: google sign in setup
   final GoogleSignIn googleSignIn = new GoogleSignIn();
   Future<FirebaseUser> _signIn() async {
     GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
@@ -36,32 +45,27 @@ class _LoginPageState extends State<LoginPage>
     return user;
   }
 
+  // TODO:facebook login defining
   final FacebookLoginHandler _fbLogin = new FacebookLoginHandler(HomePage.id);
 
+  // TODO:page ui handling.ignore it.
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
   final FocusNode myFocusNodeEmailLogin = FocusNode();
   final FocusNode myFocusNodePasswordLogin = FocusNode();
-
   final FocusNode myFocusNodePassword = FocusNode();
   final FocusNode myFocusNodeEmail = FocusNode();
   final FocusNode myFocusNodeName = FocusNode();
-
   TextEditingController loginEmailController = new TextEditingController();
   TextEditingController loginPasswordController = new TextEditingController();
-
   bool _obscureTextLogin = true;
   bool _obscureTextSignup = true;
   bool _obscureTextSignupConfirm = true;
-
   TextEditingController signupEmailController = new TextEditingController();
   TextEditingController signupNameController = new TextEditingController();
   TextEditingController signupPasswordController = new TextEditingController();
   TextEditingController signupConfirmPasswordController =
       new TextEditingController();
-
   PageController _pageController;
-
   Color left = Colors.black;
   Color right = Colors.white;
 
@@ -228,6 +232,7 @@ class _LoginPageState extends State<LoginPage>
     );
   }
 
+//TODO: login side.
   Widget _buildSignIn(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 23.0),
@@ -252,6 +257,9 @@ class _LoginPageState extends State<LoginPage>
                         padding: EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
+                          onChanged: (value) {
+                            email = value;
+                          },
                           focusNode: myFocusNodeEmailLogin,
                           controller: loginEmailController,
                           keyboardType: TextInputType.emailAddress,
@@ -281,6 +289,9 @@ class _LoginPageState extends State<LoginPage>
                         padding: EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
+                          onChanged: (value) {
+                            password = value;
+                          },
                           focusNode: myFocusNodePasswordLogin,
                           controller: loginPasswordController,
                           obscureText: _obscureTextLogin,
@@ -356,14 +367,27 @@ class _LoginPageState extends State<LoginPage>
                             fontFamily: "WorkSansBold"),
                       ),
                     ),
-                    onPressed: () => showInSnackBar("Login button pressed")),
+                    onPressed: () async {
+                      //TODO: login function.
+                      try {
+                        final user = await _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                        if (user != null) {
+                          Navigator.pushReplacementNamed(context, HomePage.id);
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
+                    }),
               ),
             ],
           ),
           Padding(
             padding: EdgeInsets.only(top: 10.0),
             child: FlatButton(
-                onPressed: () {},
+                onPressed: () {
+                  // TODO:change to forgot password function
+                },
                 child: Text(
                   "Forgot Password?",
                   style: TextStyle(
@@ -427,7 +451,7 @@ class _LoginPageState extends State<LoginPage>
               Padding(
                 padding: EdgeInsets.only(top: 10.0, right: 40.0),
                 child: GestureDetector(
-                  // change to sign in function
+                  // TODO:change to sign in function
                   onTap: () {
                     showInSnackBar("Facebook button pressed");
                     _fbLogin.login(["email"], context);
@@ -448,7 +472,7 @@ class _LoginPageState extends State<LoginPage>
               Padding(
                 padding: EdgeInsets.only(top: 10.0),
                 child: GestureDetector(
-                  // change to sign in function
+                  // TODO:change to sign in function
                   onTap: () async {
                     await _signIn();
                     await Navigator.pushReplacementNamed(context, HomePage.id);
@@ -474,6 +498,7 @@ class _LoginPageState extends State<LoginPage>
     );
   }
 
+//TODO:Registering side.
   Widget _buildSignUp(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 23.0),
@@ -498,6 +523,10 @@ class _LoginPageState extends State<LoginPage>
                         padding: EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
+                          onChanged: (value) {
+                            //TODO:name of the person.
+                            name = value;
+                          },
                           focusNode: myFocusNodeName,
                           controller: signupNameController,
                           keyboardType: TextInputType.text,
@@ -527,6 +556,10 @@ class _LoginPageState extends State<LoginPage>
                         padding: EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
+                          onChanged: (value) {
+                            //TODO:email.
+                            email = value;
+                          },
                           focusNode: myFocusNodeEmail,
                           controller: signupEmailController,
                           keyboardType: TextInputType.emailAddress,
@@ -555,6 +588,11 @@ class _LoginPageState extends State<LoginPage>
                         padding: EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
+                          onChanged: (value) {
+                            //TODO:password.
+                            password = value;
+                            password1 = value;
+                          },
                           focusNode: myFocusNodePassword,
                           controller: signupPasswordController,
                           obscureText: _obscureTextSignup,
@@ -593,6 +631,10 @@ class _LoginPageState extends State<LoginPage>
                         padding: EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
+                          onChanged: (value) {
+                            //TODO:Confirmation.
+                            password2 = value;
+                          },
                           controller: signupConfirmPasswordController,
                           obscureText: _obscureTextSignupConfirm,
                           style: TextStyle(
@@ -666,7 +708,24 @@ class _LoginPageState extends State<LoginPage>
                             fontFamily: "WorkSansBold"),
                       ),
                     ),
-                    onPressed: () => showInSnackBar("SignUp button pressed")),
+                    onPressed: () async {
+                      //TODO:Registration.
+                      if (password1 == password2) {
+                        try {
+                          final newuser =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: email, password: password);
+                          if (newuser != null) {
+                            Navigator.pushReplacementNamed(
+                                context, HomePage.id);
+                          }
+                        } catch (e) {
+                          print(e);
+                        }
+                      } else {
+                        showInSnackBar('Password doesnt match');
+                      }
+                    }),
               ),
             ],
           ),

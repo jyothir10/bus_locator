@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:bus_locator/Components/reusableCard.dart';
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -28,7 +30,8 @@ class _DestinationState extends State<Destination> {
           ),
         ),
       ),
-      body: Container(
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: <Widget>[
             ReusableCard(
@@ -63,33 +66,32 @@ class ReusableCard extends StatelessWidget {
   ReusableCard({this.busname, this.distance, this.bustype, this.fare});
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Card(
-                child: Text(
-                  busname,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                color: Color(0xFF28284D),
-              ),
-              Card(
-                child: Text(
-                  fare.toString(),
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                color: Color(0xFF242448),
-              ),
-            ],
+    return Row(
+      children: <Widget>[
+        Expanded(
+          flex: 4,
+          child: reusableCard(
+            cardChild: Text(
+              busname,
+              style: TextStyle(color: Colors.white),
+            ),
+            colour: Color(0xFF28284D),
+            onPress: (){},
           ),
-        ],
-      ),
+        ),
+        Expanded(
+          child: reusableCard(
+            cardChild: Text(
+              fare.toString(),
+              style: TextStyle(color: Colors.white),
+            ),
+            colour: Color(0xFF242448),
+            onPress: (){},
+          ),
+        ),
+      ],
     );
   }
 }
+
+
