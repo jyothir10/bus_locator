@@ -87,7 +87,7 @@ class BusCard extends StatelessWidget {
             flex: 4,
             child: ReusableCard(
               cardChild: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(19.0),
                 child: Row(
                   children: <Widget>[
                     Padding(
@@ -103,18 +103,19 @@ class BusCard extends StatelessWidget {
                         Text(
                           busName,
                           style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 7,
                         ),
                         Text(
                           busType,
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white, fontSize: 14),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 7,
                         ),
                         Text(
                           distance,
@@ -134,9 +135,14 @@ class BusCard extends StatelessWidget {
             child: ReusableCard(
               cardChild: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  fare.toString(),
-                  style: TextStyle(color: Colors.white),
+                child: Container(
+                  height: 65.0,
+                  child: Center(
+                    child: Text(
+                      fare.toString(),
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ),
               ),
               colour: Color(0xFF242448),
