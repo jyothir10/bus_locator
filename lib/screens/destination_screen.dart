@@ -97,8 +97,12 @@ class BusCard extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.directions_bus,
+                      child: CircleAvatar(
+                        radius: 30.0,
+                        backgroundColor: Colors.redAccent,
+                        child: Icon(
+                          Icons.directions_bus,
+                        ),
                       ),
                     ),
                     SizedBox(
