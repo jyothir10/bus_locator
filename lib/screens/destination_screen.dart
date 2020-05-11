@@ -23,6 +23,9 @@ class _DestinationState extends State<Destination> {
         titleSpacing: 80,
         title: Text(
           'DESTINATION',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
