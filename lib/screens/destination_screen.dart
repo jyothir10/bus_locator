@@ -100,20 +100,23 @@ class BusCard extends StatelessWidget {
                         Text(
                           busName,
                           style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5,
                         ),
                         Text(
                           busType,
                           style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5,
                         ),
                         Text(
                           distance,
                           style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                              color: Colors.red, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
