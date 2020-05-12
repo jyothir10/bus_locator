@@ -1,3 +1,4 @@
+import 'package:bus_locator/Navigation/mapScreen.dart';
 import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/cart_profile.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
         LoginPage.id: (context) => LoginPage(),
         Destination.id: (context) => Destination(),
         CartScreen.id: (context) => CartScreen(),
+        MapScreen.id: (context) => MapScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',

@@ -1,5 +1,6 @@
 import 'dart:async';
 //import 'package:jobfinder/Constant/Constant.dart';
+import 'package:bus_locator/Navigation/mapScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,8 +23,9 @@ class SplashScreenState extends State<AnimatedSplashScreen>
     return new Timer(_duration, navigationPage);
   }
 
+//TODO: chande route you want to.
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed(HomePage.id);
+    Navigator.of(context).pushReplacementNamed(MapScreen.id);
   }
 
   @override
