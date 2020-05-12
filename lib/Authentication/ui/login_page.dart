@@ -100,10 +100,10 @@ class _LoginPageState extends State<LoginPage>
                 Padding(
                   padding: EdgeInsets.only(top: 75.0),
                   child: new Image(
-                      width: 250.0,
-                      height: 191.0,
+                      width: 200.0,
+                      height: 200.0,
                       fit: BoxFit.fill,
-                      image: new AssetImage('assets/img/login_logo.png')),
+                      image: new AssetImage('assets/ibus.png')),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20.0),
@@ -329,29 +329,29 @@ class _LoginPageState extends State<LoginPage>
               Container(
                 margin: EdgeInsets.only(top: 170.0),
                 decoration: new BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: Theme.Colors.loginGradientStart,
-                      offset: Offset(1.0, 6.0),
-                      blurRadius: 20.0,
-                    ),
-                    BoxShadow(
-                      color: Theme.Colors.loginGradientEnd,
-                      offset: Offset(1.0, 6.0),
-                      blurRadius: 20.0,
-                    ),
-                  ],
-                  gradient: new LinearGradient(
-                      colors: [
-                        Theme.Colors.loginGradientEnd,
-                        Theme.Colors.loginGradientStart
-                      ],
-                      begin: const FractionalOffset(0.2, 0.2),
-                      end: const FractionalOffset(1.0, 1.0),
-                      stops: [0.0, 1.0],
-                      tileMode: TileMode.clamp),
-                ),
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: Theme.Colors.loginGradientStart,
+                        offset: Offset(1.0, 6.0),
+                        blurRadius: 20.0,
+                      ),
+                      BoxShadow(
+                        color: Theme.Colors.loginGradientEnd,
+                        offset: Offset(1.0, 6.0),
+                        blurRadius: 20.0,
+                      ),
+                    ],
+//                  gradient: new LinearGradient(
+//                      colors: [
+//                        Theme.Colors.loginGradientEnd,
+//                        Theme.Colors.loginGradientStart
+//                      ],
+//                      begin: const FractionalOffset(0.2, 0.2),
+//                      end: const FractionalOffset(1.0, 1.0),
+//                      stops: [0.0, 1.0],
+//                      tileMode: TileMode.clamp),
+                    color: Theme.Colors.loginGradientStart),
                 child: MaterialButton(
                     highlightColor: Colors.transparent,
                     splashColor: Theme.Colors.loginGradientEnd,
@@ -683,15 +683,16 @@ class _LoginPageState extends State<LoginPage>
                       blurRadius: 20.0,
                     ),
                   ],
-                  gradient: new LinearGradient(
-                      colors: [
-                        Theme.Colors.loginGradientEnd,
-                        Theme.Colors.loginGradientStart
-                      ],
-                      begin: const FractionalOffset(0.2, 0.2),
-                      end: const FractionalOffset(1.0, 1.0),
-                      stops: [0.0, 1.0],
-                      tileMode: TileMode.clamp),
+//                  gradient: new LinearGradient(
+//                      colors: [
+//                        Theme.Colors.loginGradientEnd,
+//                        Theme.Colors.loginGradientStart
+//                      ],
+//                      begin: const FractionalOffset(0.2, 0.2),
+//                      end: const FractionalOffset(1.0, 1.0),
+//                      stops: [0.0, 1.0],
+//                      tileMode: TileMode.clamp),
+                  color: Theme.Colors.loginGradientStart,
                 ),
                 child: MaterialButton(
                     highlightColor: Colors.transparent,

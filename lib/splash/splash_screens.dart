@@ -1,5 +1,6 @@
 import 'dart:async';
 //import 'package:jobfinder/Constant/Constant.dart';
+import 'package:bus_locator/Authentication/ui/login_page.dart';
 import 'package:bus_locator/Navigation/mapScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class SplashScreenState extends State<AnimatedSplashScreen>
 
 //TODO: change route you want to.
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed(MapScreen.id);
+    Navigator.of(context).pushReplacementNamed(LoginPage.id);
   }
 
   @override
