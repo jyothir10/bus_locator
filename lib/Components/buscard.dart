@@ -1,3 +1,4 @@
+import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/material.dart';
 import 'reusableCard.dart';
 
@@ -7,8 +8,16 @@ class BusCard extends StatelessWidget {
   final double fare;
   final String busType;
   final Color color;
-
-  BusCard({this.busName, this.distance, this.busType, this.fare, this.color});
+  final String status;
+  final String date;
+  BusCard(
+      {this.busName,
+      this.distance,
+      this.busType,
+      this.fare,
+      this.status,
+      this.color,
+      this.date});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,7 +25,7 @@ class BusCard extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(
-            flex: 3,
+            flex: 5,
             child: ReusableCard(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(8.0),
@@ -57,12 +66,21 @@ class BusCard extends StatelessWidget {
                           style: TextStyle(color: Colors.white, fontSize: 14),
                         ),
                         SizedBox(
-                          height: 7,
+                          height: 5,
                         ),
                         Text(
                           distance,
                           style: TextStyle(
                               color: Colors.red, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 7,
+                        ),
+                        Text(
+                          date,
+                          style: TextStyle(
+                              color: kBottomBarInactiveIconColor,
+                              fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -74,20 +92,30 @@ class BusCard extends StatelessWidget {
             ),
           ),
           Expanded(
+            flex: 2,
             child: ReusableCard(
               cardChild: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  height: 74,
-                  child: Center(
-                    child: Text(
+                child: Column(
+                  children: <Widget>[
+                    Text(
                       fare.toString(),
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0),
                     ),
-                  ),
+                    SizedBox(
+                      height: 7,
+                    ),
+                    Text(
+                      status,
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13.5),
+                    ),
+                  ],
                 ),
               ),
               borderRadius: BorderRadius.only(
