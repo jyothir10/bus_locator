@@ -6,6 +6,7 @@ import 'package:bus_locator/splash/splash_screens.dart';
 import 'homePage.dart';
 import 'package:flutter/material.dart';
 import 'Authentication/ui/login_page.dart';
+import 'package:bus_locator/screens/Welcome Screen.dart';
 
 void main() => runApp(new MyApp());
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         CartScreen.id: (context) => CartScreen(),
         MapScreen.id: (context) => MapScreen(),
         CartProfile.id: (context) => CartProfile(),
+        WelcomeScreen.id: (context) => WelcomeScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',

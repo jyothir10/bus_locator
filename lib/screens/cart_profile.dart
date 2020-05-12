@@ -2,7 +2,6 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
 import 'package:bus_locator/Components/reusableCard.dart';
 
@@ -29,12 +28,16 @@ class _CartProfileState extends State<CartProfile> {
           ),
           onPressed: null,
         ),
-        titleSpacing: 120,
-        title: Text(
-          'CART',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'CART',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
       body: Container(
@@ -96,6 +99,7 @@ class BusCardProfilePage extends StatelessWidget {
               cardChild: Padding(
                 padding: const EdgeInsets.all(19.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -107,9 +111,6 @@ class BusCardProfilePage extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 15,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
