@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CartScreen(),
+      home: Destination(),
     );
   }
 }

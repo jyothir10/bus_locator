@@ -163,17 +163,18 @@ class BusCard extends StatelessWidget {
             flex: 1,
             child: ReusableCard(
               cardChild: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: <Widget>[
-                    Text(
+                padding: const EdgeInsets.all(20),
+                child: Container(
+                  height: 74,
+                  child: Center(
+                    child: Text(
                       fare.toString(),
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0),
                     ),
-                  ],
+                  ),
                 ),
               ),
               borderRadius: BorderRadius.only(
