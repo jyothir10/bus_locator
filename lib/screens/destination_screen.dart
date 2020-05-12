@@ -68,11 +68,15 @@ class _DestinationState extends State<Destination> {
         children: <Widget>[
           Container(
             color: kPageBackgroundColor,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
             child: ListView(
-              children: buses,
+              children: <Widget>[
+                Container(
+                  color: Colors.white,
+                  child: Row(
+                    children: <Widget>[Icon(Icons.directions)],
+                  ),
+                ),
+              ],
             ),
           ),
         ],
