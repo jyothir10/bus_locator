@@ -1,7 +1,6 @@
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:bus_locator/Components/BusCard3.dart';
 
 class Destination extends StatefulWidget {
