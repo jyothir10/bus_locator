@@ -30,8 +30,8 @@ class BusCard4 extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(8.0),
                   bottomLeft: Radius.circular(8.0)),
-              cardChild: Padding(
-                padding: const EdgeInsets.all(19.0),
+              cardChild: Container(
+                height: 120,
                 child: Row(
                   children: <Widget>[
                     Padding(
@@ -50,6 +50,7 @@ class BusCard4 extends StatelessWidget {
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         Text(
                           busName,
@@ -58,28 +59,19 @@ class BusCard4 extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontSize: 18),
                         ),
-                        SizedBox(
-                          height: 7,
-                        ),
                         Text(
                           busType,
                           style: TextStyle(color: Colors.white, fontSize: 14),
-                        ),
-                        SizedBox(
-                          height: 5,
                         ),
                         Text(
                           distance,
                           style: TextStyle(
                               color: Colors.red, fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(
-                          height: 7,
-                        ),
                         Text(
                           date,
                           style: TextStyle(
-                              color: kBottomBarInactiveIconColor,
+                              color: Colors.blueGrey,
                               fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -97,7 +89,7 @@ class BusCard4 extends StatelessWidget {
               cardChild: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                  height: 86,
+                  height: 80,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
