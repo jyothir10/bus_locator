@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
-import 'package:bus_locator/Components/RoundedButton.dart';
 
 class CartProfile extends StatefulWidget {
   static String id = 'cartprofile_Screen';
@@ -28,7 +27,7 @@ class _CartProfileState extends State<CartProfile> {
         ),
         titleSpacing: 120,
         title: Text(
-          'CAR',
+          'CART',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -36,9 +35,6 @@ class _CartProfileState extends State<CartProfile> {
       ),
       body: Container(
         color: kPageBackgroundColor,
-        child: Column(
-          children: <Widget>[],
-        ),
       ),
     );
   }
