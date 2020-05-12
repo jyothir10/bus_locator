@@ -1,3 +1,4 @@
+import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
@@ -42,6 +43,23 @@ class _CartProfileState extends State<CartProfile> {
               name: 'John Doe',
               email: 'john@gmail.com',
               place: 'Gotham',
+            ),
+            SizedBox(
+              height: 220,
+            ),
+            RoundedButton(
+              color: kButtonDarkColor,
+              text: "Change Password",
+              textColor: kButtonActiveColor,
+              textSize: 18,
+              onPress: () {},
+            ),
+            RoundedButton(
+              color: kButtonActiveColor,
+              text: "Logout",
+              textColor: Colors.white,
+              textSize: 18,
+              onPress: () {},
             ),
           ],
         ),
