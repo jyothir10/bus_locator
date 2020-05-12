@@ -53,30 +53,34 @@ class _CartProfileState extends State<CartProfile> {
             SizedBox(
               height: 220,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: RoundedButton(
-                color: kButtonDarkColor,
-                text: "Change Password",
-                textColor: kButtonActiveColor,
-                textSize: 18,
-                onPress: () {
-                  //TODO : implement password change
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: RoundedButton(
-                color: kButtonActiveColor,
-                text: "Logout",
-                textColor: Colors.white,
-                textSize: 18,
-                onPress: () {
-                  //TODO: implement logout
-                },
-              ),
-            ),
+            Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: RoundedButton(
+                    color: kButtonDarkColor,
+                    text: "Change Password",
+                    textColor: kButtonActiveColor,
+                    textSize: 18,
+                    onPress: () {
+                      //TODO : implement password change
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: RoundedButton(
+                    color: kButtonActiveColor,
+                    text: "Logout",
+                    textColor: Colors.white,
+                    textSize: 18,
+                    onPress: () {
+                      //TODO: implement logout
+                    },
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
