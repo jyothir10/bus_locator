@@ -16,13 +16,14 @@ class MyApp extends StatelessWidget {
         LoginPage.id: (context) => LoginPage(),
         Destination.id: (context) => Destination(),
         CartScreen.id: (context) => CartScreen(),
+        CartProfile.id:(context) => CartProfile()
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CartProfile(),
+      home: Destination(),
     );
   }
 }
