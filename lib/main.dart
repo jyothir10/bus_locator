@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         Destination.id: (context) => Destination(),
         CartScreen.id: (context) => CartScreen(),
         MapScreen.id: (context) => MapScreen(),
-        CartProfile.id:(context) => CartProfile(),
+        CartProfile.id: (context) => CartProfile(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
