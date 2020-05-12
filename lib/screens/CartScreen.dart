@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
-import 'package:bus_locator/Components/buscard.dart';
+import 'package:bus_locator/Components/BusCard4.dart';
+import 'package:bus_locator/Components/BottomBar.dart';
 
 class CartScreen extends StatefulWidget {
   static String id = 'Cart_Screen';
@@ -12,7 +13,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     List<Widget> buses = [
-      BusCard(
+      BusCard4(
         busName: 'Bus A01',
         fare: 9.81,
         busType: 'Non AC/Hino AKJ1',
@@ -21,7 +22,7 @@ class _CartScreenState extends State<CartScreen> {
         status: 'Cancelled',
         date: '1 May 2020',
       ),
-      BusCard(
+      BusCard4(
         busName: 'Bus A01',
         fare: 9.81,
         busType: 'Non AC/Hino AKJ1',
@@ -30,7 +31,7 @@ class _CartScreenState extends State<CartScreen> {
         status: 'Done',
         date: '1 May 2020',
       ),
-      BusCard(
+      BusCard4(
         busName: 'Bus A01',
         fare: 9.81,
         busType: 'Non AC/Hino AKJ1',
@@ -39,7 +40,7 @@ class _CartScreenState extends State<CartScreen> {
         status: 'Done',
         date: '1 May 2020',
       ),
-      BusCard(
+      BusCard4(
         busName: 'Bus A01',
         fare: 9.81,
         busType: 'Non AC/Hino AKJ1',
@@ -50,6 +51,7 @@ class _CartScreenState extends State<CartScreen> {
       ),
     ];
     return Scaffold(
+      bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: IconButton(
