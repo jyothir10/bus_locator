@@ -53,23 +53,29 @@ class _CartProfileState extends State<CartProfile> {
             SizedBox(
               height: 220,
             ),
-            RoundedButton(
-              color: kButtonDarkColor,
-              text: "Change Password",
-              textColor: kButtonActiveColor,
-              textSize: 18,
-              onPress: () {
-                //TODO : implement password change
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: RoundedButton(
+                color: kButtonDarkColor,
+                text: "Change Password",
+                textColor: kButtonActiveColor,
+                textSize: 18,
+                onPress: () {
+                  //TODO : implement password change
+                },
+              ),
             ),
-            RoundedButton(
-              color: kButtonActiveColor,
-              text: "Logout",
-              textColor: Colors.white,
-              textSize: 18,
-              onPress: () {
-                //TODO: implement logout
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: RoundedButton(
+                color: kButtonActiveColor,
+                text: "Logout",
+                textColor: Colors.white,
+                textSize: 18,
+                onPress: () {
+                  //TODO: implement logout
+                },
+              ),
             ),
           ],
         ),
@@ -98,19 +104,16 @@ class BusCardProfilePage extends StatelessWidget {
                   topLeft: Radius.circular(8.0),
                   bottomLeft: Radius.circular(8.0)),
               cardChild: Padding(
-                padding: const EdgeInsets.all(19.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.green,
-                        radius: 30.0,
-                        child: Icon(
-                          Icons.directions_bus,
-                          color: Colors.white,
-                        ),
+                    CircleAvatar(
+                      backgroundColor: Colors.green,
+                      radius: 30.0,
+                      child: Icon(
+                        Icons.directions_bus,
+                        color: Colors.white,
                       ),
                     ),
                     Column(
@@ -154,7 +157,7 @@ class BusCardProfilePage extends StatelessWidget {
               cardChild: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Container(
-                  height: 74,
+                  height: 55,
                   child: Center(
                     child: Text(
                       'Edit Profile',

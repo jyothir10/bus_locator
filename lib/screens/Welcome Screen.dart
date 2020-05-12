@@ -30,6 +30,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   width: 200,
                 ),
               ),
+              Text(
+                'I-BUS',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              )
             ],
           ),
         ],
