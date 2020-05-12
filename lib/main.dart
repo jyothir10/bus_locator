@@ -1,4 +1,5 @@
 import 'package:bus_locator/screens/CartScreen.dart';
+import 'package:bus_locator/screens/cart_profile.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
 import 'homePage.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CartScreen(),
+      home: CartProfile(),
     );
   }
 }
