@@ -52,14 +52,18 @@ class _CartProfileState extends State<CartProfile> {
               text: "Change Password",
               textColor: kButtonActiveColor,
               textSize: 18,
-              onPress: () {},
+              onPress: () {
+                //TODO : implement password change
+              },
             ),
             RoundedButton(
               color: kButtonActiveColor,
               text: "Logout",
               textColor: Colors.white,
               textSize: 18,
-              onPress: () {},
+              onPress: () {
+                //TODO: implement logout
+              },
             ),
           ],
         ),
