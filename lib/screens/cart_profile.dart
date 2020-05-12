@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
 import 'package:bus_locator/Components/reusableCard.dart';
+import 'package:bus_locator/Components/RoundedButton.dart';
 
 class CartProfile extends StatefulWidget {
   static String id = 'cartprofile_Screen';
@@ -43,6 +44,11 @@ class _CartProfileState extends State<CartProfile> {
               email: 'john@gmail.com',
               place: 'Gotham',
             ),
+            SizedBox(
+              height: 220,
+            ),
+            RoundedButton(color: kBottomBarColor, text: 'bow',textcolor: Color(0xFF5052E2), onPress: null),
+            RoundedButton(color: Color(0xFF5052E2), text: 'bow',textcolor: Colors.white, onPress: null),
           ],
         ),
       ),
