@@ -28,7 +28,7 @@ class _CartProfileState extends State<CartProfile> {
         ),
         titleSpacing: 120,
         title: Text(
-          'CART',
+          'CAR',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
