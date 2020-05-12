@@ -1,5 +1,6 @@
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
@@ -39,6 +40,7 @@ class _CartProfileState extends State<CartProfile> {
       body: Container(
         color: kPageBackgroundColor,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             BusCardProfilePage(
               name: 'John Doe',
