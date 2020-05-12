@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bus_locator/Navigation/mapScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../homePage.dart';
 
 class AnimatedSplashScreen extends StatefulWidget {
@@ -23,7 +22,7 @@ class SplashScreenState extends State<AnimatedSplashScreen>
     return new Timer(_duration, navigationPage);
   }
 
-//TODO: chande route you want to.
+//TODO: change route you want to.
   void navigationPage() {
     Navigator.of(context).pushReplacementNamed(MapScreen.id);
   }
