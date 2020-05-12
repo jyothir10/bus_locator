@@ -1,6 +1,7 @@
 import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/cart_profile.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
+import 'package:bus_locator/splash/splash_screens.dart';
 import 'homePage.dart';
 import 'package:flutter/material.dart';
 import 'Authentication/ui/login_page.dart';
@@ -16,14 +17,13 @@ class MyApp extends StatelessWidget {
         LoginPage.id: (context) => LoginPage(),
         Destination.id: (context) => Destination(),
         CartScreen.id: (context) => CartScreen(),
-        CartProfile.id:(context) => CartProfile()
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Destination(),
+      home: AnimatedSplashScreen(),
     );
   }
 }
