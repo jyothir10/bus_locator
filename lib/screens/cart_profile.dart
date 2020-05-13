@@ -29,8 +29,11 @@ class _CartProfileState extends State<CartProfile> {
           onPressed: null,
         ),
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            SizedBox(
+              width: 78,
+            ),
             Text(
               'CART',
               style: TextStyle(
@@ -58,6 +61,7 @@ class _CartProfileState extends State<CartProfile> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: RoundedButton(
+                    minWidth: 200,
                     color: kButtonDarkColor,
                     text: "Change Password",
                     textColor: kButtonActiveColor,
@@ -70,6 +74,7 @@ class _CartProfileState extends State<CartProfile> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: RoundedButton(
+                    minWidth: 200,
                     color: kButtonActiveColor,
                     text: "Logout",
                     textColor: Colors.white,
