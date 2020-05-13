@@ -56,21 +56,12 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
-        leading: IconButton(
-          icon: Container(
-            child: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.white,
-              size: 30,
+        title: Center(
+          child: Text(
+            'CART',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
             ),
-          ),
-          onPressed: null,
-        ),
-        titleSpacing: 120,
-        title: Text(
-          'CART',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
           ),
         ),
       ),

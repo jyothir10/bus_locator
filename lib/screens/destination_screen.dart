@@ -97,21 +97,12 @@ class _DestinationState extends State<Destination> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
-        leading: IconButton(
-          icon: Container(
-            child: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.white,
-              size: 30,
+        title: Center(
+          child: Text(
+            'DESTINATION',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
             ),
-          ),
-          onPressed: null,
-        ),
-        titleSpacing: 80,
-        title: Text(
-          'DESTINATION',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
           ),
         ),
       ),

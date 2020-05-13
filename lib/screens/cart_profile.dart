@@ -17,29 +17,13 @@ class _CartProfileState extends State<CartProfile> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
-        leading: IconButton(
-          icon: Container(
-            child: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.white,
-              size: 30,
+        title: Center(
+          child: Text(
+            'PROFILE',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
             ),
           ),
-          onPressed: null,
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(
-              width: 78,
-            ),
-            Text(
-              'CART',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
         ),
       ),
       body: Container(

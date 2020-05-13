@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
         child: Icon(Icons.map),
         onPressed: () => Navigator.pushReplacementNamed(context, MapScreen.id),
       ),
-      backgroundColor: kAppBarColor,
+      backgroundColor: kPageBackgroundColor,
 //      appBar: AppBar(
 //        elevation: 1,
 //        backgroundColor: kAppBarColor,
@@ -34,6 +34,7 @@ class HomePage extends StatelessWidget {
           child: Stack(
         children: <Widget>[
           Container(
+            height: 250,
             color: kBottomBarColor,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
