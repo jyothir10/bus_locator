@@ -72,7 +72,7 @@ class _MapScreenState extends State<MapScreen> {
                   bearing: 192.8334901395799,
                   target: LatLng(newLocalData.latitude, newLocalData.longitude),
                   tilt: 0,
-                  zoom: 20.00)));
+                  zoom: 15.00)));
           updateMarkerAndCircle(newLocalData, imageData);
         }
       });
@@ -161,7 +161,6 @@ class _MapScreenState extends State<MapScreen> {
             Expanded(
               child: Container(
                 width: 400,
-                height: 600,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
                 ),
