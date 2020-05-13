@@ -1,5 +1,5 @@
-import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:equatable/equatable.dart';
+import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 
 class AuthState extends Equatable {
   const AuthState({this.message});
@@ -8,7 +8,7 @@ class AuthState extends Equatable {
   final String message;
 }
 
-class InjectSuccess extends AuthState{}
+class InjectSuccess extends AuthState {}
 
 class AuthInitial extends AuthState {}
 
@@ -46,4 +46,5 @@ class CreateAccountFailure extends AuthState {
 
 // Use inside app
 class LoggedIn extends AuthState {}
+
 class NotLoggedIn extends AuthState {}

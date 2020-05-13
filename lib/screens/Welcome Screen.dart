@@ -1,3 +1,5 @@
+import 'package:bus_locator/Authentication/ui/Register_screen.dart';
+import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Components/TabBar.dart';
@@ -67,7 +69,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         textColor: buttonTextColor,
                         onPress: () {
                           Navigator.pushReplacementNamed(
-                              context, TabBarClass.id);
+                              context, RegisterScreen.id);
                         },
                       ),
                     ),
@@ -83,7 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         onPress: () {
                           //TODO: implement login
                           Navigator.pushReplacementNamed(
-                              context, TabBarClass.id);
+                              context, LoginScreen.id);
                         },
                       ),
                     ),
