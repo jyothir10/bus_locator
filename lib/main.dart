@@ -3,12 +3,16 @@ import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/cart_profile.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
 import 'package:bus_locator/splash/splash_screens.dart';
+import 'Authentication/bloc/auth_bloc1.dart';
+import 'Authentication/ui/Register_screen.dart';
+import 'Authentication/ui/login_screen.dart';
 import 'homePage.dart';
 import 'package:flutter/material.dart';
 import 'Authentication/ui/login_page.dart';
 import 'package:bus_locator/screens/Welcome Screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new MyApp1());
 
 class MyApp extends StatelessWidget {
   @override
@@ -17,6 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         HomePage.id: (context) => HomePage(),
         LoginPage.id: (context) => LoginPage(),
+        LoginScreen.id: (context) => LoginScreen(),
+        RegisterScreen.id: (context) => RegisterScreen(),
         Destination.id: (context) => Destination(),
         CartScreen.id: (context) => CartScreen(),
         MapScreen.id: (context) => MapScreen(),
@@ -29,6 +35,36 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: AnimatedSplashScreen(),
+    );
+  }
+}
+
+class MyApp1 extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MyApp1State();
+  }
+}
+
+class _MyApp1State extends State<MyApp1> {
+  AuthBloc _bloc;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bloc.close();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => _bloc = AuthBloc(),
+      child: MyApp(),
     );
   }
 }

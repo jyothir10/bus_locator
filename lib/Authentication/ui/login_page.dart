@@ -1,15 +1,19 @@
+import 'package:bus_locator/Authentication/login_services/facebook_login.dart';
+import 'package:bus_locator/Authentication/login_services/firebase_login.dart';
+import 'package:bus_locator/Authentication/login_services/google_login.dart';
 import 'package:bus_locator/Authentication/utils/bubble_indication_painter.dart';
 import 'package:bus_locator/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bus_locator/Authentication/style/theme.dart' as Theme;
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:bus_locator/Authentication/models/facebook_login.dart';
+import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bus_locator/Authentication/bloc/auth_state.dart';
+import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 
 class LoginPage extends StatefulWidget {
-  static String id = 'Login_Screen';
+  static String id = 'Login_Page';
   LoginPage({Key key}) : super(key: key);
 
   @override
@@ -18,8 +22,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
-  //TODO:sign in with email setup.
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   String email;
   bool showSpinner = false;
   String password;
@@ -27,28 +29,6 @@ class _LoginPageState extends State<LoginPage>
   String password2;
   String name;
 
-  // TODO: google sign in setup
-  final GoogleSignIn googleSignIn = new GoogleSignIn();
-  Future<FirebaseUser> _signIn() async {
-    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuth =
-        await googleSignInAccount.authentication;
-    final AuthCredential credential = GoogleAuthProvider.getCredential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    final FirebaseUser user = await _auth.signInWithCredential(credential);
-    String userName = user.displayName;
-    String userEmail = user.email;
-    String userPhoto = user.photoUrl;
-    print(userPhoto);
-    return user;
-  }
-
-  // TODO:facebook login defining
-  final FacebookLoginHandler _fbLogin = new FacebookLoginHandler(HomePage.id);
-
-  // TODO:page ui handling.ignore it.
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final FocusNode myFocusNodeEmailLogin = FocusNode();
   final FocusNode myFocusNodePasswordLogin = FocusNode();
@@ -71,78 +51,81 @@ class _LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      key: _scaffoldKey,
-      body: NotificationListener<OverscrollIndicatorNotification>(
-        onNotification: (overscroll) {
-          overscroll.disallowGlow();
-        },
-        child: SingleChildScrollView(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height >= 775.0
-                ? MediaQuery.of(context).size.height
-                : 775.0,
-            decoration: new BoxDecoration(
-              gradient: new LinearGradient(
-                  colors: [
-                    Theme.Colors.loginGradientStart,
-                    Theme.Colors.loginGradientEnd
-                  ],
-                  begin: const FractionalOffset(0.0, 0.0),
-                  end: const FractionalOffset(1.0, 1.0),
-                  stops: [0.0, 1.0],
-                  tileMode: TileMode.clamp),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 75.0),
-                  child: new Image(
-                      width: 200.0,
-                      height: 200.0,
-                      fit: BoxFit.fill,
-                      image: new AssetImage('assets/ibus.png')),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 20.0),
-                  child: _buildMenuBar(context),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: PageView(
-                    controller: _pageController,
-                    onPageChanged: (i) {
-                      if (i == 0) {
-                        setState(() {
-                          right = Colors.white;
-                          left = Colors.black;
-                        });
-                      } else if (i == 1) {
-                        setState(() {
-                          right = Colors.black;
-                          left = Colors.white;
-                        });
-                      }
-                    },
-                    children: <Widget>[
-                      new ConstrainedBox(
-                        constraints: const BoxConstraints.expand(),
-                        child: _buildSignIn(context),
-                      ),
-                      new ConstrainedBox(
-                        constraints: const BoxConstraints.expand(),
-                        child: _buildSignUp(context),
-                      ),
+    return BlocListener<AuthBloc, AuthState>(
+      child: new Scaffold(
+        key: _scaffoldKey,
+        body: NotificationListener<OverscrollIndicatorNotification>(
+          onNotification: (overscroll) {
+            overscroll.disallowGlow();
+          },
+          child: SingleChildScrollView(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height >= 775.0
+                  ? MediaQuery.of(context).size.height
+                  : 775.0,
+              decoration: new BoxDecoration(
+                gradient: new LinearGradient(
+                    colors: [
+                      Theme.Colors.loginGradientStart,
+                      Theme.Colors.loginGradientEnd
                     ],
+                    begin: const FractionalOffset(0.0, 0.0),
+                    end: const FractionalOffset(1.0, 1.0),
+                    stops: [0.0, 1.0],
+                    tileMode: TileMode.clamp),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 75.0),
+                    child: new Image(
+                        width: 250.0,
+                        height: 191.0,
+                        fit: BoxFit.fill,
+                        image: new AssetImage('assets/img/login_logo.png')),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(top: 20.0),
+                    child: _buildMenuBar(context),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: PageView(
+                      controller: _pageController,
+                      onPageChanged: (i) {
+                        if (i == 0) {
+                          setState(() {
+                            right = Colors.white;
+                            left = Colors.black;
+                          });
+                        } else if (i == 1) {
+                          setState(() {
+                            right = Colors.black;
+                            left = Colors.white;
+                          });
+                        }
+                      },
+                      children: <Widget>[
+                        new ConstrainedBox(
+                          constraints: const BoxConstraints.expand(),
+                          child: _buildSignIn(context),
+                        ),
+                        new ConstrainedBox(
+                          constraints: const BoxConstraints.expand(),
+                          child: _buildSignUp(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
+      listener: stateListener,
     );
   }
 
@@ -234,6 +217,7 @@ class _LoginPageState extends State<LoginPage>
 
 //TODO: login side.
   Widget _buildSignIn(BuildContext context) {
+    final _bloc = BlocProvider.of<AuthBloc>(context);
     return Container(
       padding: EdgeInsets.only(top: 23.0),
       child: Column(
@@ -329,29 +313,29 @@ class _LoginPageState extends State<LoginPage>
               Container(
                 margin: EdgeInsets.only(top: 170.0),
                 decoration: new BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: Theme.Colors.loginGradientStart,
-                        offset: Offset(1.0, 6.0),
-                        blurRadius: 20.0,
-                      ),
-                      BoxShadow(
-                        color: Theme.Colors.loginGradientEnd,
-                        offset: Offset(1.0, 6.0),
-                        blurRadius: 20.0,
-                      ),
-                    ],
-//                  gradient: new LinearGradient(
-//                      colors: [
-//                        Theme.Colors.loginGradientEnd,
-//                        Theme.Colors.loginGradientStart
-//                      ],
-//                      begin: const FractionalOffset(0.2, 0.2),
-//                      end: const FractionalOffset(1.0, 1.0),
-//                      stops: [0.0, 1.0],
-//                      tileMode: TileMode.clamp),
-                    color: Theme.Colors.loginGradientStart),
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      color: Theme.Colors.loginGradientStart,
+                      offset: Offset(1.0, 6.0),
+                      blurRadius: 20.0,
+                    ),
+                    BoxShadow(
+                      color: Theme.Colors.loginGradientEnd,
+                      offset: Offset(1.0, 6.0),
+                      blurRadius: 20.0,
+                    ),
+                  ],
+                  gradient: new LinearGradient(
+                      colors: [
+                        Theme.Colors.loginGradientEnd,
+                        Theme.Colors.loginGradientStart
+                      ],
+                      begin: const FractionalOffset(0.2, 0.2),
+                      end: const FractionalOffset(1.0, 1.0),
+                      stops: [0.0, 1.0],
+                      tileMode: TileMode.clamp),
+                ),
                 child: MaterialButton(
                     highlightColor: Colors.transparent,
                     splashColor: Theme.Colors.loginGradientEnd,
@@ -367,17 +351,12 @@ class _LoginPageState extends State<LoginPage>
                             fontFamily: "WorkSansBold"),
                       ),
                     ),
-                    onPressed: () async {
-                      //TODO: login function.
-                      try {
-                        final user = await _auth.signInWithEmailAndPassword(
-                            email: email, password: password);
-                        if (user != null) {
-                          Navigator.pushReplacementNamed(context, HomePage.id);
-                        }
-                      } catch (e) {
-                        print(e);
-                      }
+                    // Firebase Login
+                    onPressed: () {
+                      String email = loginEmailController.text;
+                      String password = loginPasswordController.text;
+                      _bloc.add(InjectService(FirebaseAuthHandler()));
+                      _bloc.add(Login(email: email, password: password));
                     }),
               ),
             ],
@@ -451,10 +430,9 @@ class _LoginPageState extends State<LoginPage>
               Padding(
                 padding: EdgeInsets.only(top: 10.0, right: 40.0),
                 child: GestureDetector(
-                  // TODO:change to sign in function
                   onTap: () {
-                    showInSnackBar("Facebook button pressed");
-                    _fbLogin.login(["email"], context);
+                    _bloc.add(InjectService(FacebookAuthHandler(["email"])));
+                    _bloc.add(Login());
                   },
                   child: Container(
                     padding: const EdgeInsets.all(15.0),
@@ -472,11 +450,10 @@ class _LoginPageState extends State<LoginPage>
               Padding(
                 padding: EdgeInsets.only(top: 10.0),
                 child: GestureDetector(
-                  // TODO:change to sign in function
-                  onTap: () async {
-                    await _signIn();
-                    await Navigator.pushReplacementNamed(context, HomePage.id);
-                    showInSnackBar("Google button pressed");
+                  // Google Login
+                  onTap: () {
+                    _bloc.add(InjectService(GoogleAuthHandler()));
+                    _bloc.add(Login());
                   },
                   child: Container(
                     padding: const EdgeInsets.all(15.0),
@@ -500,6 +477,7 @@ class _LoginPageState extends State<LoginPage>
 
 //TODO:Registering side.
   Widget _buildSignUp(BuildContext context) {
+    final _bloc = BlocProvider.of<AuthBloc>(context);
     return Container(
       padding: EdgeInsets.only(top: 23.0),
       child: Column(
@@ -683,16 +661,15 @@ class _LoginPageState extends State<LoginPage>
                       blurRadius: 20.0,
                     ),
                   ],
-//                  gradient: new LinearGradient(
-//                      colors: [
-//                        Theme.Colors.loginGradientEnd,
-//                        Theme.Colors.loginGradientStart
-//                      ],
-//                      begin: const FractionalOffset(0.2, 0.2),
-//                      end: const FractionalOffset(1.0, 1.0),
-//                      stops: [0.0, 1.0],
-//                      tileMode: TileMode.clamp),
-                  color: Theme.Colors.loginGradientStart,
+                  gradient: new LinearGradient(
+                      colors: [
+                        Theme.Colors.loginGradientEnd,
+                        Theme.Colors.loginGradientStart
+                      ],
+                      begin: const FractionalOffset(0.2, 0.2),
+                      end: const FractionalOffset(1.0, 1.0),
+                      stops: [0.0, 1.0],
+                      tileMode: TileMode.clamp),
                 ),
                 child: MaterialButton(
                     highlightColor: Colors.transparent,
@@ -709,23 +686,17 @@ class _LoginPageState extends State<LoginPage>
                             fontFamily: "WorkSansBold"),
                       ),
                     ),
-                    onPressed: () async {
-                      //TODO:Registration.
-                      if (password1 == password2) {
-                        try {
-                          final newuser =
-                              await _auth.createUserWithEmailAndPassword(
-                                  email: email, password: password);
-                          if (newuser != null) {
-                            Navigator.pushReplacementNamed(
-                                context, HomePage.id);
-                          }
-                        } catch (e) {
-                          print(e);
-                        }
-                      } else {
-                        showInSnackBar('Password doesnt match');
-                      }
+                    onPressed: () {
+                      // Registration
+                      String email = signupEmailController.text;
+                      String password = signupPasswordController.text;
+                      String confirmPassword =
+                          signupConfirmPasswordController.text;
+                      _bloc.add(InjectService(FirebaseAuthHandler()));
+                      _bloc.add(CreateAccount(
+                          email: email,
+                          password: password,
+                          confirmPassword: confirmPassword));
                     }),
               ),
             ],
@@ -733,6 +704,21 @@ class _LoginPageState extends State<LoginPage>
         ],
       ),
     );
+  }
+
+  void stateListener(BuildContext context, AuthState state) {
+    if (state is LoginSuccess) {
+      Navigator.pushReplacementNamed(context, HomePage.id);
+      showInSnackBar(state.message);
+    } else if (state is LoginFailure) {
+      showInSnackBar(state.message);
+    } else if (state is AuthLoading) {
+      //TODO Put progress bar
+    } else if (state is CreateAccountSuccess) {
+      showInSnackBar(state.message);
+    } else if (state is CreateAccountFailure) {
+      showInSnackBar(state.message);
+    }
   }
 
   void _onSignInButtonPress() {
