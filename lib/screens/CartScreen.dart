@@ -54,7 +54,6 @@ class _CartScreenState extends State<CartScreen> {
 //      ),
 //    ];
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: IconButton(

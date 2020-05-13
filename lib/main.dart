@@ -1,3 +1,4 @@
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/Navigation/mapScreen.dart';
 import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/cart_profile.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         MapScreen.id: (context) => MapScreen(),
         CartProfile.id: (context) => CartProfile(),
         WelcomeScreen.id: (context) => WelcomeScreen(),
+        TabBarClass.id: (context) => TabBarClass(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',

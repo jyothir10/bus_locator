@@ -95,7 +95,6 @@ class _DestinationState extends State<Destination> {
     ];
 
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: IconButton(

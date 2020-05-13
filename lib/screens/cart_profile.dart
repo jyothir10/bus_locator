@@ -15,7 +15,6 @@ class _CartProfileState extends State<CartProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: IconButton(

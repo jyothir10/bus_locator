@@ -9,7 +9,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'Navigation/mapScreen.dart';
 
 class HomePage extends StatelessWidget {
-
   static String id = 'Home_Screen';
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,6 @@ class HomePage extends StatelessWidget {
         onPressed: () => Navigator.pushReplacementNamed(context, MapScreen.id),
       ),
       backgroundColor: kAppBarColor,
-      bottomNavigationBar: BottomBar(),
 //      appBar: AppBar(
 //        elevation: 1,
 //        backgroundColor: kAppBarColor,

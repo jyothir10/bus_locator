@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bus_locator/Authentication/ui/Register_screen.dart';
 import 'package:bus_locator/Authentication/ui/login_page.dart';
 import 'package:bus_locator/Authentication/ui/login_screen.dart';
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/Welcome%20Screen.dart';
 import 'package:bus_locator/Navigation/mapScreen.dart';
@@ -30,7 +31,7 @@ class SplashScreenState extends State<AnimatedSplashScreen>
 
 //TODO: change route you want to.
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed(WelcomeScreen.id);
+    Navigator.of(context).pushReplacementNamed(TabBarClass.id);
   }
 
   @override
