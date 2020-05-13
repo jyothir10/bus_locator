@@ -31,7 +31,7 @@ class SplashScreenState extends State<AnimatedSplashScreen>
 
 //TODO: change route you want to.
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed(TabBarClass.id);
+    Navigator.of(context).pushReplacementNamed(WelcomeScreen.id);
   }
 
   @override
