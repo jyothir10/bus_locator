@@ -1,3 +1,4 @@
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/homePage.dart';
 import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/cart_profile.dart';
@@ -54,13 +55,13 @@ class _BottomBarState extends State<BottomBar> {
       onTap: (index) {
         setState(() {
           if (index == 0) {
-            Navigator.pushReplacementNamed(context, HomePage.id);
+            Navigator.pushReplacementNamed(context, TabBarClass.id);
           } else if (index == 1) {
-            Navigator.pushReplacementNamed(context, Destination.id);
+            Navigator.pushReplacementNamed(context, TabBarClass.id);
           } else if (index == 2) {
-            Navigator.pushReplacementNamed(context, CartScreen.id);
+            Navigator.pushReplacementNamed(context, TabBarClass.id);
           } else {
-            Navigator.pushReplacementNamed(context, CartProfile.id);
+            Navigator.pushReplacementNamed(context, TabBarClass.id);
           }
           currentIndex = index;
         });
