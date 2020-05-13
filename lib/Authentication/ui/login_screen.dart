@@ -19,6 +19,22 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  void showInSnackBar(String value) {
+    FocusScope.of(context).requestFocus(new FocusNode());
+    new SnackBar(
+      content: new Text(
+        value,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+            fontFamily: "WorkSansSemiBold"),
+      ),
+      backgroundColor: Colors.blue,
+      duration: Duration(seconds: 3),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,6 +128,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Card(
                       color: Colors.blue,
                       child: FlatButton(
+                        onPressed: () {
+                          //TODO:snackbar
+                          showInSnackBar('no internet');
+                        },
                         child: Text("FaceBook",
                             style: TextStyle(
                                 color: Colors.white,
@@ -128,6 +148,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
-  
 }
