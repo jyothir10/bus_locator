@@ -1,4 +1,10 @@
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'package:bus_locator/Authentication/bloc/auth_state.dart';
+import 'package:bus_locator/Authentication/bloc/auth_event.dart';
+import 'package:bus_locator/main.dart';
 
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
@@ -96,6 +102,7 @@ class InputCard extends StatelessWidget {
       color: HexColor("#38385c"),
       child: TextFormField(
         obscureText: obscureText,
+        controller: _controller,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
           hintText: "$hintText",
@@ -137,5 +144,35 @@ Padding createSignUpButton(String email, String password, String confirmpassword
   );
 }
 
+void showInSnackBar(BuildContext context, String value) {
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        content: new Text(
+          value,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 16.0,
+              fontFamily: "WorkSansSemiBold"),
+        ),
+        backgroundColor: Colors.blue,
+        duration: Duration(seconds: 3),
+      ),
+    );
+  }
 
+      void stateListener(BuildContext context, AuthState state) {
+    if (state is LoginSuccess) {
+      Navigator.pushReplacementNamed(context, TabBarClass.id);
+      showInSnackBar(context, state.message);
+    } else if (state is LoginFailure) {
+      showInSnackBar(context, state.message);
+    } else if (state is AuthLoading) {
+      //TODO Put progress bar
+    } else if (state is CreateAccountSuccess) {
+      showInSnackBar(context, state.message);
+    } else if (state is CreateAccountFailure) {
+      showInSnackBar(context, state.message);
+    }
+  }
 

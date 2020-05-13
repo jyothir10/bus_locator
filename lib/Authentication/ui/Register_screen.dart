@@ -1,4 +1,4 @@
-import 'dart:async';
+
 
 import 'package:flutter/material.dart';
 import '../bloc/auth_event.dart';
@@ -10,15 +10,6 @@ import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
-
-void main() => runApp(MaterialApp(
-        home: SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: HexColor("#13132d"),
-        body: RegisterScreen(),
-      ),
-    )));
 
 class RegisterScreen extends StatefulWidget {
   static String id = 'Register_Screen';
@@ -34,35 +25,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final InputCard confirmPassword = InputCard("Confirm Password", 0, true);
   void initState() {
     super.initState();
-    // TODO Change this after testing
-    _bloc = AuthBloc();
   }
 
   void dispose() {
-    _bloc.close();
     super.dispose();
-  }
-
-  void showInSnackBar(String value) {
-    Scaffold.of(context).showSnackBar(SnackBar(
-      content: new Text(
-        value,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-            fontFamily: "WorkSansSemiBold"),
-      ),
-      backgroundColor: Colors.blue,
-      duration: Duration(seconds: 3),
-    ));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xff13132d),
-      body: SafeArea(
+    final _bloc = BlocProvider.of<AuthBloc>(context);
+    return BlocListener<AuthBloc, AuthState>(
+      child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -124,8 +97,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     padding: EdgeInsets.all(2.0),
                     splashColor: Colors.blueAccent,
                     onPressed: () {
+                      print(password.controller.text);
                       registerCallback(
-                          name.controller.text,
+                          email.controller.text,
                           password.controller.text,
                           confirmPassword.controller.text);
                     },
@@ -211,6 +185,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ),
       ),
+      listener: (BuildContext context, AuthState state) {
+        stateListener(context, state);
+      },
     );
   }
 
