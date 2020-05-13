@@ -1,3 +1,5 @@
+import 'package:bus_locator/Authentication/ui/Register_screen.dart';
+import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:flutter/cupertino.dart';
@@ -66,7 +68,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         text: "Sign up",
                         textColor: buttonTextColor,
                         onPress: () {
-                          //TODO:implement sign up
+                          Navigator.pushReplacementNamed(
+                              context, RegisterScreen.id);
                         },
                       ),
                     ),
@@ -81,6 +84,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         textColor: buttonTextColor,
                         onPress: () {
                           //TODO: implement login
+                          Navigator.pushReplacementNamed(
+                              context, LoginScreen.id);
                         },
                       ),
                     ),
