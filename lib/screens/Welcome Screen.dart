@@ -1,14 +1,9 @@
-import 'package:bus_locator/Authentication/ui/Register_screen.dart';
-import 'package:bus_locator/Authentication/ui/login_page.dart';
-import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Components/TabBar.dart';
-import 'package:bus_locator/homePage.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:bus_locator/Components/BottomBar.dart';
-import 'package:bus_locator/Components/reusableCard.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'Welcome_Screen';
