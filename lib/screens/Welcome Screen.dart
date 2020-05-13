@@ -3,6 +3,7 @@ import 'package:bus_locator/Authentication/ui/login_page.dart';
 import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/homePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         text: "Sign up",
                         textColor: buttonTextColor,
                         onPress: () {
-                          Navigator.pushReplacementNamed(context, HomePage.id);
+                          Navigator.pushReplacementNamed(
+                              context, TabBarClass.id);
                         },
                       ),
                     ),
@@ -85,7 +87,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         textColor: buttonTextColor,
                         onPress: () {
                           //TODO: implement login
-                          Navigator.pushReplacementNamed(context, HomePage.id);
+                          Navigator.pushReplacementNamed(
+                              context, TabBarClass.id);
                         },
                       ),
                     ),
