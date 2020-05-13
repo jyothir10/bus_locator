@@ -24,8 +24,10 @@ class _DestinationState extends State<Destination> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: <Widget>[
-                    Icon(Icons.play_circle_filled,
-                    color: Colors.white30,),
+                    Icon(
+                      Icons.play_circle_filled,
+                      color: Colors.white30,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
@@ -42,8 +44,10 @@ class _DestinationState extends State<Destination> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: <Widget>[
-                    Icon(Icons.location_on,
-                    color: Colors.red,),
+                    Icon(
+                      Icons.location_on,
+                      color: Colors.red,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
