@@ -34,11 +34,11 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(FontAwesomeIcons.wallet, size: 60),
+                            Icon(FontAwesomeIcons.bolt, size: 60),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Wallet',
+                                'Quick ticket',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16,
@@ -48,9 +48,15 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                         height: 120,
                       ),
                     ),
@@ -65,11 +71,11 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(FontAwesomeIcons.wallet, size: 60),
+                            Icon(FontAwesomeIcons.searchLocation, size: 60),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Wallet',
+                                'Track Bus',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16,
@@ -79,9 +85,15 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                         height: 120,
                       ),
                     ),
@@ -101,7 +113,7 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Icon(FontAwesomeIcons.wallet, size: 60),
+                              Icon(FontAwesomeIcons.moneyCheck, size: 60),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
@@ -116,9 +128,15 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                         height: 120,
                       ),
                     ),
@@ -133,11 +151,11 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(FontAwesomeIcons.wallet, size: 60),
+                            Icon(FontAwesomeIcons.ticketAlt, size: 60),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Wallet',
+                                'Book Tickets',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16,
@@ -147,9 +165,15 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                         height: 120,
                       ),
                     ),
@@ -168,11 +192,11 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(FontAwesomeIcons.wallet, size: 60),
+                            Icon(FontAwesomeIcons.tag, size: 60),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Wallet',
+                                'Offers',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16,
@@ -183,9 +207,15 @@ class HomePage extends StatelessWidget {
                         ),
                         height: 110,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                       ),
                     ),
                   ),

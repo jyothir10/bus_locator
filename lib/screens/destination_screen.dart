@@ -1,3 +1,4 @@
+import 'package:bus_locator/Components/BottomBar.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,12 @@ class _DestinationState extends State<Destination> {
   @override
   Widget build(BuildContext context) {
     List<Widget> buses = [
+      Container(
+        color: Colors.white,
+        child: Row(
+          children: <Widget>[Icon(Icons.directions)],
+        ),
+      ),
       BusCard3(
         busName: 'Bus A01',
         fare: 9.81,
@@ -44,6 +51,7 @@ class _DestinationState extends State<Destination> {
     ];
 
     return Scaffold(
+      bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: IconButton(
@@ -69,14 +77,7 @@ class _DestinationState extends State<Destination> {
           Container(
             color: kPageBackgroundColor,
             child: ListView(
-              children: <Widget>[
-                Container(
-                  color: Colors.white,
-                  child: Row(
-                    children: <Widget>[Icon(Icons.directions)],
-                  ),
-                ),
-              ],
+              children: buses,
             ),
           ),
         ],
