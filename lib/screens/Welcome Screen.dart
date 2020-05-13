@@ -88,7 +88,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         onPress: () {
                           //TODO: implement login
                           Navigator.pushReplacementNamed(
-                              context, RegisterScreen.id);
+                              context, TabBarClass.id);
                         },
                       ),
                     ),
