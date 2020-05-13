@@ -115,6 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Card(
                           color: Colors.red,
                           child: FlatButton(
+                            onPressed: () {},
                             child: Text(
                               "Google",
                               style: TextStyle(
