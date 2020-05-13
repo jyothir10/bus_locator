@@ -61,7 +61,7 @@ class _CartProfileState extends State<CartProfile> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: RoundedButton(
-                    minWidth: 200,
+                    minWidth: 370,
                     color: kButtonDarkColor,
                     text: "Change Password",
                     textColor: kButtonActiveColor,
@@ -74,7 +74,7 @@ class _CartProfileState extends State<CartProfile> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: RoundedButton(
-                    minWidth: 200,
+                    minWidth: 370,
                     color: kButtonActiveColor,
                     text: "Logout",
                     textColor: Colors.white,
