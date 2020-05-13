@@ -83,7 +83,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
                       color: kPageBackgroundColor,
                       text: "Skip",
                       textColor: Colors.white,
-                      onPress: () {},
+                      onPress: () {
+                        //TODO: skip the tutorial
+                         },
                     ),
                   ),
                 ),
@@ -95,7 +97,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
                       color: kBottomBarActiveIconColor,
                       text: "Next",
                       textColor: Colors.white,
-                      onPress: () {},
+                      onPress: () {
+                        //TODO:goto next
+                      },
                     ),
                   ),
                 ),
