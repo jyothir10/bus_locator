@@ -158,8 +158,7 @@ class _MapScreenState extends State<MapScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            Expanded(
               child: Container(
                 width: 400,
                 height: 600,
