@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
       ),
 
       home: AnimatedSplashScreen(),
-//      home: AnimatedSplashScreen(),
     );
   }
 }
