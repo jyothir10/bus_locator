@@ -17,11 +17,13 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: kBottomBarColor,
+      type: BottomNavigationBarType.fixed,
       selectedFontSize: kBottomBarFontSize,
       unselectedFontSize: kBottomBarFontSize,
       selectedItemColor: kBottomBarActiveIconColor,
       unselectedItemColor: kBottomBarInactiveIconColor,
-      showSelectedLabels: false,
+      showSelectedLabels: true,
       currentIndex: currentIndex,
       items: [
         BottomNavigationBarItem(
@@ -30,7 +32,6 @@ class _BottomBarState extends State<BottomBar> {
             size: 27,
           ),
           title: Text('home'),
-          backgroundColor: kBottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(
@@ -38,19 +39,16 @@ class _BottomBarState extends State<BottomBar> {
             size: 22,
           ),
           title: Text('bus'),
-          backgroundColor: kBottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.add_shopping_cart, size: 27),
           title: Text('cart'),
-          backgroundColor: kBottomBarColor,
         ),
         BottomNavigationBarItem(
           icon: Icon(FontAwesomeIcons.user, size: 22),
           title: Text(
             'account',
           ),
-          backgroundColor: kBottomBarColor,
         ),
       ],
       onTap: (index) {
