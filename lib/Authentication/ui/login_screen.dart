@@ -20,8 +20,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   void showInSnackBar(String value) {
-    FocusScope.of(context).requestFocus(new FocusNode());
-    new SnackBar(
+    SnackBar(
       content: new Text(
         value,
         textAlign: TextAlign.center,

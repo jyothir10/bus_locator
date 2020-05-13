@@ -44,8 +44,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   void showInSnackBar(String value) {
-    FocusScope.of(context).requestFocus(new FocusNode());
-    new SnackBar(
+    SnackBar(
       content: new Text(
         value,
         textAlign: TextAlign.center,
