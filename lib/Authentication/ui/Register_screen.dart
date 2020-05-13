@@ -42,7 +42,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _bloc.close();
     super.dispose();
   }
-
+  void showInSnackBar(String value) {
+    FocusScope.of(context).requestFocus(new FocusNode());
+    new SnackBar(
+      content: new Text(
+        value,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+            fontFamily: "WorkSansSemiBold"),
+      ),
+      backgroundColor: Colors.blue,
+      duration: Duration(seconds: 3),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     
