@@ -85,7 +85,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                       textColor: Colors.white,
                       onPress: () {
                         //TODO: skip the tutorial
-                         },
+                      },
                     ),
                   ),
                 ),
