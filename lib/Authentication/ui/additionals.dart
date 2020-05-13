@@ -107,3 +107,35 @@ class InputCard extends StatelessWidget {
     );
   }
 }
+
+Padding createSignUpButton(String email, String password, String confirmpassword, Function callback) {
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+    child: Container(
+      width: double.infinity,
+      height: 50,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+      child: FlatButton(
+        color: HexColor("#693abd"),
+        textColor: Colors.white,
+        disabledColor: Colors.grey,
+        disabledTextColor: Colors.black,
+        padding: EdgeInsets.all(2.0),
+        splashColor: Colors.blueAccent,
+        onPressed: callback(email, password, confirmpassword),
+        child: Container(
+          width: 200,
+          child: Center(
+            child: Text(
+              "Sign Up",
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+
+

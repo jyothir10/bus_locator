@@ -45,6 +45,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -92,7 +93,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     color: HexColor("#ae67d5")),
               ),
             ),
-            createButton("Register"),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: Container(
+                width: double.infinity,
+                height: 50,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(12)),
+                child: FlatButton(
+                  color: HexColor("#693abd"),
+                  textColor: Colors.white,
+                  disabledColor: Colors.grey,
+                  disabledTextColor: Colors.black,
+                  padding: EdgeInsets.all(2.0),
+                  splashColor: Colors.blueAccent,
+                  onPressed: () {
+                    registerCallback(
+                        name.controller.text,
+                        password.controller.text,
+                        confirmPassword.controller.text);
+                  },
+                  child: Container(
+                    width: 200,
+                    child: Center(
+                      child: Text(
+                        "Register",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Row(
               children: <Widget>[
                 Expanded(
