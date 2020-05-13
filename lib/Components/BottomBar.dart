@@ -1,6 +1,12 @@
+import 'package:bus_locator/homePage.dart';
+import 'package:bus_locator/screens/CartScreen.dart';
+import 'package:bus_locator/screens/cart_profile.dart';
+import 'package:bus_locator/screens/destination_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bus_locator/Components/Constants.dart';
+
+int currentIndex = 0;
 
 class BottomBar extends StatefulWidget {
   @override
@@ -8,8 +14,6 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -18,7 +22,7 @@ class _BottomBarState extends State<BottomBar> {
       selectedItemColor: kBottomBarActiveIconColor,
       unselectedItemColor: kBottomBarInactiveIconColor,
       showSelectedLabels: false,
-      currentIndex: _currentIndex,
+      currentIndex: currentIndex,
       items: [
         BottomNavigationBarItem(
           icon: Icon(
@@ -51,7 +55,16 @@ class _BottomBarState extends State<BottomBar> {
       ],
       onTap: (index) {
         setState(() {
-          _currentIndex = index;
+          if (index == 0) {
+            Navigator.pushReplacementNamed(context, HomePage.id);
+          } else if (index == 1) {
+            Navigator.pushReplacementNamed(context, Destination.id);
+          } else if (index == 2) {
+            Navigator.pushReplacementNamed(context, CartScreen.id);
+          } else {
+            Navigator.pushReplacementNamed(context, CartProfile.id);
+          }
+          currentIndex = index;
         });
       },
     );
