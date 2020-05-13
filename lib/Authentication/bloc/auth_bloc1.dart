@@ -60,8 +60,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Future<AuthState> _mapCreateAccount(CreateAccount createAccount) async {
-    bool isValidPassword = _validatePasswordLength(createAccount.password);
-    if (!isValidPassword) {
+    if (!_validatePasswordLength(createAccount.password)) {
       return CreateAccountFailure(message:"Password must be 8 characters long.");
     } else if (!_passwordsMatch(
         createAccount.password, createAccount.confirmPassword)) {

@@ -125,7 +125,6 @@ class _LoginPageState extends State<LoginPage>
           ),
         ),
       ),
-      listener: stateListener,
     );
   }
 
@@ -706,20 +705,7 @@ class _LoginPageState extends State<LoginPage>
     );
   }
 
-  void stateListener(BuildContext context, AuthState state) {
-    if (state is LoginSuccess) {
-      Navigator.pushReplacementNamed(context, HomePage.id);
-      showInSnackBar(state.message);
-    } else if (state is LoginFailure) {
-      showInSnackBar(state.message);
-    } else if (state is AuthLoading) {
-      //TODO Put progress bar
-    } else if (state is CreateAccountSuccess) {
-      showInSnackBar(state.message);
-    } else if (state is CreateAccountFailure) {
-      showInSnackBar(state.message);
-    }
-  }
+
 
   void _onSignInButtonPress() {
     _pageController.animateToPage(0,
