@@ -24,26 +24,18 @@ class HomePage extends StatelessWidget {
       ),
       backgroundColor: kAppBarColor,
       bottomNavigationBar: BottomBar(),
-      appBar: AppBar(
-        backgroundColor: kAppBarColor,
-        leading: IconButton(
-          icon: Container(
-            child: Icon(
-              Icons.keyboard_backspace,
-              color: Colors.white,
-              size: 30,
-            ),
-          ),
-          onPressed: null,
-        ),
-        titleSpacing: 80,
-        title: Text(
-          'Home',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+//      appBar: AppBar(
+//        elevation: 1,
+//        backgroundColor: kAppBarColor,
+//        title: Center(
+//          child: Text(
+//            'Home',
+//            style: TextStyle(
+//              fontWeight: FontWeight.bold,
+//            ),
+//          ),
+//        ),
+//      ),
       body: SafeArea(
           child: Stack(
         children: <Widget>[
