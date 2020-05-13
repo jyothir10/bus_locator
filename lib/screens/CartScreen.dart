@@ -104,7 +104,7 @@ class _CartScreenState extends State<CartScreen> {
                   busType: type,
                   distance: distance,
                   date: date,
-                  fare: fare,
+                  fare: fare.toString(),
                   status: status,
                   color: Colors.red,
                 );
