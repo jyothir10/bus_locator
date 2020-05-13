@@ -34,11 +34,11 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(FontAwesomeIcons.wallet, size: 60),
+                            Icon(FontAwesomeIcons.bolt, size: 60),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Wallet',
+                                'Quick ticket',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16,
@@ -65,11 +65,11 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(FontAwesomeIcons.wallet, size: 60),
+                            Icon(FontAwesomeIcons.searchLocation, size: 60),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Wallet',
+                                'Track Bus',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16,
@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Icon(FontAwesomeIcons.wallet, size: 60),
+                              Icon(FontAwesomeIcons.moneyCheck, size: 60),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
@@ -133,11 +133,11 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(FontAwesomeIcons.wallet, size: 60),
+                            Icon(FontAwesomeIcons.ticketAlt, size: 60),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Wallet',
+                                'Book Tickets',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16,
@@ -168,11 +168,11 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(FontAwesomeIcons.wallet, size: 60),
+                            Icon(FontAwesomeIcons.tag, size: 60),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                'Wallet',
+                                'Offers',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 16,
