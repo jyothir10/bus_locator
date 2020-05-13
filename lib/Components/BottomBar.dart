@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bus_locator/Components/Constants.dart';
 
+int currentIndex = 0;
+
 class BottomBar extends StatefulWidget {
   @override
   _BottomBarState createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -22,7 +22,7 @@ class _BottomBarState extends State<BottomBar> {
       selectedItemColor: kBottomBarActiveIconColor,
       unselectedItemColor: kBottomBarInactiveIconColor,
       showSelectedLabels: false,
-      currentIndex: _currentIndex,
+      currentIndex: currentIndex,
       items: [
         BottomNavigationBarItem(
           icon: Icon(
@@ -64,7 +64,7 @@ class _BottomBarState extends State<BottomBar> {
           } else {
             Navigator.pushReplacementNamed(context, CartProfile.id);
           }
-          _currentIndex = index;
+          currentIndex = index;
         });
       },
     );
