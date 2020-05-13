@@ -103,7 +103,14 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       bottomNavigationBar: BottomBar(),
       appBar: AppBar(
-        title: Text('map'),
+        backgroundColor: kAppBarColor,
+        title: Center(
+            child: Text(
+          'MAP',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        )),
       ),
       body: SafeArea(
         child: Column(
