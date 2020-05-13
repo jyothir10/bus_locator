@@ -34,10 +34,7 @@ class HomePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(
-                              FontAwesomeIcons.bolt,
-                              size: 60,
-                            ),
+                            Icon(FontAwesomeIcons.bolt, size: 60),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
@@ -51,16 +48,15 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 6.0,
-                              color: kAppBarColor,
-                              offset: Offset(0.0, 1.0),
-                            ),
-                          ],
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                         height: 120,
                       ),
                     ),
@@ -89,16 +85,15 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 6.0,
-                              color: kAppBarColor,
-                              offset: Offset(0.0, 1.0),
-                            ),
-                          ],
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                         height: 120,
                       ),
                     ),
@@ -133,16 +128,15 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 6.0,
-                              color: kAppBarColor,
-                              offset: Offset(0.0, 1.0),
-                            ),
-                          ],
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                         height: 120,
                       ),
                     ),
@@ -171,16 +165,15 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 6.0,
-                              color: kAppBarColor,
-                              offset: Offset(0.0, 1.0),
-                            ),
-                          ],
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                         height: 120,
                       ),
                     ),
@@ -214,16 +207,15 @@ class HomePage extends StatelessWidget {
                         ),
                         height: 110,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
-                          borderRadius: BorderRadius.circular(5.0),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 6.0,
-                              color: kAppBarColor,
-                              offset: Offset(0.0, 1.0),
-                            ),
-                          ],
-                        ),
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
                       ),
                     ),
                   ),
