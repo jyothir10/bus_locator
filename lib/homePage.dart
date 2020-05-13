@@ -6,6 +6,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+import 'Navigation/mapScreen.dart';
+
 class HomePage extends StatelessWidget {
   final GoogleSignIn googleSignIn = new GoogleSignIn();
   void _signOut() async {
@@ -16,6 +18,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.map),
+        onPressed: () => Navigator.pushReplacementNamed(context, MapScreen.id),
+      ),
       backgroundColor: kAppBarColor,
       bottomNavigationBar: BottomBar(),
       appBar: AppBar(

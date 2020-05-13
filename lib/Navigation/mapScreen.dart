@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:bus_locator/Components/BottomBar.dart';
+import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -88,26 +90,95 @@ class _MapScreenState extends State<MapScreen> {
     }
     super.dispose();
   }
-@override
-void initState() {
+
+  @override
+  void initState() {
     // TODO: implement initState
     super.initState();
     getCurrentLocation();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         title: Text('map'),
       ),
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: initialLocation,
-        markers: Set.of((marker != null) ? [marker] : []),
-        circles: Set.of((circle != null) ? [circle] : []),
-        onMapCreated: (GoogleMapController controller) {
-          _controller = controller;
-        },
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Container(
+              color: kBottomBarColor,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.play_circle_filled,
+                            color: Colors.white30,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Gotham',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.location_on,
+                            color: Colors.red,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Metropolis',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                width: 400,
+                height: 600,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: GoogleMap(
+                  mapType: MapType.normal,
+                  initialCameraPosition: initialLocation,
+                  markers: Set.of((marker != null) ? [marker] : []),
+                  circles: Set.of((circle != null) ? [circle] : []),
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller = controller;
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.location_searching),
