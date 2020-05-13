@@ -9,10 +9,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'Navigation/mapScreen.dart';
 
 class HomePage extends StatelessWidget {
-  final GoogleSignIn googleSignIn = new GoogleSignIn();
-  void _signOut() async {
-    await googleSignIn.signOut();
-  }
 
   static String id = 'Home_Screen';
   @override

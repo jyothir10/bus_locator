@@ -56,9 +56,7 @@ Padding createButton(String label) {
         disabledTextColor: Colors.black,
         padding: EdgeInsets.all(2.0),
         splashColor: Colors.blueAccent,
-        onPressed: () {
-          //TODO:add onpressed here
-        },
+        onPressed: (){},
         child: Container(
           width: 200,
           child: Center(
@@ -71,4 +69,41 @@ Padding createButton(String label) {
       ),
     ),
   );
+}
+
+class Label extends StatelessWidget {
+  final String label;
+  final double horizontal;
+  const Label(this.label, this.horizontal);
+
+  @override
+  Widget build(BuildContext context) {
+    return createLabel(this.label, this.horizontal);
+  }
+}
+
+class InputCard extends StatelessWidget {
+  final TextEditingController _controller = TextEditingController();
+  TextEditingController get controller => _controller;
+  final String hintText;
+  final double horizontal;
+  final bool obscureText;
+  InputCard(this.hintText, this.horizontal, this.obscureText, {Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 5, horizontal: horizontal),
+      color: HexColor("#38385c"),
+      child: TextFormField(
+        obscureText: obscureText,
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          hintText: "$hintText",
+          contentPadding: EdgeInsets.all(15.0),
+          border: InputBorder.none,
+          filled: true,
+        ),
+      ),
+    );
+  }
 }
