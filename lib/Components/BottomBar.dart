@@ -25,41 +25,28 @@ class _BottomBarState extends State<BottomBar> {
       currentIndex: _currentIndex,
       items: [
         BottomNavigationBarItem(
-          icon: GestureDetector(
-            onTap: () => Navigator.pushReplacementNamed(context, HomePage.id),
-            child: Icon(
-              Icons.home,
-              size: 27,
-            ),
+          icon: Icon(
+            Icons.home,
+            size: 27,
           ),
           title: Text('home'),
           backgroundColor: kBottomBarColor,
         ),
         BottomNavigationBarItem(
-          icon: GestureDetector(
-            onTap: () =>
-                Navigator.pushReplacementNamed(context, Destination.id),
-            child: Icon(
-              FontAwesomeIcons.bus,
-              size: 22,
-            ),
+          icon: Icon(
+            FontAwesomeIcons.bus,
+            size: 22,
           ),
           title: Text('bus'),
           backgroundColor: kBottomBarColor,
         ),
         BottomNavigationBarItem(
-          icon: GestureDetector(
-              onTap: () =>
-                  Navigator.pushReplacementNamed(context, CartScreen.id),
-              child: Icon(Icons.add_shopping_cart, size: 27)),
+          icon: Icon(Icons.add_shopping_cart, size: 27),
           title: Text('cart'),
           backgroundColor: kBottomBarColor,
         ),
         BottomNavigationBarItem(
-          icon: GestureDetector(
-              onTap: () =>
-                  Navigator.pushReplacementNamed(context, CartProfile.id),
-              child: Icon(FontAwesomeIcons.user, size: 22)),
+          icon: Icon(FontAwesomeIcons.user, size: 22),
           title: Text(
             'account',
           ),
@@ -68,6 +55,15 @@ class _BottomBarState extends State<BottomBar> {
       ],
       onTap: (index) {
         setState(() {
+          if (index == 0) {
+            Navigator.pushReplacementNamed(context, HomePage.id);
+          } else if (index == 1) {
+            Navigator.pushReplacementNamed(context, Destination.id);
+          } else if (index == 2) {
+            Navigator.pushReplacementNamed(context, CartScreen.id);
+          } else {
+            Navigator.pushReplacementNamed(context, CartProfile.id);
+          }
           _currentIndex = index;
         });
       },
