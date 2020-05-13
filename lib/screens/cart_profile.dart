@@ -1,5 +1,6 @@
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
+import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
@@ -64,6 +65,7 @@ class _CartProfileState extends State<CartProfile> {
                     textSize: 18,
                     onPress: () {
                       //TODO: implement logout
+                      Navigator.pushNamed(context, PaymentScreen.id);
                     },
                   ),
                 ),

@@ -1,5 +1,6 @@
 import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/Navigation/mapScreen.dart';
+import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/cart_profile.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         CartProfile.id: (context) => CartProfile(),
         WelcomeScreen.id: (context) => WelcomeScreen(),
         TabBarClass.id: (context) => TabBarClass(),
+        PaymentScreen.id: (context) => PaymentScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
