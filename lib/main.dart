@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen(),
-//      home: AnimatedSplashScreen(),
+
+      home: AnimatedSplashScreen(),
     );
   }
 }
