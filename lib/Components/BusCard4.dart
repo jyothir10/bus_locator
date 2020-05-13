@@ -1,11 +1,10 @@
-import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/material.dart';
 import 'reusableCard.dart';
 
 class BusCard4 extends StatelessWidget {
   final String busName;
   final String distance;
-  final double fare;
+  final String fare;
   final String busType;
   final Color color;
   final String status;
