@@ -42,6 +42,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _bloc.close();
     super.dispose();
   }
+
   void showInSnackBar(String value) {
     FocusScope.of(context).requestFocus(new FocusNode());
     new SnackBar(
@@ -57,9 +58,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       duration: Duration(seconds: 3),
     );
   }
+
   @override
   Widget build(BuildContext context) {
-    
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(20.0),
