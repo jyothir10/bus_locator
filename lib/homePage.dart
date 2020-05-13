@@ -18,9 +18,79 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: kAppBarColor,
       bottomNavigationBar: BottomBar(),
+      appBar: AppBar(
+        backgroundColor: kAppBarColor,
+        leading: IconButton(
+          icon: Container(
+            child: Icon(
+              Icons.keyboard_backspace,
+              color: Colors.white,
+              size: 30,
+            ),
+          ),
+          onPressed: null,
+        ),
+        titleSpacing: 80,
+        title: Text(
+          'Home',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: SafeArea(
           child: Stack(
         children: <Widget>[
+          Container(
+            color: kBottomBarColor,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.play_circle_filled,
+                          color: Colors.white30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Gotham',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.location_on,
+                          color: Colors.red,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Metropolis',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
