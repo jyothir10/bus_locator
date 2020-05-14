@@ -1,10 +1,11 @@
+import 'package:bus_locator/screens/orderScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/reusableCard.dart';
 
 class BusCard3 extends StatelessWidget {
   final String busName;
   final String distance;
-  final double fare;
+  final String fare;
   final String busType;
   final Color color;
 
@@ -18,7 +19,7 @@ class BusCard3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -76,7 +77,10 @@ class BusCard3 extends StatelessWidget {
                 ),
               ),
               colour: Color(0xFF28284D),
-              onPress: () {},
+              onPress: () {
+                //TODO:route.
+                Navigator.pushReplacementNamed(context, OrderScreen.id);
+              },
             ),
           ),
           Expanded(

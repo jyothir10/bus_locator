@@ -102,6 +102,27 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   thickness: 1.0,
                   color: HexColor("#28284d"),
                 ),
+                RadioListTile(
+                  value: 1,
+                  groupValue: selectedRadioTile,
+                  title: Text(
+                    "Credit Card",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onChanged: (val) {
+                    setSelectedRadioTile(val);
+                  },
+                  activeColor: HexColor("#5052e2"),
+                  secondary: Text(
+                    "VISA",
+                    style: TextStyle(color: HexColor("#5052e2")),
+                  ),
+                  selected: true,
+                ),
+                Divider(
+                  thickness: 1.0,
+                  color: HexColor("#28284d"),
+                ),
               ],
             ),
             Padding(

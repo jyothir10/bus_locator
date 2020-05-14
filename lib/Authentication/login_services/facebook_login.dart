@@ -1,5 +1,7 @@
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'auth_service.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class FacebookAuthHandler extends AuthService {
   FacebookLogin _facebookLogin;
@@ -10,10 +12,15 @@ class FacebookAuthHandler extends AuthService {
     _facebookLogin.loginBehavior = FacebookLoginBehavior.webViewOnly;
   }
 
-
   @override
-  Future<bool> isLoggedIn() {
-    return _facebookLogin.isLoggedIn;
+  Future<bool> isLoggedIn() async {
+    FacebookAccessToken token = await _facebookLogin.currentAccessToken;
+    if (token == null)
+      return false;
+    else if (token.isValid()) {
+      return _facebookLogin.isLoggedIn;
+    }
+    return false;
   }
 
   @override
@@ -24,14 +31,12 @@ class FacebookAuthHandler extends AuthService {
 
   @override
   Future<bool> logout() async {
-    try{
-    await _facebookLogin.logOut();
-    return true;
-    }
-    catch(error) {
+    try {
+      await _facebookLogin.logOut();
+      return true;
+    } catch (error) {
       return false;
     }
-    
   }
 
   @override
@@ -44,5 +49,17 @@ class FacebookAuthHandler extends AuthService {
     return "facebook";
   }
 
-  
+  Future<Map> getUserInfo() async {
+    FacebookAccessToken token = await _facebookLogin.currentAccessToken;
+    if (token != null && token.isValid()) {
+      try {
+        final resp = await (http.get(
+            'https://graph.facebook.com/v2.12/me?fields=name,first_name,last_name,email&access_token=$token'));
+        return json.decode(resp.body);
+      } catch (err) {
+        return {};
+      }
+    }
+    return {};
+  }
 }

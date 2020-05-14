@@ -1,3 +1,4 @@
+import 'package:bus_locator/screens/Bus%20Details%20Screen.dart';
 import 'package:flutter/material.dart';
 import 'reusableCard.dart';
 
@@ -22,6 +23,8 @@ class BusCard4 extends StatelessWidget {
     bool isCancelled;
     if (status == 'cancelled') {
       isCancelled = true;
+    } else {
+      isCancelled = false;
     }
 
     return Padding(
@@ -84,7 +87,10 @@ class BusCard4 extends StatelessWidget {
                 ),
               ),
               colour: Color(0xFF28284D),
-              onPress: () {},
+              onPress: () {
+                //Todo:route.
+                Navigator.pushReplacementNamed(context, BusDetails.id);
+              },
             ),
           ),
           Expanded(

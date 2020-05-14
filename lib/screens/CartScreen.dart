@@ -55,6 +55,7 @@ class _CartScreenState extends State<CartScreen> {
 //    ];
     return SafeArea(
       child: Scaffold(
+        backgroundColor: kPageBackgroundColor,
         appBar: AppBar(
           backgroundColor: kAppBarColor,
           title: Center(
@@ -77,7 +78,7 @@ class _CartScreenState extends State<CartScreen> {
                 if (!snapshot.hasData) {
                   return Center(
                     child: CircularProgressIndicator(
-                      backgroundColor: Colors.lightBlueAccent,
+                      backgroundColor: Colors.white,
                     ),
                   );
                 }
