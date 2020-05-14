@@ -30,13 +30,9 @@ class _DestinationState extends State<Destination> {
                       Icons.play_circle_filled,
                       color: Colors.white30,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Gotham',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                    Expanded(
+                      child: TextField(
+
                       ),
                     ),
                   ],
@@ -50,7 +46,7 @@ class _DestinationState extends State<Destination> {
                   decorator: DotsDecorator(
                     size: Size(2,2),
                     color: Colors.white30,
-                    activeColor: Colors.white30
+                    activeColor: Colors.white30,
                   ),
                 ),
               ),
@@ -62,13 +58,9 @@ class _DestinationState extends State<Destination> {
                       Icons.location_on,
                       color: Colors.red,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Metropolis',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                    Expanded(
+                      child: TextField(
+
                       ),
                     ),
                   ],
