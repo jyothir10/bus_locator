@@ -53,21 +53,21 @@ class _CartScreenState extends State<CartScreen> {
 //        date: '1 May 2020',
 //      ),
 //    ];
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: kPageBackgroundColor,
-        appBar: AppBar(
-          backgroundColor: kAppBarColor,
-          title: Center(
-            child: Text(
-              'CART',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+    return Scaffold(
+      backgroundColor: kPageBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: kAppBarColor,
+        title: Center(
+          child: Text(
+            'CART',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        body: Stack(
+      ),
+      body: SafeArea(
+        child: Stack(
           children: <Widget>[
             Container(
               color: kAppBarColor,

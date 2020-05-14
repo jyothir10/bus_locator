@@ -140,7 +140,7 @@ class _DestinationState extends State<Destination> {
                         child: Icon(
                           Icons.compare_arrows,
                           color: kPageBackgroundColor,
-                          size: 45,
+                          size: 40,
                         ),
                       )
                     ],

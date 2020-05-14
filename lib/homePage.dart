@@ -240,9 +240,9 @@ class _HomePageState extends State<HomePage> {
                               backgroundColor: Colors.white.withOpacity(0.8),
                               radius: 25,
                               child: Icon(
-                                Icons.youtube_searched_for,
+                                Icons.search,
                                 color: kPageBackgroundColor,
-                                size: 45,
+                                size: 40,
                               ),
                             ),
                           )
