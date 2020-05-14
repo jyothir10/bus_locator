@@ -7,6 +7,7 @@ import 'package:bus_locator/screens/cart_profile.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
 import 'package:bus_locator/screens/orderScreen.dart';
 import 'package:bus_locator/screens/profile.dart';
+import 'package:bus_locator/screens/profileScreen.dart';
 import 'package:bus_locator/splash/splash_screens.dart';
 import 'Authentication/bloc/auth_bloc1.dart';
 import 'Authentication/ui/Register_screen.dart';
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AnimatedSplashScreen(),
+      home: ProfileScreen(),
     );
   }
 }

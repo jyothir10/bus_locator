@@ -12,14 +12,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Icon(
+          Icons.keyboard_backspace,
+          size: 30,
+          color: Colors.white,
+        ),
         backgroundColor: kAppBarColor,
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'My Profile',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+        title: Text(
+          'My Profile',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
         actions: <Widget>[
