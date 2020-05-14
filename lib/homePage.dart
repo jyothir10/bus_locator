@@ -36,9 +36,9 @@ class HomePage extends StatelessWidget {
 //      ),
       body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(top:8.0),
-            child: ListView(
-        children: <Widget>[
+        padding: const EdgeInsets.only(top: 8.0),
+        child: ListView(
+          children: <Widget>[
             Container(
               color: kBottomBarColor,
               child: Padding(
@@ -133,7 +133,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 15,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -186,7 +188,8 @@ class HomePage extends StatelessWidget {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Icon(FontAwesomeIcons.searchLocation, size: 60),
+                                  Icon(FontAwesomeIcons.searchLocation,
+                                      size: 60),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
@@ -340,9 +343,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-        ],
-      ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 }
