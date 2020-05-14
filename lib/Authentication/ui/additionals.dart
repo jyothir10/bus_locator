@@ -172,9 +172,8 @@ void showInSnackBar(BuildContext context, String value) {
     } else if (state is AuthLoading) {
       //TODO Put progress bar
     } else if (state is CreateAccountSuccess) {
-      ;
       Navigator.pushReplacementNamed(context, LoginScreen.id);
-      showInSnackBar(context, state.message)
+      showInSnackBar(context, state.message);
     } else if (state is CreateAccountFailure) {
       showInSnackBar(context, state.message);
     }
