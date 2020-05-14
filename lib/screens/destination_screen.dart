@@ -27,8 +27,8 @@ class _DestinationState extends State<Destination> {
 
   @override
   Widget build(BuildContext context) {
-    String hintText1 = 'Gotham';
-    String hintText2 = "metropolis";
+    String hintText1 = 'From';
+    String hintText2 = "To";
 
     List<Widget> buses = [
       Container(
@@ -56,11 +56,16 @@ class _DestinationState extends State<Destination> {
                         child: TextField(
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
+                              borderSide: BorderSide(color: Colors.grey),
+                            ),
                             hintText: hintText1,
                             hintStyle: TextStyle(color: Colors.white),
                           ),
                           controller: _controller,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
                           onChanged: (value) {
                             //TODO:Starting point selection
                           },
@@ -96,13 +101,18 @@ class _DestinationState extends State<Destination> {
                         child: TextField(
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey)),
+                              borderSide: BorderSide(color: Colors.grey),
+                            ),
                             hintText: hintText2,
                             hintStyle: TextStyle(color: Colors.white),
                           ),
                           controller: _controller,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
                           onChanged: (value) {
-                            hintText2=value;
+                            hintText2 = value;
                             //TODO:Destination point selection
                           },
                         ),
