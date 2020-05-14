@@ -105,7 +105,10 @@ class _BusDetailsState extends State<BusDetails> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextField(
-                  decoration: InputDecoration(),
+                  decoration: InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey)),
+                  ),
                   readOnly: true,
                   maxLines: 1,
                 ),
