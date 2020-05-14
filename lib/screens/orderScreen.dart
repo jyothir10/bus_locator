@@ -50,7 +50,8 @@ class _OrderScreenState extends State<OrderScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
                 maxLines: 1,
-              ),
+                enabled: true,
+                ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -77,6 +78,7 @@ class _OrderScreenState extends State<OrderScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
                 maxLines: 1,
+                enabled: true,
               ),
             ),
             Padding(

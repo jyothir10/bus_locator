@@ -3,7 +3,7 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -20,13 +20,14 @@ class _DestinationState extends State<Destination> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
                   children: <Widget>[
                     Icon(
-                      FontAwesomeIcons.dotCircle,
+                      Icons.play_circle_filled,
                       color: Colors.white30,
                     ),
                     Padding(
@@ -42,7 +43,19 @@ class _DestinationState extends State<Destination> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: DotsIndicator(
+                  dotsCount: 4,
+                  axis: Axis.vertical,
+                  decorator: DotsDecorator(
+                    size: Size(2,2),
+                    color: Colors.white30,
+                    activeColor: Colors.white30
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
                   children: <Widget>[
                     Icon(
