@@ -22,6 +22,8 @@ class BusCard4 extends StatelessWidget {
     bool isCancelled;
     if (status == 'cancelled') {
       isCancelled = true;
+    } else {
+      isCancelled = false;
     }
 
     return Padding(
