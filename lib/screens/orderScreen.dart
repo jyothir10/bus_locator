@@ -124,7 +124,9 @@ class BuscardOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+      ),
       child: ReusableCard(
         colour: Color(0xFF242448),
         cardChild: Row(
@@ -139,7 +141,8 @@ class BuscardOrderPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:
+                  const EdgeInsets.only(left: 8, top: 8, bottom: 8, right: 3),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -173,7 +176,7 @@ class BuscardOrderPage extends StatelessWidget {
                 distance,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 14,
+                  fontSize: 12,
                 ),
               ),
             )

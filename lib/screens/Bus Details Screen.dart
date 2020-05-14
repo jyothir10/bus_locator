@@ -99,7 +99,7 @@ class _BusDetailsState extends State<BusDetails> {
                 ),
               ),
               Divider(
-                color: Colors.grey,
+                color: Color(0xFF28284D),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
