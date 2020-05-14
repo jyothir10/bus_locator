@@ -1,4 +1,5 @@
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
@@ -137,15 +138,21 @@ class _DestinationState extends State<Destination> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      CircleAvatar(
-                        backgroundColor: Colors.white.withOpacity(0.8),
-                        radius: 25,
-                        child: Icon(
-                          Icons.compare_arrows,
-                          color: kPageBackgroundColor,
-                          size: 40,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                              context, TabBarClass.id);
+                        },
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white.withOpacity(0.8),
+                          radius: 25,
+                          child: Icon(
+                            Icons.compare_arrows,
+                            color: kPageBackgroundColor,
+                            size: 40,
+                          ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 )

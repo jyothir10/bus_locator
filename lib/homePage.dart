@@ -105,6 +105,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icons.arrow_right,
               onpress: () async {
                 _bloc.add(Logout());
+                await Navigator.pushReplacementNamed(context, WelcomeScreen.id);
               },
             ),
             Divider(
