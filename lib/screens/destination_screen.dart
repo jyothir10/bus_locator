@@ -130,17 +130,17 @@ class _DestinationState extends State<Destination> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  padding: const EdgeInsets.fromLTRB(0, 20, 15, 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       CircleAvatar(
-                        backgroundColor: Colors.blue[800],
-                        radius: 30,
+                        backgroundColor: Colors.white.withOpacity(0.8),
+                        radius: 25,
                         child: Icon(
                           Icons.compare_arrows,
-                          color: Colors.white,
-                          size: 50,
+                          color: kPageBackgroundColor,
+                          size: 45,
                         ),
                       )
                     ],

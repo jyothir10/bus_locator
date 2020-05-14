@@ -127,36 +127,39 @@ class _HomePageState extends State<HomePage> {
 //        ),
 //      ),
       body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: ListView(
-          children: <Widget>[
-            Container(
-              color: kBottomBarColor,
+          child: ListView(
+        children: <Widget>[
+          Container(
+            color: kBottomBarColor,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Row(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: Icon(
-                                FontAwesomeIcons.dotCircle,
-                                size: 20,
-                                color: Colors.white30,
-                              ),
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(right: 7),
+                            child: Icon(
+                              FontAwesomeIcons.dotCircle,
+                              size: 20,
+                              color: Colors.white30,
                             ),
-                            Expanded(
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 15),
                               child: TextField(
                                 decoration: InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                                    borderSide: BorderSide(
+                                      color: Color(0xFF28284D),
+                                    ),
                                   ),
                                   hintText: hintText1,
                                   hintStyle: TextStyle(color: Colors.white),
@@ -171,282 +174,293 @@ class _HomePageState extends State<HomePage> {
                                 },
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: DotsIndicator(
-                          dotsCount: 4,
-                          axis: Axis.vertical,
-                          decorator: DotsDecorator(
-                            size: Size(2, 2),
-                            color: Colors.white30,
-                            activeColor: Colors.white30,
                           ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: DotsIndicator(
+                        dotsCount: 4,
+                        axis: Axis.vertical,
+                        decorator: DotsDecorator(
+                          size: Size(2, 2),
+                          color: Colors.white30,
+                          activeColor: Colors.white30,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Row(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: Icon(
-                                Icons.location_on,
-                                color: Colors.red,
-                              ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(right: 7),
+                            child: Icon(
+                              Icons.location_on,
+                              color: Colors.red,
                             ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          Expanded(
+                            child: TextField(
+                              decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xFF28284D),
                                   ),
-                                  hintText: hintText2,
-                                  hintStyle: TextStyle(color: Colors.white),
                                 ),
-                                controller: _controller,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                                onChanged: (value) {
-                                  hintText2 = value;
-                                  //TODO:Destination point selection
-                                },
+                                hintText: hintText2,
+                                hintStyle: TextStyle(color: Colors.white),
                               ),
+                              controller: _controller,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
+                              onChanged: (value) {
+                                hintText2 = value;
+                                //TODO:Destination point selection
+                              },
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              color: kPageBackgroundColor,
-              alignment: Alignment.centerRight,
-              child: FloatingActionButton(
-                backgroundColor: Colors.white.withOpacity(0.8),
-                child: Icon(
-                  Icons.map,
-                  color: Color(0xff13132d),
-                ),
-                onPressed: () =>
-                    Navigator.pushReplacementNamed(context, MapScreen.id),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
-                            child: Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(FontAwesomeIcons.bolt, size: 60),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Quick ticket',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kAppBarColor,
-                                      offset: Offset(0.0, 1.0),
-                                      blurRadius: 6.0,
-                                    )
-                                  ]),
-                              height: 120,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                            child: Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(FontAwesomeIcons.searchLocation,
-                                      size: 60),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Track Bus',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kAppBarColor,
-                                      offset: Offset(0.0, 1.0),
-                                      blurRadius: 6.0,
-                                    )
-                                  ]),
-                              height: 120,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-                            child: Container(
-                              child: Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(FontAwesomeIcons.moneyCheck, size: 60),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Wallet',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 15, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacementNamed(
+                                  context, MapScreen.id);
+                            },
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white.withOpacity(0.8),
+                              radius: 25,
+                              child: Icon(
+                                Icons.youtube_searched_for,
+                                color: kPageBackgroundColor,
+                                size: 45,
                               ),
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kAppBarColor,
-                                      offset: Offset(0.0, 1.0),
-                                      blurRadius: 6.0,
-                                    )
-                                  ]),
-                              height: 120,
                             ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                            child: Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(FontAwesomeIcons.ticketAlt, size: 60),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Book Tickets',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kAppBarColor,
-                                      offset: Offset(0.0, 1.0),
-                                      blurRadius: 6.0,
-                                    )
-                                  ]),
-                              height: 120,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(5.0, 0, 5, 0),
-                            child: Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(FontAwesomeIcons.tag, size: 60),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Offers',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              height: 110,
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kAppBarColor,
-                                      offset: Offset(0.0, 1.0),
-                                      blurRadius: 6.0,
-                                    )
-                                  ]),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(FontAwesomeIcons.bolt, size: 60),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Quick ticket',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(5.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: kAppBarColor,
+                                    offset: Offset(0.0, 1.0),
+                                    blurRadius: 6.0,
+                                  )
+                                ]),
+                            height: 120,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(FontAwesomeIcons.searchLocation, size: 60),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Track Bus',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(5.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: kAppBarColor,
+                                    offset: Offset(0.0, 1.0),
+                                    blurRadius: 6.0,
+                                  )
+                                ]),
+                            height: 120,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                          child: Container(
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Icon(FontAwesomeIcons.moneyCheck, size: 60),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Wallet',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(5.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: kAppBarColor,
+                                    offset: Offset(0.0, 1.0),
+                                    blurRadius: 6.0,
+                                  )
+                                ]),
+                            height: 120,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(FontAwesomeIcons.ticketAlt, size: 60),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Book Tickets',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(5.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: kAppBarColor,
+                                    offset: Offset(0.0, 1.0),
+                                    blurRadius: 6.0,
+                                  )
+                                ]),
+                            height: 120,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(5.0, 0, 5, 0),
+                          child: Container(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(FontAwesomeIcons.tag, size: 60),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Offers',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            height: 110,
+                            decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(5.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: kAppBarColor,
+                                    offset: Offset(0.0, 1.0),
+                                    blurRadius: 6.0,
+                                  )
+                                ]),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       )),
     );
   }
