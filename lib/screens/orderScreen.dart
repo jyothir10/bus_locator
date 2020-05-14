@@ -56,11 +56,11 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextField(
-                    maxLines: 1,
-                    enabled: true,
-                    readOnly: true,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Divider(
+                    thickness: 2,
+                    color: Color(0xFF28284D),
                   ),
                 ),
                 Padding(
@@ -89,11 +89,11 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: TextField(
-                    maxLines: 1,
-                    enabled: true,
-                    readOnly: true,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Divider(
+                    thickness: 2,
+                    color: Color(0xFF28284D),
                   ),
                 ),
               ],

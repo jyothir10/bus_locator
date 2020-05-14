@@ -98,19 +98,6 @@ class _BusDetailsState extends State<BusDetails> {
                   ],
                 ),
               ),
-
-//              Padding(
-//                padding: const EdgeInsets.symmetric(horizontal: 20),
-//                child: TextField(
-//                  decoration: InputDecoration(
-//                    enabledBorder: UnderlineInputBorder(
-//                      borderSide: BorderSide(color: Colors.grey),
-//                    ),
-//                  ),
-//                  readOnly: true,
-//                  maxLines: 1,
-//                ),
-//              ),
               Divider(
                 color: Colors.grey,
               ),
@@ -120,8 +107,15 @@ class _BusDetailsState extends State<BusDetails> {
                   children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Icon(FontAwesomeIcons.home),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20.0),
+                          child: Icon(
+                            FontAwesomeIcons.home,
+                            color: Colors.deepPurpleAccent,
+                          ),
+                        ),
                         Column(
                           children: <Widget>[
                             Port(

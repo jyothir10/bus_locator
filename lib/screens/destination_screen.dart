@@ -6,7 +6,6 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 final _firestore = Firestore.instance;
 
 class Destination extends StatefulWidget {
