@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -12,61 +13,104 @@ class Destination extends StatefulWidget {
 }
 
 class _DestinationState extends State<Destination> {
+  TextEditingController _controller;
+
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+  }
+
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    String hintText1 = 'Gotham';
+    String hintText2 = "metropolis";
+
     List<Widget> buses = [
       Container(
         color: kBottomBarColor,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.play_circle_filled,
-                      color: Colors.white30,
-                    ),
-                    Expanded(
-                      child: TextField(
-
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(right: 7),
+                        child: Icon(
+                          FontAwesomeIcons.dotCircle,
+                          size: 20,
+                          color: Colors.white30,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: DotsIndicator(
-                  dotsCount: 4,
-                  axis: Axis.vertical,
-                  decorator: DotsDecorator(
-                    size: Size(2,2),
-                    color: Colors.white30,
-                    activeColor: Colors.white30,
+                      Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey)),
+                            hintText: hintText1,
+                            hintStyle: TextStyle(color: Colors.white),
+                          ),
+                          controller: _controller,
+                          onChanged: (value) {
+                            //TODO:Starting point selection
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.location_on,
-                      color: Colors.red,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: DotsIndicator(
+                    dotsCount: 4,
+                    axis: Axis.vertical,
+                    decorator: DotsDecorator(
+                      size: Size(2, 2),
+                      color: Colors.white30,
+                      activeColor: Colors.white30,
                     ),
-                    Expanded(
-                      child: TextField(
-
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(right: 7),
+                        child: Icon(
+                          Icons.location_on,
+                          color: Colors.red,
+                        ),
+                      ),
+                      Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.grey)),
+                            hintText: hintText2,
+                            hintStyle: TextStyle(color: Colors.white),
+                          ),
+                          controller: _controller,
+                          onChanged: (value) {
+                            //TODO:Destination selection
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
