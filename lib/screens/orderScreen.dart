@@ -43,6 +43,8 @@ class _OrderScreenState extends State<OrderScreen> {
                 'Price',
                 style: TextStyle(
                   color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
                 ),
               ),
             ),
@@ -51,7 +53,8 @@ class _OrderScreenState extends State<OrderScreen> {
               child: TextField(
                 maxLines: 1,
                 enabled: true,
-                ),
+                readOnly: true,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -62,12 +65,15 @@ class _OrderScreenState extends State<OrderScreen> {
                     'Total Price',
                     style: TextStyle(
                       color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
                     ),
                   ),
                   Text(
                     '9.81',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontSize: 15,
                       color: Colors.white,
                     ),
                   ),
@@ -79,6 +85,7 @@ class _OrderScreenState extends State<OrderScreen> {
               child: TextField(
                 maxLines: 1,
                 enabled: true,
+                readOnly: true,
               ),
             ),
             Padding(
