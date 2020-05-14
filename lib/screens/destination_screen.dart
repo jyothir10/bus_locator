@@ -56,7 +56,7 @@ class _DestinationState extends State<Destination> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
                           child: TextField(
                             decoration: InputDecoration(
                               enabledBorder: UnderlineInputBorder(
@@ -105,25 +105,28 @@ class _DestinationState extends State<Destination> {
                         ),
                       ),
                       Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0xFF28284D),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 11),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFF28284D),
+                                ),
                               ),
+                              hintText: hintText2,
+                              hintStyle: TextStyle(color: Colors.white),
                             ),
-                            hintText: hintText2,
-                            hintStyle: TextStyle(color: Colors.white),
+                            controller: _controller,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                            ),
+                            onChanged: (value) {
+                              hintText2 = value;
+                              //TODO:Destination point selection
+                            },
                           ),
-                          controller: _controller,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                          ),
-                          onChanged: (value) {
-                            hintText2 = value;
-                            //TODO:Destination point selection
-                          },
                         ),
                       ),
                     ],
