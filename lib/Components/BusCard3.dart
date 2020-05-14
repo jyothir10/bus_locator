@@ -5,7 +5,7 @@ import 'package:bus_locator/Components/reusableCard.dart';
 class BusCard3 extends StatelessWidget {
   final String busName;
   final String distance;
-  final double fare;
+  final String fare;
   final String busType;
   final Color color;
 
