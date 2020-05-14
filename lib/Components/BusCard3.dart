@@ -1,3 +1,4 @@
+import 'package:bus_locator/screens/orderScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/reusableCard.dart';
 
@@ -76,7 +77,10 @@ class BusCard3 extends StatelessWidget {
                 ),
               ),
               colour: Color(0xFF28284D),
-              onPress: () {},
+              onPress: () {
+                //TODO:route.
+                Navigator.pushReplacementNamed(context, OrderScreen.id);
+              },
             ),
           ),
           Expanded(
