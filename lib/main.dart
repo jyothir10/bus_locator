@@ -15,6 +15,7 @@ import 'Authentication/ui/login_page.dart';
 import 'package:bus_locator/screens/Welcome Screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bus_locator/screens/Tutorial SCreen.dart';
+import 'package:bus_locator/screens/Bus Details Screen.dart';
 
 void main() => runApp(new MyApp1());
 
@@ -36,13 +37,15 @@ class MyApp extends StatelessWidget {
         PaymentScreen.id: (context) => PaymentScreen(),
         TutorialScreen.id: (context) => TutorialScreen(),
         OrderScreen.id: (context) => OrderScreen(),
+        BusDetails.id: (context) => BusDetails(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AnimatedSplashScreen(),
+      home: BusDetails(),
+//      home: AnimatedSplashScreen(),
     );
   }
 }

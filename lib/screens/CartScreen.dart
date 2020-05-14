@@ -53,63 +53,66 @@ class _CartScreenState extends State<CartScreen> {
 //        date: '1 May 2020',
 //      ),
 //    ];
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kAppBarColor,
-        title: Center(
-          child: Text(
-            'CART',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: kAppBarColor,
+          title: Center(
+            child: Text(
+              'CART',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
-      ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            color: kAppBarColor,
-          ),
-          StreamBuilder(
-            stream: _firestore.collection('buses').snapshots(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.lightBlueAccent,
-                  ),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              color: kAppBarColor,
+            ),
+            StreamBuilder(
+              stream: _firestore.collection('buses').snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: Colors.lightBlueAccent,
+                    ),
+                  );
+                }
+                final busesList = snapshot.data.documents;
+                List<Widget> buses = [];
+                for (var bus in busesList) {
+                  final busName = bus.data['busname'];
+                  final date = bus.data['date'];
+                  final distance = bus.data['distance'];
+                  final fare = bus.data['fare'];
+                  final type = bus.data['type'];
+                  final status = bus.data['status'];
+
+                  final busCard = BusCard4(
+                    busName: busName,
+                    busType: type,
+                    distance: distance,
+                    date: date,
+                    fare: fare.toString(),
+                    status: status,
+                    color: Colors.red,
+                  );
+
+                  buses.add(busCard);
+                }
+
+                return ListView(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                  children: buses,
                 );
-              }
-              final busesList = snapshot.data.documents;
-              List<Widget> buses = [];
-              for (var bus in busesList) {
-                final busName = bus.data['busname'];
-                final date = bus.data['date'];
-                final distance = bus.data['distance'];
-                final fare = bus.data['fare'];
-                final type = bus.data['type'];
-                final status = bus.data['status'];
-
-                final busCard = BusCard4(
-                  busName: busName,
-                  busType: type,
-                  distance: distance,
-                  date: date,
-                  fare: fare.toString(),
-                  status: status,
-                  color: Colors.red,
-                );
-
-                buses.add(busCard);
-              }
-
-              return ListView(
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-                children: buses,
-              );
-            },
-          ),
-        ],
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
