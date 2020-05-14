@@ -102,7 +102,7 @@ class _DestinationState extends State<Destination> {
                           ),
                           controller: _controller,
                           onChanged: (value) {
-                            hintText2=value;
+                            hintText2 = value;
                             //TODO:Destination point selection
                           },
                         ),

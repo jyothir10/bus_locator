@@ -107,7 +107,8 @@ class _BusDetailsState extends State<BusDetails> {
                 child: TextField(
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.grey)),
+                      borderSide: BorderSide(color: Colors.grey),
+                    ),
                   ),
                   readOnly: true,
                   maxLines: 1,
@@ -121,38 +122,30 @@ class _BusDetailsState extends State<BusDetails> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         Icon(FontAwesomeIcons.home),
-                        Row(
+                        Column(
                           children: <Widget>[
-                            Icon(
-                              FontAwesomeIcons.solidCircle,
+                            Port(
+                              portNo: 1,
+                              address: '1',
                               color: Colors.white,
-                              size: 15,
+                              time: '10:00 AM',
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    'Port 1st',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18),
-                                  ),
-                                  Text(
-                                    '  Address line 1st',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            Port(
+                                portNo: 2,
+                                address: '2',
+                                color: Colors.redAccent,
+                                time: '10:06 AM'),
+                            Port(
+                                portNo: 3,
+                                address: '3',
+                                color: Colors.greenAccent,
+                                time: '10:11 AM'),
+                            Port(
+                                portNo: 3,
+                                address: '4',
+                                color: Colors.greenAccent,
+                                time: '10:15 AM'),
                           ],
-                        ),
-                        Text(
-                          '10:08 AM',
-                          style: TextStyle(color: Colors.white),
                         ),
                       ],
                     ),
@@ -167,8 +160,58 @@ class _BusDetailsState extends State<BusDetails> {
   }
 }
 
-//TextField(
-//controller: _controller,
-//enabled: true,
-//decoration: InputDecoration(focusColor: Colors.white),
-//),
+class Port extends StatelessWidget {
+  final int portNo;
+  final Color color;
+  final String address;
+  final String time;
+
+  Port(
+      {@required this.portNo,
+      @required this.address,
+      @required this.color,
+      @required this.time});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Icon(
+            FontAwesomeIcons.solidCircle,
+            color: color,
+            size: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: <Widget>[
+                Text(
+                  'Port $portNo',
+                  style: TextStyle(
+                      color: color, fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Text(
+                  '  Address line $address',
+                  style: TextStyle(
+                    color: color,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 30, right: 10, top: 8, bottom: 8),
+            child: Text(
+              time,
+              style: TextStyle(color: color),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
