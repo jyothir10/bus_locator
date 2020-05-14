@@ -2,8 +2,11 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'package:bus_locator/Components/BottomBar.dart';
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/screens/destination_screen.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
@@ -14,6 +17,7 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  TextEditingController _controller2;
   StreamSubscription _locationSubscription;
   Location _locationTracker = Location();
   Marker marker;
@@ -100,6 +104,8 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String hintText1 = 'From';
+    String hintText2 = "To";
     return Scaffold(
       bottomNavigationBar: BottomBar(),
       appBar: AppBar(
@@ -119,49 +125,124 @@ class _MapScreenState extends State<MapScreen> {
               color: kBottomBarColor,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.play_circle_filled,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(right: 7),
+                              child: Icon(
+                                FontAwesomeIcons.dotCircle,
+                                size: 20,
+                                color: Colors.white30,
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xFF28284D),
+                                      ),
+                                    ),
+                                    hintText: hintText1,
+                                    hintStyle: TextStyle(color: Colors.white),
+                                  ),
+                                  controller: _controller2,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                  ),
+                                  onChanged: (value) {
+                                    //TODO:Starting point selection
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: DotsIndicator(
+                          dotsCount: 4,
+                          axis: Axis.vertical,
+                          decorator: DotsDecorator(
+                            size: Size(2, 2),
                             color: Colors.white30,
+                            activeColor: Colors.white30,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Gotham',
-                              style: TextStyle(
-                                color: Colors.white,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(right: 7),
+                              child: Icon(
+                                Icons.location_on,
+                                color: Colors.red,
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.location_on,
-                            color: Colors.red,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Metropolis',
-                              style: TextStyle(
-                                color: Colors.white,
+                            Expanded(
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFF28284D),
+                                    ),
+                                  ),
+                                  hintText: hintText2,
+                                  hintStyle: TextStyle(color: Colors.white),
+                                ),
+                                controller: _controller2,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                ),
+                                onChanged: (value) {
+                                  hintText2 = value;
+                                  //TODO:Destination point selection
+                                },
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 20, 15, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushReplacementNamed(
+                                    context, Destination.id);
+                              },
+                              child: CircleAvatar(
+                                backgroundColor: Colors.white.withOpacity(0.8),
+                                radius: 25,
+                                child: Icon(
+                                  Icons.card_travel,
+                                  color: kPageBackgroundColor,
+                                  size: 35,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

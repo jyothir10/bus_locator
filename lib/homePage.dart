@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
               accountName: Text(
                 'Hello',
                 style: TextStyle(
-                  color: Colors.black54,
+                  color: Colors.white54,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
@@ -45,29 +45,30 @@ class _HomePageState extends State<HomePage> {
               accountEmail: Text(
                 'userEmail',
                 style: TextStyle(
-                  color: Colors.black54,
+                  color: Colors.white54,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               currentAccountPicture: CircleAvatar(
+                backgroundColor: kPageBackgroundColor,
                 backgroundImage: NetworkImage(
                     'https://lh3.googleusercontent.com/a-/AOh14Gg0TXrSBWQ7kDpNr5O_krIyDL81ebh29ffFSVOf=s60-cc-rg'),
               ),
-              decoration: BoxDecoration(color: Color(0xfffff5ee)),
+              decoration: BoxDecoration(color: Color(0xff13132d)),
             ),
             CustomListTile(
               leading: Icons.category,
-              name: 'Categories',
-              icon: Icons.arrow_drop_down,
+              name: 'My Cart',
+              icon: Icons.arrow_right,
             ),
             Divider(
               color: Colors.black,
               height: 5.0,
             ),
             CustomListTile(
-                leading: Icons.restaurant,
-                name: 'View more',
+                leading: Icons.reorder,
+                name: 'Orders',
                 icon: Icons.arrow_right,
                 onpress: () {
                   //TODO:route
