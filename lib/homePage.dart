@@ -1,22 +1,118 @@
 import 'package:bus_locator/Authentication/ui/login_page.dart';
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/screens/Welcome%20Screen.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import 'Authentication/bloc/auth_bloc1.dart';
+import 'Authentication/bloc/auth_event.dart';
+import 'Components/customListTile.dart';
 import 'Navigation/mapScreen.dart';
 
-class HomePage extends StatelessWidget {
-  TextEditingController _controller;
+class HomePage extends StatefulWidget {
   static String id = 'Home_Screen';
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  TextEditingController _controller;
   @override
   Widget build(BuildContext context) {
     String hintText1 = 'From';
     String hintText2 = "To";
+    final _bloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
+      drawer: Drawer(
+        elevation: 10,
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text(
+                'Hello',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              accountEmail: Text(
+                'userEmail',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    'https://lh3.googleusercontent.com/a-/AOh14Gg0TXrSBWQ7kDpNr5O_krIyDL81ebh29ffFSVOf=s60-cc-rg'),
+              ),
+              decoration: BoxDecoration(color: Color(0xfffff5ee)),
+            ),
+            CustomListTile(
+              leading: Icons.category,
+              name: 'Categories',
+              icon: Icons.arrow_drop_down,
+            ),
+            Divider(
+              color: Colors.black,
+              height: 5.0,
+            ),
+            CustomListTile(
+                leading: Icons.restaurant,
+                name: 'View more',
+                icon: Icons.arrow_right,
+                onpress: () {
+                  //TODO:route
+                }),
+            Divider(
+              color: Colors.black,
+              height: 5.0,
+            ),
+            CustomListTile(
+                leading: Icons.fiber_manual_record,
+                name: 'How to use',
+                icon: Icons.arrow_right,
+                onpress: () {
+                  //TODO:route
+                }),
+            Divider(
+              color: Colors.black,
+              height: 5.0,
+            ),
+            CustomListTile(
+              leading: Icons.email,
+              name: 'Contact us',
+              icon: Icons.arrow_right,
+              onpress: () =>
+                  launch('mailto:hemakeralakecipe@gmail.com?subject=feedback'),
+            ),
+            Divider(
+              color: Colors.black,
+              height: 5.0,
+            ),
+            CustomListTile(
+              leading: Icons.lock_open,
+              name: 'Logout',
+              icon: Icons.arrow_right,
+              onpress: () async {
+                _bloc.add(Logout());
+              },
+            ),
+            Divider(
+              color: Colors.black,
+              height: 5.0,
+            ),
+          ],
+        ),
+      ),
       backgroundColor: kPageBackgroundColor,
 //      appBar: AppBar(
 //        elevation: 1,
