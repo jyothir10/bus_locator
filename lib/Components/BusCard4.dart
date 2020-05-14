@@ -19,6 +19,11 @@ class BusCard4 extends StatelessWidget {
       this.date});
   @override
   Widget build(BuildContext context) {
+    bool isCancelled;
+    if (status == 'cancelled') {
+      isCancelled = true;
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
       child: Row(
@@ -105,7 +110,7 @@ class BusCard4 extends StatelessWidget {
                       Text(
                         status,
                         style: TextStyle(
-                            color: Colors.green,
+                            color: isCancelled ? Colors.red : Colors.green,
                             fontWeight: FontWeight.bold,
                             fontSize: 13.5),
                       ),
