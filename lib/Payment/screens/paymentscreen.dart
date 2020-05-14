@@ -1,4 +1,5 @@
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/Payment/screens/Reciept_screen.dart';
 import 'package:flutter/material.dart';
 import 'additionals.dart';
 import 'classes.dart';
@@ -54,6 +55,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            GestureDetector(
+              onTap: () => Navigator.pushNamed(context, RecieptScreen.id),
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                child: Text('press'),
+              ),
+            ),
             Column(
               children: <Widget>[
                 Divider(

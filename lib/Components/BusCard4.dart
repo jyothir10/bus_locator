@@ -89,7 +89,7 @@ class BusCard4 extends StatelessWidget {
               colour: Color(0xFF28284D),
               onPress: () {
                 //Todo:route.
-                Navigator.pushReplacementNamed(context, BusDetails.id);
+                Navigator.pushNamed(context, BusDetails.id);
               },
             ),
           ),
