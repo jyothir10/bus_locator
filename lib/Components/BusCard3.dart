@@ -28,53 +28,54 @@ class BusCard3 extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(8.0),
                   bottomLeft: Radius.circular(8.0)),
-              cardChild: Padding(
-                padding: const EdgeInsets.all(19.0),
-                child: Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircleAvatar(
-                        backgroundColor: color,
-                        radius: 30.0,
-                        child: Icon(
-                          Icons.directions_bus,
-                          color: Colors.white,
-                        ),
+              cardChild: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      backgroundColor: color,
+                      radius: 30.0,
+                      child: Icon(
+                        Icons.directions_bus,
+                        color: Colors.white,
                       ),
                     ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Text(
                           busName,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 18),
                         ),
-                        SizedBox(
-                          height: 7,
-                        ),
-                        Text(
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Text(
                           busType,
                           style: TextStyle(color: Colors.white, fontSize: 14),
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 7),
+                        child: Text(
                           distance,
                           style: TextStyle(
                               color: Colors.red, fontWeight: FontWeight.bold),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
               colour: Color(0xFF28284D),
               onPress: () {
@@ -89,14 +90,14 @@ class BusCard3 extends StatelessWidget {
               cardChild: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Container(
-                  height: 74,
+                  height: 47,
                   child: Center(
                     child: Text(
                       fare.toString(),
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 18.0),
+                          fontSize: 16.0),
                     ),
                   ),
                 ),
