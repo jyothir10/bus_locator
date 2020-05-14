@@ -134,8 +134,10 @@ class HomePage extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: FloatingActionButton(
                 backgroundColor: Colors.white.withOpacity(0.8),
-                child: Icon(Icons.map,
-                color: Color(0xff13132d),),
+                child: Icon(
+                  Icons.map,
+                  color: Color(0xff13132d),
+                ),
                 onPressed: () =>
                     Navigator.pushReplacementNamed(context, MapScreen.id),
               ),
