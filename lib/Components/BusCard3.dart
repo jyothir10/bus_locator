@@ -80,7 +80,7 @@ class BusCard3 extends StatelessWidget {
               colour: Color(0xFF28284D),
               onPress: () {
                 //TODO:route.
-                Navigator.pushReplacementNamed(context, OrderScreen.id);
+                Navigator.pushNamed(context, OrderScreen.id);
               },
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/Navigation/mapScreen.dart';
+import 'package:bus_locator/Payment/screens/Reciept_screen.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/cart_profile.dart';
@@ -39,13 +40,14 @@ class MyApp extends StatelessWidget {
         TutorialScreen.id: (context) => TutorialScreen(),
         OrderScreen.id: (context) => OrderScreen(),
         BusDetails.id: (context) => BusDetails(),
+        RecieptScreen.id: (context) => RecieptScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Profile(),
+      home: AnimatedSplashScreen(),
     );
   }
 }
