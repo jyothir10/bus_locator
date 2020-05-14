@@ -1,5 +1,6 @@
 import 'package:bus_locator/Authentication/ui/login_page.dart';
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -31,51 +32,51 @@ class HomePage extends StatelessWidget {
 //        ),
 //      ),
       body: SafeArea(
-          child: Stack(
+          child: ListView(
         children: <Widget>[
           Container(
-            height: 250,
             color: kBottomBarColor,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Row(
                       children: <Widget>[
                         Icon(
                           Icons.play_circle_filled,
                           color: Colors.white30,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Gotham',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
+                        Expanded(
+                          child: TextField(),
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: DotsIndicator(
+                      dotsCount: 4,
+                      axis: Axis.vertical,
+                      decorator: DotsDecorator(
+                        size: Size(2, 2),
+                        color: Colors.white30,
+                        activeColor: Colors.white30,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Row(
                       children: <Widget>[
                         Icon(
                           Icons.location_on,
                           color: Colors.red,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Metropolis',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
+                        Expanded(
+                          child: TextField(),
                         ),
                       ],
                     ),
@@ -84,103 +85,24 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(FontAwesomeIcons.bolt, size: 60),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Quick ticket',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(5.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: kAppBarColor,
-                                offset: Offset(0.0, 1.0),
-                                blurRadius: 6.0,
-                              )
-                            ]),
-                        height: 120,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(FontAwesomeIcons.searchLocation, size: 60),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Track Bus',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(5.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: kAppBarColor,
-                                offset: Offset(0.0, 1.0),
-                                blurRadius: 6.0,
-                              )
-                            ]),
-                        height: 120,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-                      child: Container(
-                        child: Center(
+          Container(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+                        child: Container(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Icon(FontAwesomeIcons.moneyCheck, size: 60),
+                              Icon(FontAwesomeIcons.bolt, size: 60),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Wallet',
+                                  'Quick ticket',
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 16,
@@ -189,102 +111,182 @@ class HomePage extends StatelessWidget {
                               )
                             ],
                           ),
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(5.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: kAppBarColor,
+                                  offset: Offset(0.0, 1.0),
+                                  blurRadius: 6.0,
+                                )
+                              ]),
+                          height: 120,
                         ),
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(5.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: kAppBarColor,
-                                offset: Offset(0.0, 1.0),
-                                blurRadius: 6.0,
-                              )
-                            ]),
-                        height: 120,
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(FontAwesomeIcons.ticketAlt, size: 60),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Book Tickets',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(FontAwesomeIcons.searchLocation, size: 60),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Track Bus',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
-                        ),
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(5.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: kAppBarColor,
-                                offset: Offset(0.0, 1.0),
-                                blurRadius: 6.0,
                               )
-                            ]),
-                        height: 120,
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(5.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: kAppBarColor,
+                                  offset: Offset(0.0, 1.0),
+                                  blurRadius: 6.0,
+                                )
+                              ]),
+                          height: 120,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(5.0, 0, 5, 0),
-                      child: Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(FontAwesomeIcons.tag, size: 60),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Offers',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16,
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                        child: Container(
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(FontAwesomeIcons.moneyCheck, size: 60),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Wallet',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(5.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: kAppBarColor,
+                                  offset: Offset(0.0, 1.0),
+                                  blurRadius: 6.0,
+                                )
+                              ]),
+                          height: 120,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(FontAwesomeIcons.ticketAlt, size: 60),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Book Tickets',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
-                        ),
-                        height: 110,
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.8),
-                            borderRadius: BorderRadius.circular(5.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: kAppBarColor,
-                                offset: Offset(0.0, 1.0),
-                                blurRadius: 6.0,
                               )
-                            ]),
+                            ],
+                          ),
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(5.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: kAppBarColor,
+                                  offset: Offset(0.0, 1.0),
+                                  blurRadius: 6.0,
+                                )
+                              ]),
+                          height: 120,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(5.0, 0, 5, 0),
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(FontAwesomeIcons.tag, size: 60),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Offers',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          height: 110,
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(5.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: kAppBarColor,
+                                  offset: Offset(0.0, 1.0),
+                                  blurRadius: 6.0,
+                                )
+                              ]),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       )),

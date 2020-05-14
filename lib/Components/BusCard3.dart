@@ -18,7 +18,7 @@ class BusCard3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
       child: Row(
         children: <Widget>[
           Expanded(
