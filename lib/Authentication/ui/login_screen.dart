@@ -27,10 +27,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final _bloc = BlocProvider.of<AuthBloc>(context);
-    return BlocListener<AuthBloc, AuthState>(
-      child: Scaffold(
-        backgroundColor: kPageBackgroundColor,
-        body: SafeArea(
+    return Scaffold(
+      backgroundColor: kPageBackgroundColor,
+      body: BlocListener<AuthBloc, AuthState>(
+              child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -164,11 +164,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
-        ),
+        ), listener: (BuildContext context, AuthState state) {
+          stateListener(context, state);
+        },
       ),
-      listener: (BuildContext context, AuthState state) {
-        stateListener(context, state);
-      },
     );
   }
 }

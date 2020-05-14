@@ -47,4 +47,9 @@ class GoogleAuthHandler extends AuthService {
   Future<bool> createAccount(String email, String password) {
     throw UnimplementedError();
   }
+
+  @override
+  String toString() {
+    return "google";
+  }
 }

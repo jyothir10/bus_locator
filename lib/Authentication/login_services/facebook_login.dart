@@ -39,5 +39,10 @@ class FacebookAuthHandler extends AuthService {
     throw UnimplementedError();
   }
 
+  @override
+  String toString() {
+    return "facebook";
+  }
+
   
 }

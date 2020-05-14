@@ -40,6 +40,7 @@ dependencies:
   flutter_bloc: ^4.0.0
   equatable: ^1.1.1
   dots_indicator: ^1.0.0
+  shared_preferences: ^0.4.0
 
 
 dev_dependencies:

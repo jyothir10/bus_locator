@@ -1,9 +1,14 @@
+import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'package:bus_locator/Authentication/bloc/auth_event.dart';
+import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
+import 'package:bus_locator/screens/Welcome%20Screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/reusableCard.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartProfile extends StatefulWidget {
   static String id = 'cartprofile_Screen';
@@ -12,8 +17,10 @@ class CartProfile extends StatefulWidget {
 }
 
 class _CartProfileState extends State<CartProfile> {
+  
   @override
   Widget build(BuildContext context) {
+    final _bloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
@@ -26,52 +33,57 @@ class _CartProfileState extends State<CartProfile> {
           ),
         ),
       ),
-      body: Container(
-        color: kPageBackgroundColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            BusCardProfilePage(
-              name: 'John Doe',
-              email: 'john@gmail.com',
-              place: 'Gotham',
-            ),
-            SizedBox(
-              height: 220,
-            ),
-            Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: RoundedButton(
-                    minWidth: 370,
-                    color: kButtonDarkColor,
-                    text: "Change Password",
-                    textColor: kButtonActiveColor,
-                    textSize: 18,
-                    onPress: () {
-                      //TODO : implement password change
-                    },
+      body: BlocListener<AuthBloc, AuthState>(
+              child: Container(
+          color: kPageBackgroundColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              BusCardProfilePage(
+                name: 'John Doe',
+                email: 'john@gmail.com',
+                place: 'Gotham',
+              ),
+              SizedBox(
+                height: 220,
+              ),
+              Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: RoundedButton(
+                      minWidth: 370,
+                      color: kButtonDarkColor,
+                      text: "Change Password",
+                      textColor: kButtonActiveColor,
+                      textSize: 18,
+                      onPress: () {
+                        //TODO : implement password change
+                      },
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: RoundedButton(
-                    minWidth: 370,
-                    color: kButtonActiveColor,
-                    text: "Logout",
-                    textColor: Colors.white,
-                    textSize: 18,
-                    onPress: () {
-                      //TODO: implement logout
-                      Navigator.pushNamed(context, PaymentScreen.id);
-                    },
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: RoundedButton(
+                      minWidth: 370,
+                      color: kButtonActiveColor,
+                      text: "Logout",
+                      textColor: Colors.white,
+                      textSize: 18,
+                      onPress: () {
+                        _bloc.add(Logout());
+                      },
+                    ),
                   ),
-                ),
-              ],
-            )
-          ],
-        ),
+                ],
+              )
+            ],
+          ),
+        ), listener: (BuildContext context, AuthState state) {
+          if (state is LogoutSuccess) {
+            Navigator.pushReplacementNamed(context, WelcomeScreen.id);
+          }
+        },
       ),
     );
   }

@@ -48,3 +48,6 @@ class CreateAccountFailure extends AuthState {
 class LoggedIn extends AuthState {}
 
 class NotLoggedIn extends AuthState {}
+
+class StartUpAuthorised extends AuthState {}
+class StartUpUnauthorised extends AuthState {}

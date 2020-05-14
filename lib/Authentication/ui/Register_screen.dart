@@ -1,4 +1,5 @@
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/material.dart';
 import '../bloc/auth_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,11 +34,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
-    final _bloc = BlocProvider.of<AuthBloc>(context);
-    return BlocListener<AuthBloc, AuthState>(
-      child: Scaffold(
-        backgroundColor: kPageBackgroundColor,
-        body: SafeArea(
+    _bloc = BlocProvider.of<AuthBloc>(context);
+    return Scaffold(
+      backgroundColor: kPageBackgroundColor,
+      body: BlocListener<AuthBloc, AuthState>(
+        child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -99,11 +100,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       padding: EdgeInsets.all(2.0),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        print(password.controller.text);
-                        registerCallback(
-                            email.controller.text,
-                            password.controller.text,
-                            confirmPassword.controller.text);
+                        _bloc.add(InjectService(FirebaseAuthHandler()));
+                        _bloc.add(CreateAccount(
+                            email: email.controller.text,
+                            password: password.controller.text,
+                            confirmPassword: confirmPassword.controller.text));
                       },
                       child: Container(
                         width: 200,
@@ -151,9 +152,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: Colors.red,
                             child: FlatButton(
                               onPressed: () {
-                                // Facebook Login
-                                _bloc.add(InjectService(
-                                    FacebookAuthHandler(["email"])));
+                                // Google Login
+                                _bloc.add(InjectService(GoogleAuthHandler()));
                                 _bloc.add(Login());
                               },
                               child: Text(
@@ -170,7 +170,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: FlatButton(
                           onPressed: () {
                             // Google Login
-                            _bloc.add(InjectService(GoogleAuthHandler()));
+                            _bloc.add(
+                                InjectService(FacebookAuthHandler(["email"])));
                             _bloc.add(Login());
                           },
                           child: Text("FaceBook",
@@ -187,16 +188,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           ),
         ),
+        listener: (BuildContext context, AuthState state) {
+          stateListener(context, state);
+        },
       ),
-      listener: (BuildContext context, AuthState state) {
-        stateListener(context, state);
-      },
     );
-  }
-
-  void registerCallback(String email, String password, String confirmPassword) {
-    _bloc.add(InjectService(FirebaseAuthHandler()));
-    _bloc.add(CreateAccount(
-        email: email, password: password, confirmPassword: confirmPassword));
   }
 }

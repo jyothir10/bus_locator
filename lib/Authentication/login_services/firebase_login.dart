@@ -51,4 +51,9 @@ class FirebaseAuthHandler extends AuthService {
       return false;
     }
   }
+
+  @override
+  String toString() {
+    return "firebase";
+  }
 }
