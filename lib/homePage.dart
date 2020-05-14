@@ -17,10 +17,6 @@ class HomePage extends StatelessWidget {
     String hintText1 = 'From';
     String hintText2 = "To";
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.map),
-        onPressed: () => Navigator.pushReplacementNamed(context, MapScreen.id),
-      ),
       backgroundColor: kPageBackgroundColor,
 //      appBar: AppBar(
 //        elevation: 1,
@@ -133,8 +129,12 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 15,
+            Container(
+              alignment: Alignment.centerRight,
+              child: FloatingActionButton(
+                child: Icon(Icons.map),
+                onPressed: () => Navigator.pushReplacementNamed(context, MapScreen.id),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
