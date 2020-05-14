@@ -2,6 +2,7 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard4.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bus_locator/Components/RoundedButton.dart';
 
 class BusDetails extends StatefulWidget {
   static String id = 'BusDetail_Screen';
@@ -81,38 +82,37 @@ class _BusDetailsState extends State<BusDetails> {
                 date: '1 May 2020',
                 status: 'cancelled',
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 10),
-                    child: Text(
+              Padding(
+                padding: const EdgeInsets.only(top: 5, right: 30, left: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
                       "distance : $dist",
                       style: TextStyle(color: Colors.white),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 10),
-                    child: Text(
+                    Text(
                       distance,
                       style: TextStyle(color: Colors.white),
                     ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: TextField(
-                  decoration: InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey),
-                    ),
-                  ),
-                  readOnly: true,
-                  maxLines: 1,
+                  ],
                 ),
+              ),
+
+//              Padding(
+//                padding: const EdgeInsets.symmetric(horizontal: 20),
+//                child: TextField(
+//                  decoration: InputDecoration(
+//                    enabledBorder: UnderlineInputBorder(
+//                      borderSide: BorderSide(color: Colors.grey),
+//                    ),
+//                  ),
+//                  readOnly: true,
+//                  maxLines: 1,
+//                ),
+//              ),
+              Divider(
+                color: Colors.grey,
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -152,6 +152,13 @@ class _BusDetailsState extends State<BusDetails> {
                   ],
                 ),
               ),
+              RoundedButton(
+                  color: kButtonActiveColor,
+                  textColor: Colors.white,
+                  text: 'Order',
+                  onPress: () {
+                    //TODO: place order
+                  })
             ],
           ),
         ),

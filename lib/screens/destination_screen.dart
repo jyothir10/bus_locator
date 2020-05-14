@@ -6,6 +6,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
 final _firestore = Firestore.instance;
 
 class Destination extends StatefulWidget {
@@ -200,7 +201,6 @@ class _DestinationState extends State<Destination> {
             child: StreamBuilder(
                 stream: _firestore.collection('bus').snapshots(),
                 builder: (context, snapshot) {
-
                   if (!snapshot.hasData) {
                     return Center(
                       child: CircularProgressIndicator(
