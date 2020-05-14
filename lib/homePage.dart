@@ -130,10 +130,14 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Container(
+              color: kPageBackgroundColor,
               alignment: Alignment.centerRight,
               child: FloatingActionButton(
-                child: Icon(Icons.map),
-                onPressed: () => Navigator.pushReplacementNamed(context, MapScreen.id),
+                backgroundColor: Colors.white.withOpacity(0.8),
+                child: Icon(Icons.map,
+                color: Color(0xff13132d),),
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, MapScreen.id),
               ),
             ),
             Padding(
