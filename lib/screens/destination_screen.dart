@@ -3,6 +3,7 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -25,7 +26,7 @@ class _DestinationState extends State<Destination> {
                 child: Row(
                   children: <Widget>[
                     Icon(
-                      Icons.play_circle_filled,
+                      FontAwesomeIcons.dotCircle,
                       color: Colors.white30,
                     ),
                     Padding(
