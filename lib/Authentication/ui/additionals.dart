@@ -6,6 +6,8 @@ import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/main.dart';
 
+import 'login_screen.dart';
+
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
     hexColor = hexColor.toUpperCase().replaceAll("#", "");
@@ -170,6 +172,7 @@ void showInSnackBar(BuildContext context, String value) {
     } else if (state is AuthLoading) {
       //TODO Put progress bar
     } else if (state is CreateAccountSuccess) {
+      Navigator.pushReplacementNamed(context, LoginScreen.id);
       showInSnackBar(context, state.message);
     } else if (state is CreateAccountFailure) {
       showInSnackBar(context, state.message);

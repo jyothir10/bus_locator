@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -28,17 +27,12 @@ class _DestinationState extends State<Destination> {
                 child: Row(
                   children: <Widget>[
                     Icon(
-                      FontAwesomeIcons.dotCircle,
+                      Icons.play_circle_filled,
                       color: Colors.white30,
                     ),
                     Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TextField(
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
+                      child: TextField(
+
                       ),
                     ),
                   ],
@@ -48,10 +42,9 @@ class _DestinationState extends State<Destination> {
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: DotsIndicator(
                   dotsCount: 4,
-                  position: 3,
                   axis: Axis.vertical,
                   decorator: DotsDecorator(
-                    size: Size(2, 2),
+                    size: Size(2,2),
                     color: Colors.white30,
                     activeColor: Colors.white30,
                   ),
@@ -66,35 +59,13 @@ class _DestinationState extends State<Destination> {
                       color: Colors.red,
                     ),
                     Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TextField(
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
+                      child: TextField(
+
                       ),
                     ),
                   ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      backgroundColor: Colors.blue[800],
-                      radius: 25.0,
-                      child: Icon(
-                        Icons.compare_arrows,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                    ),
-                  )
-                ],
-              )
             ],
           ),
         ),
