@@ -41,13 +41,14 @@ class MyApp extends StatelessWidget {
         OrderScreen.id: (context) => OrderScreen(),
         BusDetails.id: (context) => BusDetails(),
         RecieptScreen.id: (context) => RecieptScreen(),
+        ProfileScreen.id: (context) => ProfileScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AnimatedSplashScreen(),
+      home: ProfileScreen(),
     );
   }
 }
