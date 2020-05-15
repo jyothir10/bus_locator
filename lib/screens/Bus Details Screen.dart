@@ -1,4 +1,5 @@
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard4.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -102,7 +103,7 @@ class _BusDetailsState extends State<BusDetails> {
                 ),
               ),
               Divider(
-                color: Color(0xFF28284D),
+                color: Colors.deepPurpleAccent,
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -112,11 +113,12 @@ class _BusDetailsState extends State<BusDetails> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20.0),
-                          child: Icon(
-                            FontAwesomeIcons.home,
-                            color: Colors.deepPurpleAccent,
+                        Card(
+                          elevation: 5.0,
+                          child: Image(
+                            image: AssetImage("assets/home.jpg"),
+                            height: 65,
+                            width: 65,
                           ),
                         ),
                         Column(
