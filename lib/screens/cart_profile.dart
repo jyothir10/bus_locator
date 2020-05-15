@@ -4,6 +4,7 @@ import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
+import 'package:bus_locator/screens/Reset%20Password.dart';
 import 'package:bus_locator/screens/Welcome%20Screen.dart';
 import 'package:bus_locator/screens/profileScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -59,6 +60,7 @@ class _CartProfileState extends State<CartProfile> {
                       textSize: 18,
                       onPress: () {
                         //TODO : implement password change
+                        Navigator.pushNamed(context, ResetPassword.id);
                       },
                     ),
                   ),
