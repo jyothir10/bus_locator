@@ -18,8 +18,9 @@ import 'package:flutter/material.dart';
 import 'Authentication/ui/login_page.dart';
 import 'package:bus_locator/screens/Welcome Screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bus_locator/screens/Tutorial SCreen.dart';
+import 'package:bus_locator/screens/Tutorial Screen.dart';
 import 'package:bus_locator/screens/Bus Details Screen.dart';
+import 'package:bus_locator/screens/Reset Password.dart';
 
 void main() => runApp(new MyApp1());
 
@@ -46,13 +47,14 @@ class MyApp extends StatelessWidget {
         ProfileScreen.id: (context) => ProfileScreen(),
         TicketScreen.id: (context) => TicketScreen(),
         RateScreen.id: (context) => RateScreen(),
+        ResetPassword.id: (context) => ResetPassword(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AnimatedSplashScreen(),
+      home: ResetPassword(),
     );
   }
 }
