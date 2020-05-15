@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         BusDetails.id: (context) => BusDetails(),
         RecieptScreen.id: (context) => RecieptScreen(),
         ProfileScreen.id: (context) => ProfileScreen(),
-        TicketScreen.id:(context)=>TicketScreen(),
+        TicketScreen.id: (context) => TicketScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',

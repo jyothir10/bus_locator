@@ -347,7 +347,8 @@ class _HomePageState extends State<HomePage> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                           child: GestureDetector(
-                            onTap: () => Navigator.pushNamed(context, TicketScreen.id),
+                            onTap: () =>
+                                Navigator.pushNamed(context, TicketScreen.id),
                             child: Container(
                               child: Center(
                                 child: Column(

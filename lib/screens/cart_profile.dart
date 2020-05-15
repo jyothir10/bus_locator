@@ -5,6 +5,7 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/screens/Welcome%20Screen.dart';
+import 'package:bus_locator/screens/profileScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/reusableCard.dart';
@@ -154,7 +155,7 @@ class BusCardProfilePage extends StatelessWidget {
               ),
               colour: Color(0xFF28284D),
               onPress: () {
-                Navigator.pushNamed(context, PaymentScreen.id);
+                Navigator.pushNamed(context, ProfileScreen.id);
               },
             ),
           ),
