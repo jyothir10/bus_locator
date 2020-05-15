@@ -107,9 +107,12 @@ class _MapScreenState extends State<MapScreen> {
     String hintText1 = 'From';
     String hintText2 = "To";
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
       appBar: AppBar(
         backgroundColor: kAppBarColor,
+        leading: Icon(
+          Icons.arrow_back,
+          color: Colors.white70,
+        ),
         title: Center(
             child: Text(
           'MAP',
@@ -232,7 +235,7 @@ class _MapScreenState extends State<MapScreen> {
                                 backgroundColor: Colors.white.withOpacity(0.8),
                                 radius: 25,
                                 child: Icon(
-                                  Icons.card_travel,
+                                  Icons.search,
                                   color: kPageBackgroundColor,
                                   size: 35,
                                 ),
