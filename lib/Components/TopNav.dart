@@ -9,7 +9,8 @@ class TopNav extends StatelessWidget {
   const TopNav({
     Key key,
     @required TextEditingController controller2,
-  }) : _controller2 = controller2, super(key: key);
+  })  : _controller2 = controller2,
+        super(key: key);
 
   final TextEditingController _controller2;
 
@@ -38,8 +39,7 @@ class TopNav extends StatelessWidget {
                     ),
                     Expanded(
                       child: Padding(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: TextField(
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
@@ -118,8 +118,7 @@ class TopNav extends StatelessWidget {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, Destination.id);
+                        Navigator.pushReplacementNamed(context, Destination.id);
                       },
                       child: CircleAvatar(
                         backgroundColor: Colors.white.withOpacity(0.8),

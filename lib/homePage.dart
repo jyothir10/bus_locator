@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
           child: ListView(
         children: <Widget>[
-         TopNav(controller2: _controller),
+          TopNav(controller2: _controller),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
