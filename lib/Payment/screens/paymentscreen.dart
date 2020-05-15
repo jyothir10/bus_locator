@@ -224,7 +224,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ],
               ),
             ),
-            createButton("Buy"),
+            ButtonCard(
+              label: 'Buy',
+              onPressed: () => Navigator.pushNamed(context, RecieptScreen.id),
+            ),
           ],
         ),
       ),
