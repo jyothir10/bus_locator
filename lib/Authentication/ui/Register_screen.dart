@@ -56,7 +56,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     GestureDetector(
-                      onTap: ()=>Navigator.pushReplacementNamed(context,LoginScreen.id),
+                      onTap: () => Navigator.pushReplacementNamed(
+                          context, LoginScreen.id),
                       child: Text(
                         "Login",
                         style: TextStyle(

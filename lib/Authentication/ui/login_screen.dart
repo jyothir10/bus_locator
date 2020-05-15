@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: kPageBackgroundColor,
       body: BlocListener<AuthBloc, AuthState>(
-              child: SafeArea(
+        child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -48,7 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.bold),
                     ),
                     GestureDetector(
-                      onTap: ()=>Navigator.pushReplacementNamed(context, RegisterScreen.id),
+                      onTap: () => Navigator.pushReplacementNamed(
+                          context, RegisterScreen.id),
                       child: Text(
                         "Sign Up",
                         style: TextStyle(
@@ -168,7 +169,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
-        ), listener: (BuildContext context, AuthState state) {
+        ),
+        listener: (BuildContext context, AuthState state) {
           stateListener(context, state);
         },
       ),
