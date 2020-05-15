@@ -64,13 +64,14 @@ Padding createButton(String label) {
 class ButtonCard extends StatelessWidget {
   final String label;
   final Function onPressed;
-  ButtonCard({this.label, this.onPressed});
+  final double width;
+  ButtonCard({this.label, this.onPressed, this.width});
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
       child: Container(
-        width: double.infinity,
+        width: width,
         height: 50,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
         child: FlatButton(
