@@ -1,3 +1,4 @@
+import 'package:bus_locator/Payment/screens/Reciept_screen.dart';
 import 'package:flutter/material.dart';
 
 class HexColor extends Color {
@@ -52,10 +53,37 @@ Padding createButton(String label) {
         padding: EdgeInsets.all(2.0),
         splashColor: Colors.blueAccent,
         onPressed: () {
-          /*...*/
+          // Navigator.pushReplacementNamed(context, RecieptScreen.id);
         },
         child: Container(width: 200, child: Center(child: Text("$label"))),
       ),
     ),
   );
+}
+
+class ButtonCard extends StatelessWidget {
+  final String label;
+  final Function onPressed;
+  ButtonCard({this.label, this.onPressed});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+      child: Container(
+        width: double.infinity,
+        height: 50,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
+        child: FlatButton(
+          color: HexColor("#693abd"),
+          textColor: Colors.white,
+          disabledColor: Colors.grey,
+          disabledTextColor: Colors.black,
+          padding: EdgeInsets.all(2.0),
+          splashColor: Colors.blueAccent,
+          onPressed: onPressed,
+          child: Container(width: 200, child: Center(child: Text(label))),
+        ),
+      ),
+    );
+  }
 }

@@ -22,7 +22,7 @@ class _RateScreenState extends State<RateScreen> {
           children: <Widget>[
             Center(
               child: FlareActor(
-                'assets/flares/feelings.flr',
+                'assets/feelings.flr',
                 fit: BoxFit.contain,
                 alignment: Alignment.center,
                 animation: feel,

@@ -1,4 +1,5 @@
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/material.dart';
 import 'additionals.dart';
 
@@ -52,7 +53,10 @@ class _RecieptScreenState extends State<RecieptScreen> {
                       right: -65,
                       top: -65,
                       child: MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, TabBarClass.id);
+                        },
                         color: HexColor("#ae67d6"),
                         textColor: Colors.white,
                         child: Icon(

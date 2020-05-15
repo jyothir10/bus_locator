@@ -55,14 +55,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            GestureDetector(
-              onTap: () => Navigator.pushNamed(context, RecieptScreen.id),
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                child: Text('press'),
-              ),
-            ),
             Column(
               children: <Widget>[
                 Divider(
@@ -115,7 +107,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   value: 1,
                   groupValue: selectedRadioTile,
                   title: Text(
-                    "Credit Card",
+                    "Paytm",
                     style: TextStyle(color: Colors.white),
                   ),
                   onChanged: (val) {
@@ -123,7 +115,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   },
                   activeColor: HexColor("#5052e2"),
                   secondary: Text(
-                    "VISA",
+                    "UPI",
                     style: TextStyle(color: HexColor("#5052e2")),
                   ),
                   selected: true,
@@ -232,7 +224,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ],
               ),
             ),
-            createButton("Buy"),
+            ButtonCard(
+              label: 'Buy',
+              onPressed: () => Navigator.pushNamed(context, RecieptScreen.id),
+            ),
           ],
         ),
       ),
