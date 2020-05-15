@@ -12,10 +12,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.keyboard_backspace,
-          size: 30,
-          color: Colors.white,
+        leading: GestureDetector(
+          onTap: () => Navigator.pop(context),
+          child: Icon(
+            Icons.keyboard_backspace,
+            size: 30,
+            color: Colors.white,
+          ),
         ),
         backgroundColor: kAppBarColor,
         title: Text(

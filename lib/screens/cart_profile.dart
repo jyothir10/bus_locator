@@ -18,7 +18,6 @@ class CartProfile extends StatefulWidget {
 }
 
 class _CartProfileState extends State<CartProfile> {
-  
   @override
   Widget build(BuildContext context) {
     final _bloc = BlocProvider.of<AuthBloc>(context);
@@ -35,7 +34,7 @@ class _CartProfileState extends State<CartProfile> {
         ),
       ),
       body: BlocListener<AuthBloc, AuthState>(
-              child: Container(
+        child: Container(
           color: kPageBackgroundColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -80,7 +79,8 @@ class _CartProfileState extends State<CartProfile> {
               )
             ],
           ),
-        ), listener: (BuildContext context, AuthState state) {
+        ),
+        listener: (BuildContext context, AuthState state) {
           if (state is LogoutSuccess) {
             Navigator.pushReplacementNamed(context, WelcomeScreen.id);
           }
