@@ -20,6 +20,7 @@ void main() => runApp(
     );
 
 class TicketScreen extends StatefulWidget {
+  static String id = 'Ticket_Screen';
   @override
   _TicketScreenState createState() => _TicketScreenState();
 }
