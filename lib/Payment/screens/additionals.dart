@@ -1,3 +1,4 @@
+import 'package:bus_locator/Payment/screens/Reciept_screen.dart';
 import 'package:flutter/material.dart';
 
 class HexColor extends Color {
@@ -52,7 +53,7 @@ Padding createButton(String label) {
         padding: EdgeInsets.all(2.0),
         splashColor: Colors.blueAccent,
         onPressed: () {
-          /*...*/
+          // Navigator.pushReplacementNamed(context, RecieptScreen.id);
         },
         child: Container(width: 200, child: Center(child: Text("$label"))),
       ),
