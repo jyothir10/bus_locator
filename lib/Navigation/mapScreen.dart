@@ -104,8 +104,6 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    String hintText1 = 'From';
-    String hintText2 = "To";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
@@ -124,131 +122,7 @@ class _MapScreenState extends State<MapScreen> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            Container(
-              color: kBottomBarColor,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Row(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: Icon(
-                                FontAwesomeIcons.dotCircle,
-                                size: 20,
-                                color: Colors.white30,
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 15),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Color(0xFF28284D),
-                                      ),
-                                    ),
-                                    hintText: hintText1,
-                                    hintStyle: TextStyle(color: Colors.white),
-                                  ),
-                                  controller: _controller2,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                  ),
-                                  onChanged: (value) {
-                                    //TODO:Starting point selection
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: DotsIndicator(
-                          dotsCount: 4,
-                          axis: Axis.vertical,
-                          decorator: DotsDecorator(
-                            size: Size(2, 2),
-                            color: Colors.white30,
-                            activeColor: Colors.white30,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Row(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(right: 7),
-                              child: Icon(
-                                Icons.location_on,
-                                color: Colors.red,
-                              ),
-                            ),
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF28284D),
-                                    ),
-                                  ),
-                                  hintText: hintText2,
-                                  hintStyle: TextStyle(color: Colors.white),
-                                ),
-                                controller: _controller2,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                                onChanged: (value) {
-                                  hintText2 = value;
-                                  //TODO:Destination point selection
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 20, 15, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushReplacementNamed(
-                                    context, Destination.id);
-                              },
-                              child: CircleAvatar(
-                                backgroundColor: Colors.white.withOpacity(0.8),
-                                radius: 25,
-                                child: Icon(
-                                  Icons.search,
-                                  color: kPageBackgroundColor,
-                                  size: 35,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            TopNav(controller2: _controller2),
             Expanded(
               child: Container(
                 width: 400,
@@ -277,3 +151,4 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 }
+

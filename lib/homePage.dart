@@ -1,5 +1,6 @@
 import 'package:bus_locator/Authentication/ui/login_page.dart';
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/Components/TopNav.dart';
 import 'package:bus_locator/screens/Welcome%20Screen.dart';
 import 'package:bus_locator/screens/ticket.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -132,131 +133,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
           child: ListView(
         children: <Widget>[
-          Container(
-            color: kBottomBarColor,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(right: 7),
-                            child: Icon(
-                              FontAwesomeIcons.dotCircle,
-                              size: 20,
-                              color: Colors.white30,
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 15),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0xFF28284D),
-                                    ),
-                                  ),
-                                  hintText: hintText1,
-                                  hintStyle: TextStyle(color: Colors.white),
-                                ),
-                                controller: _controller,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                ),
-                                onChanged: (value) {
-                                  //TODO:Starting point selection
-                                },
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: DotsIndicator(
-                        dotsCount: 4,
-                        axis: Axis.vertical,
-                        decorator: DotsDecorator(
-                          size: Size(2, 2),
-                          color: Colors.white30,
-                          activeColor: Colors.white30,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(right: 7),
-                            child: Icon(
-                              Icons.location_on,
-                              color: Colors.red,
-                            ),
-                          ),
-                          Expanded(
-                            child: TextField(
-                              decoration: InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Color(0xFF28284D),
-                                  ),
-                                ),
-                                hintText: hintText2,
-                                hintStyle: TextStyle(color: Colors.white),
-                              ),
-                              controller: _controller,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                              ),
-                              onChanged: (value) {
-                                hintText2 = value;
-                                //TODO:Destination point selection
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 20, 15, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pushReplacementNamed(
-                                  context, MapScreen.id);
-                            },
-                            child: CircleAvatar(
-                              backgroundColor: Colors.white.withOpacity(0.8),
-                              radius: 25,
-                              child: Icon(
-                                Icons.search,
-                                color: kPageBackgroundColor,
-                                size: 40,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
+         TopNav(controller2: _controller),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
