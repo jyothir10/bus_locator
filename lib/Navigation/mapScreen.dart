@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:typed_data';
-import 'package:bus_locator/Components/BottomBar.dart';
+import 'package:bus_locator/Components/TopNav.dart';
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/Components/TopNav.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -107,9 +108,12 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.white70,
+        leading: GestureDetector(
+          onTap: () => Navigator.of(context).pop(),
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.white70,
+          ),
         ),
         title: Center(
             child: Text(
@@ -122,7 +126,10 @@ class _MapScreenState extends State<MapScreen> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            TopNav(controller2: _controller2),
+            TopNav(
+              controller2: _controller2,
+              onPressed: () => Navigator.pushNamed(context, Destination.id),
+            ),
             Expanded(
               child: Container(
                 width: 400,

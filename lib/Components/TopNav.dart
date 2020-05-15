@@ -6,14 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'Constants.dart';
 
 class TopNav extends StatelessWidget {
-  const TopNav({
-    Key key,
-    @required TextEditingController controller2,
-  })  : _controller2 = controller2,
-        super(key: key);
-
-  final TextEditingController _controller2;
-
+  final Function onPressed;
+  final TextEditingController controller2;
+  TopNav({this.onPressed, this.controller2});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +45,7 @@ class TopNav extends StatelessWidget {
                             hintText: 'From',
                             hintStyle: TextStyle(color: Colors.white),
                           ),
-                          controller: _controller2,
+                          controller: controller2,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -98,7 +93,7 @@ class TopNav extends StatelessWidget {
                           hintText: 'To',
                           hintStyle: TextStyle(color: Colors.white),
                         ),
-                        controller: _controller2,
+                        controller: controller2,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 15,
@@ -117,9 +112,7 @@ class TopNav extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacementNamed(context, Destination.id);
-                      },
+                      onTap: onPressed,
                       child: CircleAvatar(
                         backgroundColor: Colors.white.withOpacity(0.8),
                         radius: 25,

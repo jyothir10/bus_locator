@@ -1,6 +1,7 @@
 import 'package:bus_locator/Authentication/ui/login_page.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/TopNav.dart';
+import 'package:bus_locator/screens/Bus%20Details%20Screen.dart';
 import 'package:bus_locator/screens/Welcome%20Screen.dart';
 import 'package:bus_locator/screens/ticket.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
           child: ListView(
         children: <Widget>[
-          TopNav(controller2: _controller),
+          TopNav(controller2: _controller,onPressed: ()=>Navigator.pushNamed(context, MapScreen.id),),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -182,34 +183,37 @@ class _HomePageState extends State<HomePage> {
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(FontAwesomeIcons.searchLocation, size: 60),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Track Bus',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16,
+                          child: GestureDetector(
+                            onTap: ()=>Navigator.pushNamed(context, BusDetails.id),
+                            child: Container(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Icon(FontAwesomeIcons.searchLocation, size: 60),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Track Bus',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.8),
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: kAppBarColor,
-                                    offset: Offset(0.0, 1.0),
-                                    blurRadius: 6.0,
                                   )
-                                ]),
-                            height: 120,
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.8),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: kAppBarColor,
+                                      offset: Offset(0.0, 1.0),
+                                      blurRadius: 6.0,
+                                    )
+                                  ]),
+                              height: 120,
+                            ),
                           ),
                         ),
                       ),
