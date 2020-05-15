@@ -78,14 +78,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         createAccount.password, createAccount.confirmPassword)) {
       return CreateAccountFailure(message: "Passwords must match.");
     } else {
-      final bool result = await _auth.createAccount(
-          createAccount.email, createAccount.password);
-      return result
-          ? CreateAccountSuccess(
-              message:
-                  "Your account has been created successfully. Please login to continue.")
-          : CreateAccountFailure(
-              message: "There has been an error while creating your account.");
+      try {
+        final bool result = await _auth.createAccount(
+            createAccount.email, createAccount.password);
+        return result
+            ? CreateAccountSuccess(
+                message:
+                    "Your account has been created successfully. Please login to continue.")
+            : CreateAccountFailure(
+                message:
+                    "There has been an error while creating your account.");
+      } catch (err) {
+        return CreateAccountFailure(message: err.message);
+      }
     }
   }
 

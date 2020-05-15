@@ -29,12 +29,14 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final _bloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: kPageBackgroundColor,
       body: BlocListener<AuthBloc, AuthState>(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
+            child: 
+            Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Row(

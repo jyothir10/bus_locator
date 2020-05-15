@@ -37,6 +37,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     // ignore: close_sinks
     _bloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: kPageBackgroundColor,
       body: BlocListener<AuthBloc, AuthState>(
         child: SafeArea(

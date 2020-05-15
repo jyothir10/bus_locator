@@ -48,9 +48,11 @@ class FirebaseAuthHandler extends AuthService {
           email: email, password: password);
       return newUser != null;
     } catch (error) {
-      return false;
+      throw error;
     }
   }
+
+
 
   @override
   String toString() {
