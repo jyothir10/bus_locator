@@ -78,7 +78,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                         disabledTextColor: Colors.black,
                         padding: EdgeInsets.all(2.0),
                         splashColor: Colors.blueAccent,
-                        onPressed: () {},
+                        onPressed: () {
+                          //TODO: implement reset password
+                        },
                       ),
                     ),
                   ),
