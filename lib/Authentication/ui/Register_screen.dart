@@ -1,3 +1,4 @@
+import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/material.dart';
@@ -54,12 +55,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
                     ),
-                    Text(
-                      "Login",
-                      style: TextStyle(
-                          color: HexColor("#693ebd"),
-                          fontSize: 19,
-                          fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: ()=>Navigator.pushReplacementNamed(context,LoginScreen.id),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: HexColor("#693ebd"),
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold),
+                      ),
                     )
                   ],
                 ),

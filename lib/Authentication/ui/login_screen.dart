@@ -1,6 +1,7 @@
 import 'package:bus_locator/Authentication/login_services/facebook_login.dart';
 import 'package:bus_locator/Authentication/login_services/firebase_login.dart';
 import 'package:bus_locator/Authentication/login_services/google_login.dart';
+import 'package:bus_locator/Authentication/ui/Register_screen.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/material.dart';
 import 'additionals.dart';
@@ -46,12 +47,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
                     ),
-                    Text(
-                      "Sign Up",
-                      style: TextStyle(
-                          color: HexColor("#693ebd"),
-                          fontSize: 19,
-                          fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      onTap: ()=>Navigator.pushReplacementNamed(context, RegisterScreen.id),
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            color: HexColor("#693ebd"),
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold),
+                      ),
                     )
                   ],
                 ),

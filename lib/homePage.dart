@@ -134,7 +134,10 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
           child: ListView(
         children: <Widget>[
-          TopNav(controller2: _controller,onPressed: ()=>Navigator.pushNamed(context, MapScreen.id),),
+          TopNav(
+            controller2: _controller,
+            onPressed: () => Navigator.pushNamed(context, MapScreen.id),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -184,12 +187,14 @@ class _HomePageState extends State<HomePage> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
                           child: GestureDetector(
-                            onTap: ()=>Navigator.pushNamed(context, BusDetails.id),
+                            onTap: () =>
+                                Navigator.pushNamed(context, BusDetails.id),
                             child: Container(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Icon(FontAwesomeIcons.searchLocation, size: 60),
+                                  Icon(FontAwesomeIcons.searchLocation,
+                                      size: 60),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
