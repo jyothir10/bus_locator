@@ -20,16 +20,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield AuthLoading();
     // if (event is InjectService) {
     //   state = _mapInjectService(event);
-     if (event is Login) {
+    if (event is Login) {
       state = await _mapLogin(event);
     } else if (event is Logout) {
       state = await _mapLogout(event);
+    } else if (event is CreateAccount) {
+      state = await _mapCreateAccount(event);
     }
-    // } else if (event is CreateAccount) {
-    //   state = await _mapCreateAccount(event);
     // } else if (event is IsLoggedIn) {
-    //   state = _isLoggedIn;
-     else if (event is StartUp) {
+    // //   state = _isLoggedIn;
+    else if (event is StartUp) {
       state = await _mapStartUp();
     }
     yield state;
@@ -37,7 +37,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<AuthState> _mapLogin(Login login) async {
     try {
-      FirebaseUser user = await _auth.login(login.service,email:login.email, password:login.password);
+      FirebaseUser user = await _auth.login(login.service,
+          email: login.email, password: login.password);
       if (user != null) {
         _currentService = login.service;
         return LoginSuccess(message: "Welcome");
@@ -45,42 +46,42 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         return LoginFailure(message: "Error while loggin in.");
       }
     } catch (error) {
-      return LoginFailure(message:error.message);
+      return LoginFailure(message: error.message);
     }
   }
 
   Future<AuthState> _mapLogout(Logout logout) async {
-    try{
+    try {
       await _auth.logout(_currentService);
       return LogoutSuccess();
-    }catch(error) {
-      return LogoutFailure(message:error.message);
+    } catch (error) {
+      return LogoutFailure(message: error.message);
     }
   }
 
-  // Future<AuthState> _mapCreateAccount(CreateAccount createAccount) async {
-  //   if (!_validatePasswordLength(createAccount.password)) {
-  //     return CreateAccountFailure(
-  //         message: "Password must be 8 characters long.");
-  //   } else if (!_passwordsMatch(
-  //       createAccount.password, createAccount.confirmPassword)) {
-  //     return CreateAccountFailure(message: "Passwords must match.");
-  //   } else {
-  //     try {
-  //       final bool result = await _auth.createAccount(
-  //           createAccount.email, createAccount.password);
-  //       return result
-  //           ? CreateAccountSuccess(
-  //               message:
-  //                   "Your account has been created successfully. Please login to continue.")
-  //           : CreateAccountFailure(
-  //               message:
-  //                   "There has been an error while creating your account.");
-  //     } catch (err) {
-  //       return CreateAccountFailure(message: err.message);
-  //     }
-  //   }
-  // }
+  Future<AuthState> _mapCreateAccount(CreateAccount createAccount) async {
+    if (!_validatePasswordLength(createAccount.password)) {
+      return CreateAccountFailure(
+          message: "Password must be 8 characters long.");
+    } else if (!_passwordsMatch(
+        createAccount.password, createAccount.confirmPassword)) {
+      return CreateAccountFailure(message: "Passwords must match.");
+    } else {
+      try {
+        final user = await _auth.createAccount(
+            createAccount.email, createAccount.password);
+        return user != null
+            ? CreateAccountSuccess(
+                message:
+                    "Your account has been created successfully. Please login to continue.")
+            : CreateAccountFailure(
+                message:
+                    "There has been an error while creating your account.");
+      } catch (err) {
+        return CreateAccountFailure(message: err.message);
+      }
+    }
+  }
 
   Future<AuthState> _mapStartUp() async {
     final bool isLoggedIn = await _auth.isLoggedIn();

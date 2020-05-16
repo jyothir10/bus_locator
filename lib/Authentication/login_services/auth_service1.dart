@@ -64,6 +64,17 @@ class Auth {
     }
   }
 
+  Future<FirebaseUser> createAccount(String email, String password) async {
+    try {
+    final user = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+    return user;
+    } catch(error) {
+      throw error;
+    }
+
+  }
+
+
   Future<FirebaseUser> _facebookLogin() async {
     _facebookLoginHandler = FacebookLogin();
     _facebookLoginHandler.loginBehavior = FacebookLoginBehavior.webViewOnly;
