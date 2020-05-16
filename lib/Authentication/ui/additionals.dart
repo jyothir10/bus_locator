@@ -169,7 +169,7 @@ void showInSnackBar(BuildContext context, String value) {
 
 void stateListener(BuildContext context, AuthState state) async {
   if (state is LoginSuccess) {
-    Navigator.pushReplacementNamed(context, TabBarClass.id);
+    await Navigator.pushReplacementNamed(context, TabBarClass.id);
     showInSnackBar(context, state.message);
   } else if (state is LoginFailure) {
     showInSnackBar(context, state.message);
@@ -178,7 +178,7 @@ void stateListener(BuildContext context, AuthState state) async {
   } else if (state is CreateAccountSuccess) {
     showInSnackBar(context, state.message);
     await Future.delayed(Duration(seconds: 1));
-    Navigator.pushReplacementNamed(context, LoginScreen.id);
+    await Navigator.pushReplacementNamed(context, LoginScreen.id);
   } else if (state is CreateAccountFailure) {
     showInSnackBar(context, state.message);
   } else if (state is LogoutSuccess) {
