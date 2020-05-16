@@ -18,6 +18,25 @@ import 'Authentication/bloc/auth_bloc1.dart';
 import 'Authentication/bloc/auth_event.dart';
 import 'Components/customListTile.dart';
 import 'Navigation/mapScreen.dart';
+import 'package:connectivity/connectivity.dart';
+
+var alertStyle = AlertStyle(
+  overlayColor: kPageBackgroundColor,
+  animationType: AnimationType.fromTop,
+  isCloseButton: false,
+  isOverlayTapDismiss: false,
+  descStyle: TextStyle(fontWeight: FontWeight.bold),
+  animationDuration: Duration(milliseconds: 400),
+  alertBorder: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(10.0),
+    side: BorderSide(
+      color: Colors.grey,
+    ),
+  ),
+  titleStyle: TextStyle(
+    color: Colors.red,
+  ),
+);
 
 class HomePage extends StatefulWidget {
   static String id = 'Home_Screen';
@@ -26,7 +45,50 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void connectivityCheck() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile) {
+      print('mobile');
+
+      // I am connected to a mobile network.
+    } else if (connectivityResult == ConnectivityResult.wifi) {
+      print('wifi');
+
+      // I am connected to a wifi network.
+    } else {
+      print('no connection');
+      Alert(
+        style: alertStyle,
+        context: context,
+        type: AlertType.error,
+        title: 'Connection Error!',
+        desc: 'Please turn on your network connection',
+        buttons: [
+          DialogButton(
+            onPressed: () {
+              //TODO:turn on the connection
+              Navigator.pop(context);
+            },
+            color: kBottomBarColor,
+            child: Text(
+              'ok',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            width: 120,
+          )
+        ],
+      ).show();
+    }
+  }
+
   TextEditingController _controller;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    connectivityCheck();
+  }
+
   @override
   Widget build(BuildContext context) {
     String hintText1 = 'From';
@@ -360,26 +422,9 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-//  var alertStyle = AlertStyle(
-//    overlayColor: kBottomBarInactiveIconColor,
-//    animationType: AnimationType.fromTop,
-//    isCloseButton: false,
-//    isOverlayTapDismiss: false,
-//    descStyle: TextStyle(fontWeight: FontWeight.bold),
-//    animationDuration: Duration(milliseconds: 400),
-//    alertBorder: RoundedRectangleBorder(
-//      borderRadius: BorderRadius.circular(10.0),
-//      side: BorderSide(
-//        color: Colors.grey,
-//      ),
-//    ),
-//    titleStyle: TextStyle(
-//      color: Colors.red,
-//    ),
-//  );
-
+//
 //   Alert(
-//    style: alertStyle,
+//
 //    type: AlertType.error,
 //    title: title,
 //    desc: description,
