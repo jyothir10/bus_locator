@@ -8,7 +8,6 @@ import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Auth _auth = Auth();
-  AuthService _currentService;
 
   @override
   // TODO: implement initialState
@@ -30,8 +29,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       state = await _mapChangePassword(event);
     } else if (event is StartUp) {
       state = await _mapStartUp();
-    } else if (event is RequestChangePassword){
-      state =  _mapRequestChangePassword(event);
+    } else if (event is RequestChangePassword) {
+      state = _mapRequestChangePassword(event);
     }
     yield state;
   }
@@ -40,11 +39,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       FirebaseUser user = await _auth.login(login.service,
           email: login.email, password: login.password);
+
       if (user != null) {
-        _currentService = login.service;
+        print(user.providerId);
         return LoginSuccess(message: "Welcome");
       } else {
-        return LoginFailure(message: "Error while loggin in.");
+        return LoginFailure(message: "Error while logging in.");
       }
     } catch (error) {
       return LoginFailure(message: error.message);
@@ -53,15 +53,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<AuthState> _mapLogout(Logout logout) async {
     try {
-      await _auth.logout(_currentService);
-      if(logout.lastState is ChangePassword) {
-      return LogoutSuccess(message: "You have successfully changed your passwords. Please login to continue.");
-      }
-      else {
-        return LogoutSuccess();
-      }
+      await _auth.logout();
+      return LogoutSuccess();
     } catch (error) {
-      return LogoutFailure(message: error.message);
+      return LoginFailure(message: error.message);
     }
   }
 
@@ -114,13 +109,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  AuthState _mapRequestChangePassword(RequestChangePassword requestChangePassword) {
-    if (_currentService != AuthService.EMAILANDPASSWORD) {
-      return CannotChangePassword(message: "Sorry. You cannot change your password");
-    } else {
-      return CanChangePassword();
-    }
+  AuthState _mapRequestChangePassword(
+      RequestChangePassword requestChangePassword) {
+    // if ( != AuthService.EMAILANDPASSWORD) {
+    //   return CannotChangePassword(message: "Sorry. You cannot change your password");
+    // } else {
+    return CanChangePassword();
   }
+
   void saveAuthService(String service) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString("service", service);

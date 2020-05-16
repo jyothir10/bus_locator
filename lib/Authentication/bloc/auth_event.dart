@@ -25,8 +25,7 @@ class Login extends AuthEvent {
 }
 // Mapped
 class Logout extends AuthEvent {
-  final AuthState lastState;
-  Logout({this.lastState});
+  
 }
 // Mapped
 class CreateAccount extends AuthEvent {

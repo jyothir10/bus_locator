@@ -111,13 +111,13 @@ class _ResetPasswordState extends State<ResetPassword> {
   void stateListener(BuildContext context, AuthState state) {
     if (state is ChangePasswordSuccess) {
       showInSnackBar(context, state.message);
-      _authBloc.add(Logout(lastState: state));
+      print(_authBloc);
+      _authBloc.add(Logout());
     }
     else if (state is ChangePasswordFailure) {
       showInSnackBar(context, state.message);
     } 
     else if (state is LogoutSuccess) {
-      showInSnackBar(context, state.message);
       Navigator.pushReplacementNamed(context, LoginScreen.id);
     }
   }

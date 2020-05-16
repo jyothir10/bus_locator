@@ -182,10 +182,6 @@ void stateListener(BuildContext context, AuthState state) async {
   } else if (state is CreateAccountFailure) {
     showInSnackBar(context, state.message);
   } else if (state is LogoutSuccess) {
-    if (state.message != "") {
-      showInSnackBar(context, state.message);
-      print("Login: " + state.message);
-    }
-    
+    showInSnackBar(context, "Please login to continue.");
   }
 }

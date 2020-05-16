@@ -33,17 +33,18 @@ class Auth {
     }
   }
 
-  Future<void> logout(AuthService service) async {
+  Future<void> logout() async {
     try {
-      if (service == AuthService.EMAILANDPASSWORD) {
-        await _auth.signOut();
-      } else if (service == AuthService.FACEBOOK) {
-        await _facebookLoginHandler.logOut();
-        await _auth.signOut();
-      } else if (service == AuthService.GOOGLE) {
-        await _googleLoginHandler.signOut();
-        await _auth.signOut();
-      }
+      // if (service == AuthService.EMAILANDPASSWORD) {
+      //   await _auth.signOut();
+      // } else if (service == AuthService.FACEBOOK) {
+      //   await _facebookLoginHandler.logOut();
+      //   await _auth.signOut();
+      // } else if (service == AuthService.GOOGLE) {
+      //   await _googleLoginHandler.signOut();
+      //   await _auth.signOut();
+      // }
+      await _auth.signOut();
     } catch (error) {
       throw error;
     }
