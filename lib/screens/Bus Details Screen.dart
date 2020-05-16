@@ -153,14 +153,17 @@ class _BusDetailsState extends State<BusDetails> {
                   ],
                 ),
               ),
-              RoundedButton(
-                  color: kButtonActiveColor,
-                  textColor: Colors.white,
-                  text: 'Order',
-                  onPress: () {
-                    //TODO: place order
-                    Navigator.pushNamed(context, PaymentScreen.id);
-                  })
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: RoundedButton(
+                    color: kButtonActiveColor,
+                    textColor: Colors.white,
+                    text: 'Order',
+                    onPress: () {
+                      //TODO: place order
+                      Navigator.pushNamed(context, PaymentScreen.id);
+                    }),
+              )
             ],
           ),
         ),
