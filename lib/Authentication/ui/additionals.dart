@@ -186,5 +186,6 @@ void stateListener(BuildContext context, AuthState state) async {
       showInSnackBar(context, state.message);
       print("Login: " + state.message);
     }
+    
   }
 }
