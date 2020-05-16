@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'destination_screen.dart';
+
+final _firestore = Firestore.instance;
 
 class OrderScreen extends StatefulWidget {
   static String id = 'Order_Screen';
@@ -36,10 +39,10 @@ class _OrderScreenState extends State<OrderScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 30),
               child: BuscardOrderPage(
-                busName: 'Bus A01',
-                busType: 'Non AC/Hino AKJ1',
-                far: '15min Away',
-                distance: 'Distance: 7.4 Km',
+                busName: busData['busname'],
+                busType: busData['bustype'],
+                far: busData['fare'],
+                distance: busData['distance'],
               ),
             ),
             Column(
