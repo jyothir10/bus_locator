@@ -86,7 +86,7 @@ class _CartProfileState extends State<CartProfile> {
           if (state is LogoutSuccess) {
             Navigator.pushReplacementNamed(context, WelcomeScreen.id);
           } else if (state is CanChangePassword) {
-            Navigator.pushReplacementNamed(context, ResetPassword.id);
+            Navigator.pushNamed(context,ResetPassword.id);
           } else if (state is CannotChangePassword) {
             showInSnackBar(context, state.message);
           }
