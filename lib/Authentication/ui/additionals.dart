@@ -66,7 +66,7 @@ Padding createButton(String label) {
         disabledTextColor: Colors.black,
         padding: EdgeInsets.all(2.0),
         splashColor: Colors.blueAccent,
-        onPressed: (){},
+        onPressed: () {},
         child: Container(
           width: 200,
           child: Center(
@@ -98,7 +98,8 @@ class InputCard extends StatelessWidget {
   final String hintText;
   final double horizontal;
   final bool obscureText;
-  InputCard(this.hintText, this.horizontal, this.obscureText, {Key key}) : super(key: key);
+  InputCard(this.hintText, this.horizontal, this.obscureText, {Key key})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -119,7 +120,8 @@ class InputCard extends StatelessWidget {
   }
 }
 
-Padding createSignUpButton(String email, String password, String confirmpassword, Function callback) {
+Padding createSignUpButton(
+    String email, String password, String confirmpassword, Function callback) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
     child: Container(
@@ -149,37 +151,40 @@ Padding createSignUpButton(String email, String password, String confirmpassword
 }
 
 void showInSnackBar(BuildContext context, String value) {
-    Scaffold.of(context).showSnackBar(
-      SnackBar(
-        content: new Text(
-          value,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-              fontFamily: "WorkSansSemiBold"),
-        ),
-        backgroundColor: Colors.blue,
-        duration: Duration(seconds: 3),
+  Scaffold.of(context).showSnackBar(
+    SnackBar(
+      content: new Text(
+        value,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+            fontFamily: "WorkSansSemiBold"),
       ),
-    );
-  }
+      backgroundColor: Colors.blue,
+      duration: Duration(seconds: 3),
+    ),
+  );
+}
 
-      void stateListener(BuildContext context, AuthState state) async {
-    if (state is LoginSuccess) {
-      Navigator.pushReplacementNamed(context, TabBarClass.id);
+void stateListener(BuildContext context, AuthState state) async {
+  if (state is LoginSuccess) {
+    Navigator.pushReplacementNamed(context, TabBarClass.id);
+    showInSnackBar(context, state.message);
+  } else if (state is LoginFailure) {
+    showInSnackBar(context, state.message);
+  } else if (state is AuthLoading) {
+    //TODO Put progress bar
+  } else if (state is CreateAccountSuccess) {
+    showInSnackBar(context, state.message);
+    await Future.delayed(Duration(seconds: 1));
+    Navigator.pushReplacementNamed(context, LoginScreen.id);
+  } else if (state is CreateAccountFailure) {
+    showInSnackBar(context, state.message);
+  } else if (state is LogoutSuccess) {
+    if (state.message != "") {
       showInSnackBar(context, state.message);
-    } else if (state is LoginFailure) {
-      showInSnackBar(context, state.message);
-    } else if (state is AuthLoading) {
-      //TODO Put progress bar
-    } else if (state is CreateAccountSuccess) {
-      
-      showInSnackBar(context, state.message);
-      await Future.delayed(Duration(seconds:1));
-      Navigator.pushReplacementNamed(context, LoginScreen.id);
-    } else if (state is CreateAccountFailure) {
-      showInSnackBar(context, state.message);
+      print("Login: " + state.message);
     }
   }
-
+}

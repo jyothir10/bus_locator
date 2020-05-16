@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
+import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 
 class AuthState extends Equatable {
   const AuthState({this.message});
@@ -61,4 +62,17 @@ class ChangePasswordFailure extends AuthState {
 class ChangePasswordSuccess extends AuthState {
   final String message;
   ChangePasswordSuccess({this.message});
+}
+
+class ReauthenticateStart extends AuthState {
+  final AuthService service;
+  final AuthEvent lastEvent;
+  final String message;
+  ReauthenticateStart({this.service, this.lastEvent, this.message});
+}
+
+class CanChangePassword extends AuthState{}
+class CannotChangePassword extends AuthState{
+  final String message;
+  CannotChangePassword({this.message});
 }
