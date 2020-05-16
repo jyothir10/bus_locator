@@ -26,10 +26,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       state = await _mapLogout(event);
     } else if (event is CreateAccount) {
       state = await _mapCreateAccount(event);
-    }
-    // } else if (event is IsLoggedIn) {
-    // //   state = _isLoggedIn;
-    else if (event is StartUp) {
+    } else if (event is ChangePassword) {
+      state = await _mapChangePassword(event);
+    } else if (event is StartUp) {
       state = await _mapStartUp();
     }
     yield state;
@@ -53,7 +52,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<AuthState> _mapLogout(Logout logout) async {
     try {
       await _auth.logout(_currentService);
-      return LogoutSuccess();
+      if(logout.lastState is ChangePassword) {
+      return LogoutSuccess(message: "You have successfully changed your passwords. Please login to continue.");
+      }
+      else {
+        return LogoutSuccess();
+      }
     } catch (error) {
       return LogoutFailure(message: error.message);
     }
@@ -88,15 +92,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return isLoggedIn ? StartUpAuthorised() : StartUpUnauthorised();
   }
 
-  // Future<AuthState> _mapChangePassword(ChangePassword changePassword) async {
-  //   _auth = FirebaseAuthHandler();
-  //   try {
-  //     await _auth.changePassword(changePassword.password);
-  //     return ChangePasswordSuccess(message: "You have successfully changed your password.");
-  //   } catch (err) {
-  //     return ChangePasswordFailure(message: err.message);
-  //   }
-  // }
+  Future<AuthState> _mapChangePassword(ChangePassword changePassword) async {
+    try {
+      FirebaseUser user = await _auth.currentUser();
+      user = await user.reauthenticateWithCredential(
+          EmailAuthProvider.getCredential(
+              email: user.email, password: changePassword.currentPassword));
+      if (_passwordsMatch(
+          changePassword.newPassword, changePassword.confirmNewPassword)) {
+        await user.updatePassword(changePassword.newPassword);
+        return ChangePasswordSuccess(
+            message: "You have successfully changed your password.");
+      } else {
+        return ChangePasswordFailure(
+            message: "The new passwords do not match.");
+      }
+    } catch (error) {
+      return ChangePasswordFailure(message: error.message);
+    }
+  }
 
   void saveAuthService(String service) async {
     final prefs = await SharedPreferences.getInstance();
