@@ -25,6 +25,12 @@ class _MapScreenState extends State<MapScreen> {
   Circle circle;
   GoogleMapController _controller;
 
+  void _setMapStyle() async {
+    String style =
+        await DefaultAssetBundle.of(context).loadString('assets/mapstyle.json');
+    _controller.setMapStyle(style);
+  }
+
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 18.4746,
@@ -50,11 +56,11 @@ class _MapScreenState extends State<MapScreen> {
           icon: BitmapDescriptor.fromBytes(imageData));
       circle = Circle(
           circleId: CircleId("car"),
-          radius: newLocalData.accuracy,
+          radius: 200, //newLocalData.accuracy,
           zIndex: 1,
-          strokeColor: Colors.blue,
+          strokeColor: Colors.white24,
           center: latlng,
-          fillColor: Colors.blue.withAlpha(70));
+          fillColor: Colors.white.withAlpha(70));
     });
   }
 
@@ -105,7 +111,9 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _setMapStyle();
     return Scaffold(
+      backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: GestureDetector(
@@ -132,9 +140,12 @@ class _MapScreenState extends State<MapScreen> {
             ),
             Expanded(
               child: Container(
-                width: 400,
+                padding: EdgeInsets.all(5),
+                margin: EdgeInsets.only(top: 5),
+                width: 500,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
+                  color: kPageBackgroundColor,
                 ),
                 child: GoogleMap(
                   mapType: MapType.normal,
@@ -151,7 +162,12 @@ class _MapScreenState extends State<MapScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.location_searching),
+          backgroundColor: Colors.white,
+          child: Icon(
+            Icons.location_searching,
+            color: kBottomBarColor,
+            size: 35,
+          ),
           onPressed: () {
             getCurrentLocation();
           }),

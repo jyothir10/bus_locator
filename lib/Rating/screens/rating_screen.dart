@@ -1,3 +1,4 @@
+import 'package:bus_locator/Components/Constants.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class _RateScreenState extends State<RateScreen> {
   double _value = 0.0;
   double lastsection = 0.0;
   String feedbacktxt = "Very Poor";
-  Color backgroundclr = Colors.red;
+  Color backgroundclr = kPageBackgroundColor;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -49,7 +50,7 @@ class _RateScreenState extends State<RateScreen> {
                   max: 100.0,
                   value: _value,
                   divisions: 100,
-                  activeColor: Colors.blue,
+                  activeColor: Colors.white,
                   inactiveColor: Colors.black,
                   label: 'Set a value',
                   onChanged: (val) {
@@ -64,7 +65,7 @@ class _RateScreenState extends State<RateScreen> {
                       }
                       setState(() {
                         lastsection = 0.0;
-                        backgroundclr = Colors.red;
+                        backgroundclr = Color(0xff13132d);
                         feedbacktxt = "Very Poor";
                       });
                     } else if (_value > 0.0 && _value < 25.0) {
@@ -79,7 +80,7 @@ class _RateScreenState extends State<RateScreen> {
                       }
                       setState(() {
                         lastsection = 25.0;
-                        backgroundclr = Colors.orange;
+                        backgroundclr = Color(0xff13132d);
                         feedbacktxt = "Poor";
                       });
                     } else if (_value >= 25.0 && _value < 50.0) {
@@ -94,7 +95,7 @@ class _RateScreenState extends State<RateScreen> {
                       }
                       setState(() {
                         lastsection = 50.0;
-                        backgroundclr = Colors.orangeAccent;
+                        backgroundclr = Color(0xff13132d);
                         feedbacktxt = "Below Average";
                       });
                     } else if (_value >= 50.0 && _value < 75.0) {
@@ -109,7 +110,7 @@ class _RateScreenState extends State<RateScreen> {
                       }
                       setState(() {
                         lastsection = 75.0;
-                        backgroundclr = Colors.yellow;
+                        backgroundclr = Color(0xff23132d);
                         feedbacktxt = "Above Average";
                       });
                     } else if (_value >= 75.0 && _value <= 100.0) {
@@ -120,7 +121,7 @@ class _RateScreenState extends State<RateScreen> {
                       }
                       setState(() {
                         lastsection = 100.0;
-                        backgroundclr = Colors.green;
+                        backgroundclr = Color(0xff28131d);
                         feedbacktxt = "Excellent";
                       });
                     }

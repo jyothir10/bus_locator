@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:bus_locator/Authentication/login_services/auth_service.dart';
+import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 
 abstract class AuthEvent extends Equatable{
   const AuthEvent();
@@ -16,9 +16,10 @@ class InjectService extends AuthEvent {
 }
 // Mapped
 class Login extends AuthEvent {
+  final AuthService service;
   final String email;
   final String password;
-  Login({this.email, this.password});
+  Login(this.service,{this.email, this.password});
 }
 // Mapped
 class Logout extends AuthEvent {}
@@ -31,3 +32,8 @@ class CreateAccount extends AuthEvent {
 }
 // Mapped
 class IsLoggedIn extends AuthEvent {}
+
+class ChangePassword extends AuthEvent{
+  final String password;
+  ChangePassword(this.password);
+}

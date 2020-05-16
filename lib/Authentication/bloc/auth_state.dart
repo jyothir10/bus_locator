@@ -50,4 +50,15 @@ class LoggedIn extends AuthState {}
 class NotLoggedIn extends AuthState {}
 
 class StartUpAuthorised extends AuthState {}
+
 class StartUpUnauthorised extends AuthState {}
+
+class ChangePasswordFailure extends AuthState {
+  final String message;
+  ChangePasswordFailure({this.message});
+}
+
+class ChangePasswordSuccess extends AuthState {
+  final String message;
+  ChangePasswordSuccess({this.message});
+}

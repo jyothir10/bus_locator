@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -163,7 +165,7 @@ void showInSnackBar(BuildContext context, String value) {
     );
   }
 
-      void stateListener(BuildContext context, AuthState state) {
+      void stateListener(BuildContext context, AuthState state) async {
     if (state is LoginSuccess) {
       Navigator.pushReplacementNamed(context, TabBarClass.id);
       showInSnackBar(context, state.message);
@@ -172,8 +174,10 @@ void showInSnackBar(BuildContext context, String value) {
     } else if (state is AuthLoading) {
       //TODO Put progress bar
     } else if (state is CreateAccountSuccess) {
-      Navigator.pushReplacementNamed(context, LoginScreen.id);
+      
       showInSnackBar(context, state.message);
+      await Future.delayed(Duration(seconds:1));
+      Navigator.pushReplacementNamed(context, LoginScreen.id);
     } else if (state is CreateAccountFailure) {
       showInSnackBar(context, state.message);
     }

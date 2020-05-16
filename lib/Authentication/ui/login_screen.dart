@@ -1,6 +1,4 @@
-import 'package:bus_locator/Authentication/login_services/facebook_login.dart';
-import 'package:bus_locator/Authentication/login_services/firebase_login.dart';
-import 'package:bus_locator/Authentication/login_services/google_login.dart';
+import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 import 'package:bus_locator/Authentication/ui/Register_screen.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +16,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final email = InputCard("email", 0, false);
-  final password = InputCard("password", 0, false);
+  final password = InputCard("password", 0, true);
 
   @override
   void initState() {
@@ -29,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final _bloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: kPageBackgroundColor,
       body: BlocListener<AuthBloc, AuthState>(
         child: SafeArea(
@@ -94,8 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: EdgeInsets.all(2.0),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        _bloc.add(InjectService(FirebaseAuthHandler()));
-                        _bloc.add(Login(
+                        _bloc.add(Login(AuthService.EMAILANDPASSWORD,
                             email: email.controller.text,
                             password: password.controller.text));
                       },
@@ -136,8 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Colors.red,
                             child: FlatButton(
                               onPressed: () {
-                                _bloc.add(InjectService(GoogleAuthHandler()));
-                                _bloc.add(Login());
+                                _bloc.add(Login(AuthService.GOOGLE));
                               },
                               child: Text(
                                 "Google",
@@ -152,9 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.blue,
                         child: FlatButton(
                           onPressed: () {
-                            _bloc.add(
-                                InjectService(FacebookAuthHandler(["email"])));
-                            _bloc.add(Login());
+                            _bloc.add(Login(AuthService.FACEBOOK));
                           },
                           child: Text("FaceBook",
                               style: TextStyle(
