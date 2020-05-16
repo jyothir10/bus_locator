@@ -18,6 +18,7 @@ import 'Authentication/bloc/auth_bloc1.dart';
 import 'Authentication/bloc/auth_event.dart';
 import 'Components/customListTile.dart';
 import 'Navigation/mapScreen.dart';
+import 'package:connectivity/connectivity.dart';
 
 class HomePage extends StatefulWidget {
   static String id = 'Home_Screen';
@@ -26,7 +27,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void connectivityCheck() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile) {
+      print('mobile');
+      // I am connected to a mobile network.
+    } else if (connectivityResult == ConnectivityResult.wifi) {
+      print('wifi');
+      // I am connected to a wifi network.
+    } else {
+      print('no connection');
+    }
+  }
+
   TextEditingController _controller;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    connectivityCheck();
+  }
+
   @override
   Widget build(BuildContext context) {
     String hintText1 = 'From';
@@ -377,7 +398,7 @@ class _HomePageState extends State<HomePage> {
 //      color: Colors.red,
 //    ),
 //  );
-
+//
 //   Alert(
 //    style: alertStyle,
 //    type: AlertType.error,
