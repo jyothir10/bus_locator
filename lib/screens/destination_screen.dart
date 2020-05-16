@@ -9,6 +9,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'orderScreen.dart';
 
 final _firestore = Firestore.instance;
+String selectedBus;
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -208,6 +209,7 @@ class _DestinationState extends State<Destination> {
                         //TODO:route.
                         Navigator.pushNamed(context, OrderScreen.id);
                         print(busName);
+                        selectedBus=busName;
                       },
                     );
                     buses.add(busCard);
