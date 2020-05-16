@@ -216,7 +216,8 @@ class _TicketScreenState extends State<TicketScreen> {
                         splashColor: Colors.blueAccent,
                         onPressed: () {
                           //TODO:Rate screen. two options show as a dialogue or navigate.
-                          Navigator.pushNamed(context, RateScreen.id);
+                          //TODO:Backup=>Navigator.pushNamed(context, RateScreen.id);
+                          //TODO:required.
                           showDialog(
                             context: context,
                             builder: (context) {
