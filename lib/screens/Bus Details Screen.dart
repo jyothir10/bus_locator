@@ -81,7 +81,7 @@ class _BusDetailsState extends State<BusDetails> {
                 ),
               ),
               BusCard4(
-                onPress: ()=>Navigator.pushNamed(context, MapScreen.id),
+                onPress: () => Navigator.pushNamed(context, MapScreen.id),
                 busName: busData['busname'],
                 fare: busData['fare'].toString(),
                 busType: busData['type'],
