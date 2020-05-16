@@ -31,12 +31,34 @@ class _HomePageState extends State<HomePage> {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile) {
       print('mobile');
+
       // I am connected to a mobile network.
     } else if (connectivityResult == ConnectivityResult.wifi) {
       print('wifi');
+
       // I am connected to a wifi network.
     } else {
       print('no connection');
+      Alert(
+        context: context,
+        type: AlertType.error,
+        title: 'Connection Error!',
+        desc: 'Please turn on your network connection',
+        buttons: [
+          DialogButton(
+            onPressed: () {
+              //TODO:turn on the connection
+              Navigator.pop(context);
+            },
+            color: kBottomBarColor,
+            child: Text(
+              'ok',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            width: 120,
+          )
+        ],
+      ).show();
     }
   }
 
@@ -400,7 +422,7 @@ class _HomePageState extends State<HomePage> {
 //  );
 //
 //   Alert(
-//    style: alertStyle,
+//
 //    type: AlertType.error,
 //    title: title,
 //    desc: description,
