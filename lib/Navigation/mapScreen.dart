@@ -25,6 +25,12 @@ class _MapScreenState extends State<MapScreen> {
   Circle circle;
   GoogleMapController _controller;
 
+  void _setMapStyle() async {
+    String style =
+        await DefaultAssetBundle.of(context).loadString('assets/mapstyle.json');
+    _controller.setMapStyle(style);
+  }
+
   static final CameraPosition initialLocation = CameraPosition(
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 18.4746,
@@ -105,6 +111,7 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _setMapStyle();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
@@ -132,6 +139,8 @@ class _MapScreenState extends State<MapScreen> {
             ),
             Expanded(
               child: Container(
+                padding: EdgeInsets.all(0),
+                margin: EdgeInsets.all(0),
                 width: 400,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
