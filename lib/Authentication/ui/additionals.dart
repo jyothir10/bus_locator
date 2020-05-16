@@ -184,6 +184,7 @@ void stateListener(BuildContext context, AuthState state) async {
   } else if (state is LogoutSuccess) {
     if (state.message != "") {
       showInSnackBar(context, state.message);
+      print("Login: " + state.message);
     }
   }
 }

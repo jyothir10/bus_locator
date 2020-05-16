@@ -38,6 +38,8 @@ class CreateAccount extends AuthEvent {
 // Mapped
 class IsLoggedIn extends AuthEvent {}
 
+class RequestChangePassword extends AuthEvent{}
+
 class ChangePassword extends AuthEvent{
   final String currentPassword;
   final String newPassword;

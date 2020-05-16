@@ -50,7 +50,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Text(
-                        "Reset Password",
+                        "Change Password",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -117,6 +117,7 @@ class _ResetPasswordState extends State<ResetPassword> {
       showInSnackBar(context, state.message);
     } 
     else if (state is LogoutSuccess) {
+      showInSnackBar(context, state.message);
       Navigator.pushReplacementNamed(context, LoginScreen.id);
     }
   }

@@ -71,3 +71,8 @@ class ReauthenticateStart extends AuthState {
   ReauthenticateStart({this.service, this.lastEvent, this.message});
 }
 
+class CanChangePassword extends AuthState{}
+class CannotChangePassword extends AuthState{
+  final String message;
+  CannotChangePassword({this.message});
+}

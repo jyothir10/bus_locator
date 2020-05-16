@@ -30,6 +30,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       state = await _mapChangePassword(event);
     } else if (event is StartUp) {
       state = await _mapStartUp();
+    } else if (event is RequestChangePassword){
+      state =  _mapRequestChangePassword(event);
     }
     yield state;
   }
@@ -112,6 +114,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
+  AuthState _mapRequestChangePassword(RequestChangePassword requestChangePassword) {
+    if (_currentService != AuthService.EMAILANDPASSWORD) {
+      return CannotChangePassword(message: "Sorry. You cannot change your password");
+    } else {
+      return CanChangePassword();
+    }
+  }
   void saveAuthService(String service) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString("service", service);

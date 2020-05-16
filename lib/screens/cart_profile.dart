@@ -1,6 +1,7 @@
 import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
+import 'package:bus_locator/Authentication/ui/additionals.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
@@ -59,8 +60,7 @@ class _CartProfileState extends State<CartProfile> {
                       textColor: kButtonActiveColor,
                       textSize: 18,
                       onPress: () {
-                        //TODO : implement password change
-                        Navigator.pushNamed(context, ResetPassword.id);
+                        _bloc.add(RequestChangePassword());
                       },
                     ),
                   ),
@@ -85,6 +85,10 @@ class _CartProfileState extends State<CartProfile> {
         listener: (BuildContext context, AuthState state) {
           if (state is LogoutSuccess) {
             Navigator.pushReplacementNamed(context, WelcomeScreen.id);
+          } else if (state is CanChangePassword) {
+            Navigator.pushReplacementNamed(context, ResetPassword.id);
+          } else if (state is CannotChangePassword) {
+            showInSnackBar(context, state.message);
           }
         },
       ),
