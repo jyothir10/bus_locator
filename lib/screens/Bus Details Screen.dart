@@ -1,4 +1,5 @@
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/Navigation/mapScreen.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +81,7 @@ class _BusDetailsState extends State<BusDetails> {
                 ),
               ),
               BusCard4(
+                onPress: ()=>Navigator.pushNamed(context, MapScreen.id),
                 busName: busData['busname'],
                 fare: busData['fare'].toString(),
                 busType: busData['type'],
