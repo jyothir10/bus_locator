@@ -4,10 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'destination_screen.dart';
 
-final _firestore = Firestore.instance;
+
 
 class OrderScreen extends StatefulWidget {
   static String id = 'Order_Screen';
@@ -83,7 +83,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         ),
                       ),
                       Text(
-                        '9.81',
+                        busData['fare'],
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,

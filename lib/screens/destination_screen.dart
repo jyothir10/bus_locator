@@ -227,7 +227,6 @@ class _DestinationState extends State<Destination> {
                       color: Colors.red,
                       onPress: () async {
                         busData = await getBusDetails(busName);
-                        //TODO:route.
                         Navigator.pushNamed(context, OrderScreen.id);
                         print(busName);
                       },
