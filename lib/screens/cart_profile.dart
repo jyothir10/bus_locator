@@ -82,12 +82,12 @@ class _CartProfileState extends State<CartProfile> {
             ],
           ),
         ),
-        listener: (BuildContext context, AuthState state) async {
+        listener: (BuildContext context, AuthState state) {
           if (state is LogoutSuccess) {
             print('logged out');
-            await Navigator.pushReplacementNamed(context, WelcomeScreen.id);
+            Navigator.pushReplacementNamed(context, WelcomeScreen.id);
           } else if (state is CanChangePassword) {
-            await Navigator.pushNamed(context, ResetPassword.id);
+            Navigator.pushNamed(context, ResetPassword.id);
           } else if (state is CannotChangePassword) {
             showInSnackBar(context, state.message);
           }
