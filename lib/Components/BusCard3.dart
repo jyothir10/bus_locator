@@ -8,6 +8,7 @@ class BusCard3 extends StatelessWidget {
   final String fare;
   final String busType;
   final Color color;
+  final Function onPress;
 
   BusCard3({
     this.busName,
@@ -15,6 +16,7 @@ class BusCard3 extends StatelessWidget {
     this.busType,
     this.fare,
     this.color,
+    this.onPress,
   });
   @override
   Widget build(BuildContext context) {
@@ -78,10 +80,7 @@ class BusCard3 extends StatelessWidget {
                 ],
               ),
               colour: Color(0xFF28284D),
-              onPress: () {
-                //TODO:route.
-                Navigator.pushNamed(context, OrderScreen.id);
-              },
+              onPress: onPress,
             ),
           ),
           Expanded(
@@ -107,7 +106,6 @@ class BusCard3 extends StatelessWidget {
                 bottomRight: Radius.circular(8.0),
               ),
               colour: Color(0xFF242448),
-              onPress: () {},
             ),
           ),
         ],

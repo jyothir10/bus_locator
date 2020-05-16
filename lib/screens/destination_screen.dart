@@ -6,6 +6,7 @@ import 'package:bus_locator/Components/BusCard3.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'orderScreen.dart';
 
 final _firestore = Firestore.instance;
 
@@ -161,34 +162,6 @@ class _DestinationState extends State<Destination> {
           ),
         ),
       ),
-//      BusCard3(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.redAccent,
-//      ),
-//      BusCard3(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.blueAccent,
-//      ),
-//      BusCard3(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.orange,
-//      ),
-//      BusCard3(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.green,
-//      ),
     ];
 
     return Scaffold(
@@ -231,6 +204,11 @@ class _DestinationState extends State<Destination> {
                       distance: distance,
                       fare: fare.toString(),
                       color: Colors.red,
+                      onPress: () {
+                        //TODO:route.
+                        Navigator.pushNamed(context, OrderScreen.id);
+                        print(busName);
+                      },
                     );
                     buses.add(busCard);
                   }
