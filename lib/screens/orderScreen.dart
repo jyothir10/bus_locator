@@ -7,8 +7,6 @@ import 'package:bus_locator/Components/RoundedButton.dart';
 
 import 'destination_screen.dart';
 
-
-
 class OrderScreen extends StatefulWidget {
   static String id = 'Order_Screen';
   @override
