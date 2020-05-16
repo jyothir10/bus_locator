@@ -6,8 +6,12 @@ import 'package:bus_locator/Components/BusCard3.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'orderScreen.dart';
 
 final _firestore = Firestore.instance;
+String selectedBus;
+var busDetails;
+var busData;
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -16,6 +20,24 @@ class Destination extends StatefulWidget {
 }
 
 class _DestinationState extends State<Destination> {
+  Future getBusDetails(String busName) async {
+    try {
+      var querySnapshot = await _firestore
+          .collection('bus')
+          .where('busname', isEqualTo: busName)
+          .getDocuments();
+      final List<DocumentSnapshot> documents = querySnapshot.documents;
+
+      for (var document in documents) {
+        busDetails = document.data;
+      }
+      return busDetails;
+    } catch (e) {
+      print(e);
+      return e;
+    }
+  }
+
   TextEditingController _controller;
 
   void initState() {
@@ -161,34 +183,6 @@ class _DestinationState extends State<Destination> {
           ),
         ),
       ),
-//      BusCard3(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.redAccent,
-//      ),
-//      BusCard3(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.blueAccent,
-//      ),
-//      BusCard3(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.orange,
-//      ),
-//      BusCard3(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.green,
-//      ),
     ];
 
     return Scaffold(
@@ -231,6 +225,11 @@ class _DestinationState extends State<Destination> {
                       distance: distance,
                       fare: fare.toString(),
                       color: Colors.red,
+                      onPress: () async {
+                        busData = await getBusDetails(busName);
+                        Navigator.pushNamed(context, OrderScreen.id);
+                        print(busName);
+                      },
                     );
                     buses.add(busCard);
                   }

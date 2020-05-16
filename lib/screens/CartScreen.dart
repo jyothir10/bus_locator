@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BusCard4.dart';
-import 'package:bus_locator/Components/BottomBar.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'Bus Details Screen.dart';
 
 final _firestore = Firestore.instance;
+var busDetails;
+var busData;
 
 class CartScreen extends StatefulWidget {
   static String id = 'Cart_Screen';
@@ -13,46 +16,26 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  Future getBusDetails(String busName) async {
+    try {
+      var querySnapshot = await _firestore
+          .collection('buses')
+          .where('busname', isEqualTo: busName)
+          .getDocuments();
+      final List<DocumentSnapshot> documents = querySnapshot.documents;
+
+      for (var document in documents) {
+        busDetails = document.data;
+      }
+      return busDetails;
+    } catch (e) {
+      print(e);
+      return e;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-//    List<Widget> buses = [
-//      BusCard4(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.red,
-//        status: 'Cancelled',
-//        date: '1 May 2020',
-//      ),
-//      BusCard4(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.red,
-//        status: 'Done',
-//        date: '1 May 2020',
-//      ),
-//      BusCard4(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.red,
-//        status: 'Done',
-//        date: '1 May 2020',
-//      ),
-//      BusCard4(
-//        busName: 'Bus A01',
-//        fare: 9.81,
-//        busType: 'Non AC/Hino AKJ1',
-//        distance: '15min Away',
-//        color: Colors.red,
-//        status: 'Done',
-//        date: '1 May 2020',
-//      ),
-//    ];
     return Scaffold(
       backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
@@ -100,6 +83,10 @@ class _CartScreenState extends State<CartScreen> {
                     fare: fare.toString(),
                     status: status,
                     color: Colors.red,
+                    onPress: () async {
+                      busData = await getBusDetails(busName);
+                      Navigator.pushNamed(context, BusDetails.id);
+                    },
                   );
 
                   buses.add(busCard);

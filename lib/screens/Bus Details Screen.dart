@@ -1,10 +1,12 @@
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/Navigation/mapScreen.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard4.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
+import 'CartScreen.dart';
 
 class BusDetails extends StatefulWidget {
   static String id = 'BusDetail_Screen';
@@ -27,10 +29,10 @@ class _BusDetailsState extends State<BusDetails> {
 
   @override
   Widget build(BuildContext context) {
-    String busName = 'Bus A01';
-    String date = '1 May 2020';
-    String distance = '15min Away';
-    String dist = '7.4 Miles';
+    String busName = busData['busname'];
+    String date = busData['date'];
+    String distance = busData['distance'];
+    String dist = '12 Miles';
 
     return SafeArea(
       child: Scaffold(
@@ -79,13 +81,14 @@ class _BusDetailsState extends State<BusDetails> {
                 ),
               ),
               BusCard4(
-                busName: 'Bus A01',
-                fare: '9.81',
-                busType: 'Non AC/Hino AKJ1',
-                distance: '15min Away',
+                onPress: () => Navigator.pushNamed(context, MapScreen.id),
+                busName: busData['busname'],
+                fare: busData['fare'].toString(),
+                busType: busData['type'],
+                distance: busData['distance'],
                 color: Colors.redAccent,
-                date: '1 May 2020',
-                status: 'cancelled',
+                date: busData['date'],
+                status: busData['status'],
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 5, right: 30, left: 30),
@@ -152,14 +155,17 @@ class _BusDetailsState extends State<BusDetails> {
                   ],
                 ),
               ),
-              RoundedButton(
-                  color: kButtonActiveColor,
-                  textColor: Colors.white,
-                  text: 'Order',
-                  onPress: () {
-                    //TODO: place order
-                    Navigator.pushNamed(context, PaymentScreen.id);
-                  })
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: RoundedButton(
+                    color: kButtonActiveColor,
+                    textColor: Colors.white,
+                    text: 'Order',
+                    onPress: () {
+                      //TODO: place order
+                      Navigator.pushNamed(context, PaymentScreen.id);
+                    }),
+              )
             ],
           ),
         ),

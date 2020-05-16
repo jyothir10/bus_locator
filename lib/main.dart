@@ -1,5 +1,6 @@
 import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/Navigation/mapScreen.dart';
+import 'package:bus_locator/Navigation/webview.dart';
 import 'package:bus_locator/Payment/screens/Reciept_screen.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/Rating/screens/rating_screen.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         TicketScreen.id: (context) => TicketScreen(),
         RateScreen.id: (context) => RateScreen(),
         ResetPassword.id: (context) => ResetPassword(),
+        WebViewMap.id: (context) => WebViewMap(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',

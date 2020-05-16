@@ -163,10 +163,10 @@ class _TicketScreenState extends State<TicketScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Seat No",
+                                "No. of tickets",
                                 style: TextStyle(color: Colors.purple[300]),
                               ),
-                              Text("4A",
+                              Text("1 person",
                                   style: TextStyle(
                                       color: Color(0xff13132d),
                                       fontWeight: FontWeight.bold,
@@ -215,7 +215,9 @@ class _TicketScreenState extends State<TicketScreen> {
                         padding: EdgeInsets.all(2.0),
                         splashColor: Colors.blueAccent,
                         onPressed: () {
-                          //Navigator.pushNamed(context, RateScreen.id);
+                          //TODO:Rate screen. two options show as a dialogue or navigate.
+                          //TODO:Backup=>Navigator.pushNamed(context, RateScreen.id);
+                          //TODO:required.
                           showDialog(
                             context: context,
                             builder: (context) {

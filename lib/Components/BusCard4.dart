@@ -1,4 +1,3 @@
-import 'package:bus_locator/screens/Bus%20Details%20Screen.dart';
 import 'package:flutter/material.dart';
 import 'reusableCard.dart';
 
@@ -10,6 +9,7 @@ class BusCard4 extends StatelessWidget {
   final Color color;
   final String status;
   final String date;
+  final Function onPress;
   BusCard4(
       {this.busName,
       this.distance,
@@ -17,7 +17,8 @@ class BusCard4 extends StatelessWidget {
       this.fare,
       this.status,
       this.color,
-      this.date});
+      this.date,
+      this.onPress});
   @override
   Widget build(BuildContext context) {
     bool isCancelled;
@@ -87,10 +88,7 @@ class BusCard4 extends StatelessWidget {
                 ),
               ),
               colour: Color(0xFF28284D),
-              onPress: () {
-                //Todo:route.
-                Navigator.pushNamed(context, BusDetails.id);
-              },
+              onPress: onPress,
             ),
           ),
           Expanded(
