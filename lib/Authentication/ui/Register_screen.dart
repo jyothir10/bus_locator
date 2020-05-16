@@ -4,9 +4,7 @@ import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/material.dart';
 import '../bloc/auth_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../login_services/facebook_login.dart';
-import '../login_services/firebase_login.dart';
-import '../login_services/google_login.dart';
+import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 import 'additionals.dart';
 import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
@@ -106,7 +104,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       padding: EdgeInsets.all(2.0),
                       splashColor: Colors.blueAccent,
                       onPressed: () {
-                        _bloc.add(InjectService(FirebaseAuthHandler()));
                         _bloc.add(CreateAccount(
                             email: email.controller.text,
                             password: password.controller.text,
@@ -159,8 +156,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: FlatButton(
                               onPressed: () {
                                 // Google Login
-                                _bloc.add(InjectService(GoogleAuthHandler()));
-                                _bloc.add(Login());
+                               
+                                _bloc.add(Login(AuthService.GOOGLE));
                               },
                               child: Text(
                                 "Google",
@@ -175,10 +172,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         color: Colors.blue,
                         child: FlatButton(
                           onPressed: () {
-                            // Google Login
-                            _bloc.add(
-                                InjectService(FacebookAuthHandler(["email"])));
-                            _bloc.add(Login());
+                            _bloc.add(Login(AuthService.FACEBOOK));
                           },
                           child: Text("FaceBook",
                               style: TextStyle(

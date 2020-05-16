@@ -1,13 +1,11 @@
-import 'package:bus_locator/Authentication/login_services/facebook_login.dart';
-import 'package:bus_locator/Authentication/login_services/firebase_login.dart';
-import 'package:bus_locator/Authentication/login_services/google_login.dart';
+import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
 import 'package:bus_locator/Authentication/utils/bubble_indication_painter.dart';
 import 'package:bus_locator/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bus_locator/Authentication/style/theme.dart' as Theme;
-import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
@@ -354,8 +352,7 @@ class _LoginPageState extends State<LoginPage>
                     onPressed: () {
                       String email = loginEmailController.text;
                       String password = loginPasswordController.text;
-                      _bloc.add(InjectService(FirebaseAuthHandler()));
-                      _bloc.add(Login(email: email, password: password));
+                      _bloc.add(Login(AuthService.EMAILANDPASSWORD, email: email, password: password));
                     }),
               ),
             ],
@@ -430,8 +427,7 @@ class _LoginPageState extends State<LoginPage>
                 padding: EdgeInsets.only(top: 10.0, right: 40.0),
                 child: GestureDetector(
                   onTap: () {
-                    _bloc.add(InjectService(FacebookAuthHandler(["email"])));
-                    _bloc.add(Login());
+                    _bloc.add(Login(AuthService.FACEBOOK));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(15.0),
@@ -451,8 +447,7 @@ class _LoginPageState extends State<LoginPage>
                 child: GestureDetector(
                   // Google Login
                   onTap: () {
-                    _bloc.add(InjectService(GoogleAuthHandler()));
-                    _bloc.add(Login());
+                    _bloc.add(Login(AuthService.GOOGLE));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(15.0),
@@ -691,7 +686,6 @@ class _LoginPageState extends State<LoginPage>
                       String password = signupPasswordController.text;
                       String confirmPassword =
                           signupConfirmPasswordController.text;
-                      _bloc.add(InjectService(FirebaseAuthHandler()));
                       _bloc.add(CreateAccount(
                           email: email,
                           password: password,
