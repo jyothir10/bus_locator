@@ -162,7 +162,12 @@ class _MapScreenState extends State<MapScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.location_searching),
+          backgroundColor: Colors.white,
+          child: Icon(
+            Icons.location_searching,
+            color: kBottomBarColor,
+            size: 35,
+          ),
           onPressed: () {
             getCurrentLocation();
           }),
