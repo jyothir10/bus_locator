@@ -42,8 +42,9 @@ dependencies:
   dots_indicator: ^1.0.0
   shared_preferences: ^0.4.0
   http: ^0.11.3+14
-  qr_flutter:
+  qr_flutter: ^3.2.0
   flare_flutter: ^2.0.3
+  webview_flutter: ^0.3.18
 
 
 
