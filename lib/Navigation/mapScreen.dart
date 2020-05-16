@@ -56,11 +56,11 @@ class _MapScreenState extends State<MapScreen> {
           icon: BitmapDescriptor.fromBytes(imageData));
       circle = Circle(
           circleId: CircleId("car"),
-          radius: newLocalData.accuracy,
+          radius: 200, //newLocalData.accuracy,
           zIndex: 1,
-          strokeColor: Colors.blue,
+          strokeColor: Colors.white24,
           center: latlng,
-          fillColor: Colors.blue.withAlpha(70));
+          fillColor: Colors.white.withAlpha(70));
     });
   }
 
@@ -113,6 +113,7 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     _setMapStyle();
     return Scaffold(
+      backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: GestureDetector(
@@ -139,11 +140,12 @@ class _MapScreenState extends State<MapScreen> {
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(0),
-                margin: EdgeInsets.all(0),
-                width: 400,
+                padding: EdgeInsets.all(5),
+                margin: EdgeInsets.only(top: 5),
+                width: 500,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
+                  color: kPageBackgroundColor,
                 ),
                 child: GoogleMap(
                   mapType: MapType.normal,
