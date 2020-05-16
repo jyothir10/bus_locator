@@ -16,7 +16,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final email = InputCard("email", 0, false);
-  final password = InputCard("password", 0, false);
+  final password = InputCard("password", 0, true);
 
   @override
   void initState() {
