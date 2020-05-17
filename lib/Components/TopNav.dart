@@ -49,7 +49,8 @@ class TopNav extends StatelessWidget {
                                 ),
                               ),
                               hintText: hintText1,
-                              hintStyle: TextStyle(color: Colors.white),
+                              hintStyle:
+                                  TextStyle(color: Colors.white, fontSize: 18),
                             ),
                             controller: controller2,
                             style: TextStyle(
@@ -99,7 +100,8 @@ class TopNav extends StatelessWidget {
                                 ),
                               ),
                               hintText: hintText2,
-                              hintStyle: TextStyle(color: Colors.white),
+                              hintStyle:
+                                  TextStyle(color: Colors.white, fontSize: 18),
                             ),
                             controller: controller2,
                             style: TextStyle(
