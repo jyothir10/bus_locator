@@ -263,6 +263,9 @@ class _HomePageState extends State<HomePage> {
               color: kPageBackgroundColor,
             ),
           ),
+          SizedBox(
+            height: 50,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(

@@ -2,6 +2,7 @@ import 'package:bus_locator/screens/destination_screen.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bus_locator/Payment/screens/additionals.dart';
 
 import 'Constants.dart';
 import 'TabBar.dart';
@@ -141,3 +142,126 @@ class TopNav extends StatelessWidget {
     );
   }
 }
+//  Widget build(BuildContext context) {
+//    return Container(
+//      child: Column(
+//        children: <Widget>[
+//          Container(
+//            padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+//            color: HexColor("#38385c"),
+//            height: 155,
+//            width: double.maxFinite,
+//            child: Stack(
+//              overflow: Overflow.visible,
+//              children: <Widget>[
+//                Positioned(
+//                  top: 0,
+//                  left: 0,
+//                  child: Column(
+//                    children: <Widget>[
+//                      Icon(
+//                        FontAwesomeIcons.solidDotCircle,
+//                        color: Colors.grey,
+//                      ),
+//                      Icon(
+//                        FontAwesomeIcons.ellipsisV,
+//                        color: Colors.grey[100],
+//                        size: 20,
+//                      ),
+//                      Icon(FontAwesomeIcons.ellipsisV,
+//                          color: Colors.grey[100], size: 20),
+//                      Icon(
+//                        FontAwesomeIcons.mapMarkerAlt,
+//                        color: Colors.red,
+//                      ),
+//                    ],
+//                  ),
+//                ),
+//                Positioned(
+//                  left: 50,
+//                  top: 0,
+//                  child: Container(
+//                    width: 300,
+//                    child: Column(
+//                      children: <Widget>[
+//                        TextField(
+//                          decoration: InputDecoration(
+//                            enabledBorder: UnderlineInputBorder(
+//                              borderSide: BorderSide(
+//                                color: Color(0xFF28284D),
+//                              ),
+//                            ),
+//                            hintText: hintText1,
+//                            hintStyle:
+//                                TextStyle(color: Colors.white, fontSize: 18),
+//                          ),
+//                          controller: controller2,
+//                          style: TextStyle(
+//                            color: Colors.white,
+//                            fontSize: 15,
+//                          ),
+//                          onChanged: (value) {
+//                            //TODO:Starting point selection
+//                          },
+//                        ),
+//                        TextField(
+//                          decoration: InputDecoration(
+//                            enabledBorder: UnderlineInputBorder(
+//                              borderSide: BorderSide(
+//                                color: Color(0xFF28284D),
+//                              ),
+//                            ),
+//                            hintText: hintText2,
+//                            hintStyle:
+//                                TextStyle(color: Colors.white, fontSize: 18),
+//                          ),
+//                          controller: controller2,
+//                          style: TextStyle(
+//                            color: Colors.white,
+//                            fontSize: 15,
+//                          ),
+//                          onChanged: (value) {
+//                            //TODO:Destination point selection
+//                          },
+//                        ),
+//                      ],
+//                    ),
+//                  ),
+//                ),
+//                Positioned(
+//                  right: 10,
+//                  top: 110,
+//                  child: GestureDetector(
+//                    onTap: onPressed,
+//                    child: CircleAvatar(
+//                      backgroundColor: Colors.white.withOpacity(0.8),
+//                      radius: 25,
+//                      child: icon,
+//                    ),
+//                  ),
+//                ),
+//              ],
+//            ),
+//          )
+//        ],
+//      ),
+//    );
+//  }
+//}
+
+//
+//MaterialButton(
+//                    onPressed: () {
+//                      onPressed;
+//                    },
+//                    color: Colors.purple,
+//                    textColor: Colors.white,
+//                    child: Padding(
+//                      padding: EdgeInsets.all(10),
+//                      child: Icon(
+//                        Icons.search,
+//                        size: 30,
+//                      ),
+//                    ),
+//                    shape: CircleBorder(),
+//                  ),
