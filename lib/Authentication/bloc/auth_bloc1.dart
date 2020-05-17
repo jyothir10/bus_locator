@@ -20,58 +20,57 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     // if (event is InjectService) {
     //   state = _mapInjectService(event);
     if (event is Login) {
-      state = await _mapLogin(event);
+      yield* _mapLogin(event);
     } else if (event is Logout) {
-      state = await _mapLogout(event);
+      yield* _mapLogout(event);
     } else if (event is CreateAccount) {
-      state = await _mapCreateAccount(event);
+      yield* _mapCreateAccount(event);
     } else if (event is ChangePassword) {
-      state = await _mapChangePassword(event);
+      yield* _mapChangePassword(event);
     } else if (event is StartUp) {
-      state = await _mapStartUp();
+      yield* _mapStartUp();
     } else if (event is RequestChangePassword) {
-      state = _mapRequestChangePassword(event);
+      yield* _mapRequestChangePassword(event);
     }
-    yield state;
   }
 
-  Future<AuthState> _mapLogin(Login login) async {
+  Stream<AuthState> _mapLogin(Login login) async* {
     try {
       FirebaseUser user = await _auth.login(login.service,
           email: login.email, password: login.password);
 
       if (user != null) {
         print(user.providerId);
-        return LoginSuccess(message: "Welcome");
+        yield LoginSuccess(message: "Welcome");
       } else {
-        return LoginFailure(message: "Error while logging in.");
+        yield LoginFailure(message: "Error while logging in.");
       }
     } catch (error) {
-      return LoginFailure(message: error.message);
+      yield LoginFailure(message: error.message);
     }
   }
 
-  Future<AuthState> _mapLogout(Logout logout) async {
+  Stream<AuthState> _mapLogout(Logout logout) async* {
     try {
       await _auth.logout();
-      return LogoutSuccess();
+      yield LogoutSuccess();
     } catch (error) {
-      return LoginFailure(message: error.message);
+      yield LoginFailure(message: error.message);
     }
   }
 
-  Future<AuthState> _mapCreateAccount(CreateAccount createAccount) async {
+  Stream<AuthState> _mapCreateAccount(CreateAccount createAccount) async* {
     if (!_validatePasswordLength(createAccount.password)) {
-      return CreateAccountFailure(
+      yield CreateAccountFailure(
           message: "Password must be 8 characters long.");
     } else if (!_passwordsMatch(
         createAccount.password, createAccount.confirmPassword)) {
-      return CreateAccountFailure(message: "Passwords must match.");
+      yield CreateAccountFailure(message: "Passwords must match.");
     } else {
       try {
         final user = await _auth.createAccount(
             createAccount.email, createAccount.password);
-        return user != null
+        yield user != null
             ? CreateAccountSuccess(
                 message:
                     "Your account has been created successfully. Please login to continue.")
@@ -79,17 +78,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
                 message:
                     "There has been an error while creating your account.");
       } catch (err) {
-        return CreateAccountFailure(message: err.message);
+        yield CreateAccountFailure(message: err.message);
       }
     }
   }
 
-  Future<AuthState> _mapStartUp() async {
+  Stream<AuthState> _mapStartUp() async* {
     final bool isLoggedIn = await _auth.isLoggedIn();
-    return isLoggedIn ? StartUpAuthorised() : StartUpUnauthorised();
+    yield isLoggedIn ? StartUpAuthorised() : StartUpUnauthorised();
   }
 
-  Future<AuthState> _mapChangePassword(ChangePassword changePassword) async {
+  Stream<AuthState> _mapChangePassword(ChangePassword changePassword) async* {
     try {
       FirebaseUser user = await _auth.currentUser();
       user = await user.reauthenticateWithCredential(
@@ -98,23 +97,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       if (_passwordsMatch(
           changePassword.newPassword, changePassword.confirmNewPassword)) {
         await user.updatePassword(changePassword.newPassword);
-        return ChangePasswordSuccess(
+        yield ChangePasswordSuccess(
             message: "You have successfully changed your password.");
       } else {
-        return ChangePasswordFailure(
+        yield ChangePasswordFailure(
             message: "The new passwords do not match.");
       }
     } catch (error) {
-      return ChangePasswordFailure(message: error.message);
+      yield ChangePasswordFailure(message: error.message);
     }
   }
 
-  AuthState _mapRequestChangePassword(
-      RequestChangePassword requestChangePassword) {
+  Stream<AuthState> _mapRequestChangePassword (
+      RequestChangePassword requestChangePassword) async*{
     // if ( != AuthService.EMAILANDPASSWORD) {
     //   return CannotChangePassword(message: "Sorry. You cannot change your password");
     // } else {
-    return CanChangePassword();
+    yield CanChangePassword();
   }
 
   void saveAuthService(String service) async {
