@@ -22,6 +22,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bus_locator/screens/Tutorial Screen.dart';
 import 'package:bus_locator/screens/Bus Details Screen.dart';
 import 'package:bus_locator/screens/Reset Password.dart';
+import 'package:bus_locator/screens/TicketDetails Screen.dart';
 
 void main() => runApp(new MyApp1());
 
@@ -50,13 +51,14 @@ class MyApp extends StatelessWidget {
         RateScreen.id: (context) => RateScreen(),
         ResetPassword.id: (context) => ResetPassword(),
         WebViewMap.id: (context) => WebViewMap(),
+        TicketDetails.id: (context) => TicketDetails(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AnimatedSplashScreen(),
+      home: TicketDetails(),
     );
   }
 }

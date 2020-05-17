@@ -111,6 +111,7 @@ class InputCard extends StatelessWidget {
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
           hintText: "$hintText",
+          hintStyle: TextStyle(color: Colors.white54),
           contentPadding: EdgeInsets.all(15.0),
           border: InputBorder.none,
           filled: true,

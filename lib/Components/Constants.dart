@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 const Color kBottomBarColor = Color(0xFF13132D);
 const Color kBottomBarInactiveIconColor = Color(0xFF37385B);
