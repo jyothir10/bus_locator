@@ -200,6 +200,11 @@ class _HomePageState extends State<HomePage> {
           TopNav(
             controller2: _controller,
             onPressed: () => Navigator.pushNamed(context, MapScreen.id),
+            icon: Icon(
+              Icons.search,
+              size: 40,
+              color: kPageBackgroundColor,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

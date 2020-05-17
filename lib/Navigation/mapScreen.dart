@@ -137,6 +137,11 @@ class _MapScreenState extends State<MapScreen> {
             TopNav(
               controller2: _controller2,
               onPressed: () => Navigator.pushNamed(context, Destination.id),
+              icon: Icon(
+                Icons.compare_arrows,
+                size: 40,
+                color: kPageBackgroundColor,
+              ),
             ),
             Expanded(
               child: Container(

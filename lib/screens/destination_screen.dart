@@ -61,6 +61,11 @@ class _DestinationState extends State<Destination> {
         controller2: _controller,
         onPressed: () =>
             Navigator.pushReplacementNamed(context, TabBarClass.id),
+        icon: Icon(
+          Icons.compare_arrows,
+          size: 40,
+          color: kPageBackgroundColor,
+        ),
       )
     ];
 
