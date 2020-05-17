@@ -28,6 +28,11 @@ class _DestinationState extends State<Destination> {
 
   void getLocation() async {
     Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
+    latitude = position.latitude;
+    longitude = position.longitude;
+    print(position);
+    List<Placemark> placemark = await Geolocator().placemarkFromCoordinates(latitude,longitude);
+    print(placemark);
   }
 
 
