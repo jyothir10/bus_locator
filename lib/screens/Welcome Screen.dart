@@ -3,9 +3,13 @@ import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Components/TabBar.dart';
+import 'package:connectivity/connectivity.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+
+import '../homePage.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'Welcome_Screen';
@@ -14,6 +18,49 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  void connectivityCheck() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile) {
+      print('mobile');
+
+      // I am connected to a mobile network.
+    } else if (connectivityResult == ConnectivityResult.wifi) {
+      print('wifi');
+
+      // I am connected to a wifi network.
+    } else {
+      print('no connection');
+      Alert(
+        style: alertStyle,
+        context: context,
+        type: AlertType.error,
+        title: 'Connection Error!',
+        desc: 'Please turn on your network connection',
+        buttons: [
+          DialogButton(
+            onPressed: () {
+              //TODO:turn on the connection
+              Navigator.pop(context);
+            },
+            color: kBottomBarColor,
+            child: Text(
+              'ok',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            width: 120,
+          )
+        ],
+      ).show();
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    connectivityCheck();
+  }
+
   @override
   Widget build(BuildContext context) {
     Color buttonColor = Colors.white;

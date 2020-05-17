@@ -1,5 +1,6 @@
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/TabBar.dart';
+import 'package:bus_locator/Components/TopNav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
@@ -56,133 +57,16 @@ class _DestinationState extends State<Destination> {
     String hintText2 = "To";
 
     List<Widget> buses = [
-      Container(
-        color: kBottomBarColor,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(right: 7),
-                        child: Icon(
-                          FontAwesomeIcons.dotCircle,
-                          size: 20,
-                          color: Colors.white30,
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFF28284D),
-                                ),
-                              ),
-                              hintText: hintText1,
-                              hintStyle: TextStyle(color: Colors.white),
-                            ),
-                            controller: _controller,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                            ),
-                            onChanged: (value) {
-                              //TODO:Starting point selection
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: DotsIndicator(
-                    dotsCount: 4,
-                    axis: Axis.vertical,
-                    decorator: DotsDecorator(
-                      size: Size(2, 2),
-                      color: Colors.white30,
-                      activeColor: Colors.white30,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(right: 7),
-                        child: Icon(
-                          Icons.location_on,
-                          color: Colors.red,
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 11),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color(0xFF28284D),
-                                ),
-                              ),
-                              hintText: hintText2,
-                              hintStyle: TextStyle(color: Colors.white),
-                            ),
-                            controller: _controller,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                            ),
-                            onChanged: (value) {
-                              hintText2 = value;
-                              //TODO:Destination point selection
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 20, 15, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushReplacementNamed(
-                              context, TabBarClass.id);
-                        },
-                        child: CircleAvatar(
-                          backgroundColor: Colors.white.withOpacity(0.8),
-                          radius: 25,
-                          child: Icon(
-                            Icons.compare_arrows,
-                            color: kPageBackgroundColor,
-                            size: 40,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
+      TopNav(
+        controller2: _controller,
+        onPressed: () =>
+            Navigator.pushReplacementNamed(context, TabBarClass.id),
+        icon: Icon(
+          Icons.compare_arrows,
+          size: 40,
+          color: kPageBackgroundColor,
         ),
-      ),
+      )
     ];
 
     return Scaffold(

@@ -8,7 +8,6 @@ import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Auth _auth = Auth();
-  AuthService _currentService;
 
   @override
   // TODO: implement initialState
@@ -26,11 +25,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       state = await _mapLogout(event);
     } else if (event is CreateAccount) {
       state = await _mapCreateAccount(event);
-    }
-    // } else if (event is IsLoggedIn) {
-    // //   state = _isLoggedIn;
-    else if (event is StartUp) {
+    } else if (event is ChangePassword) {
+      state = await _mapChangePassword(event);
+    } else if (event is StartUp) {
       state = await _mapStartUp();
+    } else if (event is RequestChangePassword) {
+      state = _mapRequestChangePassword(event);
     }
     yield state;
   }
@@ -39,11 +39,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       FirebaseUser user = await _auth.login(login.service,
           email: login.email, password: login.password);
+
       if (user != null) {
-        _currentService = login.service;
+        print(user.providerId);
         return LoginSuccess(message: "Welcome");
       } else {
-        return LoginFailure(message: "Error while loggin in.");
+        return LoginFailure(message: "Error while logging in.");
       }
     } catch (error) {
       return LoginFailure(message: error.message);
@@ -52,10 +53,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<AuthState> _mapLogout(Logout logout) async {
     try {
-      await _auth.logout(_currentService);
+      await _auth.logout();
       return LogoutSuccess();
     } catch (error) {
-      return LogoutFailure(message: error.message);
+      return LoginFailure(message: error.message);
     }
   }
 
@@ -88,15 +89,33 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     return isLoggedIn ? StartUpAuthorised() : StartUpUnauthorised();
   }
 
-  // Future<AuthState> _mapChangePassword(ChangePassword changePassword) async {
-  //   _auth = FirebaseAuthHandler();
-  //   try {
-  //     await _auth.changePassword(changePassword.password);
-  //     return ChangePasswordSuccess(message: "You have successfully changed your password.");
-  //   } catch (err) {
-  //     return ChangePasswordFailure(message: err.message);
-  //   }
-  // }
+  Future<AuthState> _mapChangePassword(ChangePassword changePassword) async {
+    try {
+      FirebaseUser user = await _auth.currentUser();
+      user = await user.reauthenticateWithCredential(
+          EmailAuthProvider.getCredential(
+              email: user.email, password: changePassword.currentPassword));
+      if (_passwordsMatch(
+          changePassword.newPassword, changePassword.confirmNewPassword)) {
+        await user.updatePassword(changePassword.newPassword);
+        return ChangePasswordSuccess(
+            message: "You have successfully changed your password.");
+      } else {
+        return ChangePasswordFailure(
+            message: "The new passwords do not match.");
+      }
+    } catch (error) {
+      return ChangePasswordFailure(message: error.message);
+    }
+  }
+
+  AuthState _mapRequestChangePassword(
+      RequestChangePassword requestChangePassword) {
+    // if ( != AuthService.EMAILANDPASSWORD) {
+    //   return CannotChangePassword(message: "Sorry. You cannot change your password");
+    // } else {
+    return CanChangePassword();
+  }
 
   void saveAuthService(String service) async {
     final prefs = await SharedPreferences.getInstance();

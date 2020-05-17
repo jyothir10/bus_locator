@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BusCard4.dart';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'Bus Details Screen.dart';
 

@@ -104,7 +104,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   color: HexColor("#28284d"),
                 ),
                 RadioListTile(
-                  value: 1,
+                  value: 3,
                   groupValue: selectedRadioTile,
                   title: Text(
                     "Paytm",
