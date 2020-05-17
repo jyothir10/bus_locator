@@ -8,11 +8,15 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'orderScreen.dart';
+import 'package:geolocator/geolocator.dart';
 
 final _firestore = Firestore.instance;
 String selectedBus;
 var busDetails;
 var busData;
+double latitude;
+double longitude;
+
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -21,6 +25,18 @@ class Destination extends StatefulWidget {
 }
 
 class _DestinationState extends State<Destination> {
+
+  void getLocation() async {
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
+    latitude = position.latitude;
+    longitude = position.longitude;
+    print(position);
+    List<Placemark> placemark = await Geolocator().placemarkFromCoordinates(latitude,longitude);
+    print(placemark);
+  }
+
+
+
   Future getBusDetails(String busName) async {
     try {
       var querySnapshot = await _firestore
@@ -43,6 +59,7 @@ class _DestinationState extends State<Destination> {
 
   void initState() {
     super.initState();
+    getLocation();
     _controller = TextEditingController();
   }
 

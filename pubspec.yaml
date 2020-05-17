@@ -46,7 +46,7 @@ dependencies:
   flare_flutter: ^2.0.3
   webview_flutter: ^0.3.18
   connectivity:
-
+  geolocator: ^5.3.1
 
 
 dev_dependencies:
