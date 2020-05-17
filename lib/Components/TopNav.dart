@@ -7,12 +7,12 @@ import 'Constants.dart';
 import 'TabBar.dart';
 
 class TopNav extends StatelessWidget {
-  String hintText1 = 'From';
-  String hintText2 = "To";
+  final String hintText1;
+  final String hintText2 = "To";
   final Function onPressed;
   final TextEditingController controller2;
   final Icon icon;
-  TopNav({this.onPressed, this.controller2, this.icon});
+  TopNav({this.onPressed, this.controller2, this.icon, this.hintText1});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -107,7 +107,6 @@ class TopNav extends StatelessWidget {
                               fontSize: 15,
                             ),
                             onChanged: (value) {
-                              hintText2 = value;
                               //TODO:Destination point selection
                             },
                           ),

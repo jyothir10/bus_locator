@@ -9,6 +9,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'orderScreen.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 final _firestore = Firestore.instance;
 String selectedBus;
@@ -16,7 +17,24 @@ var busDetails;
 var busData;
 double latitude;
 double longitude;
-
+var currentPlace;
+var alertStyle = AlertStyle(
+  overlayColor: kPageBackgroundColor,
+  animationType: AnimationType.fromTop,
+  isCloseButton: false,
+  isOverlayTapDismiss: false,
+  descStyle: TextStyle(fontWeight: FontWeight.bold),
+  animationDuration: Duration(milliseconds: 400),
+  alertBorder: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(10.0),
+    side: BorderSide(
+      color: Colors.grey,
+    ),
+  ),
+  titleStyle: TextStyle(
+    color: Colors.red,
+  ),
+);
 
 class Destination extends StatefulWidget {
   static String id = 'Destination_Screen';
@@ -25,17 +43,46 @@ class Destination extends StatefulWidget {
 }
 
 class _DestinationState extends State<Destination> {
-
   void getLocation() async {
-    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
-    latitude = position.latitude;
-    longitude = position.longitude;
-    print(position);
-    List<Placemark> placemark = await Geolocator().placemarkFromCoordinates(latitude,longitude);
-    print(placemark);
+    try {
+      Position position = await Geolocator().getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
+      latitude = position.latitude;
+      longitude = position.longitude;
+      print(position);
+      List<Placemark> placemark =
+          await Geolocator().placemarkFromCoordinates(latitude, longitude);
+      Placemark place = placemark[0];
+      print(place.locality);
+      setState(() {
+        currentPlace = place.locality;
+      });
+      print(currentPlace);
+    } catch (e) {
+      print(e);
+      Alert(
+        style: alertStyle,
+        context: context,
+        type: AlertType.error,
+        title: 'Connection Error!',
+        desc: 'Please turn on your network connection',
+        buttons: [
+          DialogButton(
+            onPressed: () {
+              //TODO:turn on the connection
+              Navigator.pop(context);
+            },
+            color: kBottomBarColor,
+            child: Text(
+              'ok',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            width: 120,
+          )
+        ],
+      ).show();
+    }
   }
-
-
 
   Future getBusDetails(String busName) async {
     try {
@@ -70,11 +117,9 @@ class _DestinationState extends State<Destination> {
 
   @override
   Widget build(BuildContext context) {
-    String hintText1 = 'From';
-    String hintText2 = "To";
-
     List<Widget> buses = [
       TopNav(
+        hintText1: currentPlace,
         controller2: _controller,
         onPressed: () =>
             Navigator.pushReplacementNamed(context, TabBarClass.id),
