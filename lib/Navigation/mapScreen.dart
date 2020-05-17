@@ -135,6 +135,7 @@ class _MapScreenState extends State<MapScreen> {
         child: Column(
           children: <Widget>[
             TopNav(
+              hintText1: currentPlace,
               controller2: _controller2,
               onPressed: () => Navigator.pushNamed(context, Destination.id),
               icon: Icon(

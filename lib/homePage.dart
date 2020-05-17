@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
       longitude = position.longitude;
       print(position);
       List<Placemark> placemark =
-      await Geolocator().placemarkFromCoordinates(latitude, longitude);
+          await Geolocator().placemarkFromCoordinates(latitude, longitude);
       Placemark place = placemark[0];
       print(place.locality);
       setState(() {
@@ -137,12 +137,14 @@ class _HomePageState extends State<HomePage> {
     _controller = TextEditingController();
     connectivityCheck();
   }
-@override
+
+  @override
   void dispose() {
     // TODO: implement dispose
-  _controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     String hintText1 = 'From';
@@ -252,6 +254,7 @@ class _HomePageState extends State<HomePage> {
           child: ListView(
         children: <Widget>[
           TopNav(
+            hintText1: currentPlace,
             controller2: _controller,
             onPressed: () => Navigator.pushNamed(context, MapScreen.id),
             icon: Icon(
