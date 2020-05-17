@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         RateScreen.id: (context) => RateScreen(),
         ResetPassword.id: (context) => ResetPassword(),
         WebViewMap.id: (context) => WebViewMap(),
-        TicketDetails.id:(context)=>TicketDetails(),
+        TicketDetails.id: (context) => TicketDetails(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
