@@ -1,5 +1,6 @@
 import 'package:bus_locator/Components/reusableCard.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
+import 'package:bus_locator/screens/TicketDetails%20Screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
@@ -106,7 +107,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 color: kButtonActiveColor,
                 text: 'Continue',
                 onPress: () {
-                  Navigator.pushNamed(context, PaymentScreen.id);
+                  Navigator.pushNamed(context, TicketDetails.id);
                 },
                 textColor: Colors.white,
               ),
