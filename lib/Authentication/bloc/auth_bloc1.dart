@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
+import 'package:bus_locator/logger/logger.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Auth _auth = Auth();
@@ -14,8 +15,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthState get initialState => AuthInitial();
 
   @override
+  void onEvent(AuthEvent event) {
+    super.onEvent(event);
+    log("AUTHEVENT", event.toString());
+  }
+
+  @override
+  void onTransition(Transition transition) {
+    super.onTransition(transition);
+    log("AUTHSTATE", transition.toString());
+  }
+
+  @override
   Stream<AuthState> mapEventToState(AuthEvent event) async* {
-    AuthState state;
     yield AuthLoading();
     // if (event is InjectService) {
     //   state = _mapInjectService(event);
@@ -100,16 +112,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         yield ChangePasswordSuccess(
             message: "You have successfully changed your password.");
       } else {
-        yield ChangePasswordFailure(
-            message: "The new passwords do not match.");
+        yield ChangePasswordFailure(message: "The new passwords do not match.");
       }
     } catch (error) {
       yield ChangePasswordFailure(message: error.message);
     }
   }
 
-  Stream<AuthState> _mapRequestChangePassword (
-      RequestChangePassword requestChangePassword) async*{
+  Stream<AuthState> _mapRequestChangePassword(
+      RequestChangePassword requestChangePassword) async* {
     // if ( != AuthService.EMAILANDPASSWORD) {
     //   return CannotChangePassword(message: "Sorry. You cannot change your password");
     // } else {
