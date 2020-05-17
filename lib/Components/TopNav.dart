@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'Constants.dart';
+import 'TabBar.dart';
 
 class TopNav extends StatelessWidget {
+  String hintText1 = 'From';
+  String hintText2 = "To";
   final Function onPressed;
   final TextEditingController controller2;
   TopNav({this.onPressed, this.controller2});
@@ -34,7 +37,7 @@ class TopNav extends StatelessWidget {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: TextField(
                           decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
@@ -42,7 +45,7 @@ class TopNav extends StatelessWidget {
                                 color: Color(0xFF28284D),
                               ),
                             ),
-                            hintText: 'From',
+                            hintText: hintText1,
                             hintStyle: TextStyle(color: Colors.white),
                           ),
                           controller: controller2,
@@ -83,24 +86,28 @@ class TopNav extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0xFF28284D),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 11),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFF28284D),
+                              ),
                             ),
+                            hintText: hintText2,
+                            hintStyle: TextStyle(color: Colors.white),
                           ),
-                          hintText: 'To',
-                          hintStyle: TextStyle(color: Colors.white),
+                          controller: controller2,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
+                          onChanged: (value) {
+                            hintText2 = value;
+                            //TODO:Destination point selection
+                          },
                         ),
-                        controller: controller2,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                        ),
-                        onChanged: (value) {
-                          //TODO:Destination point selection
-                        },
                       ),
                     ),
                   ],
@@ -117,12 +124,12 @@ class TopNav extends StatelessWidget {
                         backgroundColor: Colors.white.withOpacity(0.8),
                         radius: 25,
                         child: Icon(
-                          Icons.search,
+                          Icons.compare_arrows,
                           color: kPageBackgroundColor,
-                          size: 35,
+                          size: 40,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               )
