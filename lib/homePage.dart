@@ -253,14 +253,17 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
           child: ListView(
         children: <Widget>[
-          TopNav(
-            hintText1: currentPlace,
-            controller2: _controller,
-            onPressed: () => Navigator.pushNamed(context, MapScreen.id),
-            icon: Icon(
-              Icons.search,
-              size: 40,
-              color: kPageBackgroundColor,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 8, 8, 4),
+            child: TopNav(
+              hintText1: currentPlace,
+              controller2: _controller,
+              onPressed: () => Navigator.pushNamed(context, MapScreen.id),
+              icon: Icon(
+                Icons.search,
+                size: 40,
+                color: kPageBackgroundColor,
+              ),
             ),
           ),
           Padding(

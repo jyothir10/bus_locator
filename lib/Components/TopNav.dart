@@ -235,7 +235,7 @@ class TopNav extends StatelessWidget {
                   child: GestureDetector(
                     onTap: onPressed,
                     child: CircleAvatar(
-                      backgroundColor: HexColor("#693ebd"),
+                      backgroundColor: Colors.white70,
                       radius: 25,
                       child: icon,
                     ),
