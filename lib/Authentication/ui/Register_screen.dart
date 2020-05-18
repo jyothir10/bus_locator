@@ -10,6 +10,7 @@ import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 
 class RegisterScreen extends StatelessWidget {
+  TextEditingController controller;
   static const String id = 'Register_Screen';
   final InputCard email = InputCard("Email", 0, false);
   final InputCard password = InputCard("Password", 0, true);
@@ -72,12 +73,85 @@ class RegisterScreen extends StatelessWidget {
               ],
             ),
             Center(
-              child: Text(
-                "Forgot Password?",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: HexColor("#ae67d5")),
+              child: GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        elevation: 16,
+                        child: Container(
+                            decoration: BoxDecoration(
+                              color: kPageBackgroundColor,
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            padding: EdgeInsets.all(10.0),
+                            height: 250,
+                            width: 360,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Card(
+                                  margin: EdgeInsets.symmetric(
+                                      vertical: 5, horizontal: 5),
+                                  color: HexColor("#38385c"),
+                                  child: TextFormField(
+                                    obscureText: false,
+                                    controller: controller,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 22),
+                                    decoration: InputDecoration(
+                                      hintText: 'Enter your email',
+                                      hintStyle: TextStyle(
+                                          color: Colors.white54, fontSize: 20),
+                                      contentPadding: EdgeInsets.all(15.0),
+                                      border: InputBorder.none,
+                                      filled: true,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: 90,
+                                  height: 45,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(40)),
+                                  child: FlatButton(
+                                    color: HexColor("#693abd"),
+                                    textColor: Colors.white,
+                                    disabledColor: Colors.grey,
+                                    disabledTextColor: Colors.black,
+                                    padding: EdgeInsets.all(2.0),
+                                    splashColor: Colors.blueAccent,
+                                    onPressed: () {
+                                      //TODO:store the email address.
+                                    },
+                                    child: Container(
+                                      width: 200,
+                                      child: Center(
+                                        child: Text(
+                                          "Done",
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                      );
+                    },
+                  );
+                },
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: HexColor("#ae67d5")),
+                ),
               ),
             ),
             Padding(
