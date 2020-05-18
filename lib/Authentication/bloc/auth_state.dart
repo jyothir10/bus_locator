@@ -87,3 +87,13 @@ class ForgotPasswordFailure extends AuthState{
   final String message;
   ForgotPasswordFailure({this.message});
 }
+
+class UserProfileSuccess extends AuthState {
+  final Map userInfo;
+  UserProfileSuccess(this.userInfo);
+}
+
+class UserProfileFailure extends AuthState {
+  final String message;
+  UserProfileFailure({this.message});
+}

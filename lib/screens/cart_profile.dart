@@ -35,64 +35,67 @@ class _CartProfileState extends State<CartProfile> {
           ),
         ),
       ),
-      body: BlocListener<AuthBloc, AuthState>(
-        child: Container(
-          color: kPageBackgroundColor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              BusCardProfilePage(
-                name: 'John Doe',
-                email: 'john@gmail.com',
-                place: 'Gotham',
-              ),
-              SizedBox(
-                height: 220,
-              ),
-              Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: RoundedButton(
-                      minWidth: 370,
-                      color: kButtonDarkColor,
-                      text: "Change Password",
-                      textColor: kButtonActiveColor,
-                      textSize: 18,
-                      onPress: () {
-                        Navigator.pushNamed(context, ResetPassword.id);
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: RoundedButton(
-                      minWidth: 370,
-                      color: kButtonActiveColor,
-                      text: "Logout",
-                      textColor: Colors.white,
-                      textSize: 18,
-                      onPress: () {
-                        _bloc.add(Logout());
-                      },
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-        listener: (BuildContext context, AuthState state) {
-          if (state is LogoutSuccess) {
-            print('logged out');
-            Navigator.pushReplacementNamed(context, WelcomeScreen.id);
-          }  else if (state is CannotChangePassword) {
-            showInSnackBar(context, state.message);
-          }
-        },
-      ),
     );
   }
+}
+
+Widget profilePageBuilder(BuildContext context, Map userInfo) {
+  final _bloc = BlocProvider.of<AuthBloc>(context);
+  return BlocListener<AuthBloc, AuthState>(
+    child: Container(
+      color: kPageBackgroundColor,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          BusCardProfilePage(
+            name: userInfo["name"],
+            email: userInfo["email"],
+            place: userInfo["place"],
+          ),
+          SizedBox(
+            height: 220,
+          ),
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: RoundedButton(
+                  minWidth: 370,
+                  color: kButtonDarkColor,
+                  text: "Change Password",
+                  textColor: kButtonActiveColor,
+                  textSize: 18,
+                  onPress: () {
+                    Navigator.pushNamed(context, ResetPassword.id);
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: RoundedButton(
+                  minWidth: 370,
+                  color: kButtonActiveColor,
+                  text: "Logout",
+                  textColor: Colors.white,
+                  textSize: 18,
+                  onPress: () {
+                    _bloc.add(Logout());
+                  },
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    ),
+    listener: (BuildContext context, AuthState state) {
+      if (state is LogoutSuccess) {
+        Navigator.pushReplacementNamed(context, WelcomeScreen.id);
+      } else if (state is CannotChangePassword) {
+        showInSnackBar(context, state.message);
+      }
+    },
+  );
 }
 
 class BusCardProfilePage extends StatelessWidget {
