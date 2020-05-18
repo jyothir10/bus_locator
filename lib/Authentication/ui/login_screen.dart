@@ -244,6 +244,6 @@ class LoginScreen extends StatelessWidget {
       showInSnackBar(context, state.message);
     } else if (state is ForgotPasswordFailure) {
       showInSnackBar(context, state.message);
-    }
+    } 
   }
 }
