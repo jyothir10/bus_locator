@@ -4,10 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bus_locator/Payment/screens/additionals.dart';
 
-import 'package:google_maps_webservice/places.dart';
-
-import 'package:flutter_google_places/flutter_google_places.dart';
-
 import 'Constants.dart';
 import 'TabBar.dart';
 
@@ -209,24 +205,6 @@ class TopNav extends StatelessWidget {
                               },
                             ),
                             TextField(
-                              onTap: () async {
-//                                Prediction p = await PlacesAutocomplete.show(
-//                                  context: context,
-//                                  apiKey:
-//                                      "AIzaSyAGSBCHZI59pcEpY33JZIxsVdFAAQySwkE",
-//                                  language: "en",
-//                                  components: [
-//                                    Component(Component.country, "in")
-//                                  ],
-//                                );
-                                Prediction p = await PlacesAutocomplete.show(
-                                  context: context,
-                                  apiKey:
-                                      "AIzaSyAGSBCHZI59pcEpY33JZIxsVdFAAQySwkE",
-                                  mode: Mode.overlay, // Mode.fullscreen
-                                  language: "en",
-                                );
-                              },
                               decoration: InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
