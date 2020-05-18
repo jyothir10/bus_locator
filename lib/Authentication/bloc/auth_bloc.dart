@@ -42,8 +42,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield* _mapChangePassword(event);
     } else if (event is StartUp) {
       yield* _mapStartUp();
-    } else if (event is RequestChangePassword) {
-      yield* _mapRequestChangePassword(event);
+    } else if (event is ForgotPassword) {
+      yield* _mapForgotPassword(event);
     }
   }
 
@@ -60,7 +60,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final String message = loginPlatformExceptionHandler(error.code);
       yield LoginFailure(message: message);
     } catch (error) {
-      yield LoginFailure(message: error.message!=null? error.message : LOGIN_ERROR_MESSAGE);
+      yield LoginFailure(
+          message: error.message != null ? error.message : LOGIN_ERROR_MESSAGE);
     }
   }
 
@@ -74,10 +75,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Stream<AuthState> _mapCreateAccount(CreateAccount createAccount) async* {
+    // TODO (farih) Refactor this
     if (!_validateEmail(createAccount.email)) {
       yield CreateAccountFailure(message: INVALID_EMAIL_MESSAGE);
-    }
-    else if (!_validatePasswordLength(createAccount.password)) {
+    } else if (!_validatePasswordLength(createAccount.password)) {
       yield CreateAccountFailure(message: PASSWORDS_LENGTH_MESSAGE);
     } else if (!_passwordsMatch(
         createAccount.password, createAccount.confirmPassword)) {
@@ -91,9 +92,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             : CreateAccountFailure(message: CREATE_ACCOUNT_SUCCESS_MESSAGE);
       } on PlatformException catch (error) {
         String message = createAccountPlatformExceptionHandler(error.code);
-        yield CreateAccountFailure(message:message);
+        yield CreateAccountFailure(message: message);
       } catch (error) {
-        yield CreateAccountFailure(message: error.message != null ? error.message : CREATE_ACCOUNT_ERROR_MESSAGE );
+        yield CreateAccountFailure(
+            message: error.message != null
+                ? error.message
+                : CREATE_ACCOUNT_ERROR_MESSAGE);
       }
     }
   }
@@ -123,7 +127,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       String message = changePasswordPlatformExceptionHandler(error.code);
       yield ChangePasswordFailure(message: message);
     } catch (error) {
-      yield ChangePasswordFailure(message: error.message != null ? error.message: CHANGE_PASSWORD_ERROR_MESSAGE);
+      yield ChangePasswordFailure(
+          message: error.message != null
+              ? error.message
+              : CHANGE_PASSWORD_ERROR_MESSAGE);
     }
   }
 
@@ -135,7 +142,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield CanChangePassword();
   }
 
-  
+  Stream<AuthState> _mapForgotPassword(ForgotPassword forgotPassword) async* {
+    try {
+      await _auth.sendPasswordResetEmail(forgotPassword.email);
+      yield ForgotPasswordSuccess(message: FORGOT_PASSWORD_SUCCESS_MESSAGE);
+    } on PlatformException catch (error) {
+      String message = forgotPasswordPlatformExceptionHandler(error.code);
+      yield ForgotPasswordFailure(message: message);
+    } catch (error) {
+      yield ForgotPasswordFailure(
+          message: (error.message != null)
+              ? error.message
+              : FORGOT_PASSWORD_ERROR_MESSAGE);
+    }
+  }
+
   bool _validatePasswordLength(String p1) {
     return p1.length >= 8;
   }

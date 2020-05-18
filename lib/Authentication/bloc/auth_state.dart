@@ -78,3 +78,12 @@ class CannotChangePassword extends AuthState{
   final String message;
   CannotChangePassword({this.message});
 }
+
+class ForgotPasswordSuccess extends AuthState{
+  final String message;
+  ForgotPasswordSuccess({this.message});
+}
+class ForgotPasswordFailure extends AuthState{
+  final String message;
+  ForgotPasswordFailure({this.message});
+}

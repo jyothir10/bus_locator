@@ -74,6 +74,14 @@ class Auth {
     }
   }
 
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } catch (error) {
+      throw error;
+    }
+  }
+
   Future<FirebaseUser> _facebookLogin() async {
     _facebookLoginHandler = FacebookLogin();
     _facebookLoginHandler.loginBehavior = FacebookLoginBehavior.webViewOnly;
