@@ -44,6 +44,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield* _mapStartUp();
     } else if (event is ForgotPassword) {
       yield* _mapForgotPassword(event);
+    } else if (event is UserProfile) {
+      yield* _mapUserProfile(event);
     }
   }
 
@@ -155,6 +157,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           message: (error.message != null)
               ? error.message
               : FORGOT_PASSWORD_ERROR_MESSAGE);
+    }
+  }
+
+  Stream<AuthState> _mapUserProfile(UserProfile userProfile) async*{
+    try {
+      Map userInfo = await _auth.getUserProfile();
+      yield UserProfileSuccess(userInfo);
+    } catch(error) {
+      yield UserProfileFailure(message:USER_PROFILE_FAILURE_MESSAGE);
     }
   }
 

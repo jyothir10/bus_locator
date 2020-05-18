@@ -89,3 +89,5 @@ class ForgotPassword extends AuthEvent {
     return "Forgot Password";
   }
 }
+
+class UserProfile extends AuthEvent {}

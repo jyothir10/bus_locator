@@ -21,8 +21,14 @@ class CartProfile extends StatefulWidget {
 
 class _CartProfileState extends State<CartProfile> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final _bloc = BlocProvider.of<AuthBloc>(context);
+    _bloc.add(UserProfile());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
@@ -35,66 +41,75 @@ class _CartProfileState extends State<CartProfile> {
           ),
         ),
       ),
+      body: BlocListener<AuthBloc, AuthState>(
+        child: BlocBuilder<AuthBloc, AuthState>(
+            builder: (BuildContext context, AuthState state) {
+          if (state is UserProfileSuccess) {
+            return profilePageBuilder(context, state.userInfo);
+          } else if (state is UserProfileFailure) {
+            return Text(state.message);
+          } else
+            return CircularProgressIndicator();
+        }),
+        listener: (BuildContext context, AuthState state) {
+          if (state is LogoutSuccess) {
+            Navigator.pushReplacementNamed(context, WelcomeScreen.id);
+          } else if (state is CannotChangePassword) {
+            showInSnackBar(context, state.message);
+          }
+        },
+      ),
     );
   }
 }
 
 Widget profilePageBuilder(BuildContext context, Map userInfo) {
   final _bloc = BlocProvider.of<AuthBloc>(context);
-  return BlocListener<AuthBloc, AuthState>(
-    child: Container(
-      color: kPageBackgroundColor,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          BusCardProfilePage(
-            name: userInfo["name"],
-            email: userInfo["email"],
-            place: userInfo["place"],
-          ),
-          SizedBox(
-            height: 220,
-          ),
-          Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: RoundedButton(
-                  minWidth: 370,
-                  color: kButtonDarkColor,
-                  text: "Change Password",
-                  textColor: kButtonActiveColor,
-                  textSize: 18,
-                  onPress: () {
-                    Navigator.pushNamed(context, ResetPassword.id);
-                  },
-                ),
+  return Container(
+    color: kPageBackgroundColor,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        BusCardProfilePage(
+          name: userInfo["name"],
+          email: userInfo["email"],
+          place: userInfo["place"],
+        ),
+        SizedBox(
+          height: 220,
+        ),
+        Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: RoundedButton(
+                minWidth: 370,
+                color: kButtonDarkColor,
+                text: "Change Password",
+                textColor: kButtonActiveColor,
+                textSize: 18,
+                onPress: () {
+                  Navigator.pushNamed(context, ResetPassword.id);
+                },
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: RoundedButton(
-                  minWidth: 370,
-                  color: kButtonActiveColor,
-                  text: "Logout",
-                  textColor: Colors.white,
-                  textSize: 18,
-                  onPress: () {
-                    _bloc.add(Logout());
-                  },
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: RoundedButton(
+                minWidth: 370,
+                color: kButtonActiveColor,
+                text: "Logout",
+                textColor: Colors.white,
+                textSize: 18,
+                onPress: () {
+                  _bloc.add(Logout());
+                },
               ),
-            ],
-          )
-        ],
-      ),
+            ),
+          ],
+        )
+      ],
     ),
-    listener: (BuildContext context, AuthState state) {
-      if (state is LogoutSuccess) {
-        Navigator.pushReplacementNamed(context, WelcomeScreen.id);
-      } else if (state is CannotChangePassword) {
-        showInSnackBar(context, state.message);
-      }
-    },
   );
 }
 
@@ -145,7 +160,7 @@ class BusCardProfilePage extends StatelessWidget {
                         ),
                         Text(
                           email,
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+                          style: TextStyle(color: Colors.white, fontSize: 10),
                         ),
                         SizedBox(
                           height: 5,

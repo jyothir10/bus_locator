@@ -1,9 +1,12 @@
+import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
+import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/homePage.dart' as firstPage;
 import 'package:bus_locator/screens/CartScreen.dart' as thirdPage;
 import 'package:bus_locator/screens/destination_screen.dart' as secondPage;
 import 'package:bus_locator/screens/cart_profile.dart' as fourthPage;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TabBarClass extends StatefulWidget {
@@ -31,6 +34,7 @@ class _TabBarClassState extends State<TabBarClass>
 
   @override
   Widget build(BuildContext context) {
+    final _bloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       bottomNavigationBar: Material(
         color: kBottomBarColor,

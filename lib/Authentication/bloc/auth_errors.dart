@@ -46,6 +46,8 @@ const String FORGOT_PASSWORD_SUCCESS_MESSAGE =
     "A password reset email has been sent to your inbox.";
 const String FORGOT_PASSWORD_ERROR_MESSAGE =
     "There has been an error while processing your request.";
+  
+const String USER_PROFILE_FAILURE_MESSAGE = "There has been an error loading your profile.";
 
 String loginPlatformExceptionHandler(String errorCode) {
   print(errorCode);

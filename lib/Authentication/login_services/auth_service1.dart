@@ -87,7 +87,19 @@ class Auth {
       FirebaseUser user = await getCurrentUser();
       return user.providerId;
     } catch (error) {
-      print(error);
+      throw error;
+    }
+  }
+
+  Future<Map> getUserProfile() async {
+    try {
+      FirebaseUser user = await getCurrentUser();
+      return {
+        "name": user.displayName ?? "Person",
+        "email": user.email ?? "email",
+        "place": "Kannur"
+      };
+    } catch (error) {
       throw error;
     }
   }
