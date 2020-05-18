@@ -5,10 +5,12 @@ import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Authentication/ui/additionals.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+final _firestore = Firestore.instance;
 
 class TicketDetails extends StatefulWidget {
   static String id = 'Ticket_Details_Screen';
@@ -18,41 +20,8 @@ class TicketDetails extends StatefulWidget {
 
 class _TicketDetailsState extends State<TicketDetails> {
   var ticketNo;
-  List<DropdownMenuItem> noOfTickets = [
-    DropdownMenuItem(
-      child: Text('1'),
-    ),
-    DropdownMenuItem(
-      child: Text('2'),
-    ),
-    DropdownMenuItem(
-      child: Text('3'),
-    ),
-    DropdownMenuItem(
-      child: Text('4'),
-    ),
-    DropdownMenuItem(
-      child: Text('5'),
-    ),
-    DropdownMenuItem(
-      child: Text('6'),
-    ),
-    DropdownMenuItem(
-      child: Text('7'),
-    ),
-    DropdownMenuItem(
-      child: Text('8'),
-    ),
-    DropdownMenuItem(
-      child: Text('9'),
-    ),
-    DropdownMenuItem(
-      child: Text('10'),
-    ),
-  ];
-
-  final name = InputCard("Name", 0, true);
-  final age = InputCard("Age", 0, true);
+  String name;
+  String age;
 
   @override
   Widget build(BuildContext context) {
@@ -94,9 +63,23 @@ class _TicketDetailsState extends State<TicketDetails> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     createLabel("Name", 0),
-                    name,
+                    InputField(
+                      hintText: "Name",
+                      obscureText: false,
+                      horizontal: 0,
+                      onChanged: (value) {
+                        name = value;
+                      },
+                    ),
                     createLabel("Age", 0),
-                    age,
+                    InputField(
+                      hintText: "Age",
+                      obscureText: false,
+                      horizontal: 0,
+                      onChanged: (value) {
+                        age = value;
+                      },
+                    ),
                   ],
                 ),
                 Padding(
@@ -114,21 +97,38 @@ class _TicketDetailsState extends State<TicketDetails> {
                   color: HexColor("#38385c"),
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                    child: DropdownButton(
+                    child: DropdownButton<String>(
+                      items: <String>[
+                        '1',
+                        '2',
+                        '3',
+                        '4',
+                        '5',
+                        '6',
+                        '7',
+                        '8',
+                        '9',
+                        '10'
+                      ].map((String value) {
+                        return DropdownMenuItem<String>(
+                            value: value, child: Text(value));
+                      }).toList(),
                       underline: SizedBox(),
                       style: TextStyle(
                         color: Colors.grey,
                       ),
                       icon: Icon(Icons.arrow_drop_down),
                       iconEnabledColor: Colors.grey[900],
-                      items: noOfTickets,
                       value: ticketNo,
                       hint: Text(
                         "No : of tickets",
                         style: TextStyle(color: Colors.grey),
                       ),
                       onChanged: (value) {
-                        ticketNo = value;
+                        setState(() {
+                          ticketNo = value;
+                          print(ticketNo);
+                        });
                         //TODO : calculate total price
                       },
                     ),
@@ -184,7 +184,17 @@ class _TicketDetailsState extends State<TicketDetails> {
                         padding: EdgeInsets.all(2.0),
                         splashColor: Colors.blueAccent,
                         onPressed: () {
-                          //TODO : goto next payment page
+                          setState(() {
+                            try {
+                              _firestore.collection('ticketdetails').add({
+                                'name': name,
+                                'age': age,
+                                'passengerno': ticketNo,
+                              });
+                            } catch (e) {
+                              print(e);
+                            }
+                          });
                           Navigator.pushNamed(context, PaymentScreen.id);
                         },
                       ),
@@ -199,12 +209,3 @@ class _TicketDetailsState extends State<TicketDetails> {
     );
   }
 }
-
-//DropdownButton(
-//elevation: 5,
-//items: noOfTickets,
-//hint: Text(
-//"No : of tickets",
-//style: TextStyle(color: Colors.white),
-//),
-//),

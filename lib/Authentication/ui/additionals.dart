@@ -98,6 +98,7 @@ class InputCard extends StatelessWidget {
   final String hintText;
   final double horizontal;
   final bool obscureText;
+
   InputCard(this.hintText, this.horizontal, this.obscureText, {Key key})
       : super(key: key);
   @override
@@ -175,7 +176,6 @@ void stateListener(BuildContext context, AuthState state) async {
   } else if (state is LoginFailure) {
     showInSnackBar(context, state.message);
   } else if (state is AuthLoading) {
-    
   } else if (state is CreateAccountSuccess) {
     showInSnackBar(context, state.message);
     await Future.delayed(Duration(seconds: 1));
@@ -184,5 +184,38 @@ void stateListener(BuildContext context, AuthState state) async {
     showInSnackBar(context, state.message);
   } else if (state is LogoutSuccess) {
     showInSnackBar(context, "Please login to continue.");
+  }
+}
+
+class InputField extends StatelessWidget {
+  final TextEditingController _controller = TextEditingController();
+  TextEditingController get controller => _controller;
+  final String hintText;
+  final double horizontal;
+  final bool obscureText;
+  final Function onChanged;
+
+  InputField(
+      {this.hintText, this.obscureText, this.horizontal, this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.symmetric(vertical: 5, horizontal: horizontal),
+      color: HexColor("#38385c"),
+      child: TextFormField(
+        onChanged: onChanged,
+        obscureText: obscureText,
+        controller: _controller,
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          hintText: "$hintText",
+          hintStyle: TextStyle(color: Colors.white54),
+          contentPadding: EdgeInsets.all(15.0),
+          border: InputBorder.none,
+          filled: true,
+        ),
+      ),
+    );
   }
 }
