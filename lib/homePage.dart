@@ -9,12 +9,13 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:bus_locator/Components/BottomBar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
-import 'Authentication/bloc/auth_bloc1.dart';
+import 'Authentication/bloc/auth_bloc.dart';
 import 'Authentication/bloc/auth_event.dart';
 import 'Components/customListTile.dart';
 import 'Navigation/mapScreen.dart';
@@ -45,6 +46,52 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  double latitude;
+  double longitude;
+  var currentPlace;
+  //TODO:current location
+  void getLocation() async {
+    try {
+      Position position = await Geolocator().getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
+      latitude = position.latitude;
+      longitude = position.longitude;
+      print(position);
+      List<Placemark> placemark =
+          await Geolocator().placemarkFromCoordinates(latitude, longitude);
+      Placemark place = placemark[0];
+      print(place.locality);
+      setState(() {
+        currentPlace = place.locality;
+      });
+      print(currentPlace);
+    } catch (e) {
+      print(e);
+      Alert(
+        style: alertStyle,
+        context: context,
+        type: AlertType.error,
+        title: 'Connection Error!',
+        desc: 'Please turn on your network connection',
+        buttons: [
+          DialogButton(
+            onPressed: () {
+              //TODO:turn on the connection
+              Navigator.pop(context);
+            },
+            color: kBottomBarColor,
+            child: Text(
+              'ok',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            width: 120,
+          )
+        ],
+      ).show();
+    }
+  }
+
+  //TODO:internet connection checking.
   void connectivityCheck() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile) {
@@ -86,7 +133,16 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    getLocation();
+    _controller = TextEditingController();
     connectivityCheck();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -197,13 +253,17 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
           child: ListView(
         children: <Widget>[
-          TopNav(
-            controller2: _controller,
-            onPressed: () => Navigator.pushNamed(context, MapScreen.id),
-            icon: Icon(
-              Icons.search,
-              size: 40,
-              color: kPageBackgroundColor,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 8, 8, 4),
+            child: TopNav(
+              hintText1: currentPlace,
+              controller2: _controller,
+              onPressed: () => Navigator.pushNamed(context, MapScreen.id),
+              icon: Icon(
+                Icons.search,
+                size: 40,
+                color: kPageBackgroundColor,
+              ),
             ),
           ),
           Padding(

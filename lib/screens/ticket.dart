@@ -37,344 +37,354 @@ class _TicketScreenState extends State<TicketScreen> {
       child: Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
-          child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-              ),
-              margin: EdgeInsets.fromLTRB(30, 30, 30, 50),
-              height: double.maxFinite,
-              width: double.maxFinite,
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20)),
-                      color: kPageBackgroundColor,
-                    ),
-                    height: 200,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Column(
-//                      crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Text(
-                              "Boarding from",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Text("KLM",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.bold)),
-                            Text(
-                              "Kollam Main Bus Stop",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text("17th Dec 2020",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.white,
-                        ),
-                        Column(
-//                      crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Text(
-                              "Destination",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Text("KRM",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 40,
-                                    fontWeight: FontWeight.bold)),
-                            Text(
-                              "Karikode Bus Stop No1",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text("17th Dec 2020",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold)),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
+          child: Center(
+            child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                margin: EdgeInsets.fromLTRB(30, 30, 30, 50),
+                height: 600,
+                width: double.maxFinite,
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20)),
+                        color: kPageBackgroundColor,
+                      ),
                       height: 200,
-                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Column(
+//                      crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Passenger Name",
-                                style: TextStyle(color: Colors.purple[300]),
+                                "Boarding from",
+                                style: TextStyle(color: Colors.white),
                               ),
-                              Text("Ricard Marx",
+                              Text("KLM",
                                   style: TextStyle(
-                                      color: Color(0xff13132d),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20)),
-                              Divider(
-                                thickness: 1,
-                                height: 1,
-                                color: Colors.grey,
+                                      color: Colors.white,
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold)),
+                              Text(
+                                "Kollam Main Bus Stop",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              Text("Age",
-                                  style: TextStyle(color: Colors.purple[300])),
-                              Text("22",
+                              Text("17th Dec 2020",
                                   style: TextStyle(
-                                      color: Color(0xff13132d),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20)),
-                              Divider(
-                                thickness: 1,
-                                color: Colors.grey,
-                              ),
+                                      color: Colors.white,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Colors.white,
+                          ),
                           Column(
+//                      crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "No. of tickets",
-                                style: TextStyle(color: Colors.purple[300]),
+                                "Destination",
+                                style: TextStyle(color: Colors.white),
                               ),
-                              Text("1 person",
+                              Text("KRM",
                                   style: TextStyle(
-                                      color: Color(0xff13132d),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20)),
-                              Divider(
-                                thickness: 1,
-                                height: 1,
-                                color: Colors.grey,
+                                      color: Colors.white,
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold)),
+                              Text(
+                                "Karikode Bus Stop No1",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
                               ),
-                              Text("Bus Name",
-                                  style: TextStyle(color: Colors.purple[300])),
-                              Text("express",
+                              Text("17th Dec 2020",
                                   style: TextStyle(
-                                      color: Color(0xff13132d),
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20)),
-                              Divider(
-                                thickness: 1,
-                                color: Colors.grey,
-                              ),
+                                      color: Colors.white,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           )
                         ],
-                      )),
-                  Container(
-                    height: 150,
-                    child: QrImage(
-                      data: "ticket detail",
-                      version: QrVersions.auto,
-                      size: 100,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: Container(
-                      alignment: Alignment.bottomCenter,
-                      width: 250,
-                      height: 50,
-                      decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(5)),
-                      child: FlatButton(
-                        color: kPageBackgroundColor,
-                        textColor: Colors.white,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        padding: EdgeInsets.all(2.0),
-                        splashColor: Colors.blueAccent,
-                        onPressed: () {
-                          //TODO:Rate screen. two options show as a dialogue or navigate.
-                          //TODO:Backup=>Navigator.pushNamed(context, RateScreen.id);
-                          //TODO:required.
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              String feel = "0";
-                              double value = 0.0;
-                              double lastsection = 0.0;
-                              String feedbacktxt = "Very Poor";
-                              Color backgroundclr = Colors.red;
-                              return Dialog(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                elevation: 16,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: kPageBackgroundColor,
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                  padding: EdgeInsets.all(10.0),
-                                  height: 500,
-                                  width: 360,
-                                  child: Stack(
-                                    children: <Widget>[
-                                      Center(
-                                        child: FlareActor(
-                                          'assets/feelings.flr',
-                                          fit: BoxFit.contain,
-                                          alignment: Alignment.center,
-                                          animation: feel,
-                                        ),
-                                      ),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 60),
-                                            child: Text(
-                                              feedbacktxt,
-                                              style: TextStyle(
-                                                fontSize: 36,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ),
-                                          Slider(
-                                            min: 0.0,
-                                            max: 100.0,
-                                            value: value,
-                                            divisions: 100,
-                                            activeColor: Colors.white,
-                                            inactiveColor: Colors.black,
-                                            label: 'Set a value',
-                                            onChanged: (val) {
-                                              setState(() {
-                                                value = val;
-                                              });
-                                              if (value == 0.0) {
-                                                if (lastsection > 0.0) {
-                                                  setState(() {
-                                                    feel = "0-";
-                                                  });
-                                                }
-                                                setState(() {
-                                                  lastsection = 0.0;
-                                                  backgroundclr = Colors.red;
-                                                  feedbacktxt = "Very Poor";
-                                                });
-                                              } else if (value > 0.0 &&
-                                                  value < 25.0) {
-                                                if (lastsection == 0.0) {
-                                                  setState(() {
-                                                    feel = "0+";
-                                                  });
-                                                } else if (lastsection ==
-                                                    50.0) {
-                                                  setState(() {
-                                                    feel = "25-";
-                                                  });
-                                                }
-                                                setState(() {
-                                                  lastsection = 25.0;
-                                                  backgroundclr = Colors.orange;
-                                                  feedbacktxt = "Poor";
-                                                });
-                                              } else if (value >= 25.0 &&
-                                                  value < 50.0) {
-                                                if (lastsection == 25.0) {
-                                                  setState(() {
-                                                    feel = "25+";
-                                                  });
-                                                } else if (lastsection ==
-                                                    75.0) {
-                                                  setState(() {
-                                                    feel = "50-";
-                                                  });
-                                                }
-                                                setState(() {
-                                                  lastsection = 50.0;
-                                                  backgroundclr =
-                                                      Colors.orangeAccent;
-                                                  feedbacktxt = "Below Average";
-                                                });
-                                              } else if (value >= 50.0 &&
-                                                  value < 75.0) {
-                                                if (lastsection == 50.0) {
-                                                  setState(() {
-                                                    feel = "50+";
-                                                  });
-                                                } else if (lastsection ==
-                                                    100.0) {
-                                                  setState(() {
-                                                    feel = "75-";
-                                                  });
-                                                }
-                                                setState(() {
-                                                  lastsection = 75.0;
-                                                  backgroundclr = Colors.yellow;
-                                                  feedbacktxt = "Above Average";
-                                                });
-                                              } else if (value >= 75.0 &&
-                                                  value <= 100.0) {
-                                                if (lastsection == 75.0) {
-                                                  setState(() {
-                                                    feel = "75+";
-                                                  });
-                                                }
-                                                setState(() {
-                                                  lastsection = 100.0;
-                                                  backgroundclr = Colors.green;
-                                                  feedbacktxt = "Excellent";
-                                                });
-                                              }
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                        child: Container(
-                            width: 200,
-                            child: Center(child: Text("Rate your Ride"))),
                       ),
                     ),
-                  ),
-                ],
-              )),
+                    Container(
+                        height: 150,
+                        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  "Passenger Name",
+                                  style: TextStyle(color: Colors.purple[300]),
+                                ),
+                                Text("Ricard Marx",
+                                    style: TextStyle(
+                                        color: Color(0xff13132d),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20)),
+                                Divider(
+                                  thickness: 1,
+                                  height: 1,
+                                  color: Colors.grey,
+                                ),
+                                Text("Age",
+                                    style:
+                                        TextStyle(color: Colors.purple[300])),
+                                Text("22",
+                                    style: TextStyle(
+                                        color: Color(0xff13132d),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20)),
+                                Divider(
+                                  thickness: 1,
+                                  color: Colors.grey,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  "No. of tickets",
+                                  style: TextStyle(color: Colors.purple[300]),
+                                ),
+                                Text("1 person",
+                                    style: TextStyle(
+                                        color: Color(0xff13132d),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20)),
+                                Divider(
+                                  thickness: 1,
+                                  height: 1,
+                                  color: Colors.grey,
+                                ),
+                                Text("Bus Name",
+                                    style:
+                                        TextStyle(color: Colors.purple[300])),
+                                Text("express",
+                                    style: TextStyle(
+                                        color: Color(0xff13132d),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20)),
+                                Divider(
+                                  thickness: 1,
+                                  color: Colors.grey,
+                                ),
+                              ],
+                            )
+                          ],
+                        )),
+                    Container(
+                      height: 150,
+                      child: QrImage(
+                        data: "ticket detail",
+                        version: QrVersions.auto,
+                        size: 100,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        width: 250,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5)),
+                        child: FlatButton(
+                          color: kPageBackgroundColor,
+                          textColor: Colors.white,
+                          disabledColor: Colors.grey,
+                          disabledTextColor: Colors.black,
+                          padding: EdgeInsets.all(2.0),
+                          splashColor: Colors.blueAccent,
+                          onPressed: () {
+                            //TODO:Rate screen. two options show as a dialogue or navigate.
+                            //TODO:Backup=>Navigator.pushNamed(context, RateScreen.id);
+                            //TODO:required.
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                String feel = "0";
+                                double value = 0.0;
+                                double lastsection = 0.0;
+                                String feedbacktxt = "Very Poor";
+                                Color backgroundclr = Colors.red;
+                                return Dialog(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(40),
+                                  ),
+                                  elevation: 16,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: kPageBackgroundColor,
+                                      borderRadius: BorderRadius.circular(15.0),
+                                    ),
+                                    padding: EdgeInsets.all(10.0),
+                                    height: 500,
+                                    width: 360,
+                                    child: Stack(
+                                      children: <Widget>[
+                                        Center(
+                                          child: FlareActor(
+                                            'assets/feelings.flr',
+                                            fit: BoxFit.contain,
+                                            alignment: Alignment.center,
+                                            animation: feel,
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 60),
+                                              child: Text(
+                                                feedbacktxt,
+                                                style: TextStyle(
+                                                  fontSize: 36,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                            Slider(
+                                              min: 0.0,
+                                              max: 100.0,
+                                              value: value,
+                                              divisions: 100,
+                                              activeColor: Colors.white,
+                                              inactiveColor: Colors.black,
+                                              label: 'Set a value',
+                                              onChanged: (val) {
+                                                setState(() {
+                                                  value = val;
+                                                });
+                                                if (value == 0.0) {
+                                                  if (lastsection > 0.0) {
+                                                    setState(() {
+                                                      feel = "0-";
+                                                    });
+                                                  }
+                                                  setState(() {
+                                                    lastsection = 0.0;
+                                                    backgroundclr = Colors.red;
+                                                    feedbacktxt = "Very Poor";
+                                                  });
+                                                } else if (value > 0.0 &&
+                                                    value < 25.0) {
+                                                  if (lastsection == 0.0) {
+                                                    setState(() {
+                                                      feel = "0+";
+                                                    });
+                                                  } else if (lastsection ==
+                                                      50.0) {
+                                                    setState(() {
+                                                      feel = "25-";
+                                                    });
+                                                  }
+                                                  setState(() {
+                                                    lastsection = 25.0;
+                                                    backgroundclr =
+                                                        Colors.orange;
+                                                    feedbacktxt = "Poor";
+                                                  });
+                                                } else if (value >= 25.0 &&
+                                                    value < 50.0) {
+                                                  if (lastsection == 25.0) {
+                                                    setState(() {
+                                                      feel = "25+";
+                                                    });
+                                                  } else if (lastsection ==
+                                                      75.0) {
+                                                    setState(() {
+                                                      feel = "50-";
+                                                    });
+                                                  }
+                                                  setState(() {
+                                                    lastsection = 50.0;
+                                                    backgroundclr =
+                                                        Colors.orangeAccent;
+                                                    feedbacktxt =
+                                                        "Below Average";
+                                                  });
+                                                } else if (value >= 50.0 &&
+                                                    value < 75.0) {
+                                                  if (lastsection == 50.0) {
+                                                    setState(() {
+                                                      feel = "50+";
+                                                    });
+                                                  } else if (lastsection ==
+                                                      100.0) {
+                                                    setState(() {
+                                                      feel = "75-";
+                                                    });
+                                                  }
+                                                  setState(() {
+                                                    lastsection = 75.0;
+                                                    backgroundclr =
+                                                        Colors.yellow;
+                                                    feedbacktxt =
+                                                        "Above Average";
+                                                  });
+                                                } else if (value >= 75.0 &&
+                                                    value <= 100.0) {
+                                                  if (lastsection == 75.0) {
+                                                    setState(() {
+                                                      feel = "75+";
+                                                    });
+                                                  }
+                                                  setState(() {
+                                                    lastsection = 100.0;
+                                                    backgroundclr =
+                                                        Colors.green;
+                                                    feedbacktxt = "Excellent";
+                                                  });
+                                                }
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: Container(
+                              width: 200,
+                              child: Center(child: Text("Rate your Ride"))),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+          ),
         ),
       ),
     );

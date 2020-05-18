@@ -1,7 +1,8 @@
-import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:bus_locator/Authentication/ui/login_screen.dart';
+import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -184,6 +185,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                         splashColor: Colors.blueAccent,
                         onPressed: () {
                           //TODO : goto next payment page
+                          Navigator.pushNamed(context, PaymentScreen.id);
                         },
                       ),
                     ),

@@ -33,6 +33,8 @@ class LogoutFailure extends AuthState {
   LogoutFailure({this.message});
 }
 
+
+
 class AuthLoading extends AuthState {}
 
 class CreateAccountSuccess extends AuthState {
@@ -75,4 +77,13 @@ class CanChangePassword extends AuthState{}
 class CannotChangePassword extends AuthState{
   final String message;
   CannotChangePassword({this.message});
+}
+
+class ForgotPasswordSuccess extends AuthState{
+  final String message;
+  ForgotPasswordSuccess({this.message});
+}
+class ForgotPasswordFailure extends AuthState{
+  final String message;
+  ForgotPasswordFailure({this.message});
 }

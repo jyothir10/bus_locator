@@ -1,4 +1,4 @@
-import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
 import 'package:bus_locator/Authentication/utils/bubble_indication_painter.dart';
 import 'package:bus_locator/homePage.dart';
 import 'package:flutter/material.dart';
