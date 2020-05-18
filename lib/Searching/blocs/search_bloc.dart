@@ -1,7 +1,6 @@
 import 'dart:async';
+import 'package:bus_locator/Searching/model/shops.dart';
 import 'package:flutter/material.dart';
-
-import '../models/shops.dart';
 
 // This enum consists of various events that can happen on the search screen.
 // Feel free to add circular progress bar while the query is being processed.
@@ -32,7 +31,7 @@ class SearchBloc {
           if (shops.length != 0)
             _stateSink.add(buildCardListView(shops));
           // TODO create beatiful widgets to handle these cases
-          else if(map["value"] == "") 
+          else if (map["value"] == "")
             _stateSink.add(Text("Enter a value to search"));
           else
             _stateSink.add(Text("No results"));
