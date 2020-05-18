@@ -55,7 +55,7 @@ class Auth {
     return user != null;
   }
 
-  Future<FirebaseUser> currentUser() async {
+  Future<FirebaseUser> getCurrentUser() async {
     try {
       FirebaseUser user = await _auth.currentUser();
       return user;
@@ -78,6 +78,16 @@ class Auth {
     try {
       await _auth.sendPasswordResetEmail(email: email);
     } catch (error) {
+      throw error;
+    }
+  }
+
+  Future<String> getUserProvider() async {
+    try {
+      FirebaseUser user = await getCurrentUser();
+      return user.providerId;
+    } catch (error) {
+      print(error);
       throw error;
     }
   }
