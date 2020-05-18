@@ -50,31 +50,29 @@ class Auth {
     }
   }
 
-  Future<bool> isLoggedIn() async{
+  Future<bool> isLoggedIn() async {
     FirebaseUser user = await _auth.currentUser();
     return user != null;
   }
-  
+
   Future<FirebaseUser> currentUser() async {
     try {
-    FirebaseUser user = await _auth.currentUser();
-    return user;
-    }
-    catch(error) {
+      FirebaseUser user = await _auth.currentUser();
+      return user;
+    } catch (error) {
       throw Exception("User is not logged in.");
     }
   }
 
   Future<FirebaseUser> createAccount(String email, String password) async {
     try {
-    final user = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-    return user;
-    } catch(error) {
+      final user = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      return user;
+    } catch (error) {
       throw error;
     }
-
   }
-
 
   Future<FirebaseUser> _facebookLogin() async {
     _facebookLoginHandler = FacebookLogin();
@@ -99,26 +97,21 @@ class Auth {
   }
 
   Future<FirebaseUser> _googleLogin() async {
-    _googleLoginHandler = GoogleSignIn();
-    GoogleSignInAccount googleSignInAccount =
-        await _googleLoginHandler.signIn();
-    if (googleSignInAccount != null) {
-      try {
-        GoogleSignInAuthentication googleAuth =
-            await googleSignInAccount.authentication;
-        final AuthCredential credential = GoogleAuthProvider.getCredential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        );
-        final FirebaseUser user = await _auth.signInWithCredential(credential);
-        return user;
-      } catch (error) {
-        /// TODO (farih) Add better error handling for custom errors thrown by googleSignIn.
-        await _googleLoginHandler.signOut();
-        throw error;
-      }
-    } else {
-      throw Exception("Login error");
+    try {
+      _googleLoginHandler = GoogleSignIn();
+      GoogleSignInAccount googleSignInAccount =
+          await _googleLoginHandler.signIn();
+      GoogleSignInAuthentication googleAuth =
+          await googleSignInAccount.authentication;
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final FirebaseUser user = await _auth.signInWithCredential(credential);
+      return user;
+    } catch (error) {
+      /// TODO (farih) Add better error handling for custom errors thrown by googleSignIn.
+      throw error;
     }
   }
 
@@ -129,7 +122,7 @@ class Auth {
           email: email, password: password);
       return user;
     } catch (error) {
-      throw Exception("Please check your email and password.");
+      throw error;
     }
   }
 }

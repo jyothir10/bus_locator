@@ -15,7 +15,7 @@ import 'package:bus_locator/Components/BottomBar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
-import 'Authentication/bloc/auth_bloc1.dart';
+import 'Authentication/bloc/auth_bloc.dart';
 import 'Authentication/bloc/auth_event.dart';
 import 'Components/customListTile.dart';
 import 'Navigation/mapScreen.dart';

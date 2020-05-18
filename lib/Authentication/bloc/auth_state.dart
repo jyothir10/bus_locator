@@ -33,6 +33,8 @@ class LogoutFailure extends AuthState {
   LogoutFailure({this.message});
 }
 
+
+
 class AuthLoading extends AuthState {}
 
 class CreateAccountSuccess extends AuthState {

@@ -1,4 +1,4 @@
-import 'package:bus_locator/Authentication/bloc/auth_state.dart';
+
 import 'package:equatable/equatable.dart';
 import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 

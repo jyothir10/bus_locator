@@ -12,7 +12,7 @@ import 'package:bus_locator/screens/orderScreen.dart';
 import 'package:bus_locator/screens/profileScreen.dart';
 import 'package:bus_locator/screens/ticket.dart';
 import 'package:bus_locator/splash/splash_screens.dart';
-import 'Authentication/bloc/auth_bloc1.dart';
+import 'Authentication/bloc/auth_bloc.dart';
 import 'Authentication/ui/Register_screen.dart';
 import 'Authentication/ui/login_screen.dart';
 import 'homePage.dart';

@@ -1,7 +1,10 @@
-import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'dart:io';
+
+import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:bus_locator/Authentication/ui/login_screen.dart';
+import 'package:bus_locator/screens/cart_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -111,7 +114,6 @@ class _ResetPasswordState extends State<ResetPassword> {
   void stateListener(BuildContext context, AuthState state) {
     if (state is ChangePasswordSuccess) {
       showInSnackBar(context, state.message);
-      print(_authBloc);
       _authBloc.add(Logout());
     }
     else if (state is ChangePasswordFailure) {

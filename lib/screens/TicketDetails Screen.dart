@@ -1,4 +1,4 @@
-import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:bus_locator/Authentication/ui/login_screen.dart';

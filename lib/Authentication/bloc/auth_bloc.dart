@@ -1,11 +1,12 @@
+import 'package:bus_locator/Authentication/bloc/auth_errors.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 import 'package:bus_locator/logger/logger.dart';
+import 'package:flutter/services.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Auth _auth = Auth();
@@ -50,15 +51,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       FirebaseUser user = await _auth.login(login.service,
           email: login.email, password: login.password);
-
       if (user != null) {
-        print(user.providerId);
-        yield LoginSuccess(message: "Welcome");
+        yield LoginSuccess(message: LOGIN_SUCCESS_MESSAGE);
       } else {
-        yield LoginFailure(message: "Error while logging in.");
+        yield LoginFailure(message: LOGIN_ERROR_MESSAGE);
       }
+    } on PlatformException catch (error) {
+      final String message = loginPlatformExceptionHandler(error.code);
+      yield LoginFailure(message: message);
     } catch (error) {
-      yield LoginFailure(message: error.message);
+      yield LoginFailure(message: error.message!=null? error.message : LOGIN_ERROR_MESSAGE);
     }
   }
 
@@ -72,25 +74,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Stream<AuthState> _mapCreateAccount(CreateAccount createAccount) async* {
-    if (!_validatePasswordLength(createAccount.password)) {
-      yield CreateAccountFailure(
-          message: "Password must be 8 characters long.");
+    if (!_validateEmail(createAccount.email)) {
+      yield CreateAccountFailure(message: INVALID_EMAIL_MESSAGE);
+    }
+    else if (!_validatePasswordLength(createAccount.password)) {
+      yield CreateAccountFailure(message: PASSWORDS_LENGTH_MESSAGE);
     } else if (!_passwordsMatch(
         createAccount.password, createAccount.confirmPassword)) {
-      yield CreateAccountFailure(message: "Passwords must match.");
+      yield CreateAccountFailure(message: PASSWORDS_DO_NOT_MATCH_MESSAGE);
     } else {
       try {
         final user = await _auth.createAccount(
             createAccount.email, createAccount.password);
         yield user != null
-            ? CreateAccountSuccess(
-                message:
-                    "Your account has been created successfully. Please login to continue.")
-            : CreateAccountFailure(
-                message:
-                    "There has been an error while creating your account.");
-      } catch (err) {
-        yield CreateAccountFailure(message: err.message);
+            ? CreateAccountSuccess(message: CREATE_ACCOUNT_SUCCESS_MESSAGE)
+            : CreateAccountFailure(message: CREATE_ACCOUNT_SUCCESS_MESSAGE);
+      } on PlatformException catch (error) {
+        String message = createAccountPlatformExceptionHandler(error.code);
+        yield CreateAccountFailure(message:message);
+      } catch (error) {
+        yield CreateAccountFailure(message: error.message != null ? error.message : CREATE_ACCOUNT_ERROR_MESSAGE );
       }
     }
   }
@@ -101,21 +104,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   Stream<AuthState> _mapChangePassword(ChangePassword changePassword) async* {
+    // TODO (farih) Refactor this portion.
     try {
       FirebaseUser user = await _auth.currentUser();
       user = await user.reauthenticateWithCredential(
           EmailAuthProvider.getCredential(
               email: user.email, password: changePassword.currentPassword));
-      if (_passwordsMatch(
+      if (!_validatePasswordLength(changePassword.newPassword)) {
+        yield ChangePasswordFailure(message: PASSWORDS_LENGTH_MESSAGE);
+      } else if (!_passwordsMatch(
           changePassword.newPassword, changePassword.confirmNewPassword)) {
-        await user.updatePassword(changePassword.newPassword);
-        yield ChangePasswordSuccess(
-            message: "You have successfully changed your password.");
+        yield ChangePasswordFailure(message: PASSWORDS_DO_NOT_MATCH_MESSAGE);
       } else {
-        yield ChangePasswordFailure(message: "The new passwords do not match.");
+        await user.updatePassword(changePassword.newPassword);
+        yield ChangePasswordSuccess(message: CHANGE_PASSWORD_SUCCESS_MESSAGE);
       }
+    } on PlatformException catch (error) {
+      String message = changePasswordPlatformExceptionHandler(error.code);
+      yield ChangePasswordFailure(message: message);
     } catch (error) {
-      yield ChangePasswordFailure(message: error.message);
+      yield ChangePasswordFailure(message: error.message != null ? error.message: CHANGE_PASSWORD_ERROR_MESSAGE);
     }
   }
 
@@ -127,21 +135,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     yield CanChangePassword();
   }
 
-  void saveAuthService(String service) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString("service", service);
-  }
-
-  void deleteAuthService() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.remove("service");
-  }
-
+  
   bool _validatePasswordLength(String p1) {
     return p1.length >= 8;
   }
 
   bool _passwordsMatch(String p1, String p2) {
     return p1 == p2;
+  }
+
+  bool _validateEmail(String email) {
+    // TODO (farih) Add regex validation
+    return email != "";
   }
 }

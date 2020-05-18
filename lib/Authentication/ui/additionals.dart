@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/main.dart';
@@ -175,7 +175,7 @@ void stateListener(BuildContext context, AuthState state) async {
   } else if (state is LoginFailure) {
     showInSnackBar(context, state.message);
   } else if (state is AuthLoading) {
-    //TODO Put progress bar
+    
   } else if (state is CreateAccountSuccess) {
     showInSnackBar(context, state.message);
     await Future.delayed(Duration(seconds: 1));

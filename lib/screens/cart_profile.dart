@@ -1,4 +1,4 @@
-import 'package:bus_locator/Authentication/bloc/auth_bloc1.dart';
+import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 import 'package:bus_locator/Authentication/ui/additionals.dart';
@@ -60,7 +60,7 @@ class _CartProfileState extends State<CartProfile> {
                       textColor: kButtonActiveColor,
                       textSize: 18,
                       onPress: () {
-                        _bloc.add(RequestChangePassword());
+                        Navigator.pushNamed(context, ResetPassword.id);
                       },
                     ),
                   ),
@@ -86,9 +86,7 @@ class _CartProfileState extends State<CartProfile> {
           if (state is LogoutSuccess) {
             print('logged out');
             Navigator.pushReplacementNamed(context, WelcomeScreen.id);
-          } else if (state is CanChangePassword) {
-            Navigator.pushNamed(context, ResetPassword.id);
-          } else if (state is CannotChangePassword) {
+          }  else if (state is CannotChangePassword) {
             showInSnackBar(context, state.message);
           }
         },
