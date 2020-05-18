@@ -10,6 +10,7 @@ import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 
 class RegisterScreen extends StatelessWidget {
+  TextEditingController controller;
   static const String id = 'Register_Screen';
   final InputCard email = InputCard("Email", 0, false);
   final InputCard password = InputCard("Password", 0, true);
@@ -70,15 +71,6 @@ class RegisterScreen extends StatelessWidget {
                 createLabel("Confirm Password", 0),
                 confirmPassword,
               ],
-            ),
-            Center(
-              child: Text(
-                "Forgot Password?",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: HexColor("#ae67d5")),
-              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),

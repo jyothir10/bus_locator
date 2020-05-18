@@ -52,6 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       FirebaseUser user = await _auth.login(login.service,
           email: login.email, password: login.password);
       if (user != null) {
+        log("TESTING", user.providerData.toString());
         yield LoginSuccess(message: LOGIN_SUCCESS_MESSAGE);
       } else {
         yield LoginFailure(message: LOGIN_ERROR_MESSAGE);
@@ -110,7 +111,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Stream<AuthState> _mapChangePassword(ChangePassword changePassword) async* {
     // TODO (farih) Refactor this portion.
     try {
-      FirebaseUser user = await _auth.currentUser();
+      FirebaseUser user = await _auth.getCurrentUser();
       user = await user.reauthenticateWithCredential(
           EmailAuthProvider.getCredential(
               email: user.email, password: changePassword.currentPassword));
