@@ -209,5 +209,3 @@ class _TicketDetailsState extends State<TicketDetails> {
     );
   }
 }
-
-
