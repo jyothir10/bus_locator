@@ -30,6 +30,7 @@ class _CartProfileState extends State<CartProfile> {
     final _bloc = BlocProvider.of<AuthBloc>(context);
     _bloc.add(UserProfile());
     return Scaffold(
+      backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         title: Center(
@@ -177,9 +178,6 @@ class BusCardProfilePage extends StatelessWidget {
                 ),
               ),
               colour: Color(0xFF28284D),
-              onPress: () {
-                Navigator.pushNamed(context, ProfileScreen.id);
-              },
             ),
           ),
           Expanded(
@@ -204,7 +202,6 @@ class BusCardProfilePage extends StatelessWidget {
                 bottomRight: Radius.circular(8.0),
               ),
               colour: Color(0xFF242448),
-              onPress: () {},
             ),
           ),
         ],
