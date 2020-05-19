@@ -108,6 +108,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 text: 'Continue',
                 onPress: () {
                   Navigator.pushNamed(context, TicketDetails.id);
+
                 },
                 textColor: Colors.white,
               ),
