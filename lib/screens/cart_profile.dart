@@ -192,7 +192,6 @@ class BusCardProfilePage extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 2,
             child: ReusableCard(
               cardChild: Padding(
                 padding: const EdgeInsets.all(20),
@@ -203,7 +202,7 @@ class BusCardProfilePage extends StatelessWidget {
                       onTap: () =>
                           Navigator.pushNamed(context, ProfileScreen.id),
                       child: Text(
-                        'Edit Profile',
+                        'Edit',
                         style: TextStyle(
                           color: Colors.red,
                         ),

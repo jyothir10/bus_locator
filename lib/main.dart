@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
         ResetPassword.id: (context) => ResetPassword(),
         WebViewMap.id: (context) => WebViewMap(),
         TicketDetails.id: (context) => TicketDetails(),
-        ticketList.id: (context) => ticketList(),
+        TicketList.id: (context) => TicketList(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',

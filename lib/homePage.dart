@@ -5,6 +5,7 @@ import 'package:bus_locator/Navigation/webview.dart';
 import 'package:bus_locator/screens/Bus%20Details%20Screen.dart';
 import 'package:bus_locator/screens/Welcome%20Screen.dart';
 import 'package:bus_locator/screens/ticket.dart';
+import 'package:bus_locator/screens/ticketList.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -360,7 +361,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                           child: GestureDetector(
                             onTap: () =>
-                                Navigator.pushNamed(context, TicketScreen.id),
+                                Navigator.pushNamed(context, TicketList.id),
                             child: Container(
                               child: Center(
                                 child: Column(

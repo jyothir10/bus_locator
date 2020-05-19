@@ -24,19 +24,17 @@ class AnimatedSplashScreen extends StatefulWidget {
 class SplashScreenState extends State<AnimatedSplashScreen>
     with SingleTickerProviderStateMixin {
   var _visible = true;
-  
 
   AnimationController animationController;
   Animation<double> animation;
 
   startTime() async {
-    var _duration = new Duration(seconds: 3);
+    var _duration = new Duration(seconds: 2);
     return new Timer(_duration, navigationPage);
   }
 
 //TODO: change route you want to.
-  void navigationPage() {
-  }
+  void navigationPage() {}
 
   @override
   void dispose() {
@@ -49,15 +47,15 @@ class SplashScreenState extends State<AnimatedSplashScreen>
     final _bloc = BlocProvider.of<AuthBloc>(context);
     super.initState();
     animationController = new AnimationController(
-        vsync: this, duration: new Duration(seconds: 2));
+        vsync: this, duration: new Duration(seconds: 1));
     animation =
         new CurvedAnimation(parent: animationController, curve: Curves.easeOut);
     animation.addListener(() => this.setState(() {}));
     animationController.forward();
-    animationController.addStatusListener((status){
-      if(status == AnimationStatus.completed) {
+    animationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
         _bloc.add(StartUp());
-      } 
+      }
     });
     setState(() {
       _visible = !_visible;
@@ -65,12 +63,10 @@ class SplashScreenState extends State<AnimatedSplashScreen>
     startTime();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc,AuthState>(
-          child: Scaffold(
+    return BlocListener<AuthBloc, AuthState>(
+      child: Scaffold(
         backgroundColor: Color(0xff13132d),
         body: Stack(
           fit: StackFit.expand,
@@ -106,11 +102,11 @@ class SplashScreenState extends State<AnimatedSplashScreen>
             ),
           ],
         ),
-      ), listener: (BuildContext context, AuthState state) {
+      ),
+      listener: (BuildContext context, AuthState state) {
         if (state is StartUpAuthorised) {
           Navigator.pushReplacementNamed(context, TabBarClass.id);
-        }
-        else if (state is StartUpUnauthorised) {
+        } else if (state is StartUpUnauthorised) {
           Navigator.pushReplacementNamed(context, WelcomeScreen.id);
         }
       },
