@@ -1,6 +1,6 @@
 import 'package:bus_locator/Components/reusableCard.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
-import 'package:bus_locator/screens/TicketDetails%20Screen.dart';
+import 'package:bus_locator/screens/TicketDetailsScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
@@ -120,7 +120,6 @@ class _OrderScreenState extends State<OrderScreen> {
                   fare = busData['fare'];
                   distance = busData['distance'];
                   Navigator.pushNamed(context, TicketDetails.id);
-
                 },
                 textColor: Colors.white,
               ),

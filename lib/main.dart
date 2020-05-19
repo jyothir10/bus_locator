@@ -5,7 +5,7 @@ import 'package:bus_locator/Payment/screens/Reciept_screen.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/Rating/screens/rating_screen.dart';
 import 'package:bus_locator/screens/CartScreen.dart';
-import 'package:bus_locator/screens/TicketDetails%20Screen.dart';
+import 'package:bus_locator/screens/TicketDetailsScreen.dart';
 import 'package:bus_locator/screens/cart_profile.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
 import 'package:bus_locator/screens/orderScreen.dart';
@@ -19,11 +19,11 @@ import 'Authentication/ui/login_screen.dart';
 import 'homePage.dart';
 import 'package:flutter/material.dart';
 import 'Authentication/ui/login_page.dart';
-import 'package:bus_locator/screens/Welcome Screen.dart';
+import 'screens/WelcomeScreen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bus_locator/screens/Tutorial Screen.dart';
-import 'package:bus_locator/screens/Bus Details Screen.dart';
-import 'package:bus_locator/screens/Reset Password.dart';
+import 'package:bus_locator/screens/TutorialScreen.dart';
+import 'package:bus_locator/screens/BusDetailsScreen.dart';
+import 'package:bus_locator/screens/ResetPassword.dart';
 
 void main() => runApp(new MyApp1());
 

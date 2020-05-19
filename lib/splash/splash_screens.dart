@@ -5,7 +5,7 @@ import 'package:bus_locator/Authentication/ui/login_page.dart';
 import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/screens/CartScreen.dart';
-import 'package:bus_locator/screens/Welcome%20Screen.dart';
+import 'package:bus_locator/screens/WelcomeScreen.dart';
 import 'package:bus_locator/Navigation/mapScreen.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
 import 'package:flutter/cupertino.dart';

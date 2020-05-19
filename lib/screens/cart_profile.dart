@@ -6,8 +6,8 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/Users/bloc/user_bloc.dart';
-import 'package:bus_locator/screens/Reset%20Password.dart';
-import 'package:bus_locator/screens/Welcome%20Screen.dart';
+import 'ResetPassword.dart';
+import 'package:bus_locator/screens/WelcomeScreen.dart';
 import 'package:bus_locator/screens/profileScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,16 +53,16 @@ class _CartProfileState extends State<CartProfile> {
       ),
       body: BlocListener<AuthBloc, AuthState>(
         child: BlocBuilder<UserBloc, UserState>(
-          bloc:_userBloc,
+            bloc: _userBloc,
             builder: (BuildContext context, UserState state) {
-          if (state is UserProfileSuccess) {
-            return profilePageBuilder(context, state.userInfo);
-          } else if (state is UserProfileFailure) {
-            return Text(state.message);
-          } else
-            // TODO (shameem) Put loading widget
-            return CircularProgressIndicator();
-        }),
+              if (state is UserProfileSuccess) {
+                return profilePageBuilder(context, state.userInfo);
+              } else if (state is UserProfileFailure) {
+                return Text(state.message);
+              } else
+                // TODO (shameem) Put loading widget
+                return CircularProgressIndicator();
+            }),
         listener: (BuildContext context, AuthState state) {
           if (state is LogoutSuccess) {
             Navigator.pushReplacementNamed(context, WelcomeScreen.id);
