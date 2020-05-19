@@ -3,6 +3,7 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'ticket.dart';
 
 final _firestore = Firestore.instance;
 final _auth = FirebaseAuth.instance;
@@ -10,6 +11,7 @@ var busDetails;
 var busData;
 FirebaseUser loggedInUser;
 var id;
+var ticketData;
 
 class ticketList extends StatefulWidget {
   static String id = 'ticket_list';
@@ -18,6 +20,24 @@ class ticketList extends StatefulWidget {
 }
 
 class _ticketListState extends State<ticketList> {
+  Future getTicketDetails(String ticketId) async {
+    try {
+      var querySnapshot = await _firestore
+          .collection('ticketdetails')
+          .where('docId', isEqualTo: ticketId)
+          .getDocuments();
+      final List<DocumentSnapshot> documents = querySnapshot.documents;
+
+      for (var document in documents) {
+        busDetails = document.data;
+      }
+      return busDetails;
+    } catch (e) {
+      print(e);
+      return e;
+    }
+  }
+
   @override
   void initState() {
     getCurrentUser();
@@ -79,6 +99,7 @@ class _ticketListState extends State<ticketList> {
                   final fare = bus.data['fare'];
                   final type = bus.data['type'];
                   final noOfTickets = bus.data['passengerno'];
+                  final ticketId = bus.data['docId'];
 
                   final busCard = BusCard3(
                     busName: busName,
@@ -86,8 +107,10 @@ class _ticketListState extends State<ticketList> {
                     distance: 'No of tickets : $noOfTickets',
                     fare: fare.toString(),
                     color: Colors.red,
-                    onPress: () {
-//                      busData = await getBusDetails(busName);
+                    onPress: () async {
+                      print(ticketId);
+                      ticketData = await getTicketDetails(ticketId);
+                      Navigator.pushNamed(context, TicketScreen.id);
                     },
                   );
 

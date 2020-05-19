@@ -226,6 +226,9 @@ class _TicketDetailsState extends State<TicketDetails> {
                         onPressed: () {
                           setState(() {
                             try {
+                              DocumentReference documentReference = _firestore
+                                  .collection('ticketdetails')
+                                  .document();
                               _firestore.collection('ticketdetails').add({
                                 'name': name,
                                 'age': age,
@@ -237,6 +240,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                 'fare': fare,
                                 'distance': distance,
                                 'type': busType,
+                                'docId': documentReference.documentID,
                               });
                             } catch (e) {
                               print(e);
