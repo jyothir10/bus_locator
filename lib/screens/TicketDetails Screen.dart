@@ -8,9 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Authentication/ui/additionals.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 final _firestore = Firestore.instance;
+FirebaseUser loggedInUser;
 
 class TicketDetails extends StatefulWidget {
   static String id = 'Ticket_Details_Screen';
@@ -19,9 +21,29 @@ class TicketDetails extends StatefulWidget {
 }
 
 class _TicketDetailsState extends State<TicketDetails> {
+  final _auth = FirebaseAuth.instance;
   var ticketNo;
   String name;
   String age;
+  var id;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        id = loggedInUser.uid;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -190,6 +212,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                 'name': name,
                                 'age': age,
                                 'passengerno': ticketNo,
+                                'id': id,
                               });
                             } catch (e) {
                               print(e);
