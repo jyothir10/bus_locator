@@ -120,6 +120,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   fare = busData['fare'];
                   distance = busData['distance'];
                   Navigator.pushNamed(context, TicketDetails.id);
+
                 },
                 textColor: Colors.white,
               ),

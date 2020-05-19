@@ -18,6 +18,7 @@ var busData;
 double latitude;
 double longitude;
 var currentPlace;
+
 var alertStyle = AlertStyle(
   overlayColor: kPageBackgroundColor,
   animationType: AnimationType.fromTop,
@@ -49,7 +50,6 @@ class _DestinationState extends State<Destination> {
           desiredAccuracy: LocationAccuracy.bestForNavigation);
       latitude = position.latitude;
       longitude = position.longitude;
-      print(position);
       List<Placemark> placemark =
           await Geolocator().placemarkFromCoordinates(latitude, longitude);
       Placemark place = placemark[0];
@@ -57,7 +57,6 @@ class _DestinationState extends State<Destination> {
       setState(() {
         currentPlace = place.locality;
       });
-      print(currentPlace);
     } catch (e) {
       print(e);
       Alert(

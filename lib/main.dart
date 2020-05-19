@@ -11,6 +11,7 @@ import 'package:bus_locator/screens/destination_screen.dart';
 import 'package:bus_locator/screens/orderScreen.dart';
 import 'package:bus_locator/screens/profileScreen.dart';
 import 'package:bus_locator/screens/ticket.dart';
+import 'package:bus_locator/screens/ticketList.dart';
 import 'package:bus_locator/splash/splash_screens.dart';
 import 'Authentication/bloc/auth_bloc.dart';
 import 'Authentication/ui/Register_screen.dart';
@@ -52,13 +53,14 @@ class MyApp extends StatelessWidget {
         ResetPassword.id: (context) => ResetPassword(),
         WebViewMap.id: (context) => WebViewMap(),
         TicketDetails.id: (context) => TicketDetails(),
+        ticketList.id: (context) => ticketList(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AnimatedSplashScreen(),
+      home: ticketList(),
     );
   }
 }
