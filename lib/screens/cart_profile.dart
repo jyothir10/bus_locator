@@ -181,7 +181,6 @@ class BusCardProfilePage extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 2,
             child: ReusableCard(
               cardChild: Padding(
                 padding: const EdgeInsets.all(20),
