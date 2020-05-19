@@ -13,13 +13,13 @@ FirebaseUser loggedInUser;
 var id;
 var ticketData;
 
-class ticketList extends StatefulWidget {
+class TicketList extends StatefulWidget {
   static String id = 'ticket_list';
   @override
-  _ticketListState createState() => _ticketListState();
+  _TicketListState createState() => _TicketListState();
 }
 
-class _ticketListState extends State<ticketList> {
+class _TicketListState extends State<TicketList> {
   Future getTicketDetails(String ticketId) async {
     try {
       var querySnapshot = await _firestore
