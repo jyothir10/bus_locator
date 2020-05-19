@@ -44,9 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield* _mapStartUp();
     } else if (event is ForgotPassword) {
       yield* _mapForgotPassword(event);
-    } else if (event is UserProfile) {
-      yield* _mapUserProfile(event);
-    }
+    } 
   }
 
   Stream<AuthState> _mapLogin(Login login) async* {
@@ -160,14 +158,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Stream<AuthState> _mapUserProfile(UserProfile userProfile) async*{
-    try {
-      Map userInfo = await _auth.getUserProfile();
-      yield UserProfileSuccess(userInfo);
-    } catch(error) {
-      yield UserProfileFailure(message:USER_PROFILE_FAILURE_MESSAGE);
-    }
-  }
+
 
   bool _validatePasswordLength(String p1) {
     return p1.length >= 8;

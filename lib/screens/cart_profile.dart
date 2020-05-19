@@ -5,6 +5,7 @@ import 'package:bus_locator/Authentication/ui/additionals.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
+import 'package:bus_locator/Users/bloc/user_bloc.dart';
 import 'package:bus_locator/screens/Reset%20Password.dart';
 import 'package:bus_locator/screens/Welcome%20Screen.dart';
 import 'package:bus_locator/screens/profileScreen.dart';
@@ -20,15 +21,23 @@ class CartProfile extends StatefulWidget {
 }
 
 class _CartProfileState extends State<CartProfile> {
+  UserBloc _userBloc;
   @override
   void initState() {
     super.initState();
+    _userBloc = UserBloc();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _userBloc.close();
   }
 
   @override
   Widget build(BuildContext context) {
-    final _bloc = BlocProvider.of<AuthBloc>(context);
-    _bloc.add(UserProfile());
+    final _authBloc = BlocProvider.of<AuthBloc>(context);
+    _userBloc.add(UserProfile());
     return Scaffold(
       backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
@@ -43,13 +52,15 @@ class _CartProfileState extends State<CartProfile> {
         ),
       ),
       body: BlocListener<AuthBloc, AuthState>(
-        child: BlocBuilder<AuthBloc, AuthState>(
-            builder: (BuildContext context, AuthState state) {
+        child: BlocBuilder<UserBloc, UserState>(
+          bloc:_userBloc,
+            builder: (BuildContext context, UserState state) {
           if (state is UserProfileSuccess) {
             return profilePageBuilder(context, state.userInfo);
           } else if (state is UserProfileFailure) {
             return Text(state.message);
           } else
+            // TODO (shameem) Put loading widget
             return CircularProgressIndicator();
         }),
         listener: (BuildContext context, AuthState state) {
@@ -65,7 +76,7 @@ class _CartProfileState extends State<CartProfile> {
 }
 
 Widget profilePageBuilder(BuildContext context, Map userInfo) {
-  final _bloc = BlocProvider.of<AuthBloc>(context);
+  final _authBloc = BlocProvider.of<AuthBloc>(context);
   return Container(
     color: kPageBackgroundColor,
     child: Column(
@@ -103,7 +114,7 @@ Widget profilePageBuilder(BuildContext context, Map userInfo) {
                 textColor: Colors.white,
                 textSize: 18,
                 onPress: () {
-                  _bloc.add(Logout());
+                  _authBloc.add(Logout());
                 },
               ),
             ),

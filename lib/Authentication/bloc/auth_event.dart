@@ -90,4 +90,4 @@ class ForgotPassword extends AuthEvent {
   }
 }
 
-class UserProfile extends AuthEvent {}
+
