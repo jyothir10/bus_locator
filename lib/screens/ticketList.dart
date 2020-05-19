@@ -57,7 +57,6 @@ class _ticketListState extends State<ticketList> {
             Container(
               color: kAppBarColor,
             ),
-
             StreamBuilder(
               stream: _firestore
                   .collection('ticketdetails')
@@ -76,16 +75,15 @@ class _ticketListState extends State<ticketList> {
                 List<Widget> buses = [];
                 for (var bus in ticketList) {
                   final busName = bus.data['busname'];
-                  final date = bus.data['date'];
                   final distance = bus.data['distance'];
                   final fare = bus.data['fare'];
                   final type = bus.data['type'];
-                  final status = bus.data['status'];
+                  final noOfTickets = bus.data['passengerno'];
 
                   final busCard = BusCard3(
                     busName: busName,
                     busType: type,
-                    distance: distance,
+                    distance: noOfTickets,
                     fare: fare.toString(),
                     color: Colors.red,
                     onPress: () async {
