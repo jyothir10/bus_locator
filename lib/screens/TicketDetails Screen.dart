@@ -1,7 +1,3 @@
-import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
-import 'package:bus_locator/Authentication/bloc/auth_event.dart';
-import 'package:bus_locator/Authentication/bloc/auth_state.dart';
-import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Authentication/ui/additionals.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'orderScreen.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
@@ -28,6 +25,9 @@ class _TicketDetailsState extends State<TicketDetails> {
   String age;
   String from;
   String to;
+  String day;
+  String month;
+  String year;
   var id;
 
   @override
@@ -176,6 +176,37 @@ class _TicketDetailsState extends State<TicketDetails> {
                     ),
                   ),
                   Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Text(
+                      "Select date",
+                      style: TextStyle(
+                          color: HexColor("#ae67d6"),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                    ),
+                  ),
+                  FlatButton(
+                    color: Color(0xFF37385B),
+                    textColor: Colors.white54,
+                    disabledColor: Colors.grey,
+                    disabledTextColor: Colors.black,
+                    padding: EdgeInsets.all(2.0),
+                    splashColor: Colors.blueAccent,
+                    onPressed: () {
+                      DatePicker.showDatePicker(context,
+                          showTitleActions: true,
+                          minTime: DateTime(2020, 5, 19),
+                          maxTime: DateTime(2030, 12, 31), onChanged: (date) {
+                        print('change $date');
+                      }, onConfirm: (date) {
+                        day = (date.day).toString();
+                        month = (date.month).toString();
+                        year = (date.year).toString();
+                      }, currentTime: DateTime.now(), locale: LocaleType.en);
+                    },
+                    child: Text('select'),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20, vertical: 10),
                     child: Divider(
@@ -241,6 +272,9 @@ class _TicketDetailsState extends State<TicketDetails> {
                                 'distance': distance,
                                 'type': busType,
                                 'docId': documentReference.documentID,
+                                'day': day,
+                                'month': month,
+                                'year': year,
                               });
                             } catch (e) {
                               print(e);

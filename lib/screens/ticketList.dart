@@ -7,8 +7,8 @@ import 'ticket.dart';
 
 final _firestore = Firestore.instance;
 final _auth = FirebaseAuth.instance;
-var busDetails;
-var busData;
+var ticketDetails;
+
 FirebaseUser loggedInUser;
 var id;
 var ticketData;
@@ -29,9 +29,9 @@ class _ticketListState extends State<ticketList> {
       final List<DocumentSnapshot> documents = querySnapshot.documents;
 
       for (var document in documents) {
-        busDetails = document.data;
+        ticketDetails = document.data;
       }
-      return busDetails;
+      return ticketDetails;
     } catch (e) {
       print(e);
       return e;

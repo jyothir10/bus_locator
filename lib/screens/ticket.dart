@@ -1,13 +1,58 @@
-import 'package:bus_locator/Authentication/ui/additionals.dart';
 import 'package:bus_locator/Components/Constants.dart';
-import 'package:bus_locator/Rating/screens/rating_screen.dart';
+
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'ticketList.dart';
 
-final _firestore = Firestore.instance;
+var passengers = ticketData['passengerno'];
+var mon;
+String date;
+String journeyDate;
+String createDate(String day, String month, String year) {
+  switch (month) {
+    case '1':
+      mon = 'Jan';
+      break;
+    case '2':
+      mon = 'Feb';
+      break;
+    case '3':
+      mon = 'Mar';
+      break;
+    case '4':
+      mon = 'Apr';
+      break;
+    case '5':
+      mon = 'May';
+      break;
+    case '6':
+      mon = 'Jun';
+      break;
+    case '7':
+      mon = 'Jul';
+      break;
+    case '8':
+      mon = 'Aug';
+      break;
+    case '9':
+      mon = 'Sep';
+      break;
+    case '10':
+      mon = 'Oct';
+      break;
+    case '11':
+      mon = 'Nov';
+      break;
+    case '12':
+      mon = 'Dec';
+      break;
+  }
+  date = '$day $mon $year';
+  return date;
+}
 
 void main() => runApp(
       MaterialApp(
@@ -28,11 +73,21 @@ void main() => runApp(
 
 class TicketScreen extends StatefulWidget {
   static String id = 'Ticket_Screen';
+
   @override
   _TicketScreenState createState() => _TicketScreenState();
 }
 
 class _TicketScreenState extends State<TicketScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    journeyDate =
+        createDate(ticketData['day'], ticketData['month'], ticketData['year']);
+    print(journeyDate);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ClipPath(
@@ -71,7 +126,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                 "Boarding from",
                                 style: TextStyle(color: Colors.white),
                               ),
-                              Text("KLM",
+                              Text(ticketData['from'],
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 40,
@@ -83,7 +138,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text("17th Dec 2020",
+                              Text(journeyDate,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,
@@ -102,7 +157,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                 "Destination",
                                 style: TextStyle(color: Colors.white),
                               ),
-                              Text("KRM",
+                              Text(ticketData['to'],
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 40,
@@ -114,7 +169,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text("17th Dec 2020",
+                              Text(journeyDate,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,
@@ -139,7 +194,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                   "Passenger Name",
                                   style: TextStyle(color: Colors.purple[300]),
                                 ),
-                                Text("Ricard Marx",
+                                Text(ticketData['name'],
                                     style: TextStyle(
                                         color: Color(0xff13132d),
                                         fontWeight: FontWeight.bold,
@@ -152,7 +207,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                 Text("Age",
                                     style:
                                         TextStyle(color: Colors.purple[300])),
-                                Text("22",
+                                Text(ticketData['age'],
                                     style: TextStyle(
                                         color: Color(0xff13132d),
                                         fontWeight: FontWeight.bold,
@@ -171,7 +226,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                   "No. of tickets",
                                   style: TextStyle(color: Colors.purple[300]),
                                 ),
-                                Text("1 person",
+                                Text("$passengers person",
                                     style: TextStyle(
                                         color: Color(0xff13132d),
                                         fontWeight: FontWeight.bold,
@@ -184,7 +239,7 @@ class _TicketScreenState extends State<TicketScreen> {
                                 Text("Bus Name",
                                     style:
                                         TextStyle(color: Colors.purple[300])),
-                                Text("express",
+                                Text(ticketData['busname'],
                                     style: TextStyle(
                                         color: Color(0xff13132d),
                                         fontWeight: FontWeight.bold,

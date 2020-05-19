@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ticketList(),
+      home: AnimatedSplashScreen(),
     );
   }
 }
