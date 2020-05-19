@@ -6,9 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'destination_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final _firestore = Firestore.instance;
+var busName;
+var distance;
+var busType;
+var fare;
 
 class OrderScreen extends StatefulWidget {
   static String id = 'Order_Screen';
+
   @override
   _OrderScreenState createState() => _OrderScreenState();
 }
@@ -107,6 +115,10 @@ class _OrderScreenState extends State<OrderScreen> {
                 color: kButtonActiveColor,
                 text: 'Continue',
                 onPress: () {
+                  busName = busData['busname'];
+                  busType = busData['bustype'];
+                  fare = busData['fare'];
+                  distance = busData['distance'];
                   Navigator.pushNamed(context, TicketDetails.id);
                 },
                 textColor: Colors.white,

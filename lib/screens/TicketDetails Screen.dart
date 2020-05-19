@@ -10,6 +10,7 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Authentication/ui/additionals.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'orderScreen.dart';
 
 final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
@@ -25,6 +26,8 @@ class _TicketDetailsState extends State<TicketDetails> {
   var ticketNo;
   String name;
   String age;
+  String from;
+  String to;
   var id;
 
   @override
@@ -59,17 +62,17 @@ class _TicketDetailsState extends State<TicketDetails> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: Container(
-          color: kPageBackgroundColor,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Flexible(
-                  child: Padding(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Container(
+            color: kPageBackgroundColor,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Text(
                       "Ticket Details",
@@ -79,118 +82,133 @@ class _TicketDetailsState extends State<TicketDetails> {
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    createLabel("Name", 0),
-                    InputField(
-                      hintText: "Name",
-                      obscureText: false,
-                      horizontal: 0,
-                      onChanged: (value) {
-                        name = value;
-                      },
-                    ),
-                    createLabel("Age", 0),
-                    InputField(
-                      hintText: "Age",
-                      obscureText: false,
-                      horizontal: 0,
-                      onChanged: (value) {
-                        age = value;
-                      },
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: Text(
-                    "No of tickets",
-                    style: TextStyle(
-                        color: HexColor("#ae67d6"),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                ),
-                Card(
-                  margin: EdgeInsets.fromLTRB(0, 5, 10, 5),
-                  color: HexColor("#38385c"),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                    child: DropdownButton<String>(
-                      items: <String>[
-                        '1',
-                        '2',
-                        '3',
-                        '4',
-                        '5',
-                        '6',
-                        '7',
-                        '8',
-                        '9',
-                        '10'
-                      ].map((String value) {
-                        return DropdownMenuItem<String>(
-                            value: value, child: Text(value));
-                      }).toList(),
-                      underline: SizedBox(),
-                      style: TextStyle(
-                        color: Colors.grey,
-                      ),
-                      icon: Icon(Icons.arrow_drop_down),
-                      iconEnabledColor: Colors.grey[900],
-                      value: ticketNo,
-                      hint: Text(
-                        "No : of tickets",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      onChanged: (value) {
-                        setState(() {
-                          ticketNo = value;
-                          print(ticketNo);
-                        });
-                        //TODO : calculate total price
-                      },
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: Divider(
-                    thickness: 2,
-                    color: Color(0xFF28284D),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: Row(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        'Total Price',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                        ),
+                      createLabel("Name", 0),
+                      InputField(
+                        hintText: "Name",
+                        obscureText: false,
+                        horizontal: 0,
+                        onChanged: (value) {
+                          name = value;
+                        },
                       ),
-                      Text(
-                        '10.00',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
+                      createLabel("Age", 0),
+                      InputField(
+                        hintText: "Age",
+                        obscureText: false,
+                        horizontal: 0,
+                        onChanged: (value) {
+                          age = value;
+                        },
+                      ),
+                      createLabel("From", 0),
+                      InputField(
+                        hintText: "Starting point",
+                        obscureText: false,
+                        horizontal: 0,
+                        onChanged: (value) {
+                          from = value;
+                        },
+                      ),
+                      createLabel("To", 0),
+                      InputField(
+                        hintText: "Ending point",
+                        obscureText: false,
+                        horizontal: 0,
+                        onChanged: (value) {
+                          to = value;
+                        },
                       ),
                     ],
                   ),
-                ),
-                Flexible(
-                  child: Padding(
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Text(
+                      "No of tickets",
+                      style: TextStyle(
+                          color: HexColor("#ae67d6"),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                    ),
+                  ),
+                  Card(
+                    margin: EdgeInsets.fromLTRB(0, 5, 10, 5),
+                    color: HexColor("#38385c"),
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      child: DropdownButton<String>(
+                        items: <String>[
+                          '1',
+                          '2',
+                          '3',
+                          '4',
+                          '5',
+                          '6',
+                          '7',
+                          '8',
+                          '9',
+                          '10'
+                        ].map((String value) {
+                          return DropdownMenuItem<String>(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        underline: SizedBox(),
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                        icon: Icon(Icons.arrow_drop_down),
+                        iconEnabledColor: Colors.grey[900],
+                        value: ticketNo,
+                        hint: Text(
+                          "No : of tickets",
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        onChanged: (value) {
+                          ticketNo = value;
+                          print(ticketNo);
+                          //TODO : calculate total price
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    child: Divider(
+                      thickness: 2,
+                      color: Color(0xFF28284D),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Total Price',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                        Text(
+                          '10.00',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.fromLTRB(10, 30, 10, 30),
                     child: Container(
                       width: double.infinity,
@@ -213,6 +231,12 @@ class _TicketDetailsState extends State<TicketDetails> {
                                 'age': age,
                                 'passengerno': ticketNo,
                                 'id': id,
+                                'from': from,
+                                'to': to,
+                                'busname': busName,
+                                'fare': fare,
+                                'distance': distance,
+                                'type': busType,
                               });
                             } catch (e) {
                               print(e);
@@ -223,8 +247,8 @@ class _TicketDetailsState extends State<TicketDetails> {
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
