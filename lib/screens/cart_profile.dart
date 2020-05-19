@@ -188,10 +188,14 @@ class BusCardProfilePage extends StatelessWidget {
                 child: Container(
                   height: 55,
                   child: Center(
-                    child: Text(
-                      'Edit Profile',
-                      style: TextStyle(
-                        color: Colors.red,
+                    child: GestureDetector(
+                      onTap: () =>
+                          Navigator.pushNamed(context, ProfileScreen.id),
+                      child: Text(
+                        'Edit Profile',
+                        style: TextStyle(
+                          color: Colors.red,
+                        ),
                       ),
                     ),
                   ),
