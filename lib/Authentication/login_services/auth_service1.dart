@@ -5,6 +5,8 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 enum AuthService { FACEBOOK, GOOGLE, EMAILANDPASSWORD }
 
+String photo;
+
 class Auth {
   FirebaseAuth _auth;
   FacebookLogin _facebookLoginHandler;
@@ -94,6 +96,7 @@ class Auth {
   Future<Map> getUserProfile() async {
     try {
       FirebaseUser user = await getCurrentUser();
+      photo=user.photoUrl;
       return {
         "name": user.displayName ?? "Person",
         "email": user.email ?? "email",
