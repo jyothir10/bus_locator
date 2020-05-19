@@ -83,10 +83,10 @@ class _ticketListState extends State<ticketList> {
                   final busCard = BusCard3(
                     busName: busName,
                     busType: type,
-                    distance: noOfTickets,
+                    distance: 'No of tickets : $noOfTickets',
                     fare: fare.toString(),
                     color: Colors.red,
-                    onPress: () async {
+                    onPress: () {
 //                      busData = await getBusDetails(busName);
                     },
                   );

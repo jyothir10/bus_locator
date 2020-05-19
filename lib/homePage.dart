@@ -56,15 +56,14 @@ class _HomePageState extends State<HomePage> {
           desiredAccuracy: LocationAccuracy.bestForNavigation);
       latitude = position.latitude;
       longitude = position.longitude;
-      print(position);
+
       List<Placemark> placemark =
           await Geolocator().placemarkFromCoordinates(latitude, longitude);
       Placemark place = placemark[0];
-      print(place.locality);
+
       setState(() {
         currentPlace = place.locality;
       });
-      print(currentPlace);
     } catch (e) {
       print(e);
       Alert(
@@ -103,7 +102,6 @@ class _HomePageState extends State<HomePage> {
 
       // I am connected to a wifi network.
     } else {
-      print('no connection');
       Alert(
         style: alertStyle,
         context: context,

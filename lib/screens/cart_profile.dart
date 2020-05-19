@@ -136,7 +136,7 @@ class BusCardProfilePage extends StatelessWidget {
               cardChild: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     CircleAvatar(
                       backgroundColor: Colors.green,
@@ -161,7 +161,7 @@ class BusCardProfilePage extends StatelessWidget {
                         ),
                         Text(
                           email,
-                          style: TextStyle(color: Colors.white, fontSize: 10),
+                          style: TextStyle(color: Colors.white, fontSize: 14),
                         ),
                         SizedBox(
                           height: 5,
