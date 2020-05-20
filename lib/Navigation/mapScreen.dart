@@ -193,7 +193,7 @@ class _MapScreenState extends State<MapScreen> {
                             borderRadius: BorderRadius.circular(15.0),
                           ),
                           padding: EdgeInsets.all(10.0),
-                          height: 250,
+                          height: 210,
                           width: 360,
                           child: TopNav(
                             hintText1: currentPlace,
