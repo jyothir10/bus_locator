@@ -250,7 +250,7 @@ class _MapScreenState extends State<MapScreen> {
                                                               Color(0xFF28284D),
                                                         ),
                                                       ),
-                                                      hintText: 'from',
+                                                      hintText: currentPlace,
                                                       hintStyle: TextStyle(
                                                           color:
                                                               Colors.blueGrey,
