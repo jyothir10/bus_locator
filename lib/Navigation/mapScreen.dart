@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:typed_data';
-import 'package:bus_locator/Authentication/ui/additionals.dart';
 import 'package:bus_locator/Components/TopNav.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/TopNav.dart';
@@ -168,63 +167,16 @@ class _MapScreenState extends State<MapScreen> {
           ],
         ),
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.compare_arrows,
-                color: kBottomBarColor,
-                size: 40,
-              ),
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return Dialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        elevation: 16,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: kPageBackgroundColor,
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          padding: EdgeInsets.all(10.0),
-                          height: 250,
-                          width: 360,
-                          child: TopNav(
-                            hintText1: currentPlace,
-                            controller2: _controller2,
-                            onPressed: () =>
-                                Navigator.pushNamed(context, MapScreen.id),
-                            icon: Icon(
-                              Icons.search,
-                              size: 40,
-                              color: kPageBackgroundColor,
-                            ),
-                          ),
-                        ),
-                      );
-                    });
-              }),
-          SizedBox(
-            height: 10,
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.white,
+          child: Icon(
+            Icons.compare_arrows,
+            color: kBottomBarColor,
+            size: 40,
           ),
-          FloatingActionButton(
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.location_searching,
-                color: kBottomBarColor,
-                size: 35,
-              ),
-              onPressed: () {
-                getCurrentLocation();
-              }),
-        ],
-      ),
+          onPressed: () {
+            getCurrentLocation();
+          }),
     );
   }
 }
