@@ -13,6 +13,18 @@ FirebaseUser loggedInUser;
 var id;
 var ticketData;
 
+void getCurrentUser() async {
+  try {
+    final user = await _auth.currentUser();
+    if (user != null) {
+      loggedInUser = user;
+      id = loggedInUser.uid;
+    }
+  } catch (e) {
+    print(e);
+  }
+}
+
 class TicketList extends StatefulWidget {
   static String id = 'ticket_list';
   @override
@@ -42,18 +54,6 @@ class _TicketListState extends State<TicketList> {
   void initState() {
     getCurrentUser();
     super.initState();
-  }
-
-  void getCurrentUser() async {
-    try {
-      final user = await _auth.currentUser();
-      if (user != null) {
-        loggedInUser = user;
-        id = loggedInUser.uid;
-      }
-    } catch (e) {
-      print(e);
-    }
   }
 
   @override
