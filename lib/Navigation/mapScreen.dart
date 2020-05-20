@@ -134,20 +134,20 @@ class _MapScreenState extends State<MapScreen> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-//            TopNav(
-//              hintText1: currentPlace,
-//              controller2: _controller2,
-//              onPressed: () => Navigator.pushNamed(context, Destination.id),
-//              icon: Icon(
-//                Icons.search,
-//                size: 40,
-//                color: kPageBackgroundColor,
-//              ),
-//            ),
+            TopNav(
+              hintText1: currentPlace,
+              controller2: _controller2,
+              onPressed: () => Navigator.pushNamed(context, Destination.id),
+              icon: Icon(
+                Icons.search,
+                size: 40,
+                color: kPageBackgroundColor,
+              ),
+            ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.all(5),
-                margin: EdgeInsets.only(top: 0),
+                margin: EdgeInsets.only(top: 5),
                 width: 500,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.0),
@@ -170,7 +170,7 @@ class _MapScreenState extends State<MapScreen> {
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.white,
           child: Icon(
-            Icons.compare_arrows,
+            Icons.location_searching,
             color: kBottomBarColor,
             size: 40,
           ),
