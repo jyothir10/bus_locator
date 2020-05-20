@@ -195,7 +195,7 @@ class _MapScreenState extends State<MapScreen> {
                           ),
                           padding: EdgeInsets.all(10.0),
                           height: 170,
-                          width: 360,
+                          width: 400,
                           child: Container(
                             child: Column(
                               children: <Widget>[
@@ -203,7 +203,7 @@ class _MapScreenState extends State<MapScreen> {
                                   padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
                                   color: HexColor("#13132d"),
                                   height: 150,
-                                  width: double.maxFinite,
+                                  width: 369,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: <Widget>[
@@ -238,7 +238,7 @@ class _MapScreenState extends State<MapScreen> {
                                             padding: const EdgeInsets.fromLTRB(
                                                 20, 0, 0, 0),
                                             child: Container(
-                                              width: 300,
+                                              width: 240,
                                               child: Column(
                                                 children: <Widget>[
                                                   TextField(
