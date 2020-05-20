@@ -4,7 +4,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 enum AuthService { FACEBOOK, GOOGLE, EMAILANDPASSWORD }
-
 String photo;
 
 class Auth {
@@ -96,11 +95,12 @@ class Auth {
   Future<Map> getUserProfile() async {
     try {
       FirebaseUser user = await getCurrentUser();
-      photo=user.photoUrl;
       return {
         "name": user.displayName ?? "Person",
         "email": user.email ?? "email",
-        "place": "Kannur"
+        "place": "Kannur",
+        "photoUrl": photo ??
+            "https://lh3.googleusercontent.com/a-/AOh14Gg0TXrSBWQ7kDpNr5O_krIyDL81ebh29ffFSVOf=s60-cc-rg",
       };
     } catch (error) {
       throw error;
@@ -141,6 +141,8 @@ class Auth {
         idToken: googleAuth.idToken,
       );
       final FirebaseUser user = await _auth.signInWithCredential(credential);
+      print(user.photoUrl);
+      photo = user.photoUrl;
       return user;
     } catch (error) {
       /// TODO (farih) Add better error handling for custom errors thrown by googleSignIn.

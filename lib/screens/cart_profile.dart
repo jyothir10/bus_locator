@@ -76,6 +76,7 @@ class _CartProfileState extends State<CartProfile> {
 }
 
 Widget profilePageBuilder(BuildContext context, Map userInfo) {
+  // ignore: close_sinks
   final _authBloc = BlocProvider.of<AuthBloc>(context);
   return Container(
     color: kPageBackgroundColor,
@@ -86,6 +87,7 @@ Widget profilePageBuilder(BuildContext context, Map userInfo) {
           name: userInfo["name"],
           email: userInfo["email"],
           place: userInfo["place"],
+          photo: userInfo["photoUrl"],
         ),
         SizedBox(
           height: 220,
@@ -129,8 +131,9 @@ class BusCardProfilePage extends StatelessWidget {
   final String name;
   final String email;
   final String place;
+  final String photo;
 
-  BusCardProfilePage({this.name, this.email, this.place});
+  BusCardProfilePage({this.name, this.email, this.place, this.photo});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -152,10 +155,9 @@ class BusCardProfilePage extends StatelessWidget {
                     CircleAvatar(
                       backgroundColor: Colors.green,
                       radius: 30.0,
-                      child: Icon(
-                        Icons.directions_bus,
-                        color: Colors.white,
-                      ),
+//                      child: Image(
+//                        image: NetworkImage(photo),
+//                      ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

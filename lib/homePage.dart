@@ -146,8 +146,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    String hintText1 = 'From';
-    String hintText2 = "To";
+    // ignore: close_sinks
     final _bloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       drawer: Drawer(
