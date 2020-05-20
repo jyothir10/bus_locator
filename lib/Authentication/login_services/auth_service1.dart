@@ -65,10 +65,12 @@ class Auth {
     }
   }
 
-  Future<FirebaseUser> createAccount(String email, String password) async {
+  Future<FirebaseUser> createAccount(String email, String password, String name) async {
+    db = Firestore.instance;
     try {
       final user = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      db.collection("directory").add({'name':name,'email':email});
       return user;
     } catch (error) {
       throw error;

@@ -44,7 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield* _mapStartUp();
     } else if (event is ForgotPassword) {
       yield* _mapForgotPassword(event);
-    } 
+    }
   }
 
   Stream<AuthState> _mapLogin(Login login) async* {
@@ -87,7 +87,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } else {
       try {
         final user = await _auth.createAccount(
-            createAccount.email, createAccount.password);
+            createAccount.email, createAccount.password ,createAccount.name);
         yield user != null
             ? CreateAccountSuccess(message: CREATE_ACCOUNT_SUCCESS_MESSAGE)
             : CreateAccountFailure(message: CREATE_ACCOUNT_SUCCESS_MESSAGE);

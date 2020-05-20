@@ -64,6 +64,8 @@ class RegisterScreen extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                createLabel("Name", 0),
+                name,
                 createLabel("Email", 0),
                 email,
                 createLabel("Password", 0),
@@ -90,7 +92,8 @@ class RegisterScreen extends StatelessWidget {
                     _bloc.add(CreateAccount(
                         email: email.controller.text,
                         password: password.controller.text,
-                        confirmPassword: confirmPassword.controller.text));
+                        confirmPassword: confirmPassword.controller.text,
+                        name:name.controller.text));
                   },
                   child: Container(
                     width: 200,
