@@ -134,49 +134,109 @@ class _MapScreenState extends State<MapScreen> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            TopNav(
-              hintText1: currentPlace,
-              controller2: _controller2,
-              onPressed: () => Navigator.pushNamed(context, Destination.id),
-              icon: Icon(
-                Icons.search,
-                size: 40,
-                color: kPageBackgroundColor,
-              ),
-            ),
+//            TopNav(
+//              hintText1: currentPlace,
+//              controller2: _controller2,
+//              onPressed: () => Navigator.pushNamed(context, Destination.id),
+//              icon: Icon(
+//                Icons.search,
+//                size: 40,
+//                color: kPageBackgroundColor,
+//              ),
+//            ),
             Expanded(
-              child: Container(
-                padding: EdgeInsets.all(5),
-                margin: EdgeInsets.only(top: 5),
-                width: 500,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  color: kPageBackgroundColor,
-                ),
-                child: GoogleMap(
-                  mapType: MapType.normal,
-                  initialCameraPosition: initialLocation,
-                  markers: Set.of((marker != null) ? [marker] : []),
-                  circles: Set.of((circle != null) ? [circle] : []),
-                  onMapCreated: (GoogleMapController controller) {
-                    _controller = controller;
-                  },
-                ),
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    margin: EdgeInsets.only(top: 5),
+                    width: 500,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.0),
+                      color: kPageBackgroundColor,
+                    ),
+                    child: GoogleMap(
+                      mapType: MapType.normal,
+                      initialCameraPosition: initialLocation,
+                      markers: Set.of((marker != null) ? [marker] : []),
+                      circles: Set.of((circle != null) ? [circle] : []),
+                      onMapCreated: (GoogleMapController controller) {
+                        _controller = controller;
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          FloatingActionButton(
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.compare_arrows,
+                                color: kBottomBarColor,
+                                size: 35,
+                              ),
+                              onPressed: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Dialog(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(40),
+                                        ),
+                                        elevation: 16,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: kPageBackgroundColor,
+                                            borderRadius:
+                                                BorderRadius.circular(15.0),
+                                          ),
+                                          padding: EdgeInsets.all(10.0),
+                                          height: 250,
+                                          width: 360,
+                                          child: TopNav(
+                                            hintText1: currentPlace,
+                                            controller2: _controller2,
+                                            onPressed: () =>
+                                                Navigator.pushNamed(
+                                                    context, Destination.id),
+                                            icon: Icon(
+                                              Icons.search,
+                                              size: 40,
+                                              color: kPageBackgroundColor,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              }),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          FloatingActionButton(
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.location_searching,
+                                color: kBottomBarColor,
+                                size: 35,
+                              ),
+                              onPressed: () {
+                                getCurrentLocation();
+                              }),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
-          child: Icon(
-            Icons.location_searching,
-            color: kBottomBarColor,
-            size: 40,
-          ),
-          onPressed: () {
-            getCurrentLocation();
-          }),
     );
   }
 }
