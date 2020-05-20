@@ -173,6 +173,7 @@ class _MapScreenState extends State<MapScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
                           FloatingActionButton(
+                              heroTag: 2,
                               backgroundColor: Colors.white,
                               child: Icon(
                                 Icons.compare_arrows,
@@ -218,6 +219,7 @@ class _MapScreenState extends State<MapScreen> {
                             height: 10,
                           ),
                           FloatingActionButton(
+                              heroTag: 1,
                               backgroundColor: Colors.white,
                               child: Icon(
                                 Icons.location_searching,
