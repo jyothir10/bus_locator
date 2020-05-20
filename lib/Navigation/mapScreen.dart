@@ -171,20 +171,6 @@ class _MapScreenState extends State<MapScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           FloatingActionButton(
-              heroTag: 1,
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.location_searching,
-                color: kBottomBarColor,
-                size: 35,
-              ),
-              onPressed: () {
-                getCurrentLocation();
-              }),
-          SizedBox(
-            height: 10,
-          ),
-          FloatingActionButton(
               heroTag: 2,
               backgroundColor: Colors.white,
               child: Icon(
@@ -223,6 +209,20 @@ class _MapScreenState extends State<MapScreen> {
                         ),
                       );
                     });
+              }),
+          SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton(
+              heroTag: 1,
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.location_searching,
+                color: kBottomBarColor,
+                size: 35,
+              ),
+              onPressed: () {
+                getCurrentLocation();
               }),
         ],
       ),
