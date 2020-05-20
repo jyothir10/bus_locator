@@ -6,6 +6,7 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/Users/bloc/user_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'ResetPassword.dart';
 import 'package:bus_locator/screens/WelcomeScreen.dart';
@@ -149,7 +150,7 @@ class BusCardProfilePage extends StatelessWidget {
                   topLeft: Radius.circular(8.0),
                   bottomLeft: Radius.circular(8.0)),
               cardChild: Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.fromLTRB(8, 15, 8, 15.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -159,6 +160,7 @@ class BusCardProfilePage extends StatelessWidget {
 //                      child: Image(
 //                        image: NetworkImage(photo),
 //                      ),
+                      child: Icon(FontAwesomeIcons.bus),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

@@ -176,6 +176,7 @@ class LoginScreen extends StatelessWidget {
   }
 
   Future<Widget> forgotPasswordDialog(BuildContext context) {
+    // ignore: close_sinks
     final _bloc = BlocProvider.of<AuthBloc>(context);
     final email = InputCard("email", 0, false);
     return showDialog(
@@ -244,6 +245,6 @@ class LoginScreen extends StatelessWidget {
       showInSnackBar(context, state.message);
     } else if (state is ForgotPasswordFailure) {
       showInSnackBar(context, state.message);
-    } 
+    }
   }
 }
