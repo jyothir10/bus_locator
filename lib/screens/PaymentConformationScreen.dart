@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:bus_locator/Components/Constants.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
@@ -24,7 +25,19 @@ class _PaymentConformationState extends State<PaymentConformation> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Razorpay Sample App'),
+          leading: Icon(
+            Icons.keyboard_backspace,
+            size: 30,
+          ),
+          title: Center(
+            child: Text(
+              'Payment Conformation',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          backgroundColor: kAppBarColor,
         ),
         body: Center(
           child: Column(
