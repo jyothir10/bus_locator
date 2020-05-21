@@ -1,6 +1,8 @@
 import 'package:bus_locator/Authentication/ui/login_screen.dart';
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:bus_locator/screens/destination_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import '../bloc/auth_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
@@ -9,14 +11,37 @@ import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 
-class RegisterScreen extends StatelessWidget {
-  TextEditingController controller;
+class RegisterScreen extends StatefulWidget {
   static const String id = 'Register_Screen';
+  @override
+  _RegisterScreenState createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   final InputCard email = InputCard("Email", 0, false);
   final InputCard password = InputCard("Password", 0, true);
   final InputCard confirmPassword = InputCard("Confirm Password", 0, true);
 
-  RegisterScreen({Key key}) : super(key: key);
+  //TODO:current location
+  void getLocation() async {
+    try {
+      Position position = await Geolocator().getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
+      latitude = position.latitude;
+      longitude = position.longitude;
+
+      List<Placemark> placemark =
+          await Geolocator().placemarkFromCoordinates(latitude, longitude);
+      Placemark place = placemark[0];
+
+      setState(() {
+        //TODO:upload this data.
+        currentPlace = place.locality;
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -172,4 +197,10 @@ class RegisterScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+@override
+Widget build(BuildContext context) {
+  // TODO: implement build
+  return null;
 }
