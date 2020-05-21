@@ -9,6 +9,7 @@ class UserService {
   Future<Map> getUserProfile() async{
     try {
       FirebaseUser user = await _auth.currentUser();
+      print(user);
       Map userInfo = {"name":user.displayName??"Person", "email": user.email??"xyz@email.com", "place": "Kannur"};
       return userInfo;
     } catch(error) {

@@ -63,9 +63,9 @@ class _HomePageState extends State<HomePage> {
           await Geolocator().placemarkFromCoordinates(latitude, longitude);
       Placemark place = placemark[0];
 
-      setState(() {
-        currentPlace = place.locality;
-      });
+      // setState(() {
+      //   currentPlace = place.locality;
+      // });
     } catch (e) {
       print(e);
       Alert(

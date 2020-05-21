@@ -1,3 +1,4 @@
+import 'package:bus_locator/logger/logger.dart';
 import 'package:equatable/equatable.dart';
 import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 
@@ -45,10 +46,12 @@ class Logout extends AuthEvent {
 
 // Mapped
 class CreateAccount extends AuthEvent {
+  final String name;
   final String email;
   final String password;
   final String confirmPassword;
-  CreateAccount({this.email, this.password, this.confirmPassword});
+  CreateAccount({this.name,this.email, this.password, this.confirmPassword}) {
+  }
   @override
   String toString() {
     return "Create Account";

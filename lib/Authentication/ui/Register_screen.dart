@@ -12,6 +12,7 @@ import 'package:bus_locator/Authentication/bloc/auth_state.dart';
 class RegisterScreen extends StatelessWidget {
   TextEditingController controller;
   static const String id = 'Register_Screen';
+  final InputCard name = InputCard("Name", 0, false);
   final InputCard email = InputCard("Email", 0, false);
   final InputCard password = InputCard("Password", 0, true);
   final InputCard confirmPassword = InputCard("Confirm Password", 0, true);

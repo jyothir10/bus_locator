@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -65,8 +66,8 @@ class Auth {
     }
   }
 
-  Future<FirebaseUser> createAccount(String email, String password, String name) async {
-    db = Firestore.instance;
+  Future<FirebaseUser> createAccount(String name, String email, String password) async {
+    final db = Firestore.instance;
     try {
       final user = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);

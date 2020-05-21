@@ -86,11 +86,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       yield CreateAccountFailure(message: PASSWORDS_DO_NOT_MATCH_MESSAGE);
     } else {
       try {
-        final user = await _auth.createAccount(
-            createAccount.email, createAccount.password ,createAccount.name);
+        final user = await _auth.createAccount(createAccount.name,
+            createAccount.email, createAccount.password);
         yield user != null
             ? CreateAccountSuccess(message: CREATE_ACCOUNT_SUCCESS_MESSAGE)
-            : CreateAccountFailure(message: CREATE_ACCOUNT_SUCCESS_MESSAGE);
+            : CreateAccountFailure(message: CREATE_ACCOUNT_ERROR_MESSAGE);
       } on PlatformException catch (error) {
         String message = createAccountPlatformExceptionHandler(error.code);
         yield CreateAccountFailure(message: message);
