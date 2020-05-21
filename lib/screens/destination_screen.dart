@@ -54,7 +54,6 @@ class _DestinationState extends State<Destination> {
       List<Placemark> placemark =
           await Geolocator().placemarkFromCoordinates(latitude, longitude);
       Placemark place = placemark[0];
-      print(place.locality);
       setState(() {
         currentPlace = place.locality;
       });
