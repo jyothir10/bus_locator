@@ -110,10 +110,7 @@ class Auth {
       // });
       if (query.exists) {
         displayName = query.data["name"];
-        print("QUERY " + query.data.toString());
       }
-      print("idiot");
-      print(displayName);
       return {
         "name": displayName ?? "Person",
         "email": user.email ?? "email",
