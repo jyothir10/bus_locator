@@ -23,99 +23,97 @@ class _PaymentConformationState extends State<PaymentConformation> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: kAppBarColor,
-          leading: GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Icon(
-              Icons.keyboard_backspace,
-              size: 30,
-              color: Colors.white,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kAppBarColor,
+        leading: GestureDetector(
+          onTap: () => Navigator.pop(context),
+          child: Icon(
+            Icons.keyboard_backspace,
+            size: 30,
+            color: Colors.white,
           ),
         ),
-        body: Container(
-          color: kPageBackgroundColor,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Text(
-                        'pay',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold),
-                      ),
+      ),
+      body: Container(
+        color: kPageBackgroundColor,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      'pay',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 21,
+                          fontWeight: FontWeight.bold),
                     ),
-                    LimitedBox(
-                      maxWidth: 100,
-                      child: Text(
-                        rupee + ' ' + totalAmount.toString(),
-                        style: TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
+                  ),
+                  LimitedBox(
+                    maxWidth: 100,
+                    child: Text(
+                      rupee + ' ' + totalAmount.toString(),
+                      style: TextStyle(
+                          fontSize: 100,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: RaisedButton(
-                        onPressed: openCheckout,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 12.0, horizontal: 35),
-                          child: Text(
-                            'confirm',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 100,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: RaisedButton(
+                      onPressed: openCheckout,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12.0, horizontal: 35),
+                        child: Text(
+                          'confirm',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
-                        color: kBottomBarActiveIconColor,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        padding: EdgeInsets.all(2.0),
-                        splashColor: Colors.blueAccent,
                       ),
+                      color: kBottomBarActiveIconColor,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(2.0),
+                      splashColor: Colors.blueAccent,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: RaisedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 12.0, horizontal: 35),
-                          child: Text(
-                            'cancel',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: RaisedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12.0, horizontal: 35),
+                        child: Text(
+                          'cancel',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
-                        color: Colors.blue,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        padding: EdgeInsets.all(2.0),
-                        splashColor: Colors.blueAccent,
                       ),
+                      color: Colors.blue,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(2.0),
+                      splashColor: Colors.blueAccent,
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

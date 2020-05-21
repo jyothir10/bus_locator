@@ -1,6 +1,7 @@
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Navigation/mapScreen.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
+import 'package:bus_locator/screens/TicketDetailsScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard4.dart';
@@ -163,7 +164,7 @@ class _BusDetailsState extends State<BusDetails> {
                     text: 'Order',
                     onPress: () {
                       //TODO: place order
-                      Navigator.pushNamed(context, PaymentScreen.id);
+                      Navigator.pushNamed(context, TicketDetails.id);
                     }),
               )
             ],
