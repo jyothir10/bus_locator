@@ -41,12 +41,12 @@ class SearchBloc {
   }
 
   // TODO Change it for database
-  Widget buildCard(String name, String phoneNo) {
+  Widget buildCard(String name, String fare) {
     return Card(
       child: Column(
         children: <Widget>[
           Text(name),
-          Text(phoneNo),
+          Text(fare),
         ],
       ),
     );
@@ -56,7 +56,7 @@ class SearchBloc {
   Widget buildCardListView(List items) {
     List<Widget> list = [];
     for (final i in items) {
-      list.add(buildCard(i["name"], i["phone_number"]));
+      list.add(buildCard(i["busname"], i["fare"]));
     }
     return ListView(children: list);
   }
