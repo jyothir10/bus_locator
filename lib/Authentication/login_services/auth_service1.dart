@@ -70,7 +70,7 @@ class Auth {
     try {
       final user = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      db.collection("directory").add({'name':name,'email':email});
+      db.collection("directory").document(email).setData({'name':name,'email':email});
       return user;
     } catch (error) {
       throw error;
@@ -97,11 +97,11 @@ class Auth {
   Future<Map> getUserProfile() async {
     try {
       FirebaseUser user = await getCurrentUser();
-      displayName = user.displayName;
-      var query = await db.collection('bus').where('email', isEqualTo: user.email);
+      var displayName = user.displayName;
+      var query = db.collection('bus').where('email', isEqualTo: user.email).document(user.email);
           query.get().then((datasnapshot){
             if (datasnapshot.exists){
-                var displayName =  datasnapshot.data['name'];);
+                displayName =  datasnapshot.data['name'];);
             }
       return {
         "name": displayName ?? "Person",
