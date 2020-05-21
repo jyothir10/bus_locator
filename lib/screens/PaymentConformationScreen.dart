@@ -142,8 +142,8 @@ class _PaymentConformationState extends State<PaymentConformation> {
     var options = {
       'key': 'rzp_test_IQwhGvbvsOZmJ0',
       'amount': totalAmount * 100,
-      'name': 'company name',
-      'description': 'test payment',
+      'name': 'i-Bus',
+      'description': 'Enfono Technologies',
       'prefill': {'contact': '', 'email': ''},
       'external': {
         'wallets': ['paytm']
@@ -164,27 +164,18 @@ class _PaymentConformationState extends State<PaymentConformation> {
 
   void _handlePaymentError(PaymentFailureResponse response) {
     Fluttertoast.showToast(
-        msg: "ERROR: " + response.code.toString() + " - " + response.message);
+      msg: "ERROR: " + response.code.toString() + " - " + response.message,
+      fontSize: 16,
+      textColor: Colors.white,
+      backgroundColor: kPageBackgroundColor,
+    );
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
-    Fluttertoast.showToast(msg: "EXTERNAL_WALLET: " + response.walletName);
-  }
-
-  void showInSnackBar(String value) {
-    FocusScope.of(context).requestFocus(new FocusNode());
-    _scaffoldKey.currentState?.removeCurrentSnackBar();
-    _scaffoldKey.currentState.showSnackBar(new SnackBar(
-      content: new Text(
-        value,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-            fontFamily: "WorkSansSemiBold"),
-      ),
-      backgroundColor: Colors.blue,
-      duration: Duration(seconds: 3),
-    ));
+    Fluttertoast.showToast(
+        msg: "EXTERNAL_WALLET: " + response.walletName,
+        fontSize: 16,
+        textColor: Colors.white,
+        backgroundColor: kPageBackgroundColor);
   }
 }
