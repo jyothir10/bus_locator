@@ -18,6 +18,7 @@ var busData;
 double latitude;
 double longitude;
 var currentPlace;
+String rupee = '₹';
 
 var alertStyle = AlertStyle(
   overlayColor: kPageBackgroundColor,
@@ -161,7 +162,7 @@ class _DestinationState extends State<Destination> {
                     final busName = bus.data['busname'];
                     final type = bus.data['bustype'];
                     final distance = bus.data['distance'];
-                    final fare = bus.data['fare'];
+                    final fare = rupee + bus.data['fare'];
 
                     final busCard = BusCard3(
                       busName: busName,
