@@ -11,9 +11,15 @@ class TopNav extends StatelessWidget {
   final String hintText1;
   final String hintText2 = "Choose Destination";
   final Function onPressed;
-  final TextEditingController controller2;
+  final TextEditingController controllerto;
+  final TextEditingController controllerfrom;
   final Icon icon;
-  TopNav({this.onPressed, this.controller2, this.icon, this.hintText1});
+  TopNav(
+      {this.onPressed,
+      this.controllerto,
+      this.controllerfrom,
+      this.icon,
+      this.hintText1});
   @override
 //  Widget build(BuildContext context) {
 //    return Padding(
@@ -195,7 +201,7 @@ class TopNav extends StatelessWidget {
                                 hintStyle: TextStyle(
                                     color: Colors.blueGrey, fontSize: 18),
                               ),
-                              controller: controller2,
+                              controller: controllerfrom,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,
@@ -215,7 +221,7 @@ class TopNav extends StatelessWidget {
                                 hintStyle: TextStyle(
                                     color: Colors.blueGrey, fontSize: 18),
                               ),
-                              controller: controller2,
+                              controller: controllerto,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 15,

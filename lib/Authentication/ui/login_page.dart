@@ -53,6 +53,7 @@ class _LoginPageState extends State<LoginPage>
       child: new Scaffold(
         key: _scaffoldKey,
         body: NotificationListener<OverscrollIndicatorNotification>(
+          // ignore: missing_return
           onNotification: (overscroll) {
             overscroll.disallowGlow();
           },
@@ -352,7 +353,8 @@ class _LoginPageState extends State<LoginPage>
                     onPressed: () {
                       String email = loginEmailController.text;
                       String password = loginPasswordController.text;
-                      _bloc.add(Login(AuthService.EMAILANDPASSWORD, email: email, password: password));
+                      _bloc.add(Login(AuthService.EMAILANDPASSWORD,
+                          email: email, password: password));
                     }),
               ),
             ],
@@ -698,8 +700,6 @@ class _LoginPageState extends State<LoginPage>
       ),
     );
   }
-
-
 
   void _onSignInButtonPress() {
     _pageController.animateToPage(0,

@@ -20,6 +20,7 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   TextEditingController _controller2;
+  TextEditingController _controller3;
   StreamSubscription _locationSubscription;
   Location _locationTracker = Location();
   Marker marker;
@@ -281,7 +282,7 @@ class _MapScreenState extends State<MapScreen> {
                                                               Colors.blueGrey,
                                                           fontSize: 18),
                                                     ),
-                                                    controller: _controller2,
+                                                    controller: _controller3,
                                                     style: TextStyle(
                                                       color: Colors.white,
                                                       fontSize: 17,

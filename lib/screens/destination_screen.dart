@@ -102,11 +102,13 @@ class _DestinationState extends State<Destination> {
   }
 
   TextEditingController _controller;
+  TextEditingController _controller2;
 
   void initState() {
     super.initState();
     getLocation();
     _controller = TextEditingController();
+    _controller2 = TextEditingController();
   }
 
   void dispose() {
@@ -119,7 +121,8 @@ class _DestinationState extends State<Destination> {
     List<Widget> buses = [
       TopNav(
         hintText1: currentPlace,
-        controller2: _controller,
+        controllerfrom: _controller,
+        controllerto: _controller2,
         onPressed: () =>
             Navigator.pushReplacementNamed(context, TabBarClass.id),
         icon: Icon(

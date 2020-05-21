@@ -39,7 +39,7 @@ class _WebViewMapState extends State<WebViewMap> {
         child: Column(
           children: <Widget>[
             TopNav(
-              controller2: _controller2,
+              controllerfrom: _controller2,
               onPressed: () => Navigator.pushNamed(context, Destination.id),
             ),
             Expanded(

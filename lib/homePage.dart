@@ -129,6 +129,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   TextEditingController _controller;
+  TextEditingController _controller2;
   @override
   void initState() {
     // TODO: implement initState
@@ -136,6 +137,7 @@ class _HomePageState extends State<HomePage> {
     getLocation();
     getCurrentUser();
     _controller = TextEditingController();
+    _controller2 = TextEditingController();
     connectivityCheck();
   }
 
@@ -257,7 +259,8 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.fromLTRB(8.0, 8, 8, 4),
             child: TopNav(
               hintText1: currentPlace,
-              controller2: _controller,
+              controllerfrom: _controller,
+              controllerto: _controller2,
               onPressed: () => Navigator.pushNamed(context, MapScreen.id),
               icon: Icon(
                 Icons.search,
