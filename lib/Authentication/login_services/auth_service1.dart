@@ -11,7 +11,7 @@ class Auth {
   FirebaseAuth _auth;
   FacebookLogin _facebookLoginHandler;
   GoogleSignIn _googleLoginHandler;
-
+  final db = Firestore.instance;
   static const List<String> FACEBOOKPERMISSIONS = ["email"];
 
   Auth() {
@@ -67,7 +67,6 @@ class Auth {
   }
 
   Future<FirebaseUser> createAccount(String name, String email, String password) async {
-    final db = Firestore.instance;
     try {
       final user = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -98,8 +97,16 @@ class Auth {
   Future<Map> getUserProfile() async {
     try {
       FirebaseUser user = await getCurrentUser();
+      var query = await db
+          .collection('bus')
+          .where('email', isEqualTo: user.email);
+
+          query.get().then((datasnapshot){
+            if (datasnapshot.exists){
+                var displayName =  datasnapshot.data['name'];);
+            }
       return {
-        "name": user.displayName ?? "Person",
+        "name": displayName ?? "Person",
         "email": user.email ?? "email",
         "place": "Kannur",
         "photoUrl": photo ??
