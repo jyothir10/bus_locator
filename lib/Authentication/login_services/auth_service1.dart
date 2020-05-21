@@ -66,11 +66,15 @@ class Auth {
     }
   }
 
-  Future<FirebaseUser> createAccount(String name, String email, String password) async {
+  Future<FirebaseUser> createAccount(
+      String name, String email, String password) async {
     try {
       final user = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      db.collection("directory").add({'name':name,'email':email});
+      db
+          .collection("directory")
+          .document(email)
+          .setData({'name': name, 'email': email});
       return user;
     } catch (error) {
       throw error;
@@ -98,7 +102,18 @@ class Auth {
     try {
       FirebaseUser user = await getCurrentUser();
       var displayName = user.displayName;
-      var query = await db.collection('bus').where('email', isEqualTo: user.email).snapshots().listen((datasnapshot) {displayName = datasnapshot}))
+      var query = await db.collection('bus').document(user.email).get();
+      // query.get().then((datasnapshot) {
+      //   if (datasnapshot.exists) {
+      //     displayName = datasnapshot.data['name'];
+      //   }
+      // });
+      if (query.exists) {
+        displayName = query.data["name"];
+        print("QUERY " + query.data.toString());
+      }
+      print("idiot");
+      print(displayName);
       return {
         "name": displayName ?? "Person",
         "email": user.email ?? "email",
