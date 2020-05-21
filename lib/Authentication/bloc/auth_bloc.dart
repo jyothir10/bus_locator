@@ -7,6 +7,9 @@ import 'dart:async';
 import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 import 'package:bus_locator/logger/logger.dart';
 import 'package:flutter/services.dart';
+export  'auth_errors.dart';
+export 'auth_state.dart';
+
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Auth _auth = Auth();

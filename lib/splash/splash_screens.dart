@@ -44,6 +44,7 @@ class SplashScreenState extends State<AnimatedSplashScreen>
 
   @override
   void initState() {
+
     final _bloc = BlocProvider.of<AuthBloc>(context);
     super.initState();
     animationController = new AnimationController(
