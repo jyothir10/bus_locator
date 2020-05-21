@@ -5,6 +5,7 @@ import 'TicketDetailsScreen.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:bus_locator/Payment/screens/Reciept_screen.dart';
 
 String rupee = '₹';
 
@@ -156,6 +157,7 @@ class _PaymentConformationState extends State<PaymentConformation> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     Fluttertoast.showToast(msg: "SUCCESS: " + response.paymentId);
+    Navigator.pushNamed(context, RecieptScreen.id);
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
