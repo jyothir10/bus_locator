@@ -98,9 +98,7 @@ class Auth {
     try {
       FirebaseUser user = await getCurrentUser();
       displayName = user.displayName;
-      var query = await db
-          .collection('bus')
-          .where('email', isEqualTo: user.email);
+      var query = await db.collection('bus').where('email', isEqualTo: user.email);
           query.get().then((datasnapshot){
             if (datasnapshot.exists){
                 var displayName =  datasnapshot.data['name'];);
