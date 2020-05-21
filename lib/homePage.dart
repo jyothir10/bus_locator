@@ -21,6 +21,7 @@ import 'Authentication/bloc/auth_event.dart';
 import 'Components/customListTile.dart';
 import 'Navigation/mapScreen.dart';
 import 'package:connectivity/connectivity.dart';
+import 'package:bus_locator/screens/ticketList.dart';
 
 var alertStyle = AlertStyle(
   overlayColor: kPageBackgroundColor,
@@ -133,6 +134,7 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     getLocation();
+    getCurrentUser();
     _controller = TextEditingController();
     connectivityCheck();
   }
@@ -146,8 +148,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    String hintText1 = 'From';
-    String hintText2 = "To";
+    // ignore: close_sinks
     final _bloc = BlocProvider.of<AuthBloc>(context);
     return Scaffold(
       drawer: Drawer(

@@ -6,6 +6,8 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/RoundedButton.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/Users/bloc/user_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'ResetPassword.dart';
 import 'package:bus_locator/screens/WelcomeScreen.dart';
 import 'package:bus_locator/screens/profileScreen.dart';
@@ -76,6 +78,7 @@ class _CartProfileState extends State<CartProfile> {
 }
 
 Widget profilePageBuilder(BuildContext context, Map userInfo) {
+  // ignore: close_sinks
   final _authBloc = BlocProvider.of<AuthBloc>(context);
   return Container(
     color: kPageBackgroundColor,
@@ -86,6 +89,7 @@ Widget profilePageBuilder(BuildContext context, Map userInfo) {
           name: userInfo["name"],
           email: userInfo["email"],
           place: userInfo["place"],
+          photo: userInfo["photoUrl"],
         ),
         SizedBox(
           height: 220,
@@ -129,8 +133,9 @@ class BusCardProfilePage extends StatelessWidget {
   final String name;
   final String email;
   final String place;
+  final String photo;
 
-  BusCardProfilePage({this.name, this.email, this.place});
+  BusCardProfilePage({this.name, this.email, this.place, this.photo});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -145,17 +150,17 @@ class BusCardProfilePage extends StatelessWidget {
                   topLeft: Radius.circular(8.0),
                   bottomLeft: Radius.circular(8.0)),
               cardChild: Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.fromLTRB(8, 15, 8, 15.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     CircleAvatar(
                       backgroundColor: Colors.green,
                       radius: 30.0,
-                      child: Icon(
-                        Icons.directions_bus,
-                        color: Colors.white,
-                      ),
+//                      child: Image(
+//                        image: NetworkImage(photo),
+//                      ),
+                      child: Icon(FontAwesomeIcons.bus),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

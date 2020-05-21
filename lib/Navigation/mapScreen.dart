@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:bus_locator/Authentication/ui/additionals.dart';
 import 'package:bus_locator/Components/TopNav.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/TopNav.dart';
@@ -134,16 +135,16 @@ class _MapScreenState extends State<MapScreen> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            TopNav(
-              hintText1: currentPlace,
-              controller2: _controller2,
-              onPressed: () => Navigator.pushNamed(context, Destination.id),
-              icon: Icon(
-                Icons.search,
-                size: 40,
-                color: kPageBackgroundColor,
-              ),
-            ),
+//            TopNav(
+//              hintText1: currentPlace,
+//              controller2: _controller2,
+//              onPressed: () => Navigator.pushNamed(context, Destination.id),
+//              icon: Icon(
+//                Icons.search,
+//                size: 40,
+//                color: kPageBackgroundColor,
+//              ),
+//            ),
             Expanded(
               child: Container(
                 padding: EdgeInsets.all(5),
@@ -167,16 +168,160 @@ class _MapScreenState extends State<MapScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.white,
-          child: Icon(
-            Icons.location_searching,
-            color: kBottomBarColor,
-            size: 35,
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+              heroTag: 2,
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.compare_arrows,
+                color: kBottomBarColor,
+                size: 35,
+              ),
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                        elevation: 16,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: kPageBackgroundColor,
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          padding: EdgeInsets.all(10.0),
+                          height: 170,
+                          width: 400,
+                          child: Container(
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+                                  color: HexColor("#13132d"),
+                                  height: 150,
+                                  width: 369,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: <Widget>[
+                                      Row(
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                5, 0, 0, 0),
+                                            child: Column(
+                                              children: <Widget>[
+                                                Icon(
+                                                  FontAwesomeIcons
+                                                      .solidDotCircle,
+                                                  color: Colors.grey,
+                                                ),
+                                                Icon(
+                                                  FontAwesomeIcons.ellipsisV,
+                                                  color: Colors.grey[100],
+                                                  size: 20,
+                                                ),
+                                                Icon(FontAwesomeIcons.ellipsisV,
+                                                    color: Colors.grey[100],
+                                                    size: 20),
+                                                Icon(
+                                                  FontAwesomeIcons.mapMarkerAlt,
+                                                  color: Colors.red,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                20, 0, 0, 0),
+                                            child: Container(
+                                              width: 240,
+                                              child: Column(
+                                                children: <Widget>[
+                                                  TextField(
+                                                    decoration: InputDecoration(
+                                                      enabledBorder:
+                                                          UnderlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0xFF28284D),
+                                                        ),
+                                                      ),
+                                                      hintText: currentPlace,
+                                                      hintStyle: TextStyle(
+                                                          color:
+                                                              Colors.blueGrey,
+                                                          fontSize: 18),
+                                                    ),
+                                                    controller: _controller2,
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 17,
+                                                    ),
+                                                    onChanged: (value) {
+                                                      //TODO:Starting point selection
+                                                    },
+                                                  ),
+                                                  TextField(
+                                                    decoration: InputDecoration(
+                                                      enabledBorder:
+                                                          UnderlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color:
+                                                              Color(0xFF28284D),
+                                                        ),
+                                                      ),
+                                                      hintText:
+                                                          'choose destination',
+                                                      hintStyle: TextStyle(
+                                                          color:
+                                                              Colors.blueGrey,
+                                                          fontSize: 18),
+                                                    ),
+                                                    controller: _controller2,
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 17,
+                                                    ),
+                                                    onChanged: (value) {
+                                                      //TODO:Destination point selection
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    });
+              }),
+          SizedBox(
+            height: 10,
           ),
-          onPressed: () {
-            getCurrentLocation();
-          }),
+          FloatingActionButton(
+              heroTag: 1,
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.location_searching,
+                color: kBottomBarColor,
+                size: 35,
+              ),
+              onPressed: () {
+                getCurrentLocation();
+              }),
+        ],
+      ),
     );
   }
 }
