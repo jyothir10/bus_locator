@@ -21,6 +21,7 @@ import 'Authentication/bloc/auth_event.dart';
 import 'Components/customListTile.dart';
 import 'Navigation/mapScreen.dart';
 import 'package:connectivity/connectivity.dart';
+import 'screens/ticketList.dart';
 
 var alertStyle = AlertStyle(
   overlayColor: kPageBackgroundColor,
@@ -135,6 +136,7 @@ class _HomePageState extends State<HomePage> {
     getLocation();
     _controller = TextEditingController();
     connectivityCheck();
+    getCurrentUser();
   }
 
   @override
