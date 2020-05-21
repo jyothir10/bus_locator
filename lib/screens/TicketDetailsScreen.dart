@@ -11,6 +11,7 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
+var amount = 9.81;
 
 class TicketDetails extends StatefulWidget {
   static String id = 'Ticket_Details_Screen';
@@ -229,7 +230,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                           ),
                         ),
                         Text(
-                          '10.00',
+                          amount.toString(),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -247,7 +248,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12)),
                       child: FlatButton(
-                        child: Text("Next"),
+                        child: Text("Make payment"),
                         color: HexColor("#693abd"),
                         textColor: Colors.white,
                         disabledColor: Colors.grey,

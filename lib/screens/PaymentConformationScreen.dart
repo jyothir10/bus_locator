@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'TicketDetailsScreen.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-
+import 'package:bus_locator/Components/Constants.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class PaymentConformation extends StatefulWidget {
@@ -17,7 +17,7 @@ class _PaymentConformationState extends State<PaymentConformation> {
   TextEditingController _controller;
 
   Razorpay _razorpay;
-  int totalAmount;
+  double totalAmount = amount;
 
   @override
   Widget build(BuildContext context) {
@@ -26,30 +26,72 @@ class _PaymentConformationState extends State<PaymentConformation> {
         appBar: AppBar(
           title: const Text('Razorpay Sample App'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              LimitedBox(
+        body: Container(
+          color: kPageBackgroundColor,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                LimitedBox(
                   maxWidth: 100,
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      hintText: 'Enter the amount',
+                  child: Text(
+                    totalAmount.toString(),
+                    style: TextStyle(
+                        fontSize: 100,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: RaisedButton(
+                        onPressed: openCheckout,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 35),
+                          child: Text(
+                            'confirm',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                        color: kBottomBarActiveIconColor,
+                        disabledColor: Colors.grey,
+                        disabledTextColor: Colors.black,
+                        padding: EdgeInsets.all(2.0),
+                        splashColor: Colors.blueAccent,
+                      ),
                     ),
-                    controller: _controller,
-                    onChanged: (value) {
-                      setState(() {
-                        totalAmount = num.parse(value);
-                      });
-                    },
-                  )),
-              RaisedButton(
-                onPressed: openCheckout,
-                child: Text('Make payment'),
-                color: Colors.blue,
-              )
-            ],
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: RaisedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 35),
+                          child: Text(
+                            'cancel',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                        ),
+                        color: Colors.blue,
+                        disabledColor: Colors.grey,
+                        disabledTextColor: Colors.black,
+                        padding: EdgeInsets.all(2.0),
+                        splashColor: Colors.blueAccent,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
