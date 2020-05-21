@@ -56,6 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Widget registerScreenUI(BuildContext context) {
+    // ignore: close_sinks
     final _bloc = BlocProvider.of<AuthBloc>(context);
     return SafeArea(
       child: Padding(
