@@ -1,4 +1,5 @@
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
+import 'package:bus_locator/screens/PaymentConformationScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -281,7 +282,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                               print(e);
                             }
                           });
-                          Navigator.pushNamed(context, PaymentScreen.id);
+                          Navigator.pushNamed(context, PaymentConformation.id);
                         },
                       ),
                     ),
