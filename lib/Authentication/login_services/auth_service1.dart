@@ -144,7 +144,6 @@ class Auth {
         idToken: googleAuth.idToken,
       );
       final FirebaseUser user = await _auth.signInWithCredential(credential);
-      print(user.photoUrl);
       photo = user.photoUrl;
       return user;
     } catch (error) {
