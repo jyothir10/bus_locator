@@ -6,6 +6,8 @@ import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+String rupee = '₹';
+
 class PaymentConformation extends StatefulWidget {
   static String id = 'PaymentConformation_Screen';
   @override
@@ -24,7 +26,15 @@ class _PaymentConformationState extends State<PaymentConformation> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Razorpay Sample App'),
+          backgroundColor: kAppBarColor,
+          leading: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Icon(
+              Icons.keyboard_backspace,
+              size: 30,
+              color: Colors.white,
+            ),
+          ),
         ),
         body: Container(
           color: kPageBackgroundColor,
@@ -32,15 +42,29 @@ class _PaymentConformationState extends State<PaymentConformation> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                LimitedBox(
-                  maxWidth: 100,
-                  child: Text(
-                    totalAmount.toString(),
-                    style: TextStyle(
-                        fontSize: 100,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
+                Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                        'pay',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 21,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    LimitedBox(
+                      maxWidth: 100,
+                      child: Text(
+                        rupee + ' ' + totalAmount.toString(),
+                        style: TextStyle(
+                            fontSize: 100,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 100,
