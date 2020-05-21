@@ -7,6 +7,7 @@ import 'BusDetailsScreen.dart';
 final _firestore = Firestore.instance;
 var busDetails;
 var busData;
+String rupee = '₹';
 
 class CartScreen extends StatefulWidget {
   static String id = 'Cart_Screen';
