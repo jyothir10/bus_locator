@@ -1,5 +1,6 @@
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/screens/BusDetailsScreen.dart';
+import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/WelcomeScreen.dart';
 import 'package:bus_locator/screens/ticketList.dart';
 import 'package:flutter/material.dart';
@@ -189,6 +190,7 @@ class _HomePageState extends State<HomePage> {
                 icon: Icons.arrow_right,
                 onpress: () {
                   //TODO:route
+                  Navigator.pushNamed(context, CartScreen.id);
                 }),
             Divider(
               color: Colors.black,
