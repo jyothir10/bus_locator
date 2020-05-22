@@ -1,6 +1,7 @@
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/screens/TicketDetailsScreen.dart';
+import 'package:bus_locator/screens/ticketList.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
@@ -165,7 +166,7 @@ class _RateScreenState extends State<RateScreen> {
                       BoxDecoration(borderRadius: BorderRadius.circular(40)),
                   child: FlatButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, TicketDetails.id);
+                      Navigator.pushReplacementNamed(context, TicketList.id);
                     },
                     color: kPageBackgroundColor,
                     textColor: Colors.white,
