@@ -56,45 +56,45 @@ class _HomePageState extends State<HomePage> {
   double longitude;
   var currentPlace;
   //TODO:current location
-  void getLocation() async {
-    try {
-      Position position = await Geolocator().getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.bestForNavigation);
-      latitude = position.latitude;
-      longitude = position.longitude;
-
-      List<Placemark> placemark =
-          await Geolocator().placemarkFromCoordinates(latitude, longitude);
-      Placemark place = placemark[0];
-
-      setState(() {
-        currentPlace = place.locality;
-      });
-    } catch (e) {
-      print(e);
-      Alert(
-        style: alertStyle,
-        context: context,
-        type: AlertType.error,
-        title: 'Connection Error!',
-        desc: 'Please turn on your network connection',
-        buttons: [
-          DialogButton(
-            onPressed: () {
-              //TODO:turn on the connection
-              Navigator.pop(context);
-            },
-            color: kBottomBarColor,
-            child: Text(
-              'ok',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            width: 120,
-          )
-        ],
-      ).show();
-    }
-  }
+//  void getLocation() async {
+//    try {
+//      Position position = await Geolocator().getCurrentPosition(
+//          desiredAccuracy: LocationAccuracy.bestForNavigation);
+//      latitude = position.latitude;
+//      longitude = position.longitude;
+//
+//      List<Placemark> placemark =
+//          await Geolocator().placemarkFromCoordinates(latitude, longitude);
+//      Placemark place = placemark[0];
+//
+//      setState(() {
+//        currentPlace = place.locality;
+//      });
+//    } catch (e) {
+//      print(e);
+//      Alert(
+//        style: alertStyle,
+//        context: context,
+//        type: AlertType.error,
+//        title: 'Connection Error!',
+//        desc: 'Please turn on your network connection',
+//        buttons: [
+//          DialogButton(
+//            onPressed: () {
+//              //TODO:turn on the connection
+//              Navigator.pop(context);
+//            },
+//            color: kBottomBarColor,
+//            child: Text(
+//              'ok',
+//              style: TextStyle(color: Colors.white, fontSize: 20),
+//            ),
+//            width: 120,
+//          )
+//        ],
+//      ).show();
+//    }
+//  }
 
   //TODO:internet connection checking.
   void connectivityCheck() async {
@@ -132,24 +132,24 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  TextEditingController _controller;
-  TextEditingController _controller2;
+//  TextEditingController _controller;
+//  TextEditingController _controller2;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getLocation();
+//    getLocation();
     getCurrentUser();
     _searchBloc = SearchBloc();
-    _controller = TextEditingController();
-    _controller2 = TextEditingController();
+//    _controller = TextEditingController();
+//    _controller2 = TextEditingController();
     connectivityCheck();
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _controller.dispose();
+//    _controller.dispose();
     super.dispose();
   }
 
@@ -245,256 +245,231 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       backgroundColor: kPageBackgroundColor,
-//      appBar: AppBar(
-//        elevation: 1,
-//        backgroundColor: kAppBarColor,
-//        title: Center(
-//          child: Text(
-//            'Home',
-//            style: TextStyle(
-//              fontWeight: FontWeight.bold,
-//            ),
-//          ),
-//        ),
-//      ),
-      body: SafeArea(
-          child: ListView(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 8, 8, 4),
-            child: TopNav(
-              hintText1: currentPlace,
-              controllerfrom: _controller,
-              controllerto: _controller2,
-              onChanged: (value) {
-                val = value;
-                _searchBloc.add(SearchKeyPress(value));
-              },
-              onPressed: () => Navigator.pushNamed(context, MapScreen.id),
-              icon: Icon(
-                Icons.search,
-                size: 40,
-                color: kPageBackgroundColor,
-              ),
+      appBar: AppBar(
+        backgroundColor: kAppBarColor,
+        title: Center(
+          child: Text(
+            'DESTINATION',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              child: Column(
+        ),
+      ),
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Row(
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(FontAwesomeIcons.bolt, size: 60),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Quick ticket',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.8),
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: kAppBarColor,
-                                    offset: Offset(0.0, 1.0),
-                                    blurRadius: 6.0,
-                                  )
-                                ]),
-                            height: 120,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                          child: GestureDetector(
-                            onTap: () =>
-                                Navigator.pushNamed(context, BusDetails.id),
-                            child: Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(FontAwesomeIcons.searchLocation,
-                                      size: 60),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      'Track Bus',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kAppBarColor,
-                                      offset: Offset(0.0, 1.0),
-                                      blurRadius: 6.0,
-                                    )
-                                  ]),
-                              height: 120,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-                          child: GestureDetector(
-                            onTap: () =>
-                                Navigator.pushNamed(context, TicketList.id),
-                            child: Container(
-                              child: Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Icon(FontAwesomeIcons.moneyCheck, size: 60),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Wallet',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    )
-                                  ],
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(FontAwesomeIcons.bolt, size: 60),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'Quick ticket',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
                                 ),
                               ),
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.8),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kAppBarColor,
-                                      offset: Offset(0.0, 1.0),
-                                      blurRadius: 6.0,
-                                    )
-                                  ]),
-                              height: 120,
-                            ),
-                          ),
+                            )
+                          ],
                         ),
+                        decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
+                        height: 120,
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(FontAwesomeIcons.ticketAlt, size: 60),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Book Tickets',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.8),
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: kAppBarColor,
-                                    offset: Offset(0.0, 1.0),
-                                    blurRadius: 6.0,
-                                  )
-                                ]),
-                            height: 120,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                   SizedBox(
-                    height: 10,
+                    width: 10,
                   ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(5.0, 0, 5, 0),
-                          child: Container(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(FontAwesomeIcons.tag, size: 60),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Offers',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16,
-                                    ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      child: GestureDetector(
+                        onTap: () =>
+                            Navigator.pushNamed(context, BusDetails.id),
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(FontAwesomeIcons.searchLocation, size: 60),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Track Bus',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
                                   ),
-                                )
-                              ],
-                            ),
-                            height: 110,
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.8),
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: kAppBarColor,
-                                    offset: Offset(0.0, 1.0),
-                                    blurRadius: 6.0,
-                                  )
-                                ]),
+                                ),
+                              )
+                            ],
                           ),
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(5.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: kAppBarColor,
+                                  offset: Offset(0.0, 1.0),
+                                  blurRadius: 6.0,
+                                )
+                              ]),
+                          height: 120,
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),
-            ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                      child: GestureDetector(
+                        onTap: () =>
+                            Navigator.pushNamed(context, TicketList.id),
+                        child: Container(
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(FontAwesomeIcons.moneyCheck, size: 60),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Wallet',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.8),
+                              borderRadius: BorderRadius.circular(5.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: kAppBarColor,
+                                  offset: Offset(0.0, 1.0),
+                                  blurRadius: 6.0,
+                                )
+                              ]),
+                          height: 120,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(FontAwesomeIcons.ticketAlt, size: 60),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'Book Tickets',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
+                        height: 120,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5.0, 0, 5, 0),
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(FontAwesomeIcons.tag, size: 60),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'Offers',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        height: 110,
+                        decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.8),
+                            borderRadius: BorderRadius.circular(5.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: kAppBarColor,
+                                offset: Offset(0.0, 1.0),
+                                blurRadius: 6.0,
+                              )
+                            ]),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
-      )),
+        ),
+      ),
     );
   }
 }
