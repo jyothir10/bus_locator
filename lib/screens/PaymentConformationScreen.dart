@@ -20,7 +20,6 @@ class _PaymentConformationState extends State<PaymentConformation> {
   TextEditingController _controller;
 
   Razorpay _razorpay;
-  double totalAmount = amount;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override

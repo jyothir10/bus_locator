@@ -12,7 +12,9 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 final _firestore = Firestore.instance;
 FirebaseUser loggedInUser;
-var amount = 9.81;
+double amount = 9.81;
+double totalAmount = amount;
+int passengerNo;
 
 class TicketDetails extends StatefulWidget {
   static String id = 'Ticket_Details_Screen';
@@ -22,7 +24,7 @@ class TicketDetails extends StatefulWidget {
 
 class _TicketDetailsState extends State<TicketDetails> {
   final _auth = FirebaseAuth.instance;
-  var ticketNo;
+  String ticketNo;
   String name;
   String age;
   String from;
@@ -170,9 +172,12 @@ class _TicketDetailsState extends State<TicketDetails> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         onChanged: (value) {
-                          ticketNo = value;
-                          print(ticketNo);
-                          //TODO : calculate total price
+                          setState(() {
+                            ticketNo = value;
+                            passengerNo = int.parse(ticketNo);
+                            totalAmount = amount * passengerNo;
+                            print(totalAmount);
+                          });
                         },
                       ),
                     ),
@@ -231,7 +236,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                           ),
                         ),
                         Text(
-                          amount.toString(),
+                          totalAmount.toString(),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
