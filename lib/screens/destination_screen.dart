@@ -123,12 +123,11 @@ class _DestinationState extends State<Destination> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
-        title: Center(
-          child: Text(
-            'DESTINATION',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+        centerTitle: true,
+        title: Text(
+          'DESTINATION',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

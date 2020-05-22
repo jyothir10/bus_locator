@@ -40,12 +40,11 @@ class _CartScreenState extends State<CartScreen> {
       backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
         backgroundColor: kAppBarColor,
-        title: Center(
-          child: Text(
-            'CART',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+        centerTitle: true,
+        title: Text(
+          'CART',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

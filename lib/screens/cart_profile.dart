@@ -44,12 +44,11 @@ class _CartProfileState extends State<CartProfile> {
       backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
         backgroundColor: kAppBarColor,
-        title: Center(
-          child: Text(
-            'PROFILE',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+        centerTitle: true,
+        title: Text(
+          'PROFILE',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
