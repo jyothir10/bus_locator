@@ -1,5 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+final _auth = FirebaseAuth.instance;
+FirebaseUser loggedInUser;
+var id;
+
+void getCurrentUser() async {
+  try {
+    final user = await _auth.currentUser();
+    if (user != null) {
+      loggedInUser = user;
+      id = loggedInUser.uid;
+    }
+  } catch (e) {
+    print(e);
+  }
+}
 
 class ProfileScreen extends StatefulWidget {
   static String id = 'profile_Screen';
@@ -8,6 +25,12 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,23 +71,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: <Widget>[
               ProfileDetails(
                 field: "Name",
-                value: "Vivek S J",
+                value: "name",
               ),
               ProfileDetails(
                 field: "Email",
-                value: "freeslab88@gmail.com",
+                value: loggedInUser.email,
               ),
               ProfileDetails(
                 field: "Gender",
                 value: "Male",
-              ),
-              ProfileDetails(
-                field: "Birthday",
-                value: "April 16 , 1998",
-              ),
-              ProfileDetails(
-                field: "Phone number",
-                value: "+917559068204",
               ),
             ],
           ),
