@@ -262,6 +262,28 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Container(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+                      child: GestureDetector(
+                        onTap: () => Navigator.pushNamed(context, MapScreen.id),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white70,
+                          radius: 25,
+                          child: Icon(
+                            Icons.search,
+                            size: 40,
+                            color: kPageBackgroundColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
                 children: <Widget>[
                   Expanded(
                     flex: 1,
