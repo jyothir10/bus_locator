@@ -90,6 +90,60 @@ class _TicketDetailsState extends State<TicketDetails> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        child: Text(
+                          "No of tickets",
+                          style: TextStyle(
+                              color: HexColor("#ae67d6"),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15),
+                        ),
+                      ),
+                      Card(
+                        margin: EdgeInsets.fromLTRB(0, 5, 10, 5),
+                        color: HexColor("#38385c"),
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                          child: DropdownButton<String>(
+                            items: <String>[
+                              '1',
+                              '2',
+                              '3',
+                              '4',
+                              '5',
+                              '6',
+                              '7',
+                              '8',
+                              '9',
+                              '10'
+                            ].map((String value) {
+                              return DropdownMenuItem<String>(
+                                  value: value, child: Text(value));
+                            }).toList(),
+                            underline: SizedBox(),
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
+                            icon: Icon(Icons.arrow_drop_down),
+                            iconEnabledColor: Colors.grey[900],
+                            value: ticketNo,
+                            hint: Text(
+                              "No : of tickets",
+                              style: TextStyle(color: Colors.grey),
+                            ),
+                            onChanged: (value) {
+                              setState(() {
+                                ticketNo = value;
+                                passengerNo = int.parse(ticketNo);
+                                totalAmount = amount * passengerNo;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
                       createLabel("Name", 0),
                       InputField(
                         hintText: "Name",
@@ -127,60 +181,6 @@ class _TicketDetailsState extends State<TicketDetails> {
                         },
                       ),
                     ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    child: Text(
-                      "No of tickets",
-                      style: TextStyle(
-                          color: HexColor("#ae67d6"),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15),
-                    ),
-                  ),
-                  Card(
-                    margin: EdgeInsets.fromLTRB(0, 5, 10, 5),
-                    color: HexColor("#38385c"),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                      child: DropdownButton<String>(
-                        items: <String>[
-                          '1',
-                          '2',
-                          '3',
-                          '4',
-                          '5',
-                          '6',
-                          '7',
-                          '8',
-                          '9',
-                          '10'
-                        ].map((String value) {
-                          return DropdownMenuItem<String>(
-                              value: value, child: Text(value));
-                        }).toList(),
-                        underline: SizedBox(),
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                        icon: Icon(Icons.arrow_drop_down),
-                        iconEnabledColor: Colors.grey[900],
-                        value: ticketNo,
-                        hint: Text(
-                          "No : of tickets",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        onChanged: (value) {
-                          setState(() {
-                            ticketNo = value;
-                            passengerNo = int.parse(ticketNo);
-                            totalAmount = amount * passengerNo;
-                            print(totalAmount);
-                          });
-                        },
-                      ),
-                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
