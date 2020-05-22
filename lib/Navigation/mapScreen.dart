@@ -1,11 +1,8 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:bus_locator/Authentication/ui/additionals.dart';
-import 'package:bus_locator/Components/TopNav.dart';
 import 'package:bus_locator/Components/Constants.dart';
-import 'package:bus_locator/Components/TopNav.dart';
 import 'package:bus_locator/screens/destination_screen.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

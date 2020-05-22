@@ -1,28 +1,17 @@
-import 'package:bus_locator/Authentication/ui/login_page.dart';
 import 'package:bus_locator/Components/Constants.dart';
-import 'package:bus_locator/Components/TopNav.dart';
-import 'package:bus_locator/Navigation/webview.dart';
 import 'package:bus_locator/screens/BusDetailsScreen.dart';
 import 'package:bus_locator/screens/WelcomeScreen.dart';
-import 'package:bus_locator/screens/ticket.dart';
 import 'package:bus_locator/screens/ticketList.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:bus_locator/Components/BottomBar.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:bus_locator/Authentication/login_services/auth_service1.dart';
 import 'Authentication/bloc/auth_bloc.dart';
 import 'Authentication/bloc/auth_event.dart';
 import 'Components/customListTile.dart';
 import 'Navigation/mapScreen.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:bus_locator/screens/ticketList.dart';
-
 import 'Search/bloc/search_bloc.dart';
 
 String val;
@@ -181,8 +170,7 @@ class _HomePageState extends State<HomePage> {
               ),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: kPageBackgroundColor,
-                backgroundImage: NetworkImage(
-                    'https://lh3.googleusercontent.com/a-/AOh14Gg0TXrSBWQ7kDpNr5O_krIyDL81ebh29ffFSVOf=s60-cc-rg'),
+                backgroundImage: NetworkImage('photo'),
               ),
               decoration: BoxDecoration(color: Color(0xff13132d)),
             ),

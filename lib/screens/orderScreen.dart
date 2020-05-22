@@ -1,5 +1,4 @@
 import 'package:bus_locator/Components/reusableCard.dart';
-import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/screens/TicketDetailsScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
