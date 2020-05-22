@@ -118,21 +118,7 @@ class _DestinationState extends State<Destination> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> buses = [
-      TopNav(
-        hintText1: currentPlace,
-        controllerfrom: _controller,
-        controllerto: _controller2,
-        onPressed: () =>
-            Navigator.pushReplacementNamed(context, TabBarClass.id),
-        icon: Icon(
-          Icons.compare_arrows,
-          size: 40,
-          color: kPageBackgroundColor,
-        ),
-      )
-    ];
-
+    List<Widget> buses = [];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
@@ -145,51 +131,68 @@ class _DestinationState extends State<Destination> {
           ),
         ),
       ),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            color: kPageBackgroundColor,
-            child: StreamBuilder(
-                stream: _firestore.collection('bus').snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        backgroundColor: Colors.white,
-                      ),
-                    );
-                  }
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            TopNav(
+              hintText1: currentPlace,
+              controllerfrom: _controller,
+              controllerto: _controller2,
+              onPressed: () =>
+                  Navigator.pushReplacementNamed(context, TabBarClass.id),
+              icon: Icon(
+                Icons.compare_arrows,
+                size: 40,
+                color: kPageBackgroundColor,
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                color: kPageBackgroundColor,
+                child: StreamBuilder(
+                    stream: _firestore.collection('bus').snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            backgroundColor: Colors.white,
+                          ),
+                        );
+                      }
 
-                  final busesList = snapshot.data.documents;
-                  for (var bus in busesList) {
-                    final busName = bus.data['busname'];
-                    final type = bus.data['bustype'];
-                    final distance = bus.data['distance'];
-                    final fare = rupee + bus.data['fare'];
+                      final busesList = snapshot.data.documents;
+                      for (var bus in busesList) {
+                        final busName = bus.data['busname'];
+                        final type = bus.data['bustype'];
+                        final distance = bus.data['distance'];
+                        final fare = rupee + bus.data['fare'];
 
-                    final busCard = BusCard3(
-                      busName: busName,
-                      busType: type,
-                      distance: distance,
-                      fare: fare.toString(),
-                      color: Colors.red,
-                      onPress: () async {
-                        busData = await getBusDetails(busName);
-                        Navigator.pushNamed(context, OrderScreen.id);
-                        print(busName);
-                      },
-                    );
-                    buses.add(busCard);
-                  }
+                        final busCard = BusCard3(
+                          busName: busName,
+                          busType: type,
+                          distance: distance,
+                          fare: fare.toString(),
+                          color: Colors.red,
+                          onPress: () async {
+                            busData = await getBusDetails(busName);
+                            Navigator.pushNamed(context, OrderScreen.id);
+                            print(busName);
+                          },
+                        );
+                        buses.add(busCard);
+                      }
 
-                  return ListView(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-                    children: buses,
-                  );
-                }),
-          ),
-        ],
+                      return ListView(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 20.0),
+                        children: buses,
+                      );
+                    }),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

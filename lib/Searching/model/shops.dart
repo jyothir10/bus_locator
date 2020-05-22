@@ -1,6 +1,3 @@
-import 'dart:html';
-
-import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,27 +9,27 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 // Please add error handling for the query call otherwise the app can crash
 class Shops {
   Future<List> fetchShop(String t) async {
-    if(t == "") {
+    if (t == "") {
       return [];
     }
 
-    final _db= Firestore.instance;
+    final _db = Firestore.instance;
     QuerySnapshot query = await _db.collection('bus').getDocuments();
 
     final List<DocumentSnapshot> buses = query.documents;
     List available_buses = [];
-    buses.forEach((data){
-      if(data['end'] == t){
+    buses.forEach((data) {
+      if (data['end'] == t) {
         available_buses.add(data);
       }
-      var flag=0;
-      for(int i=0;i< data['stops'].length;i++){
-        if(data['stops'][i] == t){
+      var flag = 0;
+      for (int i = 0; i < data['stops'].length; i++) {
+        if (data['stops'][i] == t) {
           flag = 1;
           break;
         }
       }
-      if(flag == 1){
+      if (flag == 1) {
         available_buses.add(data);
       }
     });
