@@ -27,12 +27,11 @@ class _OrderScreenState extends State<OrderScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
-        title: Center(
-          child: Text(
-            'DETAIL ORDER',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+        centerTitle: true,
+        title: Text(
+          'DETAIL ORDER',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

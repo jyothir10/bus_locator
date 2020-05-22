@@ -61,13 +61,12 @@ class _TicketListState extends State<TicketList> {
     return Scaffold(
       backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: kAppBarColor,
-        title: Center(
-          child: Text(
-            'TICKET LIST',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+        title: Text(
+          'TICKET LIST',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

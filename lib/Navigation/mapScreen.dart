@@ -117,6 +117,7 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: kAppBarColor,
         leading: GestureDetector(
           onTap: () => Navigator.of(context).pop(),
@@ -125,13 +126,12 @@ class _MapScreenState extends State<MapScreen> {
             color: Colors.white70,
           ),
         ),
-        title: Center(
-            child: Text(
+        title: Text(
           'MAP',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
-        )),
+        ),
       ),
       body: SafeArea(
         child: Column(

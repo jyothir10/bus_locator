@@ -246,13 +246,12 @@ class _HomePageState extends State<HomePage> {
       ),
       backgroundColor: kPageBackgroundColor,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: kAppBarColor,
-        title: Center(
-          child: Text(
-            'HOME',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+        title: Text(
+          'HOME',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
