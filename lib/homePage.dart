@@ -257,7 +257,9 @@ class _HomePageState extends State<HomePage> {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
                       child: GestureDetector(
-                        onTap: () => Navigator.pushNamed(context, MapScreen.id),
+                        onTap: () {
+                          Navigator.pushNamed(context, MapScreen.id);
+                        },
                         child: CircleAvatar(
                           backgroundColor: Colors.white70,
                           radius: 25,

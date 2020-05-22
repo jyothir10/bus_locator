@@ -109,7 +109,7 @@ class _TicketListState extends State<TicketList> {
                     onPress: () async {
                       print(ticketId);
                       ticketData = await getTicketDetails(ticketId);
-                      Navigator.pushNamed(context, TicketScreen.id);
+                      Navigator.pushReplacementNamed(context, TicketScreen.id);
                     },
                   );
 

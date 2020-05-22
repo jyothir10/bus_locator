@@ -1,4 +1,5 @@
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
+import 'package:bus_locator/screens/BusDetailsScreen.dart';
 import 'package:bus_locator/screens/PaymentConformationScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class _TicketDetailsState extends State<TicketDetails> {
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: GestureDetector(
-          onTap: () => Navigator.pop(context),
+          onTap: () => Navigator.pushReplacementNamed(context, BusDetails.id),
           child: Icon(
             Icons.keyboard_backspace,
             size: 30,
@@ -304,7 +305,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                               }
                             });
 
-                            Navigator.pushNamed(
+                            Navigator.pushReplacementNamed(
                                 context, PaymentConformation.id);
                           }
                         },

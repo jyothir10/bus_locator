@@ -98,7 +98,7 @@ class _TicketScreenState extends State<TicketScreen> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () => Navigator.pushReplacementNamed(context, TicketList.id),
             child: Icon(
               Icons.arrow_back,
               size: 35,
@@ -289,7 +289,8 @@ class _TicketScreenState extends State<TicketScreen> {
                           onPressed: () {
                             //TODO:Rate screen. two options show as a dialogue or navigate.
                             //TODO:Backup=>
-                            Navigator.pushNamed(context, RateScreen.id);
+                            Navigator.pushReplacementNamed(
+                                context, RateScreen.id);
                             //TODO:required.
 //                            showDialog(
 //                              context: context,

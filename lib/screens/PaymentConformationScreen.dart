@@ -1,3 +1,4 @@
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -29,7 +30,8 @@ class _PaymentConformationState extends State<PaymentConformation> {
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: GestureDetector(
-          onTap: () => Navigator.pop(context),
+          onTap: () =>
+              Navigator.pushReplacementNamed(context, TicketDetails.id),
           child: Icon(
             Icons.keyboard_backspace,
             size: 30,
@@ -96,7 +98,7 @@ class _PaymentConformationState extends State<PaymentConformation> {
                     padding: const EdgeInsets.all(15.0),
                     child: RaisedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pushReplacementNamed(context, TabBarClass.id);
                       },
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -158,7 +160,7 @@ class _PaymentConformationState extends State<PaymentConformation> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     Fluttertoast.showToast(msg: "SUCCESS: " + response.paymentId);
-    Navigator.pushNamed(context, RecieptScreen.id);
+    Navigator.pushReplacementNamed(context, RecieptScreen.id);
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {

@@ -164,7 +164,7 @@ class _BusDetailsState extends State<BusDetails> {
                     text: 'Order',
                     onPress: () {
                       //TODO: place order
-                      Navigator.pushNamed(context, TicketDetails.id);
+                      Navigator.pushReplacementNamed(context, TicketDetails.id);
                     }),
               )
             ],

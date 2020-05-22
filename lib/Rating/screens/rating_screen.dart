@@ -24,9 +24,12 @@ class _RateScreenState extends State<RateScreen> {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black,
-          leading: Icon(
-            Icons.arrow_back,
-            size: 35,
+          leading: GestureDetector(
+            onTap: () => Navigator.pushReplacementNamed(context, TicketList.id),
+            child: Icon(
+              Icons.arrow_back,
+              size: 35,
+            ),
           ),
         ),
         body: Align(
@@ -166,7 +169,7 @@ class _RateScreenState extends State<RateScreen> {
                       BoxDecoration(borderRadius: BorderRadius.circular(40)),
                   child: FlatButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, TicketList.id);
+                      Navigator.pop(context);
                     },
                     color: kPageBackgroundColor,
                     textColor: Colors.white,
