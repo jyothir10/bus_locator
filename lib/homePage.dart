@@ -176,6 +176,10 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(color: Color(0xff13132d)),
             ),
             CustomListTile(
+              onpress: () {
+                //TODO:route
+                Navigator.pushNamed(context, CartScreen.id);
+              },
               leading: Icons.category,
               name: 'My Cart',
               icon: Icons.arrow_right,
@@ -190,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                 icon: Icons.arrow_right,
                 onpress: () {
                   //TODO:route
-                  Navigator.pushNamed(context, CartScreen.id);
+                  Navigator.pushNamed(context, BusDetails.id);
                 }),
             Divider(
               color: Colors.black,
