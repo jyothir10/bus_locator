@@ -28,6 +28,7 @@ class _CartProfileState extends State<CartProfile> {
   void initState() {
     super.initState();
     _userBloc = UserBloc();
+    getCurrentUser();
   }
 
   @override
