@@ -23,6 +23,8 @@ import 'Navigation/mapScreen.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:bus_locator/screens/ticketList.dart';
 
+import 'Search/bloc/search_bloc.dart';
+
 var alertStyle = AlertStyle(
   overlayColor: kPageBackgroundColor,
   animationType: AnimationType.fromTop,
@@ -48,6 +50,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  SearchBloc _searchBloc;
   double latitude;
   double longitude;
   var currentPlace;
@@ -136,6 +139,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getLocation();
     getCurrentUser();
+    _searchBloc = SearchBloc();
     _controller = TextEditingController();
     _controller2 = TextEditingController();
     connectivityCheck();
@@ -261,6 +265,9 @@ class _HomePageState extends State<HomePage> {
               hintText1: currentPlace,
               controllerfrom: _controller,
               controllerto: _controller2,
+              onChanged: (value) {
+                _searchBloc.add(SearchKeyPress(value));
+              },
               onPressed: () => Navigator.pushNamed(context, MapScreen.id),
               icon: Icon(
                 Icons.search,

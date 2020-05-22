@@ -11,6 +11,7 @@ class TopNav extends StatelessWidget {
   final String hintText1;
   final String hintText2 = "Choose Destination";
   final Function onPressed;
+  final Function onChanged;
   final TextEditingController controllerto;
   final TextEditingController controllerfrom;
   final Icon icon;
@@ -19,7 +20,8 @@ class TopNav extends StatelessWidget {
       this.controllerto,
       this.controllerfrom,
       this.icon,
-      this.hintText1});
+      this.hintText1,
+      this.onChanged});
   @override
 //  Widget build(BuildContext context) {
 //    return Padding(
@@ -228,6 +230,7 @@ class TopNav extends StatelessWidget {
                               ),
                               onChanged: (value) {
                                 //TODO:Destination point selection
+                                onChanged(value);
                               },
                             ),
                           ],

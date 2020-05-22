@@ -4,7 +4,6 @@ import 'package:bus_locator/Navigation/webview.dart';
 import 'package:bus_locator/Payment/screens/Reciept_screen.dart';
 import 'package:bus_locator/Payment/screens/paymentscreen.dart';
 import 'package:bus_locator/Rating/screens/rating_screen.dart';
-import 'package:bus_locator/Searching/screen/search_screen.dart';
 import 'package:bus_locator/screens/CartScreen.dart';
 import 'package:bus_locator/screens/TicketDetailsScreen.dart';
 import 'package:bus_locator/screens/cart_profile.dart';
@@ -57,7 +56,6 @@ class MyApp extends StatelessWidget {
         TicketDetails.id: (context) => TicketDetails(),
         TicketList.id: (context) => TicketList(),
         PaymentConformation.id: (context) => PaymentConformation(),
-        SearchScreen.id: (context) => SearchScreen(),
       },
       debugShowCheckedModeBanner: false,
       title: 'TheGorgeousLogin',
