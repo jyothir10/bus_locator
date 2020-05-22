@@ -122,7 +122,6 @@ class _DestinationState extends State<Destination> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> buses = [];
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
@@ -135,69 +134,66 @@ class _DestinationState extends State<Destination> {
           ),
         ),
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            TopNav(
-              hintText1: currentPlace,
-              controllerfrom: _controller,
-              controllerto: _controller2,
-              onPressed: () =>
-                  Navigator.pushReplacementNamed(context, TabBarClass.id),
-              icon: Icon(
-                Icons.compare_arrows,
-                size: 40,
-                color: kPageBackgroundColor,
-              ),
-              onChanged: (value) {
-                _searchBloc.add(SearchKeyPress(value));
-              },
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                color: kPageBackgroundColor,
-                child: BlocBuilder<SearchBloc, SearchState>(
-                    bloc: _searchBloc,
-                    builder: (BuildContext context, SearchState state) {
-                      if (state is SearchSuccess) {
-                        final busesList = state.results;
-                        for (var bus in busesList) {
-                          final busName = bus["busname"];
-                          final type = bus["bustype"];
-                          final distance = bus["distance"];
-                          final fare = bus["fare"];
+      body: Stack(
+        children: <Widget>[
+          Container(
+            color: kPageBackgroundColor,
+            child: BlocBuilder<SearchBloc, SearchState>(
+                bloc: _searchBloc,
+                builder: (BuildContext context, SearchState state) {
+                  List<Widget> buses = [
+                    TopNav(
+                      hintText1: currentPlace,
+                      controllerfrom: _controller,
+                      controllerto: _controller2,
+                      onChanged: (value) {
+                        _searchBloc.add(SearchKeyPress(value));
+                      },
+                      onPressed: () => Navigator.pushReplacementNamed(
+                          context, TabBarClass.id),
+                      icon: Icon(
+                        Icons.compare_arrows,
+                        size: 40,
+                        color: kPageBackgroundColor,
+                      ),
+                    )
+                  ];
+                  if (state is SearchSuccess) {
+                    final busesList = state.results;
+                    for (var bus in busesList) {
+                      final busName = bus["busname"];
+                      final type = bus["bustype"];
+                      final distance = bus["distance"];
+                      final fare = bus["fare"];
 
-                          final busCard = BusCard3(
-                            busName: busName,
-                            busType: type,
-                            distance: distance,
-                            fare: fare.toString(),
-                            color: Colors.red,
-                            onPress: () async {
-                              busData = await getBusDetails(busName);
-                              Navigator.pushNamed(context, OrderScreen.id);
-                              print(busName);
-                            },
-                          );
-                          buses.add(busCard);
-                        }
-                        return ListView(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 20.0),
-                          children: buses,
-                        );
-                      }
-                      return ListView(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 20.0),
-                        children: buses,
+                      final busCard = BusCard3(
+                        busName: busName,
+                        busType: type,
+                        distance: distance,
+                        fare: fare.toString(),
+                        color: Colors.red,
+                        onPress: () async {
+                          busData = await getBusDetails(busName);
+                          Navigator.pushNamed(context, OrderScreen.id);
+                          print(busName);
+                        },
                       );
-                    }),
-              ),
-            ),
-          ],
-        ),
+                      buses.add(busCard);
+                    }
+                    return ListView(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 20.0),
+                      children: buses,
+                    );
+                  }
+                  return ListView(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                    children: buses,
+                  );
+                }),
+          ),
+        ],
       ),
     );
   }
