@@ -206,7 +206,7 @@ class TopNav extends StatelessWidget {
                               controller: controllerfrom,
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 15,
+                                fontSize: 18,
                               ),
                               onChanged: (value) {
                                 //TODO:Starting point selection
@@ -226,7 +226,7 @@ class TopNav extends StatelessWidget {
                               controller: controllerto,
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 15,
+                                fontSize: 18,
                               ),
                               onChanged: (value) {
                                 //TODO:Destination point selection

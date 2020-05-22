@@ -25,6 +25,7 @@ import 'package:bus_locator/screens/ticketList.dart';
 
 import 'Search/bloc/search_bloc.dart';
 
+String val;
 var alertStyle = AlertStyle(
   overlayColor: kPageBackgroundColor,
   animationType: AnimationType.fromTop,
@@ -266,6 +267,7 @@ class _HomePageState extends State<HomePage> {
               controllerfrom: _controller,
               controllerto: _controller2,
               onChanged: (value) {
+                val = value;
                 _searchBloc.add(SearchKeyPress(value));
               },
               onPressed: () => Navigator.pushNamed(context, MapScreen.id),
