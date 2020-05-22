@@ -311,6 +311,20 @@ class _MapScreenState extends State<MapScreen> {
             height: 10,
           ),
           FloatingActionButton(
+              heroTag: 3,
+              backgroundColor: Colors.white,
+              child: Icon(
+                FontAwesomeIcons.bus,
+                color: kBottomBarColor,
+                size: 30,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, Destination.id);
+              }),
+          SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton(
               heroTag: 1,
               backgroundColor: Colors.white,
               child: Icon(
