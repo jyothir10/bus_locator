@@ -212,7 +212,7 @@ class _HomePageState extends State<HomePage> {
               name: 'Contact us',
               icon: Icons.arrow_right,
               onpress: () =>
-                  launch('mailto:hemakeralakecipe@gmail.com?subject=feedback'),
+                  launch('mailto:buslocatorenfono@gmail.com?subject=feedback'),
             ),
             Divider(
               color: Colors.black,
