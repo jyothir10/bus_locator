@@ -10,6 +10,7 @@ import 'additionals.dart';
 import 'package:bus_locator/Authentication/bloc/auth_bloc.dart';
 import 'package:bus_locator/Authentication/bloc/auth_event.dart';
 import 'package:bus_locator/Authentication/bloc/auth_state.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'Register_Screen';
