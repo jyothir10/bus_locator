@@ -15,14 +15,16 @@ class Shops {
     }
 
     var db= Firestore.instance;
-    var query = db.collection('bus').getDocuments();
+    var query = await db.collection('bus').getDocuments();
 
     final List<DocumentSnapshot> buses = query.documents;
     List available_buses = [];
+    if (buses.isEmpty) {
+      return [];
+    }
     buses.forEach((data){
       if(data['end'] == t){
-        avaiable_buses.add(json.decode(data));
-        break;
+        available_buses.add(data);
       }
       var flag=0;
       for(int i=0;i< data['stops'].length;i++){
@@ -32,8 +34,7 @@ class Shops {
         }
       }
       if(flag == 1){
-        avaiable_buses.add(json.decode(data));
-        break;
+        available_buses.add(data);
       }
     });
     //List buses = json.decode(string);

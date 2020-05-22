@@ -1,10 +1,13 @@
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/TabBar.dart';
 import 'package:bus_locator/Components/TopNav.dart';
+import 'package:bus_locator/Search/bloc/search_bloc.dart';
+import 'package:bus_locator/logger/logger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'orderScreen.dart';
@@ -18,6 +21,7 @@ var busData;
 double latitude;
 double longitude;
 var currentPlace;
+SearchBloc _searchBloc;
 
 var alertStyle = AlertStyle(
   overlayColor: kPageBackgroundColor,
@@ -107,6 +111,7 @@ class _DestinationState extends State<Destination> {
     super.initState();
     getLocation();
     _controller = TextEditingController();
+    _searchBloc = SearchBloc();
   }
 
   void dispose() {
@@ -116,20 +121,6 @@ class _DestinationState extends State<Destination> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> buses = [
-      TopNav(
-        hintText1: currentPlace,
-        controller2: _controller,
-        onPressed: () =>
-            Navigator.pushReplacementNamed(context, TabBarClass.id),
-        icon: Icon(
-          Icons.compare_arrows,
-          size: 40,
-          color: kPageBackgroundColor,
-        ),
-      )
-    ];
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
@@ -146,39 +137,53 @@ class _DestinationState extends State<Destination> {
         children: <Widget>[
           Container(
             color: kPageBackgroundColor,
-            child: StreamBuilder(
-                stream: _firestore.collection('bus').snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        backgroundColor: Colors.white,
-                      ),
-                    );
-                  }
-
-                  final busesList = snapshot.data.documents;
-                  for (var bus in busesList) {
-                    final busName = bus.data['busname'];
-                    final type = bus.data['bustype'];
-                    final distance = bus.data['distance'];
-                    final fare = bus.data['fare'];
-
-                    final busCard = BusCard3(
-                      busName: busName,
-                      busType: type,
-                      distance: distance,
-                      fare: fare.toString(),
-                      color: Colors.red,
-                      onPress: () async {
-                        busData = await getBusDetails(busName);
-                        Navigator.pushNamed(context, OrderScreen.id);
-                        print(busName);
+            child: BlocBuilder<SearchBloc, SearchState>(
+                bloc: _searchBloc,
+                builder: (BuildContext context, SearchState state) {
+                  List<Widget> buses = [
+                    TopNav(
+                      hintText1: currentPlace,
+                      controller2: _controller,
+                      onChanged: (value) {
+                        _searchBloc.add(SearchKeyPress(value));
                       },
-                    );
-                    buses.add(busCard);
-                  }
+                      onPressed: () => Navigator.pushReplacementNamed(
+                          context, TabBarClass.id),
+                      icon: Icon(
+                        Icons.compare_arrows,
+                        size: 40,
+                        color: kPageBackgroundColor,
+                      ),
+                    )
+                  ];
+                  if (state is SearchSuccess) {
+                    final busesList = state.results;
+                    for (var bus in busesList) {
+                      final busName = bus["busname"];
+                      final type = bus["bustype"];
+                      final distance = bus["distance"];
+                      final fare = bus["fare"];
 
+                      final busCard = BusCard3(
+                        busName: busName,
+                        busType: type,
+                        distance: distance,
+                        fare: fare.toString(),
+                        color: Colors.red,
+                        onPress: () async {
+                          busData = await getBusDetails(busName);
+                          Navigator.pushNamed(context, OrderScreen.id);
+                          print(busName);
+                        },
+                      );
+                      buses.add(busCard);
+                    }
+                    return ListView(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 20.0),
+                      children: buses,
+                    );
+                  }
                   return ListView(
                     padding:
                         EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
