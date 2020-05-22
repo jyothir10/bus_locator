@@ -249,7 +249,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: kAppBarColor,
         title: Center(
           child: Text(
-            'DESTINATION',
+            'HOME',
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
