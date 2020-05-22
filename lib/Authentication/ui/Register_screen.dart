@@ -49,6 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.initState();
     getLocation();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
