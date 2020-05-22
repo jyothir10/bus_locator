@@ -55,22 +55,22 @@ String createDate(String day, String month, String year) {
   return date;
 }
 
-void main() => runApp(
-      MaterialApp(
-        home: SafeArea(
-            child: Scaffold(
-                appBar: AppBar(
-                  elevation: 0.0,
-                  backgroundColor: Colors.blue[200],
-                  leading: Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  ),
-                ),
-                backgroundColor: Colors.blue[200],
-                body: TicketScreen())),
-      ),
-    );
+//void main() => runApp(
+//      MaterialApp(
+//        home: SafeArea(
+//            child: Scaffold(
+////                appBar: AppBar(
+////                  elevation: 0.0,
+////                  backgroundColor: Colors.blue[200],
+////                  leading: Icon(
+////                    Icons.arrow_back,
+////                    color: Colors.black,
+////                  ),
+////                ),
+//               // backgroundColor: Colors.blue[200],
+//                body: TicketScreen())),
+//      ),
+//    );
 
 class TicketScreen extends StatefulWidget {
   static String id = 'Ticket_Screen';
@@ -95,6 +95,16 @@ class _TicketScreenState extends State<TicketScreen> {
       clipper: TheTicketClipper(),
       child: Scaffold(
         backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Icon(
+              Icons.arrow_back,
+              size: 35,
+            ),
+          ),
+        ),
         body: SafeArea(
           child: Center(
             child: Container(
