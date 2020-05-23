@@ -141,7 +141,7 @@ class _PaymentConformationState extends State<PaymentConformation> {
 
   void openCheckout() async {
     var options = {
-      'key': 'rzp_test_IQwhGvbvsOZmJ0',
+      'key': 'CrGvzaFJpfcPF7',
       'amount': totalAmount * 100,
       'name': 'i-Bus',
       'description': 'Enfono Technologies',
