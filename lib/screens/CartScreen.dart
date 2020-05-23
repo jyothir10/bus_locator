@@ -16,6 +16,14 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  Future<Null> refresh() async {
+    await Future.delayed(
+      Duration(seconds: 2),
+    );
+    setState(() {});
+    return null;
+  }
+
   Future getBusDetails(String busName) async {
     try {
       var querySnapshot = await _firestore
@@ -91,10 +99,13 @@ class _CartScreenState extends State<CartScreen> {
                   buses.add(busCard);
                 }
 
-                return ListView(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-                  children: buses,
+                return RefreshIndicator(
+                  onRefresh: refresh,
+                  child: ListView(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                    children: buses,
+                  ),
                 );
               },
             ),

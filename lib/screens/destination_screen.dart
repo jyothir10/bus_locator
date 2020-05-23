@@ -105,6 +105,14 @@ class _DestinationState extends State<Destination> {
   TextEditingController _controller;
   TextEditingController _controller2;
 
+  Future<Null> refresh() async {
+    await Future.delayed(
+      Duration(seconds: 2),
+    );
+    setState(() {});
+    return null;
+  }
+
   void initState() {
     super.initState();
     getLocation();
@@ -177,16 +185,22 @@ class _DestinationState extends State<Destination> {
                       );
                       buses.add(busCard);
                     }
-                    return ListView(
+                    return RefreshIndicator(
+                      onRefresh: refresh,
+                      child: ListView(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 20.0),
+                        children: buses,
+                      ),
+                    );
+                  }
+                  return RefreshIndicator(
+                    onRefresh: refresh,
+                    child: ListView(
                       padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 20.0),
                       children: buses,
-                    );
-                  }
-                  return ListView(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-                    children: buses,
+                    ),
                   );
                 }),
           ),
