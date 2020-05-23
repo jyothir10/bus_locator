@@ -41,7 +41,7 @@ class _TicketListState extends State<TicketList> {
   }
 
 //TODO:A function for deleting the cards.can be seen on onlongpress in buscard3.
-  Future deleteData(String docId) async {
+  deleteData(String docId) async {
     print(docId);
     try {
       await _firestore.collection('ticketdetails').document(docId).delete();

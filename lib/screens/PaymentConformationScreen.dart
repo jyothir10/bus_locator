@@ -60,7 +60,7 @@ class _PaymentConformationState extends State<PaymentConformation> {
                   LimitedBox(
                     maxWidth: 100,
                     child: Text(
-                      rupee + ' ' + totalAmount.toString(),
+                      rupee + ' ' + totalAmount.truncateToDouble().toString(),
                       style: TextStyle(
                           fontSize: 100,
                           fontWeight: FontWeight.bold,

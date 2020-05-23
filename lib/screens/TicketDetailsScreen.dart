@@ -253,7 +253,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                           ),
                         ),
                         Text(
-                          totalAmount.toString(),
+                          totalAmount.truncateToDouble().toString(),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -299,7 +299,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                 DocumentReference documentReference = _firestore
                                     .collection('ticketdetails')
                                     .document();
-                                _firestore.collection('ticketdetails').add({
+                                documentReference.setData({
                                   'name': name,
                                   'age': age,
                                   'passengerno': ticketNo,
