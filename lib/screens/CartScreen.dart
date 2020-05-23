@@ -51,6 +51,81 @@ class _CartScreenState extends State<CartScreen> {
     }
   }
 
+  createDialogue(BuildContext context, String docId) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(40),
+            ),
+            elevation: 16,
+            child: Container(
+              decoration: BoxDecoration(
+                color: kPageBackgroundColor,
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              padding: EdgeInsets.all(10.0),
+              height: 250,
+              width: 360,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Are you sure you want to delete ?',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 19),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      FlatButton(
+                        color: Colors.redAccent,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            "Delete",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17),
+                          ),
+                        ),
+                        onPressed: () async {
+                          await deleteData(docId);
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        color: kBottomBarActiveIconColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            "Cancel",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -105,8 +180,8 @@ class _CartScreenState extends State<CartScreen> {
                         busData = await getBusDetails(busName);
                         Navigator.pushNamed(context, BusDetails.id);
                       },
-                      onLongPress: () async {
-                        await deleteData(docId);
+                      onLongPress: () {
+                        createDialogue(context, docId);
                       });
 
                   buses.add(busCard);
