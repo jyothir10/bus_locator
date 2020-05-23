@@ -36,7 +36,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
         yield SearchSuccess(results: buses);
       } catch (error) {
-        
         yield SearchFailure(error.message);
         
       }

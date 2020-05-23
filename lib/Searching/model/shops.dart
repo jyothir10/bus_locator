@@ -24,13 +24,13 @@ class Shops {
     }
     buses.forEach((data){
       //if(data['end'] == ){
-      if(type.hasMatch(data['end']))
+      if(type.hasMatch(data['end'])) {
         available_buses.add(data);
       }
       var flag=0;
       for(int i=0;i< data['stops'].length;i++){
         //if(data['stops'][i] == t){
-        if(type.hasMatch(data['stops'][i]))
+        if(type.hasMatch(data['stops'][i])) {
           flag = 1;
           break;
         }
