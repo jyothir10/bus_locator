@@ -53,7 +53,7 @@ class _PaymentConformationState extends State<PaymentConformation> {
                       'pay',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 21,
+                          fontSize: 22,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
