@@ -202,7 +202,7 @@ class _DestinationState extends State<Destination> {
                       children: buses,
                     ),
                   );
-                }),
+                },),
           ),
         ],
       ),
