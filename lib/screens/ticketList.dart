@@ -40,7 +40,6 @@ class _TicketListState extends State<TicketList> {
     return null;
   }
 
-//TODO:A function for deleting the cards.can be seen on onlongpress in buscard3.
   deleteData(String docId) async {
     print(docId);
     try {
@@ -132,9 +131,6 @@ class _TicketListState extends State<TicketList> {
                       },
                       onLongPress: () async {
                         await deleteData(ticketId);
-                        setState(() {
-                          print('pressed');
-                        });
                       });
 
                   buses.add(busCard);

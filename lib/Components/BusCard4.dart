@@ -10,6 +10,7 @@ class BusCard4 extends StatelessWidget {
   final String status;
   final String date;
   final Function onPress;
+  final Function onLongPress;
   BusCard4(
       {this.busName,
       this.distance,
@@ -18,7 +19,8 @@ class BusCard4 extends StatelessWidget {
       this.status,
       this.color,
       this.date,
-      this.onPress});
+      this.onPress,
+      this.onLongPress});
   @override
   Widget build(BuildContext context) {
     bool isCancelled;
@@ -89,6 +91,7 @@ class BusCard4 extends StatelessWidget {
               ),
               colour: Color(0xFF28284D),
               onPress: onPress,
+              onLongPress: onLongPress,
             ),
           ),
           Expanded(

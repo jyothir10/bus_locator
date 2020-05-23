@@ -42,6 +42,15 @@ class _CartScreenState extends State<CartScreen> {
     }
   }
 
+  deleteData(String docId) async {
+    print(docId);
+    try {
+      await _firestore.collection('ticketdetails').document(docId).delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,21 +90,24 @@ class _CartScreenState extends State<CartScreen> {
                   final fare = bus.data['fare'];
                   final type = bus.data['type'];
                   final status = bus.data['status'];
+                  final docId = bus.data['docId'];
 
                   final busCard = BusCard4(
-                    busName: busName,
-                    busType: type,
-                    distance: distance,
-                    date: date,
-                    fare: fare.toString(),
-                    status: status,
-                    color: Colors.red,
-                    onPress: () async {
-                      print(busName);
-                      busData = await getBusDetails(busName);
-                      Navigator.pushNamed(context, BusDetails.id);
-                    },
-                  );
+                      busName: busName,
+                      busType: type,
+                      distance: distance,
+                      date: date,
+                      fare: fare.toString(),
+                      status: status,
+                      color: Colors.red,
+                      onPress: () async {
+                        print(busName);
+                        busData = await getBusDetails(busName);
+                        Navigator.pushNamed(context, BusDetails.id);
+                      },
+                      onLongPress: () async {
+                        await deleteData(docId);
+                      });
 
                   buses.add(busCard);
                 }
