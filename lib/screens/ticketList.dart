@@ -39,16 +39,15 @@ class _TicketListState extends State<TicketList> {
     setState(() {});
     return null;
   }
+
 //TODO:A function for deleting the cards.can be seen on onlongpress in buscard3.
-  deleteData(String docId) async {
+  Future deleteData(String docId) async {
     print(docId);
-    await _firestore
-        .collection('ticketdetails')
-        .document(docId)
-        .delete()
-        .catchError((e) {
+    try {
+      await _firestore.collection('ticketdetails').document(docId).delete();
+    } catch (e) {
       print(e);
-    });
+    }
   }
 
   Future getTicketDetails(String ticketId) async {
@@ -132,8 +131,10 @@ class _TicketListState extends State<TicketList> {
                             context, TicketScreen.id);
                       },
                       onLongPress: () async {
-                        print('pressed');
                         await deleteData(ticketId);
+                        setState(() {
+                          print('pressed');
+                        });
                       });
 
                   buses.add(busCard);

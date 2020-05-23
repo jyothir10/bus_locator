@@ -91,6 +91,7 @@ class _CartScreenState extends State<CartScreen> {
                     status: status,
                     color: Colors.red,
                     onPress: () async {
+                      print(busName);
                       busData = await getBusDetails(busName);
                       Navigator.pushNamed(context, BusDetails.id);
                     },

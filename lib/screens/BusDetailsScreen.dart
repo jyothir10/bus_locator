@@ -34,6 +34,8 @@ class _BusDetailsState extends State<BusDetails> {
     String date = busData['date'];
     String distance = busData['distance'];
     String dist = '12 Miles';
+    var busType;
+    var fare;
 
     return SafeArea(
       child: Scaffold(
@@ -163,8 +165,20 @@ class _BusDetailsState extends State<BusDetails> {
                     textColor: Colors.white,
                     text: 'Order',
                     onPress: () {
+                      busName = busData['busname'];
+                      busType = busData['type'];
+                      fare = busData['fare'];
+                      distance = busData['distance'];
                       //TODO: place order
-                      Navigator.pushReplacementNamed(context, TicketDetails.id);
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => TicketDetails(
+                                    busName: busName,
+                                    busType: busType,
+                                    fare: fare,
+                                    distance: distance,
+                                  )));
                     }),
               )
             ],

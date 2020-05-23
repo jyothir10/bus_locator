@@ -8,10 +8,6 @@ import 'destination_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final _firestore = Firestore.instance;
-var busName;
-var distance;
-var busType;
-var fare;
 
 class OrderScreen extends StatefulWidget {
   static String id = 'Order_Screen';
@@ -23,6 +19,11 @@ class OrderScreen extends StatefulWidget {
 class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
+    var busName;
+    var distance;
+    var busType;
+    var fare;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kAppBarColor,
@@ -117,7 +118,15 @@ class _OrderScreenState extends State<OrderScreen> {
                   busType = busData['bustype'];
                   fare = busData['fare'];
                   distance = busData['distance'];
-                  Navigator.pushNamed(context, TicketDetails.id);
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => TicketDetails(
+                                busName: busName,
+                                busType: busType,
+                                fare: fare,
+                                distance: distance,
+                              )));
                 },
                 textColor: Colors.white,
               ),

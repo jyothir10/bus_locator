@@ -18,6 +18,13 @@ double totalAmount = amount;
 int passengerNo;
 
 class TicketDetails extends StatefulWidget {
+  final busName;
+  final fare;
+  final distance;
+  final busType;
+
+  TicketDetails(
+      {@required this.busName, this.busType, this.fare, this.distance});
   static String id = 'Ticket_Details_Screen';
   @override
   _TicketDetailsState createState() => _TicketDetailsState();
@@ -34,12 +41,20 @@ class _TicketDetailsState extends State<TicketDetails> {
   String day;
   String month;
   String year;
+  String busName;
+  String fare;
+  String distance;
+  String busType;
   var id;
 
   @override
   void initState() {
     super.initState();
     getCurrentUser();
+    busName = widget.busName;
+    busType = widget.busType;
+    fare = widget.fare;
+    distance = widget.distance;
   }
 
   void getCurrentUser() async {
