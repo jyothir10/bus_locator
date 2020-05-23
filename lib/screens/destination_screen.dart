@@ -144,55 +144,46 @@ class _DestinationState extends State<Destination> {
           Container(
             color: kPageBackgroundColor,
             child: BlocBuilder<SearchBloc, SearchState>(
-                bloc: _searchBloc,
-                builder: (BuildContext context, SearchState state) {
-                  List<Widget> buses = [
-                    TopNav(
-                      hintText1: currentPlace,
-                      controllerfrom: _controller,
-                      controllerto: _controller2,
-                      onChanged: (value) {
-                        _searchBloc.add(SearchKeyPress(value));
-                      },
-                      onPressed: () => Navigator.pushReplacementNamed(
-                          context, TabBarClass.id),
-                      icon: Icon(
-                        Icons.compare_arrows,
-                        size: 40,
-                        color: kPageBackgroundColor,
-                      ),
-                    )
-                  ];
-                  if (state is SearchSuccess) {
-                    final busesList = state.results;
-                    for (var bus in busesList) {
-                      final busName = bus["busname"];
-                      final type = bus["bustype"];
-                      final distance = bus["distance"];
-                      final fare = bus["fare"];
+              bloc: _searchBloc,
+              builder: (BuildContext context, SearchState state) {
+                List<Widget> buses = [
+                  TopNav(
+                    hintText1: currentPlace,
+                    controllerfrom: _controller,
+                    controllerto: _controller2,
+                    onChanged: (value) {
+                      _searchBloc.add(SearchKeyPress(value));
+                    },
+                    onPressed: () =>
+                        Navigator.pushReplacementNamed(context, TabBarClass.id),
+                    icon: Icon(
+                      Icons.compare_arrows,
+                      size: 40,
+                      color: kPageBackgroundColor,
+                    ),
+                  )
+                ];
+                if (state is SearchSuccess) {
+                  final busesList = state.results;
+                  for (var bus in busesList) {
+                    final busName = bus["busname"];
+                    final type = bus["bustype"];
+                    final distance = bus["distance"];
+                    final fare = bus["fare"];
 
-                      final busCard = BusCard3(
-                        busName: busName,
-                        busType: type,
-                        distance: distance,
-                        fare: fare.toString(),
-                        color: Colors.red,
-                        onPress: () async {
-                          busData = await getBusDetails(busName);
-                          Navigator.pushNamed(context, OrderScreen.id);
-                          print(busName);
-                        },
-                      );
-                      buses.add(busCard);
-                    }
-                    return RefreshIndicator(
-                      onRefresh: refresh,
-                      child: ListView(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 10.0, vertical: 20.0),
-                        children: buses,
-                      ),
+                    final busCard = BusCard3(
+                      busName: busName,
+                      busType: type,
+                      distance: distance,
+                      fare: fare.toString(),
+                      color: Colors.red,
+                      onPress: () async {
+                        busData = await getBusDetails(busName);
+                        Navigator.pushNamed(context, OrderScreen.id);
+                        print(busName);
+                      },
                     );
+                    buses.add(busCard);
                   }
                   return RefreshIndicator(
                     onRefresh: refresh,
@@ -202,7 +193,17 @@ class _DestinationState extends State<Destination> {
                       children: buses,
                     ),
                   );
-                },),
+                }
+                return RefreshIndicator(
+                  onRefresh: refresh,
+                  child: ListView(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                    children: buses,
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),

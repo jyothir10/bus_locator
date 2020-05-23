@@ -32,6 +32,25 @@ class TicketList extends StatefulWidget {
 }
 
 class _TicketListState extends State<TicketList> {
+  Future<Null> refresh() async {
+    await Future.delayed(
+      Duration(seconds: 2),
+    );
+    setState(() {});
+    return null;
+  }
+//TODO:A function for deleting the cards.can be seen on onlongpress in buscard3.
+  deleteData(String docId) async {
+    print(docId);
+    await _firestore
+        .collection('ticketdetails')
+        .document(docId)
+        .delete()
+        .catchError((e) {
+      print(e);
+    });
+  }
+
   Future getTicketDetails(String ticketId) async {
     try {
       var querySnapshot = await _firestore
@@ -101,25 +120,32 @@ class _TicketListState extends State<TicketList> {
                   final ticketId = bus.data['docId'];
 
                   final busCard = BusCard3(
-                    busName: busName,
-                    busType: type,
-                    distance: 'No of tickets : $noOfTickets',
-                    fare: fare.toString(),
-                    color: Colors.red,
-                    onPress: () async {
-                      print(ticketId);
-                      ticketData = await getTicketDetails(ticketId);
-                      Navigator.pushReplacementNamed(context, TicketScreen.id);
-                    },
-                  );
+                      busName: busName,
+                      busType: type,
+                      distance: 'No of tickets : $noOfTickets',
+                      fare: fare.toString(),
+                      color: Colors.red,
+                      onPress: () async {
+                        print(ticketId);
+                        ticketData = await getTicketDetails(ticketId);
+                        Navigator.pushReplacementNamed(
+                            context, TicketScreen.id);
+                      },
+                      onLongPress: () async {
+                        print('pressed');
+                        await deleteData(ticketId);
+                      });
 
                   buses.add(busCard);
                 }
 
-                return ListView(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-                  children: buses,
+                return RefreshIndicator(
+                  onRefresh: refresh,
+                  child: ListView(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                    children: buses,
+                  ),
                 );
               },
             ),

@@ -9,15 +9,16 @@ class BusCard3 extends StatelessWidget {
   final String busType;
   final Color color;
   final Function onPress;
+  final Function onLongPress;
 
-  BusCard3({
-    this.busName,
-    this.distance,
-    this.busType,
-    this.fare,
-    this.color,
-    this.onPress,
-  });
+  BusCard3(
+      {this.busName,
+      this.distance,
+      this.busType,
+      this.fare,
+      this.color,
+      this.onPress,
+      this.onLongPress});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -81,6 +82,7 @@ class BusCard3 extends StatelessWidget {
               ),
               colour: Color(0xFF28284D),
               onPress: onPress,
+              onLongPress: onLongPress,
             ),
           ),
           Expanded(
