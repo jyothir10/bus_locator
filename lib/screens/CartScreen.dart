@@ -60,7 +60,7 @@ class _CartScreenState extends State<CartScreen> {
   deleteData(String docId) async {
     print(docId);
     try {
-      await _firestore.collection('ticketdetails').document(docId).delete();
+      await _firestore.collection('buses').document(docId).delete();
     } catch (e) {
       print(e);
     }
