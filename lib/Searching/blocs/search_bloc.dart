@@ -28,7 +28,7 @@ class SearchBloc {
         {
           // TODO Change this to send your http request
           List shops = await _shops.fetchShop(map["value"]);
-          if (shops.length != 0)
+          if (shops.length != 0 || shops.length == 0)
             _stateSink.add(buildCardListView(shops));
           // TODO create beatiful widgets to handle these cases
           else if (map["value"] == "")
@@ -55,8 +55,13 @@ class SearchBloc {
   // TODO Change it for database
   Widget buildCardListView(List items) {
     List<Widget> list = [];
-    for (final i in items) {
-      list.add(buildCard(i["busname"], i["fare"]));
+    if (items.length == 0){
+      list.add(buildCard("No data Available","--"));
+    }
+    else{
+      for (final i in items) {
+        list.add(buildCard(i["busname"], i["fare"]));
+      }
     }
     return ListView(children: list);
   }
