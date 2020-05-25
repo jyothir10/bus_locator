@@ -278,29 +278,41 @@ class _DestinationState extends State<Destination> {
                 ];
                 if (state is SearchSuccess) {
                   final busesList = state.results;
-                  for (var bus in busesList) {
-                    final busName = bus["busname"];
-                    final type = bus["bustype"];
-                    final distance = bus["distance"];
-                    final fare = bus["fare"];
-                    final status = bus["status"];
-                    final date = bus["date"];
-
+                  if (busesList.length == 0){
                     final busCard = BusCard3(
-                        busName: busName,
-                        busType: type,
-                        distance: distance,
-                        fare: fare.toString(),
-                        color: Colors.red,
-                        onPress: () async {
-                          busData = await getBusDetails(busName);
-                          Navigator.pushNamed(context, OrderScreen.id);
-                        },
-                        onLongPress: () {
-                          createDialogue(context, busName, distance, date, id,
-                              fare, status, type);
-                        });
+                        busName: "No data available",
+                        busType: "--",
+                        distance: "--",
+                        fare: "--",
+                        color: Colors.red.,
+                      );
                     buses.add(busCard);
+                  }
+                  else{
+                    for (var bus in busesList) {
+                      final busName = bus["busname"];
+                      final type = bus["bustype"];
+                      final distance = bus["distance"];
+                      final fare = bus["fare"];
+                      final status = bus["status"];
+                      final date = bus["date"];
+
+                      final busCard = BusCard3(
+                          busName: busName,
+                          busType: type,
+                          distance: distance,
+                          fare: fare.toString(),
+                          color: Colors.red,
+                          onPress: () async {
+                            busData = await getBusDetails(busName);
+                            Navigator.pushNamed(context, OrderScreen.id);
+                          },
+                          onLongPress: () {
+                            createDialogue(context, busName, distance, date, id,
+                                fare, status, type);
+                          });
+                      buses.add(busCard);
+                    }
                   }
                   return RefreshIndicator(
                     onRefresh: refresh,
