@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BusCard4.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'BusDetailsScreen.dart';
+import 'destination_screen.dart';
 
 final _firestore = Firestore.instance;
 var busDetails;
@@ -16,12 +18,25 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  final _auth = FirebaseAuth.instance;
   Future<Null> refresh() async {
     await Future.delayed(
       Duration(seconds: 2),
     );
     setState(() {});
     return null;
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        id = loggedInUser.uid;
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future getBusDetails(String busName) async {
@@ -127,6 +142,12 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPageBackgroundColor,
@@ -147,7 +168,10 @@ class _CartScreenState extends State<CartScreen> {
               color: kAppBarColor,
             ),
             StreamBuilder(
-              stream: _firestore.collection('buses').snapshots(),
+              stream: _firestore
+                  .collection('buses')
+                  .where('id', isEqualTo: id)
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(
@@ -156,7 +180,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                   );
                 }
-                final busesList = snapshot.data.documents;
+                final busesList = snapshot.data.documents.reversed;
                 List<Widget> buses = [];
                 for (var bus in busesList) {
                   final busName = bus.data['busname'];

@@ -10,8 +10,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'orderScreen.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 final _firestore = Firestore.instance;
+FirebaseUser loggedInUser;
 String selectedBus;
 var busDetails;
 var busData;
@@ -20,6 +22,7 @@ double longitude;
 var currentPlace;
 String rupee = '₹';
 SearchBloc _searchBloc;
+var id;
 
 var alertStyle = AlertStyle(
   overlayColor: kPageBackgroundColor,
@@ -46,6 +49,103 @@ class Destination extends StatefulWidget {
 }
 
 class _DestinationState extends State<Destination> {
+  final _auth = FirebaseAuth.instance;
+
+  createDialogue(
+    BuildContext context,
+    String busname,
+    String distance,
+    String date,
+    String id,
+    String fare,
+    String status,
+    String type,
+  ) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(40),
+            ),
+            elevation: 16,
+            child: Container(
+              decoration: BoxDecoration(
+                color: kPageBackgroundColor,
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              padding: EdgeInsets.all(10.0),
+              height: 250,
+              width: 360,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Add bus to cart ?',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 19),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      FlatButton(
+                        color: Colors.redAccent,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            "yes",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17),
+                          ),
+                        ),
+                        onPressed: () {
+                          DocumentReference documentReference =
+                              _firestore.collection('buses').document();
+                          documentReference.setData({
+                            'busname': busname,
+                            'type': type,
+                            'date': date,
+                            'distance': distance,
+                            'id': id,
+                            'fare': fare,
+                            'status': status,
+                            'docId': documentReference.documentID,
+                          });
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        color: kBottomBarActiveIconColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            "No",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   void getLocation() async {
     try {
       Position position = await Geolocator().getCurrentPosition(
@@ -113,7 +213,20 @@ class _DestinationState extends State<Destination> {
     return null;
   }
 
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        id = loggedInUser.uid;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   void initState() {
+    getCurrentUser();
     super.initState();
     getLocation();
     _controller = TextEditingController();
@@ -170,19 +283,23 @@ class _DestinationState extends State<Destination> {
                     final type = bus["bustype"];
                     final distance = bus["distance"];
                     final fare = bus["fare"];
+                    final status = bus["status"];
+                    final date = bus["date"];
 
                     final busCard = BusCard3(
-                      busName: busName,
-                      busType: type,
-                      distance: distance,
-                      fare: fare.toString(),
-                      color: Colors.red,
-                      onPress: () async {
-                        busData = await getBusDetails(busName);
-                        Navigator.pushNamed(context, OrderScreen.id);
-                        print(busName);
-                      },
-                    );
+                        busName: busName,
+                        busType: type,
+                        distance: distance,
+                        fare: fare.toString(),
+                        color: Colors.red,
+                        onPress: () async {
+                          busData = await getBusDetails(busName);
+                          Navigator.pushNamed(context, OrderScreen.id);
+                        },
+                        onLongPress: () {
+                          createDialogue(context, busName, distance, date, id,
+                              fare, status, type);
+                        });
                     buses.add(busCard);
                   }
                   return RefreshIndicator(
