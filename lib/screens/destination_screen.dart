@@ -289,7 +289,7 @@ class _DestinationState extends State<Destination> {
                 ];
                 if (state is SearchSuccess) {
                   final busesList = state.results;
-                  if (busesList.length == 0) {
+                  if (busesList.isEmpty) {
                     final busCard = BusCard3(
                       busName: "No data available",
                       busType: "--",
@@ -298,8 +298,7 @@ class _DestinationState extends State<Destination> {
                       color: Colors.red,
                     );
                     buses.add(busCard);
-                  }
-                  if (busesList.length != 0) {
+                  } else {
                     for (var bus in busesList) {
                       final busName = bus["busname"];
                       final type = bus["bustype"];
