@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:geolocator/geolocator.dart';
 import 'package:bloc/bloc.dart';
 import 'package:bus_locator/Search/service/search_service.dart';
 import 'package:bus_locator/logger/logger.dart';
@@ -12,7 +12,18 @@ part 'search_state.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchService _search;
   @override
-  SearchState get initialState => SearchInitial();
+  SearchState get initialState => defaultCards(){
+    Position position = await Geolocator().getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.bestForNavigation);
+    latitude = position.latitude;
+    longitude = position.longitude;
+    List<Placemark> placemark =
+        await Geolocator().placemarkFromCoordinates(latitude, longitude);
+    Placemark place = placemark[0];
+
+    List<DocumentSnapshot> buses = await _search.fetchBuses(place);
+    yield SearchSuccess(results: buses);
+  }
 
   SearchBloc() {
     _search = SearchService();
