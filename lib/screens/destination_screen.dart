@@ -244,6 +244,16 @@ class _DestinationState extends State<Destination> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: FlatButton(
+          child: Icon(
+            Icons.keyboard_backspace,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => TabBarClass()));
+          },
+        ),
         backgroundColor: kAppBarColor,
         centerTitle: true,
         title: Text(

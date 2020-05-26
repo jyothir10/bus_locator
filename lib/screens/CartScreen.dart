@@ -1,3 +1,4 @@
+import 'package:bus_locator/Components/TabBar.dart';
 import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BusCard4.dart';
@@ -144,14 +145,14 @@ class _CartScreenState extends State<CartScreen> {
         backgroundColor: kAppBarColor,
         centerTitle: true,
         leading: FlatButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => TicketList()));
-          },
           child: Icon(
-            FontAwesomeIcons.ticketAlt,
-            color: Colors.white60,
+            Icons.keyboard_backspace,
+            color: Colors.white,
           ),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => TabBarClass()));
+          },
         ),
         title: Text(
           'CART',
@@ -159,6 +160,18 @@ class _CartScreenState extends State<CartScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TicketList()));
+            },
+            child: Icon(
+              FontAwesomeIcons.ticketAlt,
+              color: Colors.white60,
+            ),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Stack(
