@@ -298,7 +298,8 @@ class _DestinationState extends State<Destination> {
                       color: Colors.red,
                     );
                     buses.add(busCard);
-                  } else {
+                  }
+                  if (busesList.length != 0) {
                     for (var bus in busesList) {
                       final busName = bus["busname"];
                       final type = bus["bustype"];
