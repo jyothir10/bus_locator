@@ -3,8 +3,10 @@ import 'package:bus_locator/Components/Constants.dart';
 import 'package:bus_locator/Components/BusCard4.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'BusDetailsScreen.dart';
-import 'destination_screen.dart';
+import 'package:bus_locator/homePage.dart';
+import 'ticketList.dart';
 
 final _firestore = Firestore.instance;
 var busDetails;
@@ -25,18 +27,6 @@ class _CartScreenState extends State<CartScreen> {
     );
     setState(() {});
     return null;
-  }
-
-  void getCurrentUser() async {
-    try {
-      final user = await _auth.currentUser();
-      if (user != null) {
-        loggedInUser = user;
-        id = loggedInUser.uid;
-      }
-    } catch (e) {
-      print(e);
-    }
   }
 
   Future getBusDetails(String busName) async {
@@ -144,7 +134,6 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     super.initState();
-    getCurrentUser();
   }
 
   @override
@@ -154,6 +143,16 @@ class _CartScreenState extends State<CartScreen> {
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         centerTitle: true,
+        leading: FlatButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => TicketList()));
+          },
+          child: Icon(
+            FontAwesomeIcons.ticketAlt,
+            color: Colors.white60,
+          ),
+        ),
         title: Text(
           'CART',
           style: TextStyle(

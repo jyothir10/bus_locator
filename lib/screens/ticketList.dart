@@ -4,13 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'ticket.dart';
+import 'package:bus_locator/homePage.dart';
 
 final _firestore = Firestore.instance;
 final _auth = FirebaseAuth.instance;
 var ticketDetails;
 
-FirebaseUser loggedInUser;
-var id;
 var ticketData;
 
 void getCurrentUser() async {

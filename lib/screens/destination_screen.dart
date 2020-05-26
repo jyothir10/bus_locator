@@ -13,6 +13,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 final _firestore = Firestore.instance;
+final _auth = FirebaseAuth.instance;
 FirebaseUser loggedInUser;
 String selectedBus;
 var busDetails;
@@ -278,17 +279,16 @@ class _DestinationState extends State<Destination> {
                 ];
                 if (state is SearchSuccess) {
                   final busesList = state.results;
-                  if (busesList.length == 0){
+                  if (busesList.length == 0) {
                     final busCard = BusCard3(
-                        busName: "No data available",
-                        busType: "--",
-                        distance: "--",
-                        fare: "--",
-                        color: Colors.red.,
-                      );
+                      busName: "No data available",
+                      busType: "--",
+                      distance: "--",
+                      fare: "--",
+                      color: Colors.red,
+                    );
                     buses.add(busCard);
-                  }
-                  else{
+                  } else {
                     for (var bus in busesList) {
                       final busName = bus["busname"];
                       final type = bus["bustype"];

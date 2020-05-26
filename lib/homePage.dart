@@ -14,8 +14,10 @@ import 'Components/customListTile.dart';
 import 'Navigation/mapScreen.dart';
 import 'package:connectivity/connectivity.dart';
 import 'Search/bloc/search_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 String val;
+final _auth = FirebaseAuth.instance;
 var alertStyle = AlertStyle(
   overlayColor: kPageBackgroundColor,
   animationType: AnimationType.fromTop,
@@ -33,6 +35,9 @@ var alertStyle = AlertStyle(
     color: Colors.red,
   ),
 );
+
+FirebaseUser loggedInUser;
+var id;
 
 class HomePage extends StatefulWidget {
   static String id = 'Home_Screen';
@@ -122,14 +127,26 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        id = loggedInUser.uid;
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
 //  TextEditingController _controller;
 //  TextEditingController _controller2;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-//    getLocation();
     getCurrentUser();
+//    getLocation();
     _searchBloc = SearchBloc();
 //    _controller = TextEditingController();
 //    _controller2 = TextEditingController();
