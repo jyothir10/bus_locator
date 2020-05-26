@@ -75,7 +75,7 @@ class _TicketDetailsState extends State<TicketDetails> {
       appBar: AppBar(
         backgroundColor: kAppBarColor,
         leading: GestureDetector(
-          onTap: () => Navigator.pushReplacementNamed(context, BusDetails.id),
+          onTap: () => Navigator.pushReplacementNamed(context, OrderScreen.id),
           child: Icon(
             Icons.keyboard_backspace,
             size: 30,
@@ -321,7 +321,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                             });
 
                             Navigator.pushReplacementNamed(
-                                context, PaymentConformation.id);
+                                context, PaymentScreen.id);
                           }
                         },
                       ),
