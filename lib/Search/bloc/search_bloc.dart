@@ -32,13 +32,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       try {
         print(event.input);
         List<DocumentSnapshot> buses = await _search.fetchBuses(event.input);
-        print(buses[0]["busname"]);
+        // print(buses[0]["busname"]);
 
         yield SearchSuccess(results: buses);
       } catch (error) {
-        
         yield SearchFailure(error.message);
-        
       }
     }
   }
