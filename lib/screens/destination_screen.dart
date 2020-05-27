@@ -294,8 +294,8 @@ class _DestinationState extends State<Destination> {
                   if (busesList.isEmpty) {
                     final busCard = BusCard3(
                       busName: "No data available",
-                      busType: "--",
-                      distance: "--",
+                      busType: "No buses are available ",
+                      distance: "try again",
                       fare: "--",
                       color: Colors.red,
                     );
