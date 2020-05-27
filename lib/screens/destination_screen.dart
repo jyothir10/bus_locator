@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:bus_locator/Components/BusCard3.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../Search/bloc/search_bloc.dart';
 import 'orderScreen.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -233,6 +234,7 @@ class _DestinationState extends State<Destination> {
     _controller = TextEditingController();
     _controller2 = TextEditingController();
     _searchBloc = SearchBloc();
+    _searchBloc.add(SearchDefaults());
   }
 
   void dispose() {

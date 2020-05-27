@@ -11,19 +11,9 @@ part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchService _search;
-  @override
-  SearchState get initialState => defaultCards(){
-    Position position = await Geolocator().getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.bestForNavigation);
-    latitude = position.latitude;
-    longitude = position.longitude;
-    List<Placemark> placemark =
-        await Geolocator().placemarkFromCoordinates(latitude, longitude);
-    Placemark place = placemark[0];
 
-    List<DocumentSnapshot> buses = await _search.fetchBuses(place);
-    yield SearchSuccess(results: buses);
-  }
+  @override
+  SearchState get initialState => SearchInitial();
 
   SearchBloc() {
     _search = SearchService();
@@ -41,14 +31,30 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     if (event is SearchKeyPress) {
       yield SearchLoading();
       try {
-        print(event.input);
         List<DocumentSnapshot> buses = await _search.fetchBuses(event.input);
-        // print(buses[0]["busname"]);
-
         yield SearchSuccess(results: buses);
       } catch (error) {
         yield SearchFailure(error.message);
       }
+    } else if (event is SearchDefaults) {
+      yield* _mapOnSearchDefaults(event);
+    }
+  }
+
+  Stream<SearchState> _mapOnSearchDefaults(
+      SearchDefaults searchDefaults) async* {
+    try {
+      Position position = await Geolocator().getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
+      var latitude = position.latitude;
+      var longitude = position.longitude;
+      List<Placemark> placemark =
+          await Geolocator().placemarkFromCoordinates(latitude, longitude);
+      Placemark place = placemark[0];
+      List<DocumentSnapshot> buses = await _search.fetchBuses(place.toString());
+      yield SearchSuccess(results: buses);
+    } catch (error) {
+      yield SearchFailure("An error has occurred.");
     }
   }
 }

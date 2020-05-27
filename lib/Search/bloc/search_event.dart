@@ -11,3 +11,5 @@ class SearchKeyPress extends SearchEvent {
   final String input;
   SearchKeyPress(this.input);
 }
+
+class SearchDefaults extends SearchEvent {}
