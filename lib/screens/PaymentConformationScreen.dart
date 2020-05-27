@@ -138,7 +138,6 @@ class _PaymentConformationState extends State<PaymentConformation> {
     super.dispose();
     _razorpay.clear();
   }
-
   void openCheckout() async {
     var options = {
       'key': 'rzp_live_su7qYe2BCMxUBG',
