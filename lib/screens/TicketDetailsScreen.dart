@@ -321,7 +321,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                             });
 
                             Navigator.pushReplacementNamed(
-                                context, PaymentScreen.id);
+                                context, PaymentConformation.id);
                           }
                         },
                       ),
