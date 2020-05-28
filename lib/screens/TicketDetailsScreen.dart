@@ -219,8 +219,8 @@ class _TicketDetailsState extends State<TicketDetails> {
                     onPressed: () {
                       DatePicker.showDatePicker(context,
                           showTitleActions: true,
-                          minTime: DateTime(2020, 5, 19),
-                          maxTime: DateTime(2030, 12, 31), onChanged: (date) {
+                          minTime: DateTime.now(),
+                          maxTime: DateTime(2050, 12, 31), onChanged: (date) {
                         print('change $date');
                       }, onConfirm: (date) {
                         day = (date.day).toString();
